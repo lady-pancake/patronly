@@ -5,6 +5,9 @@
 
 @import '@spartan-ng/brain/hlm-tailwind-preset.css';
 
+/* Short viewports, such as a phone turned sideways. */
+@custom-variant short (@media (max-height: 560px));
+
 /*
  * Patronly theme, taken from the prototype: warm paper background, plum
  * primary, sage accents, Cormorant Garamond for display and Montserrat for UI.

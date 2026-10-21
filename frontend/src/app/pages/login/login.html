@@ -1,40 +1,35 @@
-<main class="relative h-dvh min-h-[720px] overflow-hidden bg-[#EAE4DD]">
-  <!-- Phones get a still, three-column mosaic; larger screens get eight drifting columns. -->
-  <div class="absolute inset-0 flex justify-center gap-3 px-3 sm:gap-11 sm:px-0" aria-hidden="true">
-    @for (col of columns; track $index; let i = $index) {
-      <div
-        class="max-w-[175px] min-w-0 flex-1"
-        [class.max-sm:hidden]="i > 2"
-        [style.margin-top]="col.offset"
-      >
-        <div
-          class="flex flex-col will-change-transform max-sm:animate-none!"
-          [style.animation]="col.animation"
-        >
+<main class="relative min-h-dvh overflow-hidden bg-[#EAE4DD] lg:h-dvh lg:min-h-[720px]">
+  <!-- Large screens: eight drifting columns of artwork. Smaller screens keep it still and simple. -->
+  <div class="absolute inset-0 flex justify-center gap-11 max-lg:hidden" aria-hidden="true">
+    @for (col of columns; track $index) {
+      <div class="max-w-[175px] min-w-0 flex-1" [style.margin-top]="col.offset">
+        <div class="flex flex-col will-change-transform" [style.animation]="col.animation">
           @for (t of col.tiles; track $index) {
-            <div
-              class="mb-3 aspect-[7/8] shrink-0 max-sm:rounded-2xl sm:mb-[25px]"
-              [style.background]="t"
-            ></div>
+            <div class="mb-[25px] aspect-[7/8] shrink-0" [style.background]="t"></div>
           }
         </div>
       </div>
     }
   </div>
   <div
-    class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_34%_40%_at_50%_50%,rgb(234_228_221/.95)_45%,rgb(234_228_221/0)_100%)] max-sm:bg-[linear-gradient(to_bottom,rgb(234_228_221/0)_0%,rgb(234_228_221/.85)_32%,rgb(234_228_221)_48%)]"
+    class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_34%_40%_at_50%_50%,rgb(234_228_221/.95)_45%,rgb(234_228_221/0)_100%)] max-lg:hidden"
   ></div>
   <div
-    class="pointer-events-none relative flex h-full flex-col items-center justify-center gap-7 p-6 text-center max-sm:justify-end max-sm:gap-5 max-sm:pb-12"
+    class="pointer-events-none relative flex min-h-dvh flex-col items-center justify-center gap-6 px-6 py-8 text-center short:gap-3 short:py-3 lg:h-full lg:min-h-0 lg:gap-7"
     [attr.inert]="gateOpen() ? '' : null"
   >
+    <div class="flex gap-2.5 lg:hidden short:hidden" aria-hidden="true">
+      @for (t of strip; track $index) {
+        <div class="size-12 rounded-xl sm:size-14" [style.background]="t"></div>
+      }
+    </div>
     <h1
-      class="font-serif text-[clamp(56px,8vw,112px)] leading-[.95] font-normal tracking-[-.03em] italic"
+      class="font-serif text-[clamp(56px,8vw,112px)] leading-[.95] font-normal tracking-[-.03em] italic short:text-4xl"
     >
       Patronly
     </h1>
     <div
-      class="pointer-events-auto flex w-full max-w-[360px] flex-col gap-4 rounded-4xl bg-card p-6 text-left shadow-[0_4px_16px_oklch(0_0_0/.08)] ring-1 ring-black/5"
+      class="pointer-events-auto flex w-full max-w-[360px] flex-col gap-4 rounded-4xl bg-card p-6 text-left short:gap-3 short:p-5 shadow-[0_4px_16px_oklch(0_0_0/.08)] ring-1 ring-black/5"
     >
       @if (viewer.viewer(); as v) {
         <span class="text-sm text-muted-foreground"
