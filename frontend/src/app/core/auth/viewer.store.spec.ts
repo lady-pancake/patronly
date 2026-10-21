@@ -4,7 +4,7 @@ import { of, throwError } from 'rxjs';
 import { GraphQLService } from '../graphql.service';
 import { entitled } from './guards';
 import { GuestSession } from './guest-session';
-import { type Viewer, ViewerStore } from './viewer.store';
+import { SKIP_GATE, type Viewer, ViewerStore } from './viewer.store';
 
 const GUEST: Viewer = {
   id: 'g1',
@@ -24,17 +24,23 @@ const GUEST: Viewer = {
   ],
 };
 
-function setup(me: Viewer | null, token: string | null = me ? 'pass' : null) {
+function setup(me: Viewer | null, token: string | null = me ? 'pass' : null, skipGate = false) {
   sessionStorage.clear();
   if (token) sessionStorage.setItem('patronly.guestPass', token);
   const query = vi.fn((q: string, vars?: Record<string, unknown>) => {
     if (q.includes('query Me')) return of({ me });
+    if (q.includes('roleActions')) return of({ roleActions: GUEST.roles });
     if (q.includes('startVisit') && vars?.['password'] === 'right') {
       return of({ startVisit: { token: 'new-pass', viewer: GUEST } });
     }
     return throwError(() => new Error("That password isn't right."));
   });
-  TestBed.configureTestingModule({ providers: [{ provide: GraphQLService, useValue: { query } }] });
+  TestBed.configureTestingModule({
+    providers: [
+      { provide: GraphQLService, useValue: { query } },
+      { provide: SKIP_GATE, useValue: skipGate },
+    ],
+  });
   return { store: TestBed.inject(ViewerStore), query };
 }
 
@@ -54,6 +60,16 @@ describe('ViewerStore', () => {
     expect(await store.whenLoaded()).toBeNull();
     expect(store.can('MESSAGE')).toBe(false);
     expect(query).not.toHaveBeenCalled();
+  });
+
+  it('skips the gate in local development, until you sign out', async () => {
+    const { store } = setup(null, null, true);
+    const v = await store.whenLoaded();
+    expect(v?.name).toBe('Local dev');
+    store.role.set('artist');
+    expect(store.can('VIEW_DASHBOARD')).toBe(true);
+    store.signOut();
+    expect(await store.refresh()).toBeNull();
   });
 
   it('drops a pass the API no longer accepts', async () => {

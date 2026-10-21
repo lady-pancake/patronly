@@ -78,6 +78,7 @@ Patronly is a portfolio prototype, so there are no real accounts.
 - The avatar menu switches between the **patron** and **artist** views. The API sends the list of actions each view allows (`me { roles { role entitlements } }`, defined in `backend/app/auth/entitlements.py`). The frontend only checks for an action (`viewer.can('VIEW_DASHBOARD')` and the `entitled(...)` route guard), never the role.
 - Nothing a guest does is saved on the server. Favourites, messages and studio edits live in session storage and reset when the tab closes. The sample studios come from the database.
 - The password is stored hashed in `backend/app/auth/guest.py`. Set `GUEST_PASSWORD` on the API to use a different one.
+- Running locally (`npm start`) skips the gate and signs you in as "Local dev", without logging a visit. Set `NG_APP_SKIP_GATE=false` in `frontend/.env` to test the gate. Vercel builds always show it.
 
 ### Database migrations
 
