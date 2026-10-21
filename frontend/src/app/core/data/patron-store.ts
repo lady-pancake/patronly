@@ -5,10 +5,7 @@ import { RECENT_SEARCHES, SAMPLE_THREADS } from './seed';
 
 const STORAGE_KEY = 'patronly.patron.v1';
 
-export type Role = 'patron' | 'artist';
-
 interface Persisted {
-  role: Role;
   favs: string[];
   saved: SavedSearch[];
   hiddenRecent: string[];
@@ -16,7 +13,6 @@ interface Persisted {
 }
 
 const DEFAULTS: Persisted = {
-  role: 'patron',
   favs: ['maren', 'june'],
   saved: [],
   hiddenRecent: [],
@@ -25,7 +21,7 @@ const DEFAULTS: Persisted = {
 
 function load(): Persisted {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
+    const raw = sessionStorage.getItem(STORAGE_KEY);
     return raw ? { ...DEFAULTS, ...(JSON.parse(raw) as Partial<Persisted>) } : DEFAULTS;
   } catch {
     return DEFAULTS;
@@ -33,14 +29,13 @@ function load(): Persisted {
 }
 
 /**
- * The signed-in patron's state: favourites, saved searches and conversations.
- * Kept in the browser for now; this is the seam where API calls will go.
+ * The guest's favourites, saved searches and conversations.
+ * Kept in this browser tab's session storage only: nothing is saved on the server.
  */
 @Injectable({ providedIn: 'root' })
 export class PatronStore {
   private readonly initial = load();
 
-  readonly role = signal<Role>(this.initial.role);
   readonly favs = signal<string[]>(this.initial.favs);
   readonly saved = signal<SavedSearch[]>(this.initial.saved);
   readonly hiddenRecent = signal<string[]>(this.initial.hiddenRecent);
@@ -63,14 +58,13 @@ export class PatronStore {
   constructor() {
     effect(() => {
       const state: Persisted = {
-        role: this.role(),
         favs: this.favs(),
         saved: this.saved(),
         hiddenRecent: this.hiddenRecent(),
         threads: this.threads(),
       };
       try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+        sessionStorage.setItem(STORAGE_KEY, JSON.stringify(state));
       } catch {
         // Storage can be unavailable (private mode); the app still works in memory.
       }

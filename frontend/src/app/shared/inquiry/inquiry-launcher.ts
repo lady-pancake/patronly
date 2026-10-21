@@ -1,5 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { HlmDialogService } from '@spartan-ng/helm/dialog';
+import { ViewerStore } from '../../core/auth/viewer.store';
 import type { Artist } from '../../core/data/models';
 import { InquiryDialog } from './inquiry-dialog';
 
@@ -7,12 +8,14 @@ export interface InquiryContext {
   artist: Artist;
 }
 
-/** Opens the "Send an inquiry" dialog for an artist. */
+/** Opens the "Send an inquiry" dialog for an artist, when the current view can send inquiries. */
 @Injectable({ providedIn: 'root' })
 export class InquiryLauncher {
   private readonly dialog = inject(HlmDialogService);
+  private readonly viewer = inject(ViewerStore);
 
   open(artist: Artist) {
+    if (!this.viewer.can('SEND_INQUIRIES')) return null;
     return this.dialog.open<void, InquiryContext>(InquiryDialog, {
       context: { artist },
       contentClass:

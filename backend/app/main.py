@@ -7,6 +7,7 @@ from strawberry.fastapi import GraphQLRouter
 from app import __version__
 from app.config import get_settings
 from app.db.session import check_database, dispose_engine
+from app.graphql.context import get_context
 from app.graphql.schema import schema
 
 
@@ -31,7 +32,11 @@ app.add_middleware(
 
 # GraphiQL playground only outside production.
 app.include_router(
-    GraphQLRouter(schema, graphql_ide="graphiql" if settings.environment != "production" else None),
+    GraphQLRouter(
+        schema,
+        context_getter=get_context,
+        graphql_ide="graphiql" if settings.environment != "production" else None,
+    ),
     prefix="/graphql",
 )
 

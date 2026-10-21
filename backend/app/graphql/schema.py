@@ -9,6 +9,7 @@ from sqlalchemy.orm import selectinload
 from app import __version__
 from app.db import session as db
 from app.db.models import Artist as ArtistModel
+from app.graphql.viewer import ViewerMutation, ViewerQuery
 
 
 @strawberry.type
@@ -110,7 +111,7 @@ def _with_children():
 
 
 @strawberry.type
-class Query:
+class Query(ViewerQuery):
     @strawberry.field(description="Liveness of the API and its database connection.")
     async def health(self) -> Health:
         return Health(status="ok", version=__version__, database=await db.check_database())
@@ -135,4 +136,9 @@ class Query:
         return None
 
 
-schema = strawberry.Schema(query=Query)
+@strawberry.type
+class Mutation(ViewerMutation):
+    pass
+
+
+schema = strawberry.Schema(query=Query, mutation=Mutation)

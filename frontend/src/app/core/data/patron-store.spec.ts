@@ -5,7 +5,7 @@ describe('PatronStore', () => {
   let store: PatronStore;
 
   beforeEach(() => {
-    localStorage.clear();
+    sessionStorage.clear();
     store = TestBed.inject(PatronStore);
   });
 

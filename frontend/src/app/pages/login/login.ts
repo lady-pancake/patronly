@@ -1,8 +1,17 @@
-import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
-import { Router } from '@angular/router';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  computed,
+  effect,
+  inject,
+  signal,
+  viewChild,
+} from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { type Role, ViewerStore } from '../../core/auth/viewer.store';
 import { ARTISTS } from '../../core/data/catalog';
 import { ArtistStore } from '../../core/data/artist-store';
-import { PatronStore, type Role } from '../../core/data/patron-store';
 
 const PALETTE = [
   '#8E6E7E',
@@ -60,6 +69,7 @@ const COLUMNS = OFFSETS.map((offset, i) => ({
       ></div>
       <div
         class="pointer-events-none relative flex h-full flex-col items-center justify-center gap-7 p-6 text-center"
+        [attr.inert]="gateOpen() ? '' : null"
       >
         <h1
           class="font-serif text-[clamp(56px,8vw,112px)] leading-[.95] font-normal tracking-[-.03em] italic"
@@ -67,12 +77,15 @@ const COLUMNS = OFFSETS.map((offset, i) => ({
           Patronly
         </h1>
         <div
-          role="radiogroup"
-          aria-label="Sign in as"
           class="pointer-events-auto flex w-full max-w-[360px] flex-col gap-4 rounded-4xl bg-card p-6 text-left shadow-[0_4px_16px_oklch(0_0_0/.08)] ring-1 ring-black/5"
         >
-          <span class="text-sm font-semibold">Sign in as</span>
-          <div class="flex flex-col gap-2">
+          @if (viewer.viewer(); as v) {
+            <span class="text-sm text-muted-foreground"
+              >Welcome, <span class="font-medium text-foreground">{{ v.name }}</span></span
+            >
+          }
+          <div role="radiogroup" aria-label="Sign in as" class="flex flex-col gap-2">
+            <span class="text-sm font-semibold">Sign in as</span>
             @for (r of roles; track r.id) {
               <button
                 type="button"
@@ -102,29 +115,136 @@ const COLUMNS = OFFSETS.map((offset, i) => ({
             (click)="enter()"
             class="h-11 rounded-full bg-primary text-sm font-medium text-primary-foreground hover:opacity-85"
           >
-            Continue
+            Continue as guest
           </button>
+          <p class="text-center text-xs text-muted-foreground">
+            You can switch views any time from your avatar.
+          </p>
         </div>
       </div>
+
+      @if (gateOpen()) {
+        <div
+          class="fixed inset-0 z-30 grid place-items-center bg-[rgb(234_228_221/.35)] p-6 backdrop-blur-md"
+        >
+          <form
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="gate-title"
+            (submit)="$event.preventDefault(); unlock()"
+            class="flex w-full max-w-[380px] flex-col gap-4 rounded-4xl bg-card p-7 text-left shadow-[0_12px_40px_oklch(0_0_0/.16)] ring-1 ring-black/5"
+          >
+            <div class="flex flex-col gap-1.5">
+              <h2 id="gate-title" class="font-serif text-[28px] leading-tight italic">
+                Welcome to Patronly
+              </h2>
+              <p class="text-sm text-muted-foreground">
+                A design prototype by Juliette Garvey. Enter your name and the password you were
+                given to look around.
+              </p>
+            </div>
+            <label class="flex flex-col gap-1.5">
+              <span class="text-sm font-semibold">Your name</span>
+              <input
+                #nameInput
+                name="name"
+                required
+                autocomplete="name"
+                maxlength="120"
+                [value]="name()"
+                (input)="name.set($any($event.target).value)"
+                class="h-11 rounded-full border border-input bg-background px-4 text-sm outline-none focus-visible:border-primary"
+              />
+            </label>
+            <label class="flex flex-col gap-1.5">
+              <span class="text-sm font-semibold">Password</span>
+              <input
+                type="password"
+                name="password"
+                required
+                autocomplete="current-password"
+                [value]="password()"
+                (input)="password.set($any($event.target).value)"
+                class="h-11 rounded-full border border-input bg-background px-4 text-sm outline-none focus-visible:border-primary"
+              />
+            </label>
+            @if (error()) {
+              <p class="text-sm text-destructive" role="alert">{{ error() }}</p>
+            }
+            <button
+              type="submit"
+              [disabled]="busy()"
+              class="h-11 rounded-full bg-primary text-sm font-medium text-primary-foreground hover:opacity-85 disabled:opacity-60"
+            >
+              {{ busy() ? 'Checking…' : 'Enter' }}
+            </button>
+          </form>
+        </div>
+      }
     </div>
   `,
 })
 export class Login {
   private readonly router = inject(Router);
-  private readonly store = inject(PatronStore);
+  private readonly route = inject(ActivatedRoute);
   private readonly artist = inject(ArtistStore);
+  protected readonly viewer = inject(ViewerStore);
 
   protected readonly columns = COLUMNS;
   protected readonly roles: { id: Role; label: string; desc: string }[] = [
     { id: 'patron', label: 'Patron', desc: 'Discover and commission artists' },
     { id: 'artist', label: 'Artist', desc: 'Share your work and take commissions' },
   ];
-  protected readonly role = signal<Role>(this.store.role());
+  protected readonly role = signal<Role>(this.viewer.role());
+
+  // Password gate.
+  protected readonly name = signal('');
+  protected readonly password = signal('');
+  protected readonly busy = signal(false);
+  protected readonly error = signal<string | null>(null);
+  protected readonly gateOpen = computed(() => this.viewer.loaded() && !this.viewer.signedIn());
+  private readonly nameInput = viewChild<ElementRef<HTMLInputElement>>('nameInput');
+
+  constructor() {
+    void this.viewer.whenLoaded();
+    effect(() => this.nameInput()?.nativeElement.focus());
+  }
+
+  protected async unlock() {
+    const name = this.name().trim();
+    if (!name || !this.password() || this.busy()) return;
+    this.error.set(null);
+    this.busy.set(true);
+    try {
+      await this.viewer.startVisit(name, this.password());
+      this.password.set('');
+    } catch (err) {
+      this.error.set(gateError(err));
+    } finally {
+      this.busy.set(false);
+    }
+  }
 
   protected enter() {
-    this.store.role.set(this.role());
-    // Artists with a public studio land on their dashboard; new artists build one first.
-    const artistHome = this.artist.published() ? '/dashboard' : '/studio/edit';
-    void this.router.navigateByUrl(this.role() === 'artist' ? artistHome : '/');
+    if (!this.viewer.signedIn()) return;
+    this.viewer.role.set(this.role());
+    void this.router.navigateByUrl(this.destination());
   }
+
+  /** The page asked for, or the home that fits what this view can do. */
+  private destination(): string {
+    const next = this.route.snapshot.queryParamMap.get('next');
+    if (next?.startsWith('/') && !next.startsWith('//') && !next.startsWith('/login')) return next;
+    if (this.viewer.can('VIEW_DASHBOARD')) {
+      // Artists with a public studio land on their dashboard; new artists build one first.
+      return this.artist.published() ? '/dashboard' : '/studio/edit';
+    }
+    return '/';
+  }
+}
+
+function gateError(err: unknown): string {
+  const msg = err instanceof Error ? err.message : '';
+  if (/password/i.test(msg) || /name/i.test(msg)) return msg;
+  return 'We couldn’t reach Patronly just now. Please try again.';
 }

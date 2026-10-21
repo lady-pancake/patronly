@@ -32,7 +32,7 @@ const DEFAULTS: Persisted = {
 
 function load(): Persisted {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
+    const raw = sessionStorage.getItem(STORAGE_KEY);
     if (!raw) return DEFAULTS;
     const saved = JSON.parse(raw) as Partial<Persisted>;
     return { ...DEFAULTS, ...saved, draft: { ...SEED_DRAFT, ...saved.draft } };
@@ -43,8 +43,8 @@ function load(): Persisted {
 
 /**
  * The signed-in artist's studio: the draft being edited, the published
- * version, and dashboard settings. Kept in the browser until the API has
- * studio endpoints.
+ * version, and dashboard settings. Kept in this browser tab's session
+ * storage only: nothing is saved on the server.
  */
 @Injectable({ providedIn: 'root' })
 export class ArtistStore {
@@ -75,7 +75,7 @@ export class ArtistStore {
         reminded: this.reminded(),
       };
       try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+        sessionStorage.setItem(STORAGE_KEY, JSON.stringify(state));
       } catch {
         // Large uploads can go over the storage quota; the session keeps working in memory.
       }
