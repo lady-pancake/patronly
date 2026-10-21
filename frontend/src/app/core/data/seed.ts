@@ -333,6 +333,8 @@ export const SEED_ARTISTS: ArtistSeed[] = [
       'Framing available',
     ],
     quote: 'Flowers last a week. I try to keep the light on them a little longer.',
+    portrait: '/images/portraits/clem.jpg',
+    process: '/images/process/clem-process.jpg',
     works: [
       ['Hawthorn in May', 'Oil on canvas, 30×40cm', '/images/works/clem-1.jpg'],
       ['Hellebores on the step', 'Oil on canvas, 60×80cm', '/images/works/clem-2.jpg'],
