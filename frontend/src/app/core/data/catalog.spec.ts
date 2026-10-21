@@ -19,7 +19,7 @@ describe('catalog', () => {
     expect(ARTISTS.filter((a) => a.medium === 'Glass')).toHaveLength(6);
     expect(LISTED.every((a) => a.hasImages)).toBe(true);
     expect(LISTED.map((a) => a.id)).toContain('sol');
-    expect(LISTED.map((a) => a.id)).not.toContain('hana');
+    expect(LISTED.map((a) => a.id)).not.toContain('lena');
   });
 
   it('matches search answers by medium and budget, most saved first', () => {

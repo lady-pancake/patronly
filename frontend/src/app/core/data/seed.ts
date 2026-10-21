@@ -463,17 +463,6 @@ export const BUDGETS: Record<string, [number, number]> = {
 
 export const RECENT_SEARCHES: SavedSearch[] = [
   {
-    name: 'Large textile for a stairwell',
-    wiz: {
-      mediums: ['Textile', 'Murals'],
-      purpose: 'For my home',
-      size: 'Large',
-      budget: '$2k – $5k',
-      avail: 'Yes, I’m happy to wait',
-    },
-    ids: ['ines', 'rafa', 'hana'],
-  },
-  {
     name: 'Oil portrait of my parents',
     wiz: {
       mediums: ['Painting', 'Illustration'],

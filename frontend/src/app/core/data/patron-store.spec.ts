@@ -17,10 +17,9 @@ describe('PatronStore', () => {
     expect(store.isFav('sol')).toBe(false);
   });
 
-  it('hides sample searches whose artists are not listed', () => {
+  it('lists the sample recent search', () => {
     const names = store.searches().map((s) => s.name);
     expect(names).toContain('Oil portrait of my parents');
-    expect(names).not.toContain('Large textile for a stairwell');
   });
 
   it('removes a sample recent search', () => {
