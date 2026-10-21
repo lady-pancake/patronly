@@ -1,8 +1,7 @@
 import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { BrnDialogRef, injectBrnDialogContext } from '@spartan-ng/brain/dialog';
+import { BrnDialogRef } from '@spartan-ng/brain/dialog';
 import { ArtistStore, type PayoutAccount } from '../../core/data/artist-store';
-import type { InquiryRow } from './dashboard-data';
 
 const BUTTON = 'h-10 rounded-md px-4 text-[13px] font-medium';
 
@@ -76,73 +75,6 @@ export class PayoutDialog {
   protected save() {
     if (!this.valid()) return;
     this.store.account.set(this.draft());
-    this.ref.close();
-  }
-}
-
-export interface ReplyContext {
-  name: string;
-  /** The patron's inquiry, when replying to one. */
-  inquiry?: InquiryRow;
-}
-
-/** A short message to a patron. Replying to an inquiry clears it from the waiting list. */
-@Component({
-  selector: 'app-reply-dialog',
-  imports: [FormsModule],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `
-    <form class="flex flex-col gap-5" (ngSubmit)="send()">
-      <div class="flex flex-col gap-1.5">
-        <h2 class="font-serif text-[32px] leading-none font-normal">
-          {{ ctx.inquiry ? 'Reply to' : 'Message' }} {{ first }}
-        </h2>
-        @if (ctx.inquiry; as q) {
-          <span class="text-[13px] text-muted-foreground">“{{ q.text }}” · {{ q.meta }}</span>
-        }
-      </div>
-      <label class="flex flex-col gap-1.5 text-[13px] font-medium"
-        >Your message<textarea
-          name="text"
-          rows="5"
-          [(ngModel)]="text"
-          [placeholder]="'Hi ' + first + ', thanks for getting in touch…'"
-          class="field !h-auto resize-y rounded-3xl !py-3 !text-sm leading-normal font-normal"
-        ></textarea>
-      </label>
-      <div class="flex justify-end gap-2">
-        <button
-          type="button"
-          (click)="ref.close()"
-          [class]="buttonClass + ' border bg-background hover:bg-muted'"
-        >
-          Cancel
-        </button>
-        <button
-          type="submit"
-          [disabled]="!text().trim()"
-          [class]="
-            buttonClass +
-            ' bg-primary font-semibold text-primary-foreground hover:opacity-85 disabled:opacity-40'
-          "
-        >
-          Send
-        </button>
-      </div>
-    </form>
-  `,
-})
-export class ReplyDialog {
-  protected readonly ref = inject(BrnDialogRef);
-  protected readonly ctx = injectBrnDialogContext<ReplyContext>();
-  private readonly store = inject(ArtistStore);
-  protected readonly buttonClass = BUTTON;
-  protected readonly first = this.ctx.name.split(' ')[0];
-  protected readonly text = signal('');
-
-  protected send() {
-    if (!this.text().trim()) return;
-    if (this.ctx.inquiry) this.store.markReplied(this.ctx.name);
     this.ref.close();
   }
 }

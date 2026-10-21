@@ -3,12 +3,12 @@ import { RouterLink } from '@angular/router';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideChevronLeft, lucideChevronRight, lucideX } from '@ng-icons/lucide';
 import { ArtistStore } from '../../core/data/artist-store';
-import { InquiryLauncher } from '../../shared/inquiry/inquiry-launcher';
+import { InquireButton } from '../../shared/inquiry/inquire-button';
 import { NotFound } from '../not-found';
 
 @Component({
   selector: 'app-gallery',
-  imports: [RouterLink, NgIcon, NotFound],
+  imports: [RouterLink, NgIcon, NotFound, InquireButton],
   providers: [provideIcons({ lucideChevronLeft, lucideChevronRight, lucideX })],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: { '(document:keydown)': 'onKey($event)' },
@@ -30,13 +30,12 @@ import { NotFound } from '../not-found';
           </div>
           <div class="flex items-center gap-3">
             <span class="text-[13px] text-muted-foreground">{{ a.workList.length }} pieces</span>
-            <button
-              type="button"
-              (click)="inquiry.open(a)"
-              class="h-10 rounded-md bg-primary px-4.5 text-[13px] font-semibold text-primary-foreground hover:opacity-85"
+            <app-inquire-button
+              [artist]="a"
+              buttonClass="h-10 rounded-md bg-primary px-4.5 text-[13px] font-semibold text-primary-foreground hover:opacity-85"
             >
               Inquire about a commission
-            </button>
+            </app-inquire-button>
           </div>
         </div>
         <div class="columns-[280px] gap-6 [column-count:3]">
@@ -128,7 +127,6 @@ import { NotFound } from '../not-found';
   `,
 })
 export class Gallery {
-  protected readonly inquiry = inject(InquiryLauncher);
   readonly id = input.required<string>();
   private readonly store = inject(ArtistStore);
   protected readonly artist = computed(() => this.store.byId(this.id()));

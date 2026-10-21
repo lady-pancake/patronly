@@ -6,7 +6,12 @@ import { GuestSession } from './guest-session';
 
 export type Role = 'patron' | 'artist';
 export type Entitlement =
-  'SAVE_FAVOURITES' | 'SEND_INQUIRIES' | 'MESSAGE' | 'MANAGE_STUDIO' | 'VIEW_DASHBOARD';
+  | 'SAVE_FAVOURITES'
+  | 'SEND_INQUIRIES'
+  | 'MESSAGE'
+  | 'MANAGE_STUDIO'
+  | 'VIEW_DASHBOARD'
+  | 'RECEIVE_INQUIRIES';
 
 export interface RoleActions {
   role: 'PATRON' | 'ARTIST';

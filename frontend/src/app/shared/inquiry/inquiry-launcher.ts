@@ -15,11 +15,12 @@ export class InquiryLauncher {
   private readonly viewer = inject(ViewerStore);
 
   open(artist: Artist) {
-    if (!this.viewer.can('SEND_INQUIRIES')) return null;
+    // No inquiries to your own studio ("me").
+    if (!this.viewer.can('SEND_INQUIRIES') || artist.id === 'me') return null;
     return this.dialog.open<void, InquiryContext>(InquiryDialog, {
       context: { artist },
       contentClass:
-        'sm:max-w-[720px] max-h-[calc(100dvh-3rem)] overflow-y-auto rounded-4xl p-6 sm:p-10 gap-0',
+        'w-full sm:w-[720px] sm:max-w-[720px] max-h-[calc(100dvh-3rem)] overflow-y-auto rounded-4xl p-6 sm:p-10 gap-0',
     });
   }
 }

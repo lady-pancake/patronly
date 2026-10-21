@@ -141,7 +141,16 @@ export interface Inquiry {
 }
 
 export type ThreadStatus =
-  'Awaiting reply' | 'Quote received' | 'Accepted' | 'Deposit due' | 'In progress';
+  | 'Awaiting reply'
+  | 'Quote received'
+  | 'Accepted'
+  | 'Deposit due'
+  | 'In progress'
+  // Incoming inquiries, seen by the artist:
+  | 'New inquiry'
+  | 'Replied'
+  | 'Contract to send'
+  | 'Awaiting signature';
 
 export interface Thread {
   id: string;
@@ -152,4 +161,11 @@ export interface Thread {
   inq: Inquiry;
   msgs: Message[];
   contract?: { signed?: boolean; paid?: boolean };
+  /**
+   * Who started the conversation. "outgoing" (the default): you inquired with an
+   * artist. "incoming": a patron inquired with your studio; `me` is the artist.
+   */
+  direction?: 'incoming' | 'outgoing';
+  /** For incoming threads: the patron who wrote to you. */
+  patron?: { name: string; hue: number };
 }

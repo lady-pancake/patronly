@@ -1,4 +1,13 @@
-import { PAYDAY, activeCommissions, earnings, weekLoad, yearView } from './dashboard-data';
+import { INBOX_SEED, inboxId } from '../../core/data/inbox-seed';
+import {
+  INQUIRIES,
+  PAYDAY,
+  PENDING,
+  activeCommissions,
+  earnings,
+  weekLoad,
+  yearView,
+} from './dashboard-data';
 
 describe('dashboard sample data', () => {
   it('matches the prototype totals', () => {
@@ -26,5 +35,18 @@ describe('dashboard sample data', () => {
     expect(months[0]).toMatchObject({ name: 'October', tag: 'Now', loadLabel: '44% booked' });
     expect(months[0].items.find((i) => i.name === 'Elin Lindqvist')?.mark).toBe('Due');
     expect(yearView(-12).months[0].past).toBe(true);
+  });
+});
+
+describe('dashboard links into Messages', () => {
+  it('has an incoming conversation for every inquiry, commission and pending contract', () => {
+    const names = [
+      ...INQUIRIES.map((q) => q.name),
+      ...activeCommissions().map((c) => c.patron),
+      ...PENDING.map((p) => p.name),
+    ];
+    const ids = new Set(INBOX_SEED.map((t) => t.id));
+    expect(names.filter((n) => !ids.has(inboxId(n)))).toEqual([]);
+    expect(inboxId('Tomás Reyes')).toBe('in-tomas-reyes');
   });
 });
