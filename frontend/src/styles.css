@@ -70,26 +70,8 @@
   --radius-3xl: 8px;
   --radius-4xl: 10px;
   --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
-  --animate-drift-up: drift-up 80s linear infinite;
-  --animate-drift-down: drift-down 80s linear infinite;
   --animate-pop-in: pop-in 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 
-  @keyframes drift-up {
-    from {
-      transform: translateY(0);
-    }
-    to {
-      transform: translateY(-50%);
-    }
-  }
-  @keyframes drift-down {
-    from {
-      transform: translateY(-50%);
-    }
-    to {
-      transform: translateY(0);
-    }
-  }
   @keyframes pop-in {
     from {
       opacity: 0;
@@ -99,6 +81,27 @@
       opacity: 1;
       transform: none;
     }
+  }
+}
+
+/*
+ * Sign-in wall. Kept outside @theme because the columns set the animation
+ * inline, and Tailwind only keeps @theme keyframes that a class uses.
+ */
+@keyframes drift-up {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50%);
+  }
+}
+@keyframes drift-down {
+  from {
+    transform: translateY(-50%);
+  }
+  to {
+    transform: translateY(0);
   }
 }
 
