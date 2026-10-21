@@ -21,6 +21,8 @@ interface Persisted {
   account: PayoutAccount;
   replied: string[];
   reminded: string[];
+  /** False until the guest changes the studio; until then the sample from the database is used. */
+  edited: boolean;
 }
 
 const DEFAULTS: Persisted = {
@@ -30,6 +32,7 @@ const DEFAULTS: Persisted = {
   account: { bank: '', holder: '', iban: '' },
   replied: [],
   reminded: [],
+  edited: false,
 };
 
 export const STUDIO_TEMPLATE_QUERY = `query StudioTemplate { studioTemplate { draft account } }`;
@@ -54,10 +57,9 @@ function load(): Persisted | null {
 @Injectable({ providedIn: 'root' })
 export class ArtistStore {
   private readonly gql = inject(GraphQLService);
-  private readonly saved = load();
-  private readonly initial = this.saved ?? DEFAULTS;
-  /** True once the guest has changed anything, so a late sample load never overwrites it. */
-  private touched = false;
+  private readonly initial = load() ?? DEFAULTS;
+  /** True once the guest has changed anything, so the sample never overwrites their edits. */
+  private readonly edited = signal(this.initial.edited);
 
   readonly draft = signal<StudioDraft>(this.initial.draft);
   readonly live = signal<StudioDraft | null>(this.initial.live);
@@ -74,8 +76,8 @@ export class ArtistStore {
   );
 
   constructor() {
-    // A fresh visit starts from the sample studio stored in the database.
-    if (!this.saved) void this.loadTemplate();
+    // Until the guest edits it, the studio is the sample stored in the database.
+    if (!this.edited()) void this.loadTemplate();
     effect(() => {
       const state: Persisted = {
         draft: this.draft(),
@@ -84,6 +86,7 @@ export class ArtistStore {
         account: this.account(),
         replied: this.replied(),
         reminded: this.reminded(),
+        edited: this.edited(),
       };
       try {
         sessionStorage.setItem(STORAGE_KEY, JSON.stringify(state));
@@ -100,7 +103,7 @@ export class ArtistStore {
           studioTemplate: { draft: Partial<StudioDraft>; account: Partial<PayoutAccount> } | null;
         }>(STUDIO_TEMPLATE_QUERY),
       );
-      if (!t || this.touched) return;
+      if (!t || this.edited()) return;
       this.draft.set({ ...BLANK_DRAFT, ...t.draft });
       this.account.update((a) => ({ ...a, ...t.account }));
     } catch (err) {
@@ -114,7 +117,7 @@ export class ArtistStore {
   }
 
   update(patch: Partial<StudioDraft>): void {
-    this.touched = true;
+    this.edited.set(true);
     this.draft.update((d) => ({ ...d, ...patch }));
   }
 
