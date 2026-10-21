@@ -4,7 +4,7 @@ import type { Availability } from '../../core/data/models';
 import { MEDIUMS } from '../../core/data/seed';
 import { ArtistCard } from '../../shared/artist-card';
 import { BackLink } from '../../shared/back-link';
-import { FilterChips } from '../../shared/filter-chips';
+import { FilterSelect } from '../../shared/filter-select';
 
 const AVAIL: Record<string, Availability> = {
   'Taking commissions': 'Open',
@@ -14,7 +14,7 @@ const AVAIL: Record<string, Availability> = {
 
 @Component({
   selector: 'app-medium',
-  imports: [BackLink, FilterChips, ArtistCard],
+  imports: [BackLink, FilterSelect, ArtistCard],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './medium.html',
 })

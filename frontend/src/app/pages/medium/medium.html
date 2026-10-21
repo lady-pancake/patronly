@@ -6,19 +6,10 @@
       <em>{{ medium().name }}</em>
     </h1>
   </header>
-  <div class="flex flex-wrap items-end justify-between gap-6 border-b pb-6">
-    <div class="flex flex-col gap-2.5">
-      <span class="text-[13px] font-semibold">Availability</span>
-      <app-filter-chips [options]="availOptions" [(value)]="avail" />
-    </div>
-    <div class="flex flex-col gap-2.5">
-      <span class="text-[13px] font-semibold">Starting price</span>
-      <app-filter-chips [options]="priceOptions" [(value)]="price" />
-    </div>
-    <div class="flex flex-col gap-2.5">
-      <span class="text-[13px] font-semibold">Sort by</span>
-      <app-filter-chips [options]="sortOptions" [(value)]="sort" />
-    </div>
+  <div class="flex flex-wrap gap-2 border-b pb-6">
+    <app-filter-select label="Availability" [options]="availOptions" [(value)]="avail" />
+    <app-filter-select label="Price" [options]="priceOptions" [(value)]="price" />
+    <app-filter-select label="Sort" [options]="sortOptions" [(value)]="sort" />
   </div>
   <div class="flex flex-col gap-5">
     <span class="text-[13px] text-muted-foreground">Showing {{ artists().length }}</span>

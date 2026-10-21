@@ -14,10 +14,9 @@ describe('Medium page', () => {
     const el = fixture.nativeElement as HTMLElement;
     expect(el.textContent).toContain('Showing 3');
 
-    const waitlist = [...el.querySelectorAll('button')].find(
-      (b) => b.textContent?.trim() === 'Waitlist open',
-    );
-    waitlist?.click();
+    const availability = el.querySelector<HTMLSelectElement>('select[aria-label="Availability"]')!;
+    availability.value = 'Waitlist open';
+    availability.dispatchEvent(new Event('change'));
     await fixture.whenStable();
     expect(el.textContent).toContain('Showing 1');
     expect(el.textContent).toContain('Maren Oduya');

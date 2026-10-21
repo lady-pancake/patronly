@@ -1,0 +1,17 @@
+<div
+  class="relative flex h-10 items-center gap-1.5 rounded-md border bg-background pr-3 pl-3.5 text-sm focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-ring hover:bg-muted"
+>
+  <span class="text-muted-foreground">{{ label() }}:</span>
+  <span class="font-medium">{{ value() }}</span>
+  <ng-icon name="lucideChevronDown" size="15" class="text-muted-foreground" />
+  <!-- The real control sits invisibly over the pill so the whole pill opens it. -->
+  <select
+    class="absolute inset-0 cursor-pointer opacity-0"
+    [attr.aria-label]="label()"
+    (change)="value.set($any($event.target).value)"
+  >
+    @for (o of options(); track o) {
+      <option [value]="o" [selected]="o === value()">{{ o }}</option>
+    }
+  </select>
+</div>
