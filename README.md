@@ -102,7 +102,7 @@ The API and the web app are two Vercel projects built from the same repo, one wi
 ### 2. Vercel (API)
 
 1. At https://vercel.com/new import the `lady-pancake/patronly` repo and name the project `patronly-api`.
-2. Set **Root Directory** to `backend`. Vercel installs `requirements.txt` and serves `api/index.py`; `backend/vercel.json` routes every path to it.
+2. Set **Root Directory** to `backend`. Vercel detects FastAPI, installs the packages listed in `pyproject.toml` and serves the `app` from `api/index.py`.
 3. Add the environment variables `DATABASE_URL` (from step 1), `ENVIRONMENT=production` and, for now, `CORS_ORIGINS=http://localhost:4200`.
 4. Deploy, then open `https://<api-project>.vercel.app/health`. You should see `"database":"ok"`.
 
