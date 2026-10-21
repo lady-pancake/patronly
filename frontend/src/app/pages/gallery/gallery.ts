@@ -1,0 +1,152 @@
+import { ChangeDetectionStrategy, Component, computed, inject, input, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { NgIcon, provideIcons } from '@ng-icons/core';
+import { lucideChevronLeft, lucideChevronRight, lucideX } from '@ng-icons/lucide';
+import { artistById } from '../../core/data/catalog';
+import { InquiryLauncher } from '../../shared/inquiry/inquiry-launcher';
+import { NotFound } from '../not-found';
+
+@Component({
+  selector: 'app-gallery',
+  imports: [RouterLink, NgIcon, NotFound],
+  providers: [provideIcons({ lucideChevronLeft, lucideChevronRight, lucideX })],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  host: { '(document:keydown)': 'onKey($event)' },
+  template: `
+    @if (artist(); as a) {
+      <main class="mx-auto flex max-w-[1280px] flex-col gap-8 px-4 pt-8 pb-24 sm:px-8">
+        <div class="flex flex-wrap items-end justify-between gap-4">
+          <div class="flex flex-col gap-3">
+            <a
+              [routerLink]="['/artists', a.id]"
+              class="flex h-8 items-center gap-1 self-start rounded-md pr-3 pl-2 text-[13px] font-medium text-muted-foreground hover:bg-muted hover:text-foreground"
+              ><ng-icon name="lucideChevronLeft" size="14" />{{ a.name }}</a
+            >
+            <h1
+              class="font-serif text-[clamp(40px,5vw,64px)] leading-none font-normal tracking-[-.02em]"
+            >
+              Past <em>work</em>
+            </h1>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="text-[13px] text-muted-foreground">{{ a.workList.length }} pieces</span>
+            <button
+              type="button"
+              (click)="inquiry.open(a)"
+              class="h-10 rounded-md bg-primary px-4.5 text-[13px] font-semibold text-primary-foreground hover:opacity-85"
+            >
+              Inquire about a commission
+            </button>
+          </div>
+        </div>
+        <div class="columns-[280px] gap-6 [column-count:3]">
+          @for (w of a.workList; track w.title; let i = $index) {
+            <button
+              type="button"
+              (click)="open.set(i)"
+              class="mb-7 flex w-full cursor-zoom-in break-inside-avoid flex-col gap-2.5 text-left hover:opacity-92"
+            >
+              @if (w.src) {
+                <img
+                  [src]="w.src"
+                  [alt]="w.title"
+                  loading="lazy"
+                  class="w-full rounded-2xl bg-[#EEE8DD] ring-1 ring-border"
+                />
+              } @else {
+                <div class="aspect-[4/5] w-full rounded-2xl" [style.background]="w.bg"></div>
+              }
+              <span class="flex flex-col">
+                <span class="font-serif text-lg italic">{{ w.title }}</span>
+                <span class="text-xs text-muted-foreground">{{ w.material }}</span>
+              </span>
+            </button>
+          }
+        </div>
+
+        @if (current(); as w) {
+          <div
+            class="fixed inset-0 z-[70] flex flex-col items-center justify-center gap-4 bg-[oklch(0.145_0_0/.92)] px-4 py-14 sm:px-20"
+            role="dialog"
+            aria-modal="true"
+            [attr.aria-label]="w.title"
+            (click)="open.set(null)"
+          >
+            <button
+              type="button"
+              aria-label="Close"
+              class="absolute top-5 right-5 grid size-11 place-items-center rounded-full bg-white/12 text-white hover:bg-white/20"
+              (click)="open.set(null)"
+            >
+              <ng-icon name="lucideX" size="20" />
+            </button>
+            <button
+              type="button"
+              aria-label="Previous"
+              class="absolute top-1/2 left-5 grid size-12 -translate-y-1/2 place-items-center rounded-full bg-white/12 text-white hover:bg-white/20"
+              (click)="step(-1, $event)"
+            >
+              <ng-icon name="lucideChevronLeft" size="22" />
+            </button>
+            <button
+              type="button"
+              aria-label="Next"
+              class="absolute top-1/2 right-5 grid size-12 -translate-y-1/2 place-items-center rounded-full bg-white/12 text-white hover:bg-white/20"
+              (click)="step(1, $event)"
+            >
+              <ng-icon name="lucideChevronRight" size="22" />
+            </button>
+            @if (w.src) {
+              <img
+                [src]="w.src"
+                [alt]="w.title"
+                class="max-h-[calc(100dvh-180px)] max-w-full rounded-lg object-contain"
+                (click)="$event.stopPropagation()"
+              />
+            } @else {
+              <div
+                class="aspect-[4/5] h-[calc(100dvh-180px)] max-w-full rounded-lg"
+                [style.background]="w.bg"
+                (click)="$event.stopPropagation()"
+              ></div>
+            }
+            <div
+              class="flex flex-col items-center gap-0.5 text-center text-white"
+              (click)="$event.stopPropagation()"
+            >
+              <span class="font-serif text-[22px] italic">{{ w.title }}</span>
+              <span class="text-[13px] opacity-75"
+                >{{ w.material }} · {{ (open() ?? 0) + 1 }} of {{ a.workList.length }}</span
+              >
+            </div>
+          </div>
+        }
+      </main>
+    } @else {
+      <app-not-found>We couldn’t find that studio.</app-not-found>
+    }
+  `,
+})
+export class Gallery {
+  protected readonly inquiry = inject(InquiryLauncher);
+  readonly id = input.required<string>();
+  protected readonly artist = computed(() => artistById(this.id()));
+  protected readonly open = signal<number | null>(null);
+  protected readonly current = computed(() => {
+    const i = this.open();
+    return i === null ? null : (this.artist()?.workList[i] ?? null);
+  });
+
+  protected step(d: number, e?: Event) {
+    e?.stopPropagation();
+    const n = this.artist()?.workList.length ?? 0;
+    this.open.update((i) => (i === null || !n ? i : (i + d + n) % n));
+  }
+
+  protected onKey(e: KeyboardEvent) {
+    if (this.open() === null) return;
+    if (e.key === 'Escape') this.open.set(null);
+    if (e.key === 'ArrowLeft') this.step(-1);
+    if (e.key === 'ArrowRight') this.step(1);
+  }
+}
