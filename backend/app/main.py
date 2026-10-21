@@ -38,5 +38,5 @@ app.include_router(
 
 @app.get("/health", tags=["ops"])
 async def health() -> dict[str, str]:
-    """Plain REST health check used by Render."""
+    """Plain REST health check for uptime monitors."""
     return {"status": "ok", "version": __version__, "database": await check_database()}
