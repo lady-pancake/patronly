@@ -95,8 +95,11 @@ import { FEATURED_IDS } from '../featured/featured-content';
           }
         </div>
 
-        <aside class="flex flex-col gap-5 rounded-4xl bg-surface p-7 ring-1 ring-black/4">
-          <div class="eyebrow">From the studios</div>
+        <section
+          aria-labelledby="feed-title"
+          class="flex flex-col gap-5 rounded-4xl bg-surface p-7 ring-1 ring-black/4"
+        >
+          <h2 id="feed-title" class="eyebrow">From the studios</h2>
           @for (p of feed; track p.title) {
             <article
               class="flex flex-col gap-3.5 rounded-3xl bg-card p-5 shadow-[0_1px_3px_oklch(0_0_0/.06)] ring-1 ring-black/4"
@@ -116,7 +119,7 @@ import { FEATURED_IDS } from '../featured/featured-content';
               <p class="text-[13px] leading-relaxed text-muted-foreground">{{ p.text }}</p>
             </article>
           }
-        </aside>
+        </section>
       </section>
     </main>
   `,

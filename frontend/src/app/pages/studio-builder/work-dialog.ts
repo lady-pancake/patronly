@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@a
 import { FormsModule } from '@angular/forms';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideCheck, lucideImagePlus, lucideX } from '@ng-icons/lucide';
-import { BrnDialogRef, injectBrnDialogContext } from '@spartan-ng/brain/dialog';
+import { BrnDialogRef, BrnDialogTitle, injectBrnDialogContext } from '@spartan-ng/brain/dialog';
 import { ArtistStore } from '../../core/data/artist-store';
 import { type Piece, WORK_TAG_SUGGESTIONS, readImage } from '../../core/data/studio-draft';
 
@@ -14,14 +14,16 @@ export interface WorkDialogContext {
 /** Adds pieces in bulk, then walks through each one to give it a title and tags. */
 @Component({
   selector: 'app-work-dialog',
-  imports: [FormsModule, NgIcon],
+  imports: [BrnDialogTitle, FormsModule, NgIcon],
   providers: [provideIcons({ lucideCheck, lucideImagePlus, lucideX })],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: { class: 'flex min-h-0 flex-col' },
   template: `
     <div class="flex items-center justify-between gap-4 border-b py-5 pr-14 pl-6">
       <div class="flex flex-col gap-0.5">
-        <h2 class="font-serif text-[30px] leading-none font-normal">{{ title() }}</h2>
+        <h2 brnDialogTitle class="font-serif text-[30px] leading-none font-normal">
+          {{ title() }}
+        </h2>
         <span class="text-[13px] text-muted-foreground">{{
           piece()
             ? 'Give it a title and a few tags, then move to the next.'

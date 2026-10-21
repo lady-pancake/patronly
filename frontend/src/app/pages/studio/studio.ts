@@ -1,11 +1,12 @@
 import { Location } from '@angular/common';
-import { ChangeDetectionStrategy, Component, computed, inject, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, input, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import {
   lucideArrowLeft,
   lucideArrowRight,
   lucideArrowUpRight,
+  lucidePause,
   lucidePlay,
 } from '@ng-icons/lucide';
 import { ArtistStore } from '../../core/data/artist-store';
@@ -17,7 +18,15 @@ import { NotFound } from '../not-found';
 @Component({
   selector: 'app-studio',
   imports: [RouterLink, NgIcon, HeartButton, Tag, NotFound, InquireButton],
-  providers: [provideIcons({ lucideArrowLeft, lucideArrowRight, lucideArrowUpRight, lucidePlay })],
+  providers: [
+    provideIcons({
+      lucideArrowLeft,
+      lucideArrowRight,
+      lucideArrowUpRight,
+      lucidePause,
+      lucidePlay,
+    }),
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     @if (artist(); as a) {
@@ -84,14 +93,25 @@ import { NotFound } from '../not-found';
         >
           @if (a.coverVideo) {
             <video
+              #cover
               [src]="a.coverVideo"
-              autoplay
+              [autoplay]="coverPlaying()"
               muted
               loop
               playsinline
               aria-hidden="true"
               class="absolute inset-0 -z-20 size-full object-cover"
             ></video>
+            <button
+              type="button"
+              (click)="toggleCover(cover)"
+              [attr.aria-label]="
+                coverPlaying() ? 'Pause background video' : 'Play background video'
+              "
+              class="absolute top-4 right-4 z-10 grid size-10 place-items-center rounded-full bg-black/40 text-white backdrop-blur-sm hover:bg-black/55 sm:top-6 sm:right-8"
+            >
+              <ng-icon [name]="coverPlaying() ? 'lucidePause' : 'lucidePlay'" size="16" />
+            </button>
           }
           @if (a.cover || a.coverVideo) {
             <div
@@ -173,7 +193,12 @@ import { NotFound } from '../not-found';
                   >See all {{ a.workList.length }}<ng-icon name="lucideArrowRight" size="14"
                 /></a>
               </div>
-              <div class="no-scrollbar flex gap-5 overflow-x-auto pr-6 pb-2 sm:pr-12">
+              <div
+                class="no-scrollbar flex gap-5 overflow-x-auto pr-6 pb-2 sm:pr-12"
+                tabindex="0"
+                role="region"
+                aria-label="Past work"
+              >
                 @for (w of a.workList; track w.title) {
                   <figure class="flex w-[240px] shrink-0 flex-col gap-2.5">
                     <div class="aspect-[4/5] rounded-3xl" [style.background]="w.bg"></div>
@@ -268,6 +293,17 @@ import { NotFound } from '../not-found';
   `,
 })
 export class Studio {
+  /** The cover video plays unless the visitor asked their system for reduced motion. */
+  protected readonly coverPlaying = signal(
+    typeof matchMedia === 'undefined' || !matchMedia('(prefers-reduced-motion: reduce)').matches,
+  );
+
+  protected toggleCover(video: HTMLVideoElement) {
+    if (this.coverPlaying()) video.pause();
+    else void video.play();
+    this.coverPlaying.update((p) => !p);
+  }
+
   private readonly location = inject(Location);
   protected readonly store = inject(ArtistStore);
 

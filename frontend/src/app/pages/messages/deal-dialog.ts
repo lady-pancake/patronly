@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { BrnDialogRef, injectBrnDialogContext } from '@spartan-ng/brain/dialog';
+import { BrnDialogRef, BrnDialogTitle, injectBrnDialogContext } from '@spartan-ng/brain/dialog';
 import type { AcceptedMessage } from '../../core/data/models';
 
 export interface DealContext {
@@ -12,6 +12,7 @@ export const money = (n: number) => '$' + n.toLocaleString('en-US');
 
 /** Contract review and deposit payment steps after an artist accepts. */
 @Component({
+  imports: [BrnDialogTitle],
   selector: 'app-deal-dialog',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
@@ -19,7 +20,7 @@ export const money = (n: number) => '$' + n.toLocaleString('en-US');
       <div class="flex flex-col gap-5">
         <div class="flex flex-col gap-1.5">
           <span class="eyebrow !text-[11px]">Commission contract</span>
-          <h2 class="font-serif text-[34px] leading-[1.1] font-normal">
+          <h2 brnDialogTitle class="font-serif text-[34px] leading-[1.1] font-normal">
             You &amp; <em>{{ ctx.artistName }}</em>
           </h2>
         </div>
@@ -56,7 +57,9 @@ export const money = (n: number) => '$' + n.toLocaleString('en-US');
       <div class="flex flex-col gap-5">
         <div class="flex flex-col gap-1.5">
           <span class="eyebrow !text-[11px]">Deposit</span>
-          <h2 class="font-serif text-[52px] leading-none font-normal">{{ deposit }}</h2>
+          <h2 brnDialogTitle class="font-serif text-[52px] leading-none font-normal">
+            {{ deposit }}
+          </h2>
           <span class="text-[13px] text-muted-foreground"
             >30% today · {{ balance }} due on delivery</span
           >

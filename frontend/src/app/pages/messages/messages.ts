@@ -221,11 +221,11 @@ import { STATUS_STYLE, threadStatus } from './thread-status';
                         class="inline-flex h-[26px] items-center gap-1.5 self-start rounded-md bg-white/15 px-3 text-xs font-semibold"
                         ><ng-icon name="lucidePartyPopper" size="13" />Commission accepted</span
                       >
-                      <h3
+                      <h2
                         class="max-w-[420px] font-serif text-[44px] leading-none font-normal tracking-[-.01em]"
                       >
                         It’s happening. <em>{{ a.first }} accepted your commission.</em>
-                      </h3>
+                      </h2>
                       <span
                         class="font-hand text-[30px] leading-none text-[color-mix(in_oklab,var(--sage)_60%,white)]"
                         >let’s make something wonderful!</span

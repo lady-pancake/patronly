@@ -76,6 +76,7 @@ export class InquiryRowView {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <main class="mx-auto flex max-w-[1400px] flex-col gap-8 px-4 pt-8 pb-24 sm:px-8 sm:pt-12">
+      <h1 class="sr-only">Dashboard</h1>
       @if (!store.published()) {
         <div
           class="flex flex-wrap items-center justify-between gap-4 rounded-3xl bg-highlight px-5 py-3.5 text-sm"

@@ -1,17 +1,19 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { BrnDialogRef, injectBrnDialogContext } from '@spartan-ng/brain/dialog';
+import { BrnDialogRef, BrnDialogTitle, injectBrnDialogContext } from '@spartan-ng/brain/dialog';
 import { HlmInput } from '@spartan-ng/helm/input';
 import { HlmLabel } from '@spartan-ng/helm/label';
 
 @Component({
   selector: 'app-save-search-dialog',
-  imports: [FormsModule, HlmInput, HlmLabel],
+  imports: [BrnDialogTitle, FormsModule, HlmInput, HlmLabel],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <form class="flex flex-col gap-5" (submit)="save($event)">
       <div class="flex flex-col gap-1.5">
-        <h2 class="font-serif text-[34px] leading-[1.1] font-normal">Name this <em>search</em></h2>
+        <h2 brnDialogTitle class="font-serif text-[34px] leading-[1.1] font-normal">
+          Name this <em>search</em>
+        </h2>
         <p class="text-sm text-muted-foreground">You’ll find it on Home and in Saved.</p>
       </div>
       <div class="flex flex-col gap-2">
