@@ -8,7 +8,7 @@ import {
   lucideArrowUpRight,
   lucidePlay,
 } from '@ng-icons/lucide';
-import { artistById } from '../../core/data/catalog';
+import { ArtistStore } from '../../core/data/artist-store';
 import { HeartButton } from '../../shared/heart-button';
 import { InquiryLauncher } from '../../shared/inquiry/inquiry-launcher';
 import { Tag } from '../../shared/tag';
@@ -21,12 +21,79 @@ import { NotFound } from '../not-found';
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     @if (artist(); as a) {
+      @if (isMine()) {
+        @if (store.previewing()) {
+          <div
+            class="sticky top-[73px] z-15 flex flex-wrap items-center justify-between gap-4 bg-highlight px-4 py-3.5 text-sm text-[oklch(0.145_0_0)] sm:px-8"
+          >
+            <span class="flex items-center gap-3">
+              <span
+                class="flex h-6 items-center rounded-md bg-[oklch(0.145_0_0)] px-2.5 text-xs font-semibold text-highlight"
+                >Preview</span
+              >
+              <span
+                ><span class="font-serif text-lg italic">Only you can see this.</span>
+                {{
+                  store.published()
+                    ? 'These changes aren’t live yet. Publish them when you’re happy.'
+                    : 'Check everything looks right, then make it public.'
+                }}</span
+              >
+            </span>
+            <span class="flex gap-2">
+              <a
+                routerLink="/studio/edit"
+                [queryParams]="{ step: 6 }"
+                class="flex h-9 items-center rounded-md border border-black/25 px-4 text-[13px] font-medium hover:bg-black/5"
+                >Keep editing</a
+              >
+              <button
+                type="button"
+                (click)="publish()"
+                class="h-9 rounded-md bg-primary px-4.5 text-[13px] font-semibold text-primary-foreground hover:opacity-85"
+              >
+                {{ store.published() ? 'Publish changes' : 'Make it public' }}
+              </button>
+            </span>
+          </div>
+        } @else if (store.published()) {
+          <div
+            class="sticky top-[73px] z-15 flex flex-wrap items-center justify-center gap-4 bg-primary px-4 py-3 text-sm text-primary-foreground sm:px-8"
+          >
+            <span
+              ><span class="font-serif text-lg italic">Your studio is live.</span> This is what
+              patrons see.</span
+            >
+            <a
+              routerLink="/dashboard"
+              class="flex h-8 items-center rounded-md border border-white/40 px-3.5 text-[13px] font-semibold hover:bg-white/10"
+              >Dashboard</a
+            >
+            <a
+              routerLink="/studio/edit"
+              class="flex h-8 items-center rounded-md bg-primary-foreground px-3.5 text-[13px] font-semibold text-primary hover:opacity-90"
+              >Edit studio</a
+            >
+          </div>
+        }
+      }
       <main class="pb-24">
         <section
           class="relative isolate flex min-h-[420px] flex-col justify-end overflow-hidden p-4 sm:p-8"
           [style.background]="a.heroBg"
         >
-          @if (a.cover) {
+          @if (a.coverVideo) {
+            <video
+              [src]="a.coverVideo"
+              autoplay
+              muted
+              loop
+              playsinline
+              aria-hidden="true"
+              class="absolute inset-0 -z-20 size-full object-cover"
+            ></video>
+          }
+          @if (a.cover || a.coverVideo) {
             <div
               class="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-t from-black/45 to-transparent to-60%"
             ></div>
@@ -205,10 +272,17 @@ import { NotFound } from '../not-found';
 export class Studio {
   private readonly location = inject(Location);
   protected readonly inquiry = inject(InquiryLauncher);
+  protected readonly store = inject(ArtistStore);
 
-  /** Route param. */
+  /** Route param. "me" is the signed-in artist's own studio. */
   readonly id = input.required<string>();
-  protected readonly artist = computed(() => artistById(this.id()));
+  protected readonly isMine = computed(() => this.id() === 'me');
+  protected readonly artist = computed(() => this.store.byId(this.id()));
+
+  protected publish() {
+    this.store.publish();
+    window.scrollTo({ top: 0 });
+  }
 
   protected back() {
     this.location.back();

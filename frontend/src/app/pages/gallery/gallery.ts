@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, computed, inject, input, signal } f
 import { RouterLink } from '@angular/router';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideChevronLeft, lucideChevronRight, lucideX } from '@ng-icons/lucide';
-import { artistById } from '../../core/data/catalog';
+import { ArtistStore } from '../../core/data/artist-store';
 import { InquiryLauncher } from '../../shared/inquiry/inquiry-launcher';
 import { NotFound } from '../not-found';
 
@@ -130,7 +130,8 @@ import { NotFound } from '../not-found';
 export class Gallery {
   protected readonly inquiry = inject(InquiryLauncher);
   readonly id = input.required<string>();
-  protected readonly artist = computed(() => artistById(this.id()));
+  private readonly store = inject(ArtistStore);
+  protected readonly artist = computed(() => this.store.byId(this.id()));
   protected readonly open = signal<number | null>(null);
   protected readonly current = computed(() => {
     const i = this.open();

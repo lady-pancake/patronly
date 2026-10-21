@@ -1,14 +1,14 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { NgIcon, provideIcons } from '@ng-icons/core';
-import { lucideHeart, lucideMessageCircle } from '@ng-icons/lucide';
+import { lucideHeart, lucideLayoutDashboard, lucideMessageCircle } from '@ng-icons/lucide';
 import { PatronStore } from '../core/data/patron-store';
 import { SiteSearch } from './site-search';
 
 @Component({
   selector: 'app-site-header',
   imports: [RouterLink, RouterLinkActive, NgIcon, SiteSearch],
-  providers: [provideIcons({ lucideHeart, lucideMessageCircle })],
+  providers: [provideIcons({ lucideHeart, lucideLayoutDashboard, lucideMessageCircle })],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     class: 'sticky top-0 z-20 block border-b bg-page/85 backdrop-blur-md',
@@ -18,6 +18,17 @@ import { SiteSearch } from './site-search';
       <a routerLink="/" class="shrink-0 font-serif text-[26px] tracking-tight">Patronly</a>
       <app-site-search class="mx-auto max-w-[640px]" />
       <nav class="flex shrink-0 items-center gap-1" aria-label="Main">
+        @if (store.role() === 'artist') {
+          <a
+            routerLink="/dashboard"
+            routerLinkActive="bg-secondary"
+            class="flex h-10 items-center gap-2 rounded-md px-3 text-sm font-medium hover:bg-muted sm:px-3.5"
+          >
+            <ng-icon name="lucideLayoutDashboard" size="16" /><span class="hidden md:inline"
+              >Dashboard</span
+            >
+          </a>
+        }
         <a
           routerLink="/saved"
           routerLinkActive="bg-secondary"

@@ -34,6 +34,8 @@ export interface ArtistSeed {
   portrait?: string;
   process?: string;
   processVideo?: string;
+  /** Short looping video shown behind the studio header. */
+  coverVideo?: string;
 }
 
 export interface Work {
