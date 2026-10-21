@@ -67,6 +67,16 @@ query {
 
 `backend/app/seed/catalogue.json` holds the prototype's 96 sample studios. `python -m app.seed` loads it into whatever `DATABASE_URL` points at, matching artists by slug, so re-running updates them instead of duplicating. The file is generated from the frontend's sample data: after changing `frontend/src/app/core/data/seed.ts`, run `npm run export-catalogue` in `frontend/`.
 
+### Guest access and roles
+
+Patronly is a portfolio prototype, so there are no real accounts.
+
+- The sign-in page opens with a password gate. Visitors enter their name and the shared password. Each pass through the gate is saved as a row in the `guests` table (name, browser, first and last seen), so you can see who has looked around: `select name, created_at, last_seen_at from guests order by created_at desc;` in the Supabase SQL editor.
+- The API then hands back a guest pass (a signed token, kept in the browser tab's session storage).
+- The avatar menu switches between the **patron** and **artist** views. The API sends the list of actions each view allows (`me { roles { role entitlements } }`, defined in `backend/app/auth/entitlements.py`). The frontend only checks for an action (`viewer.can('VIEW_DASHBOARD')` and the `entitled(...)` route guard), never the role.
+- Nothing a guest does is saved on the server. Favourites, messages and studio edits live in session storage and reset when the tab closes. The sample studios come from the database.
+- The password is stored hashed in `backend/app/auth/guest.py`. Set `GUEST_PASSWORD` on the API to use a different one.
+
 ### Database migrations
 
 Schema changes live in `backend/alembic/versions`. After changing `backend/app/db/models.py`:
@@ -86,6 +96,8 @@ Migrations don't run on deploy. Apply them to Supabase before (or right after) p
 | Vercel (API) | `CORS_ORIGINS` | `https://patronly.vercel.app` | Comma separated. The web app's production URL (and custom domain later). |
 | Vercel (API) | `CORS_ORIGIN_REGEX` | `https://patronly-.*\.vercel\.app` | Optional. Lets Vercel preview deployments call the API. |
 | Vercel (API) | `ENVIRONMENT` | `production` | Hides GraphiQL in production. |
+| Vercel (API) | `GUEST_PASSWORD` | | Optional. Replaces the built-in guest password. |
+| Vercel (API) | `GUEST_TOKEN_SECRET` | | Optional. Signs guest passes; by default derived from `DATABASE_URL`. |
 | Vercel (web) | `NG_APP_GRAPHQL_URL` | `https://patronly-api.vercel.app/graphql` | The API project's URL plus `/graphql`. |
 
 Locally, `backend/.env` can use either the Session pooler (port 5432) or the Transaction pooler string. Examples live in `backend/.env.example` and `frontend/.env.example`. Never commit real `.env` files.

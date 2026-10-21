@@ -104,3 +104,20 @@ class Review(Base):
     author: Mapped[str] = mapped_column(String(200))
 
     artist: Mapped[Artist] = relationship(back_populates="reviews")
+
+
+class Guest(Base):
+    """One visit through the portfolio password gate: who came and when.
+
+    Nothing else a guest does is stored; favourites and messages stay in their browser tab.
+    """
+
+    __tablename__ = "guests"
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    name: Mapped[str] = mapped_column(String(120))
+    user_agent: Mapped[str | None] = mapped_column(Text)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    last_seen_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now()
+    )

@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { entitled, guest } from './core/auth/guards';
 import { Shell } from './layout/shell';
 
 export const routes: Routes = [
@@ -10,6 +11,7 @@ export const routes: Routes = [
   {
     path: 'studio/edit',
     title: 'Build your studio · Patronly',
+    canActivate: [entitled('MANAGE_STUDIO')],
     loadComponent: () =>
       import('./pages/studio-builder/studio-builder').then((m) => m.StudioBuilder),
   },
@@ -17,6 +19,7 @@ export const routes: Routes = [
   {
     path: '',
     component: Shell,
+    canActivate: [guest],
     children: [
       {
         path: '',
@@ -51,21 +54,25 @@ export const routes: Routes = [
       },
       {
         path: 'saved',
+        canActivate: [entitled('SAVE_FAVOURITES')],
         title: 'Saved · Patronly',
         loadComponent: () => import('./pages/saved/saved').then((m) => m.Saved),
       },
       {
         path: 'messages',
+        canActivate: [entitled('MESSAGE')],
         title: 'Messages · Patronly',
         loadComponent: () => import('./pages/messages/messages').then((m) => m.Messages),
       },
       {
         path: 'messages/:threadId',
+        canActivate: [entitled('MESSAGE')],
         title: 'Messages · Patronly',
         loadComponent: () => import('./pages/messages/messages').then((m) => m.Messages),
       },
       {
         path: 'dashboard',
+        canActivate: [entitled('VIEW_DASHBOARD')],
         title: 'Dashboard · Patronly',
         loadComponent: () => import('./pages/dashboard/dashboard').then((m) => m.Dashboard),
       },

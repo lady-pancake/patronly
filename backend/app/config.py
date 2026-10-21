@@ -11,6 +11,10 @@ class Settings(BaseSettings):
     database_url: str | None = None
     cors_origins: str = "http://localhost:4200"
     cors_origin_regex: str | None = None
+    # GUEST_PASSWORD replaces the built-in guest password (kept hashed in app/auth/guest.py).
+    guest_password: str | None = None
+    # Signs guest passes. Defaults to a value derived from DATABASE_URL, so it is optional.
+    guest_token_secret: str | None = None
 
     @field_validator("database_url")
     @classmethod
