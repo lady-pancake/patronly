@@ -1,9 +1,14 @@
 import { provideHttpClient, withFetch } from '@angular/common/http';
-import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
+import {
+  ApplicationConfig,
+  provideAppInitializer,
+  provideBrowserGlobalErrorListeners,
+} from '@angular/core';
 import { provideRouter, withComponentInputBinding, withInMemoryScrolling } from '@angular/router';
 import { provideSpartanHlm } from '@spartan-ng/helm/utils';
 
 import { routes } from './app.routes';
+import { loadCatalogue } from './core/data/catalog-loader';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -15,5 +20,7 @@ export const appConfig: ApplicationConfig = {
     ),
     provideHttpClient(withFetch()),
     provideSpartanHlm(),
+    // Studios come from the API before the first page renders.
+    provideAppInitializer(loadCatalogue),
   ],
 };
