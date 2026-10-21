@@ -1,5 +1,6 @@
 import { Injectable, computed, effect, signal } from '@angular/core';
-import type { Inquiry, SavedSearch, Thread } from './models';
+import { INBOX_SEED } from './inbox-seed';
+import type { Inquiry, SavedSearch, Thread, ThreadStatus } from './models';
 import { LISTED } from './catalog';
 import { RECENT_SEARCHES, SAMPLE_THREADS } from './seed';
 
@@ -11,6 +12,8 @@ interface Persisted {
   saved: SavedSearch[];
   hiddenRecent: string[];
   threads: Thread[];
+  /** Inquiries patrons sent to the demo artist's studio. */
+  inbox: Thread[];
 }
 
 const DEFAULTS: Persisted = {
@@ -18,6 +21,7 @@ const DEFAULTS: Persisted = {
   saved: [],
   hiddenRecent: [],
   threads: SAMPLE_THREADS,
+  inbox: INBOX_SEED,
 };
 
 function load(): Persisted {
@@ -30,7 +34,9 @@ function load(): Persisted {
 }
 
 /**
- * The guest's favourites, saved searches and conversations.
+ * The guest's favourites, saved searches and conversations: the ones they
+ * started as a patron (`threads`) and the ones patrons started with their
+ * studio (`inbox`).
  * Kept in this browser tab's session storage only: nothing is saved on the server.
  */
 @Injectable({ providedIn: 'root' })
@@ -41,6 +47,7 @@ export class PatronStore {
   readonly saved = signal<SavedSearch[]>(this.initial.saved);
   readonly hiddenRecent = signal<string[]>(this.initial.hiddenRecent);
   readonly threads = signal<Thread[]>(this.initial.threads);
+  readonly inbox = signal<Thread[]>(this.initial.inbox);
 
   /**
    * Saved searches first, then the sample recent ones the patron hasn't removed.
@@ -55,6 +62,7 @@ export class PatronStore {
   );
 
   readonly unreadCount = computed(() => this.threads().filter((t) => t.unread).length);
+  readonly unreadIncoming = computed(() => this.inbox().filter((t) => t.unread).length);
 
   constructor() {
     effect(() => {
@@ -63,6 +71,7 @@ export class PatronStore {
         saved: this.saved(),
         hiddenRecent: this.hiddenRecent(),
         threads: this.threads(),
+        inbox: this.inbox(),
       };
       try {
         sessionStorage.setItem(STORAGE_KEY, JSON.stringify(state));
@@ -108,8 +117,20 @@ export class PatronStore {
     return id;
   }
 
+  /** Applies a change to one conversation, whichever list it is in. */
+  private patch(id: string, fn: (t: Thread) => Thread): void {
+    const apply = (ts: Thread[]) =>
+      ts.some((t) => t.id === id) ? ts.map((t) => (t.id === id ? fn(t) : t)) : ts;
+    this.threads.update(apply);
+    this.inbox.update(apply);
+  }
+
   markRead(id: string): void {
-    this.threads.update((ts) => ts.map((t) => (t.id === id ? { ...t, unread: false } : t)));
+    this.patch(id, (t) => ({ ...t, unread: false }));
+  }
+
+  setStatus(id: string, status: ThreadStatus): void {
+    this.patch(id, (t) => ({ ...t, status, updated: 'Today' }));
   }
 
   sendMessage(id: string, text: string): void {
@@ -118,16 +139,14 @@ export class PatronStore {
       now.toLocaleString('en-US', { month: 'short', day: 'numeric' }) +
       ', ' +
       now.toTimeString().slice(0, 5);
-    this.threads.update((ts) =>
-      ts.map((t) =>
-        t.id === id ? { ...t, updated: 'Today', msgs: [...t.msgs, { me: true, text, time }] } : t,
-      ),
-    );
+    this.patch(id, (t) => ({
+      ...t,
+      updated: 'Today',
+      msgs: [...t.msgs, { me: true, text, time }],
+    }));
   }
 
   updateContract(id: string, patch: { signed?: boolean; paid?: boolean }): void {
-    this.threads.update((ts) =>
-      ts.map((t) => (t.id === id ? { ...t, contract: { ...t.contract, ...patch } } : t)),
-    );
+    this.patch(id, (t) => ({ ...t, contract: { ...t.contract, ...patch } }));
   }
 }

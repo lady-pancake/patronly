@@ -13,10 +13,16 @@ class Entitlement(StrEnum):
     MESSAGE = "message"
     MANAGE_STUDIO = "manage_studio"
     VIEW_DASHBOARD = "view_dashboard"
+    # Inquiries patrons send to your studio (the Incoming tab in Messages).
+    RECEIVE_INQUIRIES = "receive_inquiries"
 
 
 _PATRON = frozenset({Entitlement.SAVE_FAVOURITES, Entitlement.SEND_INQUIRIES, Entitlement.MESSAGE})
-_ARTIST = _PATRON | {Entitlement.MANAGE_STUDIO, Entitlement.VIEW_DASHBOARD}
+_ARTIST = _PATRON | {
+    Entitlement.MANAGE_STUDIO,
+    Entitlement.VIEW_DASHBOARD,
+    Entitlement.RECEIVE_INQUIRIES,
+}
 
 ROLE_ENTITLEMENTS: dict[str, frozenset[Entitlement]] = {"patron": _PATRON, "artist": _ARTIST}
 

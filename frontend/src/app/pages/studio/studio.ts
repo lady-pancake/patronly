@@ -10,13 +10,13 @@ import {
 } from '@ng-icons/lucide';
 import { ArtistStore } from '../../core/data/artist-store';
 import { HeartButton } from '../../shared/heart-button';
-import { InquiryLauncher } from '../../shared/inquiry/inquiry-launcher';
+import { InquireButton } from '../../shared/inquiry/inquire-button';
 import { Tag } from '../../shared/tag';
 import { NotFound } from '../not-found';
 
 @Component({
   selector: 'app-studio',
-  imports: [RouterLink, NgIcon, HeartButton, Tag, NotFound],
+  imports: [RouterLink, NgIcon, HeartButton, Tag, NotFound, InquireButton],
   providers: [provideIcons({ lucideArrowLeft, lucideArrowRight, lucideArrowUpRight, lucidePlay })],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
@@ -120,13 +120,12 @@ import { NotFound } from '../not-found';
                   <ng-icon name="lucideArrowLeft" size="18" />
                 </button>
                 <app-heart-button [artistId]="a.id" size="lg" />
-                <button
-                  type="button"
-                  (click)="inquiry.open(a)"
-                  class="h-11 rounded-md bg-primary px-7 text-sm font-semibold text-primary-foreground hover:opacity-85"
+                <app-inquire-button
+                  [artist]="a"
+                  buttonClass="h-11 rounded-md bg-primary px-7 text-sm font-semibold text-primary-foreground hover:opacity-85"
                 >
                   Inquire
-                </button>
+                </app-inquire-button>
               </div>
               <div class="flex flex-wrap gap-1 rounded-lg bg-white p-1.5 text-foreground">
                 <div class="flex flex-col px-4 py-1.5">
@@ -230,13 +229,12 @@ import { NotFound } from '../not-found';
                     <span class="font-serif text-xl whitespace-nowrap">{{ t.range }}</span>
                   </div>
                 }
-                <button
-                  type="button"
-                  (click)="inquiry.open(a)"
-                  class="mt-4 h-12 rounded-full bg-primary text-sm font-semibold text-primary-foreground hover:opacity-85"
+                <app-inquire-button
+                  [artist]="a"
+                  buttonClass="mt-4 h-12 rounded-full bg-primary text-sm font-semibold text-primary-foreground hover:opacity-85"
                 >
                   Inquire about a commission
-                </button>
+                </app-inquire-button>
               </div>
               <div class="flex flex-col gap-4 px-2">
                 @for (r of a.reviews; track r.by) {
@@ -271,7 +269,6 @@ import { NotFound } from '../not-found';
 })
 export class Studio {
   private readonly location = inject(Location);
-  protected readonly inquiry = inject(InquiryLauncher);
   protected readonly store = inject(ArtistStore);
 
   /** Route param. "me" is the signed-in artist's own studio. */

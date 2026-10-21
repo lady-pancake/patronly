@@ -8,9 +8,11 @@ import {
   lucideLandmark,
   lucideMessageCircle,
 } from '@ng-icons/lucide';
-import { BrnDialogRef, injectBrnDialogContext } from '@spartan-ng/brain/dialog';
 import { HlmDialogService } from '@spartan-ng/helm/dialog';
 import { ArtistStore } from '../../core/data/artist-store';
+import { inboxId } from '../../core/data/inbox-seed';
+import { PatronStore } from '../../core/data/patron-store';
+import { openContractDialog } from '../../shared/contract-dialog';
 import {
   INQUIRIES,
   type InquiryRow,
@@ -22,12 +24,12 @@ import {
   weekLoad,
   yearView,
 } from './dashboard-data';
-import { PayoutDialog, ReplyDialog, type ReplyContext } from './dashboard-dialogs';
+import { PayoutDialog } from './dashboard-dialogs';
 
 const CARD =
   'rounded-4xl bg-background shadow-[0_4px_12px_oklch(0_0_0/.05),0_0_0_1px_oklch(0_0_0/.06)]';
 
-/** One inquiry row, shared by the dashboard card and the "See all" dialog. */
+/** One inquiry row on the dashboard card. */
 @Component({
   selector: 'app-inquiry-row',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -56,50 +58,6 @@ const CARD =
 })
 export class InquiryRowView {
   readonly row = input.required<InquiryRow>();
-}
-
-interface InquiryListContext {
-  rows: () => InquiryRow[];
-  reply: (row: InquiryRow) => void;
-}
-
-@Component({
-  selector: 'app-inquiry-list-dialog',
-  imports: [InquiryRowView],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { class: 'flex min-h-0 flex-col' },
-  template: `
-    <div class="flex flex-col gap-1 border-b px-7 pt-6 pb-4">
-      <h2 class="font-serif text-[32px] leading-none font-normal">New inquiries</h2>
-      <span class="text-[13px] text-muted-foreground"
-        >{{ ctx.rows().length }} waiting for a reply</span
-      >
-    </div>
-    <div class="overflow-y-auto px-7 pb-3">
-      @for (q of ctx.rows(); track q.name) {
-        <app-inquiry-row [row]="q" class="border-b">
-          <button
-            type="button"
-            (click)="reply(q)"
-            class="h-8 rounded-md bg-primary px-3.5 text-xs font-medium text-primary-foreground hover:opacity-85"
-          >
-            Reply
-          </button>
-        </app-inquiry-row>
-      } @empty {
-        <p class="py-6 text-[13px] text-muted-foreground">You’re all caught up.</p>
-      }
-    </div>
-  `,
-})
-export class InquiryListDialog {
-  private readonly ref = inject(BrnDialogRef);
-  protected readonly ctx = injectBrnDialogContext<InquiryListContext>();
-
-  protected reply(row: InquiryRow) {
-    this.ref.close();
-    this.ctx.reply(row);
-  }
 }
 
 /** The artist's home: money, new inquiries, commissions in progress and the year ahead. */
@@ -257,24 +215,22 @@ export class InquiryListDialog {
             }
           </div>
           @if (inquiries().length > 3) {
-            <button
-              type="button"
-              (click)="seeAll()"
+            <a
+              routerLink="/messages"
               class="flex h-8 items-center gap-1.5 rounded-md border bg-background px-3.5 text-[13px] font-medium hover:bg-muted"
             >
               See all {{ inquiries().length }}<ng-icon name="lucideChevronRight" size="14" />
-            </button>
+            </a>
           }
         </div>
         @for (q of inquiries().slice(0, 3); track q.name) {
           <app-inquiry-row [row]="q" class="border-t">
-            <button
-              type="button"
-              (click)="reply(q)"
-              class="h-8 rounded-md bg-primary px-3.5 text-xs font-medium text-primary-foreground hover:opacity-85"
+            <a
+              [routerLink]="['/messages', inboxId(q.name)]"
+              class="flex h-8 items-center rounded-md bg-primary px-3.5 text-xs font-medium text-primary-foreground hover:opacity-85"
             >
               Reply
-            </button>
+            </a>
           </app-inquiry-row>
         } @empty {
           <p class="border-t py-5 text-[13px] text-muted-foreground">
@@ -351,15 +307,14 @@ export class InquiryListDialog {
                 >
               </div>
               <div class="flex justify-end max-sm:row-start-1 max-sm:col-start-2">
-                <button
-                  type="button"
-                  (click)="message(c.patron)"
+                <a
+                  [routerLink]="['/messages', inboxId(c.patron)]"
                   title="Open conversation"
                   [attr.aria-label]="'Message ' + c.patron"
                   [class]="roundBtn"
                 >
                   <ng-icon name="lucideMessageCircle" size="16" />
-                </button>
+                </a>
               </div>
             </div>
           }
@@ -388,7 +343,7 @@ export class InquiryListDialog {
                 <span class="mt-1.5"
                   ><button
                     type="button"
-                    (click)="store.remind(u.name)"
+                    (click)="u.sent ? store.remind(u.name) : createContract(u.name)"
                     [disabled]="reminded"
                     class="h-[26px] rounded-md border bg-background px-2.5 text-[11px] font-semibold hover:bg-muted disabled:opacity-50"
                   >
@@ -399,7 +354,7 @@ export class InquiryListDialog {
                           : 'Send reminder'
                         : reminded
                           ? 'Sent'
-                          : 'Send contract'
+                          : 'Create contract'
                     }}
                   </button></span
                 >
@@ -412,15 +367,14 @@ export class InquiryListDialog {
                 <span class="whitespace-nowrap text-muted-foreground">{{ u.deposit }}</span>
               </div>
               <div class="flex justify-end max-sm:row-start-1 max-sm:col-start-2">
-                <button
-                  type="button"
-                  (click)="message(u.name)"
+                <a
+                  [routerLink]="['/messages', inboxId(u.name)]"
                   title="Open conversation"
                   [attr.aria-label]="'Message ' + u.name"
                   [class]="roundBtn"
                 >
                   <ng-icon name="lucideMessageCircle" size="16" />
-                </button>
+                </a>
               </div>
             </div>
           }
@@ -537,6 +491,7 @@ export class InquiryListDialog {
 })
 export class Dashboard {
   protected readonly store = inject(ArtistStore);
+  private readonly patron = inject(PatronStore);
   private readonly dialog = inject(HlmDialogService);
 
   protected readonly card = CARD;
@@ -571,31 +526,20 @@ export class Dashboard {
     return `${a.bank} ···· ${a.iban.replace(/\s/g, '').slice(-4)}`;
   });
 
-  private readonly dialogClass = 'sm:max-w-[480px] rounded-4xl p-7 gap-0';
+  protected readonly inboxId = inboxId;
 
   protected editAccount() {
     this.dialog.open(PayoutDialog, { contentClass: 'sm:max-w-[440px] rounded-4xl p-7 gap-0' });
   }
 
-  protected reply(row: InquiryRow) {
-    this.dialog.open<void, ReplyContext>(ReplyDialog, {
-      context: { name: row.name, inquiry: row },
-      contentClass: this.dialogClass,
-    });
-  }
-
-  protected message(name: string) {
-    this.dialog.open<void, ReplyContext>(ReplyDialog, {
-      context: { name },
-      contentClass: this.dialogClass,
-    });
-  }
-
-  protected seeAll() {
-    this.dialog.open<void, InquiryListContext>(InquiryListDialog, {
-      context: { rows: () => this.inquiries(), reply: (r) => this.reply(r) },
-      contentClass:
-        'sm:max-w-[720px] max-h-[min(720px,calc(100dvh-3rem))] overflow-hidden rounded-4xl p-0 gap-0 flex flex-col',
+  /** Templates are coming soon: the artist attaches their own contract for now. */
+  protected createContract(name: string) {
+    openContractDialog(this.dialog, name).closed$.subscribe((file) => {
+      if (!file) return;
+      this.store.remind(name);
+      const id = inboxId(name);
+      this.patron.sendMessage(id, `Contract attached: ${file}`);
+      this.patron.setStatus(id, 'Awaiting signature');
     });
   }
 }

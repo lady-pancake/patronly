@@ -72,7 +72,9 @@ import { SiteSearch } from './site-search';
             <ng-icon name="lucideMessageCircle" size="16" /><span class="hidden md:inline"
               >Messages</span
             >
-            @if (store.unreadCount()) {
+            @if (
+              store.unreadCount() || (viewer.can('RECEIVE_INQUIRIES') && store.unreadIncoming())
+            ) {
               <span
                 class="absolute top-2 left-6 size-2 rounded-full bg-primary md:hidden"
                 aria-label="Unread messages"
