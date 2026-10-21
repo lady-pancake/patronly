@@ -1,4 +1,5 @@
-"""Loads the sample catalogue (catalogue.json) into the database.
+"""Loads the sample catalogue (catalogue.json) and the studio builder's sample
+studio (studio_template.json) into the database.
 
 The file is generated from the frontend's sample data with
 `npm run export-catalogue`. Seeding is idempotent: artists are matched by slug,
@@ -10,11 +11,13 @@ from pathlib import Path
 from typing import Any
 
 from sqlalchemy import select
+from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.db.models import Artist, Review, Work
+from app.db.models import Artist, Review, StudioTemplate, Work
 
 CATALOGUE = Path(__file__).with_name("catalogue.json")
+STUDIO_TEMPLATE = Path(__file__).with_name("studio_template.json")
 
 # catalogue.json key -> Artist column
 FIELDS = {
@@ -79,3 +82,18 @@ async def seed_catalogue(session: AsyncSession, artists: list[dict[str, Any]]) -
         ]
     await session.commit()
     return created, updated
+
+
+def load_studio_template(path: Path = STUDIO_TEMPLATE) -> dict[str, Any]:
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+async def seed_studio_template(session: AsyncSession, template: dict[str, Any]) -> None:
+    """Creates or replaces the sample studio the builder starts from."""
+    values = {"draft": template["draft"], "account": template.get("account", {})}
+    await session.execute(
+        insert(StudioTemplate)
+        .values(slug=template["slug"], **values)
+        .on_conflict_do_update(index_elements=[StudioTemplate.slug], set_=values)
+    )
+    await session.commit()

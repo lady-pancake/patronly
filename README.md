@@ -67,6 +67,8 @@ query {
 
 `backend/app/seed/catalogue.json` holds the prototype's 96 sample studios. `python -m app.seed` loads it into whatever `DATABASE_URL` points at, matching artists by slug, so re-running updates them instead of duplicating. The file is generated from the frontend's sample data: after changing `frontend/src/app/core/data/seed.ts`, run `npm run export-catalogue` in `frontend/`.
 
+The studio builder starts from a sample studio (Alex Ward, with sample prices and payout details) kept in the `studio_templates` table. Edit `backend/app/seed/studio_template.json` and re-run `python -m app.seed` to change it. The frontend loads it with the `studioTemplate` query, and a guest's edits stay in their browser tab.
+
 ### Guest access and roles
 
 Patronly is a portfolio prototype, so there are no real accounts.

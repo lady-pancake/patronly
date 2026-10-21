@@ -12,7 +12,7 @@ from fastapi.testclient import TestClient
 
 from app.config import get_settings
 from app.db import session as db
-from app.seed import load_catalogue, seed_catalogue
+from app.seed import load_catalogue, load_studio_template, seed_catalogue, seed_studio_template
 
 TEST_DB = os.environ.get("TEST_DATABASE_URL")
 pytestmark = pytest.mark.skipif(not TEST_DB, reason="TEST_DATABASE_URL not set")
@@ -22,6 +22,7 @@ def _seed() -> tuple[int, int]:
     async def run():
         try:
             async for session in db.get_session():
+                await seed_studio_template(session, load_studio_template())
                 return await seed_catalogue(session, load_catalogue())
         finally:
             await db.dispose_engine()
@@ -88,3 +89,16 @@ def test_unknown_slug_is_null(client):
 def test_filter_by_medium(client):
     data = gql(client, '{ artists(limit: 200, medium: "Jewelry") { medium } }')
     assert data["artists"] and {a["medium"] for a in data["artists"]} == {"Jewelry"}
+
+
+def test_studio_template_has_sample_prices(client):
+    data = gql(client, "{ studioTemplate { draft account } }")["studioTemplate"]
+    draft = data["draft"]
+    assert draft["name"] == "Alex Ward"
+    assert [(t["name"], t["from"], t["to"]) for t in draft["types"]] == [
+        ("Small", "500", "900"),
+        ("Medium", "3500", "5500"),
+        ("Large", "12000", "20000"),
+    ]
+    assert data["account"]["holder"] == "Alex Ward"
+    assert gql(client, '{ studioTemplate(slug: "nope") { draft } }')["studioTemplate"] is None

@@ -33,7 +33,10 @@ const LAST = STEP_LABELS.length; // the review step
       <div
         class="mx-auto flex min-h-[72px] max-w-[1400px] items-center justify-between gap-4 px-4 py-3 sm:gap-6 sm:px-8"
       >
-        <a routerLink="/" class="shrink-0 font-serif text-[26px] tracking-tight">Patronly</a>
+        <a routerLink="/" class="flex shrink-0 items-center gap-2.5" aria-label="Patronly home">
+          <img src="favicon.svg" alt="" class="size-8" />
+          <span class="font-serif text-[26px] tracking-tight max-sm:hidden">Patronly</span>
+        </a>
         <nav
           class="no-scrollbar hidden min-w-0 gap-1.5 overflow-x-auto md:flex"
           aria-label="Studio builder steps"

@@ -1,0 +1,113 @@
+{
+  "_about": "The sample studio the studio builder starts with. Loaded into the studio_templates table by `python -m app.seed`.",
+  "slug": "sample",
+  "draft": {
+    "name": "Alex Ward",
+    "studio": "Ward Pattern Studio",
+    "city": "New York",
+    "website": "https://www.alexward.studio",
+    "mediums": [
+      "Painting",
+      "Textile"
+    ],
+    "tags": [],
+    "customTags": [],
+    "bio": "I design hand-painted patterns for fabric and walls from a studio in Brooklyn. Clients come to me for a print that is entirely theirs: a silk scarf or dress fabric for a small fashion label, a wallpaper for one particular room, or a repeat for upholstery, bedding or curtains.\n\nEach design starts as gouache on paper. I send a sheet of colourways for you to choose from, then prepare a print-ready repeat that your printer or mill can produce on any material. You keep the rights to use it for your project.",
+    "quote": "Every pattern I make is designed with intention and care.",
+    "pieces": [
+      {
+        "id": "seed1",
+        "src": "/images/works/ob-1.jpg",
+        "title": "Garden in grey",
+        "medium": "Gouache on paper, 56×40cm",
+        "tags": [
+          "Pattern",
+          "Floral"
+        ]
+      },
+      {
+        "id": "seed2",
+        "src": "/images/works/ob-2.jpg",
+        "title": "Leaves, chartreuse",
+        "medium": "Screen print on linen",
+        "tags": [
+          "Pattern",
+          "Floral"
+        ]
+      },
+      {
+        "id": "seed3",
+        "src": "/images/works/ob-3.jpg",
+        "title": "Magnolia repeat",
+        "medium": "Gouache on paper, 40×52cm",
+        "tags": [
+          "Pattern",
+          "Floral"
+        ]
+      },
+      {
+        "id": "seed4",
+        "src": "/images/works/ob-4.jpg",
+        "title": "Two florals",
+        "medium": "Gouache on board, 38×55cm",
+        "tags": [
+          "Pattern",
+          "Floral"
+        ]
+      },
+      {
+        "id": "seed5",
+        "src": "/images/works/ob-5.jpg",
+        "title": "Lace studies",
+        "medium": "Ink on black paper, set of 4",
+        "tags": [
+          "Black & white",
+          "Textile design"
+        ]
+      }
+    ],
+    "featured": [
+      "seed1",
+      "seed2",
+      "seed3"
+    ],
+    "portrait": "/images/portraits/alex.jpg",
+    "cover": null,
+    "coverVideo": "https://www.pexels.com/download/video/6214486/",
+    "process": null,
+    "processVideo": "https://www.pexels.com/download/video/6214511/",
+    "types": [
+      {
+        "id": "s0",
+        "name": "Small",
+        "from": "500",
+        "to": "900",
+        "weeks": 3,
+        "hours": 9
+      },
+      {
+        "id": "s1",
+        "name": "Medium",
+        "from": "3500",
+        "to": "5500",
+        "weeks": 8,
+        "hours": 64
+      },
+      {
+        "id": "s2",
+        "name": "Large",
+        "from": "12000",
+        "to": "20000",
+        "weeks": 16,
+        "hours": 240
+      }
+    ],
+    "hoursPerWeek": 30,
+    "avail": "Open"
+  },
+  "account": {
+    "bank": "Millennium BCP",
+    "holder": "Alex Ward",
+    "iban": "PT50 0033 0000 4521 9876 4410 5"
+  }
+}
