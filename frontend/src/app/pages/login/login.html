@@ -1,20 +1,31 @@
 <main class="relative h-dvh min-h-[720px] overflow-hidden bg-[#EAE4DD]">
-  <div class="absolute inset-0 flex justify-center gap-6 sm:gap-11" aria-hidden="true">
-    @for (col of columns; track $index) {
-      <div class="max-w-[175px] min-w-0 flex-1" [style.margin-top]="col.offset">
-        <div class="flex flex-col will-change-transform" [style.animation]="col.animation">
+  <!-- Phones get a still, three-column mosaic; larger screens get eight drifting columns. -->
+  <div class="absolute inset-0 flex justify-center gap-3 px-3 sm:gap-11 sm:px-0" aria-hidden="true">
+    @for (col of columns; track $index; let i = $index) {
+      <div
+        class="max-w-[175px] min-w-0 flex-1"
+        [class.max-sm:hidden]="i > 2"
+        [style.margin-top]="col.offset"
+      >
+        <div
+          class="flex flex-col will-change-transform max-sm:animate-none!"
+          [style.animation]="col.animation"
+        >
           @for (t of col.tiles; track $index) {
-            <div class="mb-[25px] aspect-[7/8] shrink-0" [style.background]="t"></div>
+            <div
+              class="mb-3 aspect-[7/8] shrink-0 max-sm:rounded-2xl sm:mb-[25px]"
+              [style.background]="t"
+            ></div>
           }
         </div>
       </div>
     }
   </div>
   <div
-    class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_34%_40%_at_50%_50%,rgb(234_228_221/.95)_45%,rgb(234_228_221/0)_100%)] max-sm:bg-[radial-gradient(ellipse_70%_45%_at_50%_50%,rgb(234_228_221/.95)_45%,rgb(234_228_221/0)_100%)]"
+    class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_34%_40%_at_50%_50%,rgb(234_228_221/.95)_45%,rgb(234_228_221/0)_100%)] max-sm:bg-[linear-gradient(to_bottom,rgb(234_228_221/0)_0%,rgb(234_228_221/.85)_32%,rgb(234_228_221)_48%)]"
   ></div>
   <div
-    class="pointer-events-none relative flex h-full flex-col items-center justify-center gap-7 p-6 text-center"
+    class="pointer-events-none relative flex h-full flex-col items-center justify-center gap-7 p-6 text-center max-sm:justify-end max-sm:gap-5 max-sm:pb-12"
     [attr.inert]="gateOpen() ? '' : null"
   >
     <h1
