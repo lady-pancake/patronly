@@ -8,10 +8,12 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/login/login').then((m) => m.Login),
   },
   {
-    path: 'studio/new',
+    path: 'studio/edit',
     title: 'Build your studio · Patronly',
-    loadComponent: () => import('./pages/artist-soon/artist-soon').then((m) => m.ArtistSoon),
+    loadComponent: () =>
+      import('./pages/studio-builder/studio-builder').then((m) => m.StudioBuilder),
   },
+  { path: 'studio/new', redirectTo: 'studio/edit' },
   {
     path: '',
     component: Shell,
@@ -61,6 +63,11 @@ export const routes: Routes = [
         path: 'messages/:threadId',
         title: 'Messages · Patronly',
         loadComponent: () => import('./pages/messages/messages').then((m) => m.Messages),
+      },
+      {
+        path: 'dashboard',
+        title: 'Dashboard · Patronly',
+        loadComponent: () => import('./pages/dashboard/dashboard').then((m) => m.Dashboard),
       },
       {
         path: 'search',

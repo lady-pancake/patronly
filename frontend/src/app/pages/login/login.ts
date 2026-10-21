@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { ARTISTS } from '../../core/data/catalog';
+import { ArtistStore } from '../../core/data/artist-store';
 import { PatronStore, type Role } from '../../core/data/patron-store';
 
 const PALETTE = [
@@ -111,6 +112,7 @@ const COLUMNS = OFFSETS.map((offset, i) => ({
 export class Login {
   private readonly router = inject(Router);
   private readonly store = inject(PatronStore);
+  private readonly artist = inject(ArtistStore);
 
   protected readonly columns = COLUMNS;
   protected readonly roles: { id: Role; label: string; desc: string }[] = [
@@ -121,6 +123,8 @@ export class Login {
 
   protected enter() {
     this.store.role.set(this.role());
-    void this.router.navigateByUrl(this.role() === 'artist' ? '/studio/new' : '/');
+    // Artists with a public studio land on their dashboard; new artists build one first.
+    const artistHome = this.artist.published() ? '/dashboard' : '/studio/edit';
+    void this.router.navigateByUrl(this.role() === 'artist' ? artistHome : '/');
   }
 }

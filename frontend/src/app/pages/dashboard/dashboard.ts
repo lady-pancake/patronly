@@ -1,0 +1,601 @@
+import { ChangeDetectionStrategy, Component, computed, inject, input, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { NgIcon, provideIcons } from '@ng-icons/core';
+import {
+  lucideChevronLeft,
+  lucideChevronRight,
+  lucideClock,
+  lucideLandmark,
+  lucideMessageCircle,
+} from '@ng-icons/lucide';
+import { BrnDialogRef, injectBrnDialogContext } from '@spartan-ng/brain/dialog';
+import { HlmDialogService } from '@spartan-ng/helm/dialog';
+import { ArtistStore } from '../../core/data/artist-store';
+import {
+  INQUIRIES,
+  type InquiryRow,
+  PAYDAY,
+  PENDING,
+  STAGES,
+  activeCommissions,
+  earnings,
+  weekLoad,
+  yearView,
+} from './dashboard-data';
+import { PayoutDialog, ReplyDialog, type ReplyContext } from './dashboard-dialogs';
+
+const CARD =
+  'rounded-4xl bg-background shadow-[0_4px_12px_oklch(0_0_0/.05),0_0_0_1px_oklch(0_0_0/.06)]';
+
+/** One inquiry row, shared by the dashboard card and the "See all" dialog. */
+@Component({
+  selector: 'app-inquiry-row',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    class:
+      'grid grid-cols-[32px_minmax(0,1fr)_auto] items-center gap-x-3.5 gap-y-1 py-3 sm:grid-cols-[32px_minmax(0,1fr)_auto_auto]',
+  },
+  template: `
+    <span
+      class="grid size-8 place-items-center rounded-full font-serif text-base"
+      [style.background]="row().avatar"
+      >{{ row().name[0] }}</span
+    >
+    <div class="flex min-w-0 flex-col gap-0.5">
+      <span class="text-sm font-medium"
+        >{{ row().name }}
+        <span class="text-xs font-normal text-muted-foreground">· {{ row().when }}</span></span
+      >
+      <span class="truncate text-xs text-muted-foreground">{{ row().text }}</span>
+    </div>
+    <span class="hidden text-xs whitespace-nowrap text-muted-foreground sm:block">{{
+      row().meta
+    }}</span>
+    <ng-content />
+  `,
+})
+export class InquiryRowView {
+  readonly row = input.required<InquiryRow>();
+}
+
+interface InquiryListContext {
+  rows: () => InquiryRow[];
+  reply: (row: InquiryRow) => void;
+}
+
+@Component({
+  selector: 'app-inquiry-list-dialog',
+  imports: [InquiryRowView],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  host: { class: 'flex min-h-0 flex-col' },
+  template: `
+    <div class="flex flex-col gap-1 border-b px-7 pt-6 pb-4">
+      <h2 class="font-serif text-[32px] leading-none font-normal">New inquiries</h2>
+      <span class="text-[13px] text-muted-foreground"
+        >{{ ctx.rows().length }} waiting for a reply</span
+      >
+    </div>
+    <div class="overflow-y-auto px-7 pb-3">
+      @for (q of ctx.rows(); track q.name) {
+        <app-inquiry-row [row]="q" class="border-b">
+          <button
+            type="button"
+            (click)="reply(q)"
+            class="h-8 rounded-md bg-primary px-3.5 text-xs font-medium text-primary-foreground hover:opacity-85"
+          >
+            Reply
+          </button>
+        </app-inquiry-row>
+      } @empty {
+        <p class="py-6 text-[13px] text-muted-foreground">You’re all caught up.</p>
+      }
+    </div>
+  `,
+})
+export class InquiryListDialog {
+  private readonly ref = inject(BrnDialogRef);
+  protected readonly ctx = injectBrnDialogContext<InquiryListContext>();
+
+  protected reply(row: InquiryRow) {
+    this.ref.close();
+    this.ctx.reply(row);
+  }
+}
+
+/** The artist's home: money, new inquiries, commissions in progress and the year ahead. */
+@Component({
+  selector: 'app-dashboard',
+  imports: [RouterLink, NgIcon, InquiryRowView],
+  providers: [
+    provideIcons({
+      lucideChevronLeft,
+      lucideChevronRight,
+      lucideClock,
+      lucideLandmark,
+      lucideMessageCircle,
+    }),
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: `
+    <main class="mx-auto flex max-w-[1400px] flex-col gap-8 px-4 pt-8 pb-24 sm:px-8 sm:pt-12">
+      @if (!store.published()) {
+        <div
+          class="flex flex-wrap items-center justify-between gap-4 rounded-3xl bg-highlight px-5 py-3.5 text-sm"
+        >
+          <span
+            ><span class="font-serif text-lg italic">Your studio isn’t public yet.</span> Sample
+            commissions are shown so you can see how this page works.</span
+          >
+          <a
+            routerLink="/studio/edit"
+            class="flex h-9 items-center rounded-md bg-primary px-4 text-[13px] font-semibold text-primary-foreground hover:opacity-85"
+            >Finish your studio</a
+          >
+        </div>
+      }
+
+      <div class="flex flex-wrap justify-end gap-2">
+        <a
+          routerLink="/artists/me"
+          class="flex h-10 items-center rounded-md border bg-background px-4 text-[13px] font-medium hover:bg-muted"
+          >View studio</a
+        >
+        <a
+          routerLink="/studio/edit"
+          class="flex h-10 items-center rounded-md bg-primary px-4 text-[13px] font-medium text-primary-foreground hover:opacity-85"
+          >Edit studio</a
+        >
+      </div>
+
+      <div class="flex flex-wrap gap-6">
+        <section
+          class="flex flex-[1_1_280px] flex-col justify-between gap-4 rounded-4xl bg-primary px-5.5 py-5 text-primary-foreground"
+        >
+          <div class="flex flex-col gap-1.5">
+            <span class="text-[13px] font-medium opacity-80">Next payday</span>
+            <span class="font-serif text-[44px] leading-none tracking-[-.02em]">{{
+              payday.net
+            }}</span>
+            <span class="text-sm">{{ payday.when }}</span>
+          </div>
+          <div class="flex items-center gap-3 border-t border-white/20 pt-3.5">
+            <span class="grid size-8 shrink-0 place-items-center rounded-full bg-white/15"
+              ><ng-icon name="lucideLandmark" size="15"
+            /></span>
+            <span class="flex min-w-0 flex-1 flex-col gap-0.5"
+              ><span class="text-xs opacity-80">Deposits to</span
+              ><span class="truncate text-[13px] font-medium">{{ accountLabel() }}</span></span
+            >
+            <button
+              type="button"
+              (click)="editAccount()"
+              class="h-[30px] shrink-0 rounded-md border border-white/40 px-3 text-xs font-semibold hover:bg-white/10"
+            >
+              Change
+            </button>
+          </div>
+        </section>
+
+        <section [class]="card + ' flex min-w-0 flex-[2_1_520px] flex-col gap-4 px-5.5 py-5'">
+          <div class="flex flex-wrap gap-8">
+            <div class="flex flex-col gap-1">
+              <span class="flex items-center gap-2 text-[13px] text-muted-foreground"
+                ><span class="size-2.5 rounded-[3px] bg-primary"></span>Earned in 2026</span
+              ><span class="font-serif text-[32px] leading-none">{{ earn.earned }}</span>
+            </div>
+            <div class="flex flex-col gap-1">
+              <span class="flex items-center gap-2 text-[13px] text-muted-foreground"
+                ><span class="size-2.5 rounded-[3px] bg-sage"></span>Upcoming, under contract</span
+              ><span class="font-serif text-[32px] leading-none">{{ earn.upcoming }}</span>
+            </div>
+          </div>
+          <div
+            class="grid h-[110px] grid-cols-12 items-end gap-1 sm:gap-2"
+            role="img"
+            [attr.aria-label]="chartLabel"
+          >
+            @for (b of earn.bars; track b.month; let i = $index) {
+              <div
+                class="relative flex h-full flex-col justify-end gap-0.5 transition-opacity"
+                [class.opacity-45]="hoverBar() !== null && hoverBar() !== i"
+                (mouseenter)="hoverBar.set(i)"
+                (mouseleave)="hoverBar.set(null)"
+              >
+                @if (hoverBar() === i) {
+                  <div
+                    class="pointer-events-none absolute left-1/2 z-10 flex min-w-[150px] flex-col gap-1.5 rounded-[14px] bg-[oklch(0.145_0_0)] px-3 py-2.5 text-xs whitespace-nowrap text-[oklch(0.985_0_0)] shadow-[0_8px_24px_oklch(0_0_0/.18)]"
+                    [style.bottom]="'calc(' + b.totalPct + '% + 8px)'"
+                    [style.transform]="
+                      'translateX(' + (i < 2 ? '-20%' : i > 9 ? '-80%' : '-50%') + ')'
+                    "
+                  >
+                    <span class="font-semibold">{{ b.full }}</span>
+                    @for (r of b.rows; track r.label) {
+                      <span class="flex items-center gap-2"
+                        ><span class="size-2 rounded-xs" [style.background]="r.color"></span
+                        ><span class="flex-1">{{ r.label }}</span
+                        ><span class="font-medium tabular-nums">{{ r.value }}</span></span
+                      >
+                    }
+                  </div>
+                }
+                @if (b.upPct) {
+                  <div class="rounded-t-md rounded-b-xs bg-sage" [style.height.%]="b.upPct"></div>
+                }
+                @if (b.paidPct) {
+                  <div
+                    class="bg-primary"
+                    [class]="b.upPct ? 'rounded-t-xs rounded-b-md' : 'rounded-md'"
+                    [style.height.%]="b.paidPct"
+                  ></div>
+                }
+              </div>
+            }
+          </div>
+          <div class="-mt-2 grid grid-cols-12 gap-1 sm:gap-2" aria-hidden="true">
+            @for (b of earn.bars; track b.month) {
+              <span
+                class="text-center text-[11px]"
+                [class]="b.current ? 'font-semibold text-foreground' : 'text-muted-foreground'"
+                >{{ b.month }}</span
+              >
+            }
+          </div>
+        </section>
+      </div>
+
+      <section [class]="card + ' flex flex-col px-6 py-5'">
+        <div class="flex flex-wrap items-baseline justify-between gap-4 pb-2">
+          <div class="flex items-center gap-3">
+            <h2 class="font-serif text-[28px] font-normal tracking-[-.01em]">New inquiries</h2>
+            @if (inquiries().length) {
+              <span
+                class="flex h-6 items-center gap-1.5 rounded-md bg-highlight px-2.5 text-xs font-semibold"
+                ><span class="size-1.5 rounded-full bg-foreground"></span
+                >{{ inquiries().length }} waiting for a reply</span
+              >
+            }
+          </div>
+          @if (inquiries().length > 3) {
+            <button
+              type="button"
+              (click)="seeAll()"
+              class="flex h-8 items-center gap-1.5 rounded-md border bg-background px-3.5 text-[13px] font-medium hover:bg-muted"
+            >
+              See all {{ inquiries().length }}<ng-icon name="lucideChevronRight" size="14" />
+            </button>
+          }
+        </div>
+        @for (q of inquiries().slice(0, 3); track q.name) {
+          <app-inquiry-row [row]="q" class="border-t">
+            <button
+              type="button"
+              (click)="reply(q)"
+              class="h-8 rounded-md bg-primary px-3.5 text-xs font-medium text-primary-foreground hover:opacity-85"
+            >
+              Reply
+            </button>
+          </app-inquiry-row>
+        } @empty {
+          <p class="border-t py-5 text-[13px] text-muted-foreground">
+            You’re all caught up. New inquiries will appear here.
+          </p>
+        }
+      </section>
+
+      <section [class]="card + ' flex flex-col gap-1 p-5 sm:p-7'">
+        <div class="flex flex-wrap items-center justify-between gap-4 pb-3">
+          <div class="flex flex-wrap items-center gap-4">
+            <h2 class="font-serif text-[32px] font-normal tracking-[-.01em]">Commissions</h2>
+            <div role="tablist" class="flex gap-0.5 rounded-lg bg-muted p-[3px]">
+              @for (t of tabs; track t.id) {
+                <button
+                  type="button"
+                  role="tab"
+                  [attr.aria-selected]="tab() === t.id"
+                  (click)="tab.set(t.id)"
+                  class="flex h-7 items-center gap-1 rounded-md px-2.5 text-xs font-medium"
+                  [class]="tab() === t.id ? 'bg-background shadow-[0_1px_3px_oklch(0_0_0/.1)]' : ''"
+                >
+                  {{ t.label
+                  }}<span class="text-[11px] text-muted-foreground tabular-nums">{{
+                    t.count
+                  }}</span>
+                </button>
+              }
+            </div>
+          </div>
+          <span class="flex items-center gap-2.5 text-[13px] text-muted-foreground"
+            >This week
+            <span class="block h-1.5 w-20 overflow-hidden rounded-full bg-muted"
+              ><span
+                class="block h-full"
+                [class]="
+                  load.over ? 'bg-[#b25254]' : load.near ? 'bg-[oklch(0.72_0.13_75)]' : 'bg-primary'
+                "
+                [style.width.%]="load.pct"
+              ></span></span
+            ><span class="font-medium text-foreground">{{ load.label }}</span></span
+          >
+        </div>
+
+        @if (tab() === 'active') {
+          @for (c of active; track c.patron) {
+            <div [class]="row">
+              <div class="flex min-w-0 flex-col gap-1.5">
+                <span class="font-serif text-[22px] leading-[1.1]">{{ c.patron }}</span>
+                <span class="text-[13px] text-muted-foreground">{{ c.type }}</span>
+                <span
+                  class="flex flex-wrap items-center gap-x-1.5 gap-y-0.5 text-xs text-muted-foreground"
+                  ><ng-icon name="lucideClock" size="12" /><span>{{ c.totalHours }}</span
+                  ><span>· {{ c.started }}</span></span
+                >
+              </div>
+              <div class="flex flex-col gap-0.5 text-[13px] whitespace-nowrap">
+                <span class="font-semibold" [class.text-[oklch(0.52_0.17_25)]]="c.urgent">{{
+                  c.weeksLeft
+                }}</span
+                ><span class="text-xs text-muted-foreground">{{ c.dueLabel }}</span>
+              </div>
+              <div class="flex flex-col gap-1.5 text-xs">
+                <span class="flex items-baseline justify-between gap-2"
+                  ><span class="text-muted-foreground">Total</span
+                  ><span class="text-sm font-semibold tabular-nums">{{ c.total }}</span></span
+                >
+                <span class="flex h-1 overflow-hidden rounded-full bg-muted"
+                  ><span class="bg-[oklch(0.55_0.1_155)]" [style.width.%]="c.paidPct"></span
+                ></span>
+                <span class="flex justify-between gap-1.5 whitespace-nowrap tabular-nums"
+                  ><span class="text-[oklch(0.45_0.08_155)]">{{ c.paid }}</span
+                  ><span class="text-muted-foreground">{{ c.balance }}</span></span
+                >
+              </div>
+              <div class="flex justify-end max-sm:row-start-1 max-sm:col-start-2">
+                <button
+                  type="button"
+                  (click)="message(c.patron)"
+                  title="Open conversation"
+                  [attr.aria-label]="'Message ' + c.patron"
+                  [class]="roundBtn"
+                >
+                  <ng-icon name="lucideMessageCircle" size="16" />
+                </button>
+              </div>
+            </div>
+          }
+        } @else {
+          @for (u of pending; track u.name) {
+            @let reminded = store.reminded().includes(u.name);
+            <div [class]="row">
+              <div class="flex min-w-0 flex-col gap-1.5">
+                <span class="font-serif text-[22px] leading-[1.1]">{{ u.name }}</span>
+                <span class="text-[13px] text-muted-foreground">{{ u.type }}</span>
+                <span class="text-xs text-muted-foreground">Accepted {{ u.accepted }}</span>
+              </div>
+              <div class="flex flex-col gap-0.5 text-[13px] whitespace-nowrap">
+                <span class="font-semibold">{{
+                  u.sent ? 'Awaiting signature' : 'Contract not sent'
+                }}</span>
+                <span class="text-xs text-muted-foreground">{{
+                  u.sent
+                    ? reminded
+                      ? 'Reminder sent today'
+                      : 'Sent ' + u.accepted
+                    : reminded
+                      ? 'Sent today'
+                      : 'Draft ready'
+                }}</span>
+                <span class="mt-1.5"
+                  ><button
+                    type="button"
+                    (click)="store.remind(u.name)"
+                    [disabled]="reminded"
+                    class="h-[26px] rounded-md border bg-background px-2.5 text-[11px] font-semibold hover:bg-muted disabled:opacity-50"
+                  >
+                    {{
+                      u.sent
+                        ? reminded
+                          ? 'Reminded'
+                          : 'Send reminder'
+                        : reminded
+                          ? 'Sent'
+                          : 'Send contract'
+                    }}
+                  </button></span
+                >
+              </div>
+              <div class="flex flex-col gap-1.5 text-xs">
+                <span class="flex items-baseline justify-between gap-2"
+                  ><span class="text-muted-foreground">Total</span
+                  ><span class="text-sm font-semibold tabular-nums">{{ u.total }}</span></span
+                >
+                <span class="whitespace-nowrap text-muted-foreground">{{ u.deposit }}</span>
+              </div>
+              <div class="flex justify-end max-sm:row-start-1 max-sm:col-start-2">
+                <button
+                  type="button"
+                  (click)="message(u.name)"
+                  title="Open conversation"
+                  [attr.aria-label]="'Message ' + u.name"
+                  [class]="roundBtn"
+                >
+                  <ng-icon name="lucideMessageCircle" size="16" />
+                </button>
+              </div>
+            </div>
+          }
+        }
+      </section>
+
+      <section [class]="card + ' flex flex-col gap-5 p-5 sm:p-7'">
+        <div class="flex flex-wrap items-start justify-between gap-x-6 gap-y-3">
+          <h2 class="font-serif text-[32px] font-normal tracking-[-.01em]">Calendar</h2>
+          <div class="flex flex-wrap items-center gap-4">
+            <div class="flex flex-wrap gap-3.5 text-xs text-muted-foreground">
+              @for (s of stages; track s.label) {
+                <span class="flex items-center gap-1.5"
+                  ><span class="size-2.5 rounded-[3px]" [style.background]="s.bg"></span
+                  >{{ s.label }}</span
+                >
+              }
+            </div>
+            <div class="flex items-center gap-1.5">
+              <span class="mr-1.5 text-[13px] font-medium tabular-nums">{{ year().range }}</span>
+              <button
+                type="button"
+                (click)="yearOffset.set(yearOffset() - 12)"
+                aria-label="Previous 12 months"
+                [class]="roundBtn + ' !size-[34px]'"
+              >
+                <ng-icon name="lucideChevronLeft" size="16" />
+              </button>
+              <button
+                type="button"
+                (click)="yearOffset.set(0)"
+                [disabled]="yearOffset() === 0"
+                class="h-7 rounded-md border bg-background px-2.5 text-xs font-medium hover:bg-muted disabled:opacity-40"
+              >
+                This month
+              </button>
+              <button
+                type="button"
+                (click)="yearOffset.set(yearOffset() + 12)"
+                aria-label="Next 12 months"
+                [class]="roundBtn + ' !size-[34px]'"
+              >
+                <ng-icon name="lucideChevronRight" size="16" />
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          class="grid grid-cols-[repeat(auto-fill,minmax(140px,1fr))] sm:grid-cols-[repeat(auto-fill,minmax(168px,1fr))] gap-2.5"
+        >
+          @for (m of year().months; track m.key) {
+            <div
+              class="flex min-h-[150px] flex-col gap-2.5 rounded-2xl p-3.5"
+              [class]="
+                (m.past ? 'bg-surface ' : 'bg-background ') +
+                (m.current ? 'ring-2 ring-primary' : 'ring-1 ring-border')
+              "
+            >
+              <div class="flex items-baseline justify-between gap-2">
+                <span class="font-serif text-[22px] leading-none">{{ m.name }}</span
+                ><span
+                  class="text-[11px]"
+                  [class]="m.current ? 'font-semibold text-primary' : 'text-muted-foreground'"
+                  >{{ m.tag }}</span
+                >
+              </div>
+              <div class="flex items-center gap-2" [title]="m.loadTitle">
+                <span class="block h-1 flex-1 overflow-hidden rounded-full bg-black/7"
+                  ><span
+                    class="block h-full"
+                    [class]="
+                      m.loadPct >= 90
+                        ? 'bg-[oklch(0.62_0.16_25)]'
+                        : m.past
+                          ? 'bg-[oklch(0.7_0_0)]'
+                          : 'bg-primary'
+                    "
+                    [style.width.%]="m.loadPct"
+                  ></span></span
+                ><span class="text-[11px] whitespace-nowrap text-muted-foreground tabular-nums">{{
+                  m.loadLabel
+                }}</span>
+              </div>
+              <div class="flex flex-col gap-1">
+                @for (c of m.items; track c.name) {
+                  <span
+                    [title]="c.title"
+                    class="flex min-h-6 items-center gap-1.5 rounded-lg px-2 py-[3px] text-xs leading-tight font-medium"
+                    [style.background]="stageStyle[c.stage].bg"
+                    [style.color]="stageStyle[c.stage].fg"
+                    ><span class="min-w-0 flex-1 truncate">{{ c.name }}</span>
+                    @if (c.mark) {
+                      <span
+                        class="flex h-[18px] shrink-0 items-center rounded-md px-[7px] text-[10px] font-semibold"
+                        [class]="
+                          c.mark === 'Overdue'
+                            ? 'bg-[#b25254] text-white'
+                            : 'bg-highlight text-foreground'
+                        "
+                        >{{ c.mark }}</span
+                      >
+                    }
+                  </span>
+                } @empty {
+                  <span class="text-xs text-muted-foreground">{{ m.emptyLabel }}</span>
+                }
+              </div>
+            </div>
+          }
+        </div>
+      </section>
+    </main>
+  `,
+})
+export class Dashboard {
+  protected readonly store = inject(ArtistStore);
+  private readonly dialog = inject(HlmDialogService);
+
+  protected readonly card = CARD;
+  protected readonly row =
+    'grid grid-cols-[minmax(0,1fr)_auto] gap-x-6 gap-y-3 border-t py-4 items-center sm:grid-cols-[minmax(180px,1fr)_128px_228px_36px]';
+  protected readonly roundBtn =
+    'grid size-9 shrink-0 place-items-center rounded-full border bg-background hover:bg-muted';
+
+  protected readonly payday = PAYDAY;
+  protected readonly earn = earnings();
+  protected readonly chartLabel = `Earnings by month in 2026: ${this.earn.earned} earned, ${this.earn.upcoming} upcoming under contract.`;
+  protected readonly active = activeCommissions();
+  protected readonly pending = PENDING;
+  protected readonly load = weekLoad();
+  protected readonly stageStyle = STAGES;
+  protected readonly stages = Object.values(STAGES);
+  protected readonly tabs = [
+    { id: 'active' as const, label: 'Active', count: this.active.length },
+    { id: 'pending' as const, label: 'Pending', count: this.pending.length },
+  ];
+
+  protected readonly hoverBar = signal<number | null>(null);
+  protected readonly tab = signal<'active' | 'pending'>('active');
+  protected readonly yearOffset = signal(0);
+  protected readonly year = computed(() => yearView(this.yearOffset()));
+
+  protected readonly inquiries = computed(() =>
+    INQUIRIES.filter((q) => !this.store.replied().includes(q.name)),
+  );
+  protected readonly accountLabel = computed(() => {
+    const a = this.store.account();
+    return `${a.bank} ···· ${a.iban.replace(/\s/g, '').slice(-4)}`;
+  });
+
+  private readonly dialogClass = 'sm:max-w-[480px] rounded-4xl p-7 gap-0';
+
+  protected editAccount() {
+    this.dialog.open(PayoutDialog, { contentClass: 'sm:max-w-[440px] rounded-4xl p-7 gap-0' });
+  }
+
+  protected reply(row: InquiryRow) {
+    this.dialog.open<void, ReplyContext>(ReplyDialog, {
+      context: { name: row.name, inquiry: row },
+      contentClass: this.dialogClass,
+    });
+  }
+
+  protected message(name: string) {
+    this.dialog.open<void, ReplyContext>(ReplyDialog, {
+      context: { name },
+      contentClass: this.dialogClass,
+    });
+  }
+
+  protected seeAll() {
+    this.dialog.open<void, InquiryListContext>(InquiryListDialog, {
+      context: { rows: () => this.inquiries(), reply: (r) => this.reply(r) },
+      contentClass:
+        'sm:max-w-[720px] max-h-[min(720px,calc(100dvh-3rem))] overflow-hidden rounded-4xl p-0 gap-0 flex flex-col',
+    });
+  }
+}
