@@ -5,10 +5,12 @@ from enum import Enum
 import strawberry
 from sqlalchemy import select
 from sqlalchemy.orm import selectinload
+from strawberry.scalars import JSON
 
 from app import __version__
 from app.db import session as db
 from app.db.models import Artist as ArtistModel
+from app.db.models import StudioTemplate
 from app.graphql.viewer import ViewerMutation, ViewerQuery
 
 
@@ -110,6 +112,12 @@ def _with_children():
     )
 
 
+@strawberry.type(name="StudioTemplate")
+class StudioTemplateType:
+    draft: JSON = strawberry.field(description="Shaped like the frontend's StudioDraft.")
+    account: JSON = strawberry.field(description="Sample payout details: bank, holder, iban.")
+
+
 @strawberry.type
 class Query(ViewerQuery):
     @strawberry.field(description="Liveness of the API and its database connection.")
@@ -133,6 +141,13 @@ class Query(ViewerQuery):
         async for session in db.get_session():
             row = await session.scalar(_with_children().where(ArtistModel.slug == slug))
             return Artist.from_model(row) if row else None
+        return None
+
+    @strawberry.field(description="The sample studio the studio builder starts from.")
+    async def studio_template(self, slug: str = "sample") -> StudioTemplateType | None:
+        async for session in db.get_session():
+            row = await session.get(StudioTemplate, slug)
+            return StudioTemplateType(draft=row.draft, account=row.account) if row else None
         return None
 
 

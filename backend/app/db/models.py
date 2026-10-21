@@ -11,7 +11,7 @@ from sqlalchemy import (
     Text,
     func,
 )
-from sqlalchemy.dialects.postgresql import ARRAY, UUID
+from sqlalchemy.dialects.postgresql import ARRAY, JSONB, UUID
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
 
 AVAILABILITY = ("Open", "Waitlist", "Closed")
@@ -120,4 +120,18 @@ class Guest(Base):
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
     last_seen_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now()
+    )
+
+
+class StudioTemplate(Base):
+    """Sample data the studio builder starts from: a filled-in studio, prices and payout details."""
+
+    __tablename__ = "studio_templates"
+
+    slug: Mapped[str] = mapped_column(String(80), primary_key=True)
+    # Shaped like the frontend's StudioDraft; stored whole because guests only ever read it.
+    draft: Mapped[dict] = mapped_column(JSONB)
+    account: Mapped[dict] = mapped_column(JSONB, server_default="{}")
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now(), onupdate=func.now()
     )

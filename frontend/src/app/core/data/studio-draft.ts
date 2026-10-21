@@ -83,40 +83,28 @@ export const AVAIL_CHOICES: { id: StudioDraft['avail']; label: string; sub: stri
   { id: 'Closed', label: 'Not right now', sub: 'Your studio is visible but inquiries are paused' },
 ];
 
-/** The sample studio from the prototype, so the builder starts filled in. */
-export const SEED_DRAFT: StudioDraft = {
-  name: 'Alex Ward',
-  studio: 'Ward Pattern Studio',
-  city: 'New York',
-  website: 'https://www.alexward.studio',
-  mediums: ['Painting', 'Textile'],
+/**
+ * An empty studio. The builder's sample studio (Alex Ward, with prices) lives in
+ * the database and is loaded from the API (`studioTemplate`); this is the
+ * starting point before it arrives, or if the API can't be reached.
+ */
+export const BLANK_DRAFT: StudioDraft = {
+  name: '',
+  studio: '',
+  city: '',
+  website: '',
+  mediums: [],
   tags: [],
   customTags: [],
-  bio:
-    'I design hand-painted patterns for fabric and walls from a studio in Brooklyn. Clients come to me for a print that is entirely theirs: a silk scarf or dress fabric for a small fashion label, a wallpaper for one particular room, or a repeat for upholstery, bedding or curtains.\n\n' +
-    'Each design starts as gouache on paper. I send a sheet of colourways for you to choose from, then prepare a print-ready repeat that your printer or mill can produce on any material. You keep the rights to use it for your project.',
-  quote: 'Every pattern I make is designed with intention and care.',
-  pieces: (
-    [
-      ['Garden in grey', 'Gouache on paper, 56×40cm'],
-      ['Leaves, chartreuse', 'Screen print on linen'],
-      ['Magnolia repeat', 'Gouache on paper, 40×52cm'],
-      ['Two florals', 'Gouache on board, 38×55cm'],
-      ['Lace studies', 'Ink on black paper, set of 4'],
-    ] as [string, string][]
-  ).map(([title, medium], i) => ({
-    id: `seed${i + 1}`,
-    src: `/images/works/ob-${i + 1}.jpg`,
-    title,
-    medium,
-    tags: i === 4 ? ['Black & white', 'Textile design'] : ['Pattern', 'Floral'],
-  })),
-  featured: ['seed1', 'seed2', 'seed3'],
-  portrait: '/images/portraits/alex.jpg',
+  bio: '',
+  quote: '',
+  pieces: [],
+  featured: [],
+  portrait: null,
   cover: null,
-  coverVideo: 'https://www.pexels.com/download/video/6214486/',
+  coverVideo: null,
   process: null,
-  processVideo: 'https://www.pexels.com/download/video/6214511/',
+  processVideo: null,
   types: [
     { id: 's0', name: 'Small', from: '', to: '', weeks: 3, hours: 9 },
     { id: 's1', name: 'Medium', from: '', to: '', weeks: 8, hours: 64 },

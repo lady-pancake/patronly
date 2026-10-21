@@ -1,7 +1,9 @@
-import { Injectable, computed, effect, signal } from '@angular/core';
+import { Injectable, computed, effect, inject, signal } from '@angular/core';
+import { firstValueFrom } from 'rxjs';
+import { GraphQLService } from '../graphql.service';
 import { artistById } from './catalog';
 import type { Artist } from './models';
-import { SEED_DRAFT, type StudioDraft, buildStudio } from './studio-draft';
+import { BLANK_DRAFT, type StudioDraft, buildStudio } from './studio-draft';
 
 const STORAGE_KEY = 'patronly.artist.v1';
 
@@ -22,22 +24,25 @@ interface Persisted {
 }
 
 const DEFAULTS: Persisted = {
-  draft: SEED_DRAFT,
+  draft: BLANK_DRAFT,
   live: null,
   previewing: false,
-  account: { bank: 'Millennium BCP', holder: 'Alex Ward', iban: 'PT50 0033 0000 4521 9876 4410 5' },
+  account: { bank: '', holder: '', iban: '' },
   replied: [],
   reminded: [],
 };
 
-function load(): Persisted {
+export const STUDIO_TEMPLATE_QUERY = `query StudioTemplate { studioTemplate { draft account } }`;
+
+/** What this tab saved earlier, or null on a fresh visit. */
+function load(): Persisted | null {
   try {
     const raw = sessionStorage.getItem(STORAGE_KEY);
-    if (!raw) return DEFAULTS;
+    if (!raw) return null;
     const saved = JSON.parse(raw) as Partial<Persisted>;
-    return { ...DEFAULTS, ...saved, draft: { ...SEED_DRAFT, ...saved.draft } };
+    return { ...DEFAULTS, ...saved, draft: { ...BLANK_DRAFT, ...saved.draft } };
   } catch {
-    return DEFAULTS;
+    return null;
   }
 }
 
@@ -48,7 +53,11 @@ function load(): Persisted {
  */
 @Injectable({ providedIn: 'root' })
 export class ArtistStore {
-  private readonly initial = load();
+  private readonly gql = inject(GraphQLService);
+  private readonly saved = load();
+  private readonly initial = this.saved ?? DEFAULTS;
+  /** True once the guest has changed anything, so a late sample load never overwrites it. */
+  private touched = false;
 
   readonly draft = signal<StudioDraft>(this.initial.draft);
   readonly live = signal<StudioDraft | null>(this.initial.live);
@@ -65,6 +74,8 @@ export class ArtistStore {
   );
 
   constructor() {
+    // A fresh visit starts from the sample studio stored in the database.
+    if (!this.saved) void this.loadTemplate();
     effect(() => {
       const state: Persisted = {
         draft: this.draft(),
@@ -82,12 +93,28 @@ export class ArtistStore {
     });
   }
 
+  private async loadTemplate(): Promise<void> {
+    try {
+      const { studioTemplate: t } = await firstValueFrom(
+        this.gql.query<{
+          studioTemplate: { draft: Partial<StudioDraft>; account: Partial<PayoutAccount> } | null;
+        }>(STUDIO_TEMPLATE_QUERY),
+      );
+      if (!t || this.touched) return;
+      this.draft.set({ ...BLANK_DRAFT, ...t.draft });
+      this.account.update((a) => ({ ...a, ...t.account }));
+    } catch (err) {
+      console.warn('Patronly: couldn’t load the sample studio, starting blank.', err);
+    }
+  }
+
   /** Looks up any studio, including the artist's own ("me"). */
   byId(id: string | null | undefined): Artist | undefined {
     return id === 'me' ? this.mine() : artistById(id);
   }
 
   update(patch: Partial<StudioDraft>): void {
+    this.touched = true;
     this.draft.update((d) => ({ ...d, ...patch }));
   }
 
