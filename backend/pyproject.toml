@@ -2,6 +2,16 @@
 name = "patronly-backend"
 version = "0.1.0"
 requires-python = ">=3.12"
+# Vercel installs these from here; keep in sync with requirements.txt.
+dependencies = [
+    "fastapi>=0.115,<1",
+    "uvicorn[standard]>=0.30",
+    "strawberry-graphql[fastapi]>=0.250",
+    "sqlalchemy[asyncio]>=2.0.36",
+    "asyncpg>=0.30",
+    "alembic>=1.14",
+    "pydantic-settings>=2.6",
+]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
