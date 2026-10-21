@@ -27,6 +27,7 @@ python -m venv .venv && source .venv/bin/activate
 pip install -r requirements-dev.txt
 cp .env.example .env            # then fill in DATABASE_URL
 alembic upgrade head            # create tables
+python -m app.seed              # load the sample studios (safe to re-run)
 uvicorn app.main:app --reload   # http://localhost:8000
 ```
 
@@ -45,7 +46,7 @@ cp .env.example .env            # optional, defaults to http://localhost:8000/gr
 npm start                       # http://localhost:4200
 ```
 
-The home page has a "System status" card that runs the `health` GraphQL query against the API, so you can see at a glance that frontend, API and database are connected.
+At startup the app loads studios from the API's `artists` query. If the API can't be reached, or has no studios yet, it falls back to the bundled sample data and logs a warning in the browser console, so the UI still works on its own.
 
 - Tests: `npm test`
 - Production build: `npm run build`
@@ -58,9 +59,14 @@ The frontend reads `NG_APP_GRAPHQL_URL` at build time. `scripts/set-env.mjs` wri
 ```graphql
 query {
   health { status version database }
-  artists(limit: 10) { id displayName bio createdAt }
+  artists(limit: 10, medium: "Painting") { slug displayName city priceMin priceMax availability }
+  artist(slug: "maren") { displayName works { title imageUrl } reviews { quote author } }
 }
 ```
+
+### Sample studios
+
+`backend/app/seed/catalogue.json` holds the prototype's 96 sample studios. `python -m app.seed` loads it into whatever `DATABASE_URL` points at, matching artists by slug, so re-running updates them instead of duplicating. The file is generated from the frontend's sample data: after changing `frontend/src/app/core/data/seed.ts`, run `npm run export-catalogue` in `frontend/`.
 
 ### Database migrations
 

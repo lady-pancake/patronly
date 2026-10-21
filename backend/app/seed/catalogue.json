@@ -1,0 +1,7570 @@
+{
+ "artists": [
+  {
+   "slug": "maren",
+   "position": 0,
+   "name": "Maren Oduya",
+   "studio": "Oduya Portrait Studio",
+   "medium": "Painting",
+   "city": "Lisbon",
+   "priceMin": 1200,
+   "priceMax": 6000,
+   "commissions": 84,
+   "likes": 2310,
+   "hue": 35,
+   "chroma": 0.09,
+   "site": "maren-oduya.com",
+   "replyNote": "Usually replies within 2 days.",
+   "tags": [
+    "Ink on paper",
+    "Brush drawing",
+    "Oil on linen",
+    "Portraiture",
+    "Ships worldwide",
+    "Booking Jan 2027"
+   ],
+   "quote": "I paint people the way their closest friends see them, slightly braver than they feel.",
+   "bio": [
+    "Maren trained in Lagos and Lisbon and has painted commissioned portraits for eleven years. Sittings happen in her Alfama studio or from photographs she takes on a short visit to your home.",
+    "Each commission starts with a conversation about who the painting is for and where it will hang. You see a tonal sketch before any paint goes on the canvas, and progress photos every two weeks."
+   ],
+   "availability": "Waitlist",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Inês, profile",
+     "material": "Ink on paper, 30×48cm",
+     "imageUrl": "/images/works/maren-1.jpg"
+    },
+    {
+     "title": "Pears in a bowl",
+     "material": "Brush and ink, 50×56cm",
+     "imageUrl": "/images/works/maren-2.jpg"
+    },
+    {
+     "title": "Teresa",
+     "material": "Ink on laid paper, 38×48cm",
+     "imageUrl": "/images/works/maren-3.jpg"
+    },
+    {
+     "title": "Harbour, Cascais",
+     "material": "Ink wash on paper, 40×26cm",
+     "imageUrl": "/images/works/maren-4.jpg"
+    },
+    {
+     "title": "Crowd, Rossio",
+     "material": "Ink and graphite, 60×44cm",
+     "imageUrl": "/images/works/maren-5.jpg"
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "She caught my father’s half-smile exactly. We cried at the unveiling.",
+     "author": "Teresa M., Porto"
+    },
+    {
+     "quote": "Clear about price and timing from the first message.",
+     "author": "Jonah R., London"
+    },
+    {
+     "quote": "Worth every week of the wait.",
+     "author": "Priya K., Lisbon"
+    }
+   ]
+  },
+  {
+   "slug": "hana",
+   "position": 1,
+   "name": "Hana Ito",
+   "studio": "Kiln & Kin",
+   "medium": "Ceramics",
+   "city": "Kyoto",
+   "priceMin": 180,
+   "priceMax": 2400,
+   "commissions": 212,
+   "likes": 4120,
+   "hue": 75,
+   "chroma": 0.05,
+   "site": "kilnandkin.jp",
+   "replyNote": "Usually replies within 3 days.",
+   "tags": [
+    "Stoneware",
+    "Wood-fired",
+    "Tableware sets",
+    "Wedding gifts",
+    "Restaurant orders"
+   ],
+   "quote": "A cup should feel like it was waiting for your hand.",
+   "bio": [
+    "Hana runs Kiln & Kin from a converted machiya in northern Kyoto with one apprentice and a shared anagama kiln that fires four times a year.",
+    "Commissions are scheduled around those firings, so timelines are honest and fixed. She will send glaze tiles to choose from before your pieces are thrown."
+   ],
+   "availability": "Open",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Ash glaze tea set",
+     "material": "Stoneware, set of 5",
+     "imageUrl": null
+    },
+    {
+     "title": "Moon jar",
+     "material": "Porcelain, 38cm",
+     "imageUrl": null
+    },
+    {
+     "title": "Shino bowls",
+     "material": "Stoneware, set of 6",
+     "imageUrl": null
+    },
+    {
+     "title": "Vase for a doorway",
+     "material": "Stoneware, 52cm",
+     "imageUrl": null
+    },
+    {
+     "title": "Salt plates",
+     "material": "Wood-fired, set of 4",
+     "imageUrl": null
+    },
+    {
+     "title": "Kintsugi study",
+     "material": "Repaired porcelain",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Our restaurant’s plates are the first thing guests photograph.",
+     "author": "Kai L., Osaka"
+    },
+    {
+     "quote": "Packed so carefully nothing chipped across an ocean.",
+     "author": "Emma T., Seattle"
+    },
+    {
+     "quote": "Hana sent glaze tests before firing. Lovely process.",
+     "author": "Mira S., Berlin"
+    }
+   ]
+  },
+  {
+   "slug": "ines",
+   "position": 2,
+   "name": "Ines Folau",
+   "studio": "Folau Weaving",
+   "medium": "Textile",
+   "city": "Auckland",
+   "priceMin": 600,
+   "priceMax": 3800,
+   "commissions": 57,
+   "likes": 1890,
+   "hue": 20,
+   "chroma": 0.11,
+   "site": "inesfolau.studio",
+   "replyNote": "Usually replies within 2 days.",
+   "tags": [
+    "Hand-woven",
+    "Wool and flax",
+    "Wall hangings",
+    "Large-scale",
+    "Natural dyes"
+   ],
+   "quote": "Every thread is a decision. I like to make them slowly.",
+   "bio": [
+    "Ines learned to weave from her grandmother in Tonga and now works on a 2.4-metre floor loom in a studio overlooking the Waitematā.",
+    "She dyes most of her wool by hand, and every large commission begins with a palette of yarn samples posted to you."
+   ],
+   "availability": "Open",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Tide lines",
+     "material": "Wool and flax, 2×1.4m",
+     "imageUrl": null
+    },
+    {
+     "title": "Red earth",
+     "material": "Natural dye on wool, 1.2m",
+     "imageUrl": null
+    },
+    {
+     "title": "Stairwell piece",
+     "material": "Wool, 3.6m drop",
+     "imageUrl": null
+    },
+    {
+     "title": "Small loom no. 9",
+     "material": "Cotton, 40×40cm",
+     "imageUrl": null
+    },
+    {
+     "title": "Harbour",
+     "material": "Flax and silk, 1.8m",
+     "imageUrl": null
+    },
+    {
+     "title": "Weft study",
+     "material": "Wool, 60×90cm",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Ines measured our stairwell twice and it fits like it grew there.",
+     "author": "Sam & Lou, Wellington"
+    },
+    {
+     "quote": "The colours shift with the afternoon light.",
+     "author": "Rangi P., Auckland"
+    },
+    {
+     "quote": "A calm, thoughtful collaborator.",
+     "author": "Claire D., Sydney"
+    }
+   ]
+  },
+  {
+   "slug": "theo",
+   "position": 3,
+   "name": "Theo Laskaris",
+   "studio": "Laskaris Photographs",
+   "medium": "Photography",
+   "city": "Athens",
+   "priceMin": 800,
+   "priceMax": 4500,
+   "commissions": 131,
+   "likes": 2760,
+   "hue": 240,
+   "chroma": 0.04,
+   "site": "laskaris.photo",
+   "replyNote": "Usually replies within 1 day.",
+   "tags": [
+    "Film",
+    "Portraits",
+    "Editorial",
+    "Archival prints",
+    "Travels for shoots"
+   ],
+   "quote": "I wait for the second after people stop posing.",
+   "bio": [
+    "Theo shoots almost entirely on medium-format film and prints in his own darkroom in Exarcheia.",
+    "Commissions include a session, a contact sheet you choose from, and hand-made prints in an edition you keep."
+   ],
+   "availability": "Open",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": "/images/process/theo-process.jpg",
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Kypseli, noon",
+     "material": "Silver gelatin print",
+     "imageUrl": null
+    },
+    {
+     "title": "Yiayia’s kitchen",
+     "material": "Archival pigment print",
+     "imageUrl": null
+    },
+    {
+     "title": "Swimmers",
+     "material": "Medium format film",
+     "imageUrl": null
+    },
+    {
+     "title": "Hydra series",
+     "material": "Edition of 12",
+     "imageUrl": null
+    },
+    {
+     "title": "Market hands",
+     "material": "Silver gelatin print",
+     "imageUrl": null
+    },
+    {
+     "title": "Night ferry",
+     "material": "Archival pigment print",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Our family photos finally look like us.",
+     "author": "Nikos A., Athens"
+    },
+    {
+     "quote": "Fast, funny, and the prints are beautiful.",
+     "author": "Hannah W., Paris"
+    },
+    {
+     "quote": "Booked again for our anniversary.",
+     "author": "Dimitra & Leo"
+    }
+   ]
+  },
+  {
+   "slug": "rafa",
+   "position": 4,
+   "name": "Rafa Quintero",
+   "studio": "Taller Quintero",
+   "medium": "Murals",
+   "city": "Mexico City",
+   "priceMin": 3000,
+   "priceMax": 25000,
+   "commissions": 39,
+   "likes": 3340,
+   "hue": 150,
+   "chroma": 0.1,
+   "site": "tallerquintero.mx",
+   "replyNote": "Usually replies within 4 days.",
+   "tags": [
+    "Interior walls",
+    "Façades",
+    "Mineral paint",
+    "Hospitality",
+    "Travels internationally"
+   ],
+   "quote": "A wall is the biggest, most patient canvas a city can give you.",
+   "bio": [
+    "Rafa leads a crew of three from a workshop in Colonia Doctores and has painted walls in nine countries.",
+    "Every mural starts with a site visit and a gouache study you sign off on, so the scale and colour are agreed before a brush touches the wall."
+   ],
+   "availability": "Waitlist",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Mercado Roma",
+     "material": "Mineral paint, 14m",
+     "imageUrl": null
+    },
+    {
+     "title": "Hotel stairwell",
+     "material": "Acrylic, 3 floors",
+     "imageUrl": null
+    },
+    {
+     "title": "Courtyard jungle",
+     "material": "Mineral paint, 9m",
+     "imageUrl": null
+    },
+    {
+     "title": "School library",
+     "material": "Acrylic, 22m",
+     "imageUrl": null
+    },
+    {
+     "title": "Café ceiling",
+     "material": "Fresco secco",
+     "imageUrl": null
+    },
+    {
+     "title": "Study for a façade",
+     "material": "Gouache on paper",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Transformed our lobby. Guests ask about it daily.",
+     "author": "Casa Lumbre Hotel"
+    },
+    {
+     "quote": "Handled permits and scaffolding without fuss.",
+     "author": "Lucía G., Oaxaca"
+    },
+    {
+     "quote": "Bold, generous, on schedule.",
+     "author": "Ben H., Austin"
+    }
+   ]
+  },
+  {
+   "slug": "june",
+   "position": 5,
+   "name": "June Abernethy",
+   "studio": "Small Hours Press",
+   "medium": "Illustration",
+   "city": "Glasgow",
+   "priceMin": 250,
+   "priceMax": 1800,
+   "commissions": 302,
+   "likes": 5210,
+   "hue": 300,
+   "chroma": 0.07,
+   "site": "smallhours.press",
+   "replyNote": "Usually replies within 1 day.",
+   "tags": [
+    "Ink and gouache",
+    "House portraits",
+    "Book covers",
+    "Wedding stationery",
+    "Digital files included"
+   ],
+   "quote": "I draw buildings like they have personalities, because they do.",
+   "bio": [
+    "June draws at a desk by the window in her Partick flat and prints small editions on a 1960s Adana press.",
+    "Commissions come with two rounds of pencil sketches and high-resolution digital files alongside the original."
+   ],
+   "availability": "Open",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Loch, two colours",
+     "material": "Watercolour on paper, 36×54cm",
+     "imageUrl": "/images/works/june-1.jpg"
+    },
+    {
+     "title": "Isla, reading",
+     "material": "Watercolour and crayon, 40×56cm",
+     "imageUrl": "/images/works/june-2.jpg"
+    },
+    {
+     "title": "Kelvingrove at night",
+     "material": "Gouache on board, 30×40cm",
+     "imageUrl": "/images/works/june-3.jpg"
+    },
+    {
+     "title": "Firth, blue and yellow",
+     "material": "Watercolour on paper, 36×48cm",
+     "imageUrl": "/images/works/june-4.jpg"
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Our house portrait is the best gift I have ever given.",
+     "author": "Fiona C., Edinburgh"
+    },
+    {
+     "quote": "Quick sketches, quicker replies.",
+     "author": "Tom & Ade, Leeds"
+    },
+    {
+     "quote": "She added our cat in the window without being asked.",
+     "author": "Isla M., Glasgow"
+    }
+   ]
+  },
+  {
+   "slug": "lena",
+   "position": 6,
+   "name": "Lena Vossberg",
+   "studio": "Atelier Vossberg",
+   "medium": "Sculpture",
+   "city": "Berlin",
+   "priceMin": 2000,
+   "priceMax": 18000,
+   "commissions": 28,
+   "likes": 1460,
+   "hue": 260,
+   "chroma": 0.02,
+   "site": "atelier-vossberg.de",
+   "replyNote": "Usually replies within 3 days.",
+   "tags": [
+    "Bronze",
+    "Cast aluminium",
+    "Garden pieces",
+    "Public art",
+    "Plinths included"
+   ],
+   "quote": "I want the weight of a thing to be part of what it says.",
+   "bio": [
+    "Lena works from a former tram depot in Wedding, with a small foundry partner outside the city.",
+    "Commissions begin with a plaster maquette you can hold, and every piece ships with its plinth and installation drawings."
+   ],
+   "availability": "Closed",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Resting figure",
+     "material": "Bronze, 80cm",
+     "imageUrl": null
+    },
+    {
+     "title": "Garden stone",
+     "material": "Cast aluminium",
+     "imageUrl": null
+    },
+    {
+     "title": "Two hands",
+     "material": "Bronze, 30cm",
+     "imageUrl": null
+    },
+    {
+     "title": "Fountain study",
+     "material": "Plaster maquette",
+     "imageUrl": null
+    },
+    {
+     "title": "Courtyard piece",
+     "material": "Bronze, 2.1m",
+     "imageUrl": null
+    },
+    {
+     "title": "Small torso",
+     "material": "Bronze, 24cm",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "The maquette stage made the decision easy.",
+     "author": "Garten Haus, Munich"
+    },
+    {
+     "quote": "Installed perfectly in our courtyard.",
+     "author": "Anke & Paul, Hamburg"
+    },
+    {
+     "quote": "A serious artist with a light touch.",
+     "author": "R. Okafor, London"
+    }
+   ]
+  },
+  {
+   "slug": "sol",
+   "position": 7,
+   "name": "Sol Amari",
+   "studio": "Atelier Amari",
+   "medium": "Painting",
+   "city": "Marrakech",
+   "priceMin": 400,
+   "priceMax": 2200,
+   "commissions": 96,
+   "likes": 2050,
+   "hue": 55,
+   "chroma": 0.1,
+   "site": "solamari.art",
+   "replyNote": "Usually replies within 2 days.",
+   "tags": [
+    "Oil on canvas",
+    "Landscapes",
+    "Portraits",
+    "Travel memories",
+    "Framing available"
+   ],
+   "quote": "Tell me about a place you love. I’ll paint it the way it felt to be there.",
+   "bio": [
+    "Sol paints in oil on canvas and board in a rooftop studio in the medina, usually in the early morning light.",
+    "Send photographs of a place or person that matters to you and she will paint it, starting with a small colour study."
+   ],
+   "availability": "Open",
+   "coverUrl": "/images/covers/sol-cover.jpg",
+   "portraitUrl": "/images/portraits/sol.jpg",
+   "processUrl": null,
+   "processVideoUrl": "https://www.pexels.com/download/video/8347673/",
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Tower, looking up",
+     "material": "Oil on canvas, 80×130cm",
+     "imageUrl": "/images/works/sol-1.jpg"
+    },
+    {
+     "title": "Summer, unfolding",
+     "material": "Oil on canvas, 46×60cm",
+     "imageUrl": "/images/works/sol-2.jpg"
+    },
+    {
+     "title": "Medina, noon",
+     "material": "Oil on canvas, 70×80cm",
+     "imageUrl": "/images/works/sol-3.jpg"
+    },
+    {
+     "title": "Head, eyes closed",
+     "material": "Oil on board, 34×44cm",
+     "imageUrl": "/images/works/sol-4.jpg"
+    },
+    {
+     "title": "Head in blue",
+     "material": "Oil on paper, 32×42cm",
+     "imageUrl": "/images/works/sol-5.jpg"
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Painted the riad where we married. Perfect.",
+     "author": "Yasmin & Joe"
+    },
+    {
+     "quote": "Framed and shipped beautifully.",
+     "author": "Claudia F., Milan"
+    },
+    {
+     "quote": "Gentle, warm, very professional.",
+     "author": "Omar B., Rabat"
+    }
+   ]
+  },
+  {
+   "slug": "clem",
+   "position": 8,
+   "name": "Clémence Aubry",
+   "studio": "Atelier Aubry",
+   "medium": "Painting",
+   "city": "Ghent",
+   "priceMin": 600,
+   "priceMax": 4800,
+   "commissions": 71,
+   "likes": 1840,
+   "hue": 120,
+   "chroma": 0.06,
+   "site": "clemenceaubry.be",
+   "replyNote": "Usually replies within 3 days.",
+   "tags": [
+    "Oil on canvas",
+    "Floral still life",
+    "Landscapes",
+    "Painted from life",
+    "Framing available"
+   ],
+   "quote": "Flowers last a week. I try to keep the light on them a little longer.",
+   "bio": [
+    "Clémence paints flowers and gardens from life in a glasshouse studio on the edge of Ghent.",
+    "Bring or send the flowers, or invite her to a garden that matters to you. Each commission begins with a small oil sketch."
+   ],
+   "availability": "Open",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Hawthorn in May",
+     "material": "Oil on canvas, 30×40cm",
+     "imageUrl": "/images/works/clem-1.jpg"
+    },
+    {
+     "title": "Hellebores on the step",
+     "material": "Oil on canvas, 60×80cm",
+     "imageUrl": "/images/works/clem-2.jpg"
+    },
+    {
+     "title": "Pansies",
+     "material": "Oil on canvas, 40×32cm",
+     "imageUrl": "/images/works/clem-3.jpg"
+    },
+    {
+     "title": "Violets in a glass",
+     "material": "Oil on panel, 20×25cm",
+     "imageUrl": "/images/works/clem-4.jpg"
+    },
+    {
+     "title": "Dahlias, blue table",
+     "material": "Oil on canvas, 50×60cm",
+     "imageUrl": "/images/works/clem-5.jpg"
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "She painted the roses from our wedding before they faded.",
+     "author": "Anouk & Pieter, Antwerp"
+    },
+    {
+     "quote": "The garden looks exactly as my mother kept it.",
+     "author": "Hélène D., Lille"
+    }
+   ]
+  },
+  {
+   "slug": "g0",
+   "position": 9,
+   "name": "Amara Bell",
+   "studio": "Bell Studio",
+   "medium": "Painting",
+   "city": "Copenhagen",
+   "priceMin": 150,
+   "priceMax": 600,
+   "commissions": 12,
+   "likes": 200,
+   "hue": 35,
+   "chroma": 0.07,
+   "site": "amarabell.studio",
+   "replyNote": "Usually replies within 1 days.",
+   "tags": [
+    "Painting",
+    "Commissions open",
+    "Copenhagen",
+    "Ships worldwide"
+   ],
+   "quote": "I make things slowly so they last a long time.",
+   "bio": [
+    "Amara works from a studio in Copenhagen, making painting to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Open",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Untitled no. 4",
+     "material": "Painting",
+     "imageUrl": null
+    },
+    {
+     "title": "Study in ochre",
+     "material": "Painting",
+     "imageUrl": null
+    },
+    {
+     "title": "For a quiet room",
+     "material": "Painting",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Painting",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Painting",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Painting",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g1",
+   "position": 10,
+   "name": "Leo Weiss",
+   "studio": "Weiss Studio",
+   "medium": "Painting",
+   "city": "Antwerp",
+   "priceMin": 800,
+   "priceMax": 4800,
+   "commissions": 49,
+   "likes": 813,
+   "hue": 47,
+   "chroma": 0.07,
+   "site": "leoweiss.studio",
+   "replyNote": "Usually replies within 2 days.",
+   "tags": [
+    "Painting",
+    "Commissions open",
+    "Antwerp",
+    "Local only"
+   ],
+   "quote": "The best commissions start with a story I haven’t heard before.",
+   "bio": [
+    "Leo works from a studio in Antwerp, making painting to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Waitlist",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Study in ochre",
+     "material": "Painting",
+     "imageUrl": null
+    },
+    {
+     "title": "For a quiet room",
+     "material": "Painting",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Painting",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Painting",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Painting",
+     "imageUrl": null
+    },
+    {
+     "title": "Second light",
+     "material": "Painting",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g2",
+   "position": 11,
+   "name": "Noor Ferreira",
+   "studio": "Ferreira Studio",
+   "medium": "Painting",
+   "city": "Edinburgh",
+   "priceMin": 150,
+   "priceMax": 1200,
+   "commissions": 86,
+   "likes": 1426,
+   "hue": 59,
+   "chroma": 0.07,
+   "site": "noorferreira.studio",
+   "replyNote": "Usually replies within 3 days.",
+   "tags": [
+    "Painting",
+    "Commissions open",
+    "Edinburgh",
+    "Gift-ready"
+   ],
+   "quote": "I want every piece to feel lived with, not just looked at.",
+   "bio": [
+    "Noor works from a studio in Edinburgh, making painting to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Open",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "For a quiet room",
+     "material": "Painting",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Painting",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Painting",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Painting",
+     "imageUrl": null
+    },
+    {
+     "title": "Second light",
+     "material": "Painting",
+     "imageUrl": null
+    },
+    {
+     "title": "Field notes",
+     "material": "Painting",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g3",
+   "position": 12,
+   "name": "Felix Rossi",
+   "studio": "Rossi Studio",
+   "medium": "Illustration",
+   "city": "Istanbul",
+   "priceMin": 800,
+   "priceMax": 4000,
+   "commissions": 123,
+   "likes": 2039,
+   "hue": 276,
+   "chroma": 0.07,
+   "site": "felixrossi.studio",
+   "replyNote": "Usually replies within 4 days.",
+   "tags": [
+    "Illustration",
+    "Commissions open",
+    "Istanbul",
+    "Ships worldwide"
+   ],
+   "quote": "Materials tell me what they want to be. I mostly listen.",
+   "bio": [
+    "Felix works from a studio in Istanbul, making illustration to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Closed",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Untitled no. 4",
+     "material": "Illustration",
+     "imageUrl": null
+    },
+    {
+     "title": "Study in ochre",
+     "material": "Illustration",
+     "imageUrl": null
+    },
+    {
+     "title": "For a quiet room",
+     "material": "Illustration",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Illustration",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Illustration",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Illustration",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g4",
+   "position": 13,
+   "name": "Ivy Ahn",
+   "studio": "Ahn Studio",
+   "medium": "Illustration",
+   "city": "Melbourne",
+   "priceMin": 150,
+   "priceMax": 600,
+   "commissions": 160,
+   "likes": 2652,
+   "hue": 288,
+   "chroma": 0.07,
+   "site": "ivyahn.studio",
+   "replyNote": "Usually replies within 1 days.",
+   "tags": [
+    "Illustration",
+    "Commissions open",
+    "Melbourne",
+    "Local only"
+   ],
+   "quote": "I make things slowly so they last a long time.",
+   "bio": [
+    "Ivy works from a studio in Melbourne, making illustration to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Open",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Study in ochre",
+     "material": "Illustration",
+     "imageUrl": null
+    },
+    {
+     "title": "For a quiet room",
+     "material": "Illustration",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Illustration",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Illustration",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Illustration",
+     "imageUrl": null
+    },
+    {
+     "title": "Second light",
+     "material": "Illustration",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g5",
+   "position": 14,
+   "name": "Tomás Reyes",
+   "studio": "Reyes Studio",
+   "medium": "Illustration",
+   "city": "Tbilisi",
+   "priceMin": 800,
+   "priceMax": 4800,
+   "commissions": 17,
+   "likes": 3265,
+   "hue": 300,
+   "chroma": 0.07,
+   "site": "tomásreyes.studio",
+   "replyNote": "Usually replies within 2 days.",
+   "tags": [
+    "Illustration",
+    "Commissions open",
+    "Tbilisi",
+    "Gift-ready"
+   ],
+   "quote": "The best commissions start with a story I haven’t heard before.",
+   "bio": [
+    "Tomás works from a studio in Tbilisi, making illustration to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Waitlist",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "For a quiet room",
+     "material": "Illustration",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Illustration",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Illustration",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Illustration",
+     "imageUrl": null
+    },
+    {
+     "title": "Second light",
+     "material": "Illustration",
+     "imageUrl": null
+    },
+    {
+     "title": "Field notes",
+     "material": "Illustration",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g6",
+   "position": 15,
+   "name": "Zara Kowal",
+   "studio": "Kowal Studio",
+   "medium": "Illustration",
+   "city": "Vancouver",
+   "priceMin": 150,
+   "priceMax": 1200,
+   "commissions": 54,
+   "likes": 3878,
+   "hue": 312,
+   "chroma": 0.07,
+   "site": "zarakowal.studio",
+   "replyNote": "Usually replies within 3 days.",
+   "tags": [
+    "Illustration",
+    "Commissions open",
+    "Vancouver",
+    "Ships worldwide"
+   ],
+   "quote": "I want every piece to feel lived with, not just looked at.",
+   "bio": [
+    "Zara works from a studio in Vancouver, making illustration to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Open",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Untitled no. 4",
+     "material": "Illustration",
+     "imageUrl": null
+    },
+    {
+     "title": "Study in ochre",
+     "material": "Illustration",
+     "imageUrl": null
+    },
+    {
+     "title": "For a quiet room",
+     "material": "Illustration",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Illustration",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Illustration",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Illustration",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g7",
+   "position": 16,
+   "name": "Oskar Duarte",
+   "studio": "Duarte Studio",
+   "medium": "Illustration",
+   "city": "Seoul",
+   "priceMin": 800,
+   "priceMax": 4000,
+   "commissions": 91,
+   "likes": 291,
+   "hue": 324,
+   "chroma": 0.07,
+   "site": "oskarduarte.studio",
+   "replyNote": "Usually replies within 4 days.",
+   "tags": [
+    "Illustration",
+    "Commissions open",
+    "Seoul",
+    "Local only"
+   ],
+   "quote": "Materials tell me what they want to be. I mostly listen.",
+   "bio": [
+    "Oskar works from a studio in Seoul, making illustration to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Closed",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Study in ochre",
+     "material": "Illustration",
+     "imageUrl": null
+    },
+    {
+     "title": "For a quiet room",
+     "material": "Illustration",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Illustration",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Illustration",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Illustration",
+     "imageUrl": null
+    },
+    {
+     "title": "Second light",
+     "material": "Illustration",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g8",
+   "position": 17,
+   "name": "Mei Cruz",
+   "studio": "Cruz Studio",
+   "medium": "Ceramics",
+   "city": "Porto",
+   "priceMin": 150,
+   "priceMax": 600,
+   "commissions": 128,
+   "likes": 904,
+   "hue": 51,
+   "chroma": 0.07,
+   "site": "meicruz.studio",
+   "replyNote": "Usually replies within 1 days.",
+   "tags": [
+    "Ceramics",
+    "Commissions open",
+    "Porto",
+    "Gift-ready"
+   ],
+   "quote": "I make things slowly so they last a long time.",
+   "bio": [
+    "Mei works from a studio in Porto, making ceramics to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Open",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "For a quiet room",
+     "material": "Ceramics",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Ceramics",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Ceramics",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Ceramics",
+     "imageUrl": null
+    },
+    {
+     "title": "Second light",
+     "material": "Ceramics",
+     "imageUrl": null
+    },
+    {
+     "title": "Field notes",
+     "material": "Ceramics",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g9",
+   "position": 18,
+   "name": "Ravi Lindqvist",
+   "studio": "Lindqvist Studio",
+   "medium": "Ceramics",
+   "city": "Marseille",
+   "priceMin": 800,
+   "priceMax": 4800,
+   "commissions": 165,
+   "likes": 1517,
+   "hue": 63,
+   "chroma": 0.07,
+   "site": "ravilindqvist.studio",
+   "replyNote": "Usually replies within 2 days.",
+   "tags": [
+    "Ceramics",
+    "Commissions open",
+    "Marseille",
+    "Ships worldwide"
+   ],
+   "quote": "The best commissions start with a story I haven’t heard before.",
+   "bio": [
+    "Ravi works from a studio in Marseille, making ceramics to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Waitlist",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Untitled no. 4",
+     "material": "Ceramics",
+     "imageUrl": null
+    },
+    {
+     "title": "Study in ochre",
+     "material": "Ceramics",
+     "imageUrl": null
+    },
+    {
+     "title": "For a quiet room",
+     "material": "Ceramics",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Ceramics",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Ceramics",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Ceramics",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g10",
+   "position": 19,
+   "name": "Clara Adeyemi",
+   "studio": "Adeyemi Studio",
+   "medium": "Ceramics",
+   "city": "Oaxaca",
+   "priceMin": 150,
+   "priceMax": 1200,
+   "commissions": 22,
+   "likes": 2130,
+   "hue": 75,
+   "chroma": 0.07,
+   "site": "claraadeyemi.studio",
+   "replyNote": "Usually replies within 3 days.",
+   "tags": [
+    "Ceramics",
+    "Commissions open",
+    "Oaxaca",
+    "Local only"
+   ],
+   "quote": "I want every piece to feel lived with, not just looked at.",
+   "bio": [
+    "Clara works from a studio in Oaxaca, making ceramics to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Open",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Study in ochre",
+     "material": "Ceramics",
+     "imageUrl": null
+    },
+    {
+     "title": "For a quiet room",
+     "material": "Ceramics",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Ceramics",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Ceramics",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Ceramics",
+     "imageUrl": null
+    },
+    {
+     "title": "Second light",
+     "material": "Ceramics",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g11",
+   "position": 20,
+   "name": "Jonas Varga",
+   "studio": "Varga Studio",
+   "medium": "Ceramics",
+   "city": "Montréal",
+   "priceMin": 800,
+   "priceMax": 4000,
+   "commissions": 59,
+   "likes": 2743,
+   "hue": 87,
+   "chroma": 0.07,
+   "site": "jonasvarga.studio",
+   "replyNote": "Usually replies within 4 days.",
+   "tags": [
+    "Ceramics",
+    "Commissions open",
+    "Montréal",
+    "Gift-ready"
+   ],
+   "quote": "Materials tell me what they want to be. I mostly listen.",
+   "bio": [
+    "Jonas works from a studio in Montréal, making ceramics to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Closed",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "For a quiet room",
+     "material": "Ceramics",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Ceramics",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Ceramics",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Ceramics",
+     "imageUrl": null
+    },
+    {
+     "title": "Second light",
+     "material": "Ceramics",
+     "imageUrl": null
+    },
+    {
+     "title": "Field notes",
+     "material": "Ceramics",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g12",
+   "position": 21,
+   "name": "Esme Aalto",
+   "studio": "Aalto Studio",
+   "medium": "Ceramics",
+   "city": "Bogotá",
+   "priceMin": 150,
+   "priceMax": 600,
+   "commissions": 96,
+   "likes": 3356,
+   "hue": 99,
+   "chroma": 0.07,
+   "site": "esmeaalto.studio",
+   "replyNote": "Usually replies within 1 days.",
+   "tags": [
+    "Ceramics",
+    "Commissions open",
+    "Bogotá",
+    "Ships worldwide"
+   ],
+   "quote": "I make things slowly so they last a long time.",
+   "bio": [
+    "Esme works from a studio in Bogotá, making ceramics to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Open",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Untitled no. 4",
+     "material": "Ceramics",
+     "imageUrl": null
+    },
+    {
+     "title": "Study in ochre",
+     "material": "Ceramics",
+     "imageUrl": null
+    },
+    {
+     "title": "For a quiet room",
+     "material": "Ceramics",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Ceramics",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Ceramics",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Ceramics",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g13",
+   "position": 22,
+   "name": "Kofi Moreau",
+   "studio": "Moreau Studio",
+   "medium": "Photography",
+   "city": "Brooklyn",
+   "priceMin": 800,
+   "priceMax": 4800,
+   "commissions": 133,
+   "likes": 3969,
+   "hue": 216,
+   "chroma": 0.07,
+   "site": "kofimoreau.studio",
+   "replyNote": "Usually replies within 2 days.",
+   "tags": [
+    "Photography",
+    "Commissions open",
+    "Brooklyn",
+    "Local only"
+   ],
+   "quote": "The best commissions start with a story I haven’t heard before.",
+   "bio": [
+    "Kofi works from a studio in Brooklyn, making photography to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Waitlist",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Study in ochre",
+     "material": "Photography",
+     "imageUrl": null
+    },
+    {
+     "title": "For a quiet room",
+     "material": "Photography",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Photography",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Photography",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Photography",
+     "imageUrl": null
+    },
+    {
+     "title": "Second light",
+     "material": "Photography",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g14",
+   "position": 23,
+   "name": "Lucia Castell",
+   "studio": "Castell Studio",
+   "medium": "Photography",
+   "city": "Cape Town",
+   "priceMin": 150,
+   "priceMax": 1200,
+   "commissions": 170,
+   "likes": 382,
+   "hue": 228,
+   "chroma": 0.07,
+   "site": "luciacastell.studio",
+   "replyNote": "Usually replies within 3 days.",
+   "tags": [
+    "Photography",
+    "Commissions open",
+    "Cape Town",
+    "Gift-ready"
+   ],
+   "quote": "I want every piece to feel lived with, not just looked at.",
+   "bio": [
+    "Lucia works from a studio in Cape Town, making photography to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Open",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "For a quiet room",
+     "material": "Photography",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Photography",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Photography",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Photography",
+     "imageUrl": null
+    },
+    {
+     "title": "Second light",
+     "material": "Photography",
+     "imageUrl": null
+    },
+    {
+     "title": "Field notes",
+     "material": "Photography",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g15",
+   "position": 24,
+   "name": "Arlo Hale",
+   "studio": "Hale Studio",
+   "medium": "Photography",
+   "city": "Kyoto",
+   "priceMin": 800,
+   "priceMax": 4000,
+   "commissions": 27,
+   "likes": 995,
+   "hue": 240,
+   "chroma": 0.07,
+   "site": "arlohale.studio",
+   "replyNote": "Usually replies within 4 days.",
+   "tags": [
+    "Photography",
+    "Commissions open",
+    "Kyoto",
+    "Ships worldwide"
+   ],
+   "quote": "Materials tell me what they want to be. I mostly listen.",
+   "bio": [
+    "Arlo works from a studio in Kyoto, making photography to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Closed",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Untitled no. 4",
+     "material": "Photography",
+     "imageUrl": null
+    },
+    {
+     "title": "Study in ochre",
+     "material": "Photography",
+     "imageUrl": null
+    },
+    {
+     "title": "For a quiet room",
+     "material": "Photography",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Photography",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Photography",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Photography",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g16",
+   "position": 25,
+   "name": "Saoirse Mbeki",
+   "studio": "Mbeki Studio",
+   "medium": "Photography",
+   "city": "Copenhagen",
+   "priceMin": 150,
+   "priceMax": 600,
+   "commissions": 64,
+   "likes": 1608,
+   "hue": 252,
+   "chroma": 0.07,
+   "site": "saoirsembeki.studio",
+   "replyNote": "Usually replies within 1 days.",
+   "tags": [
+    "Photography",
+    "Commissions open",
+    "Copenhagen",
+    "Local only"
+   ],
+   "quote": "I make things slowly so they last a long time.",
+   "bio": [
+    "Saoirse works from a studio in Copenhagen, making photography to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Open",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Study in ochre",
+     "material": "Photography",
+     "imageUrl": null
+    },
+    {
+     "title": "For a quiet room",
+     "material": "Photography",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Photography",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Photography",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Photography",
+     "imageUrl": null
+    },
+    {
+     "title": "Second light",
+     "material": "Photography",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g17",
+   "position": 26,
+   "name": "Matteo Lowe",
+   "studio": "Lowe Studio",
+   "medium": "Photography",
+   "city": "Antwerp",
+   "priceMin": 800,
+   "priceMax": 4800,
+   "commissions": 101,
+   "likes": 2221,
+   "hue": 264,
+   "chroma": 0.07,
+   "site": "matteolowe.studio",
+   "replyNote": "Usually replies within 2 days.",
+   "tags": [
+    "Photography",
+    "Commissions open",
+    "Antwerp",
+    "Gift-ready"
+   ],
+   "quote": "The best commissions start with a story I haven’t heard before.",
+   "bio": [
+    "Matteo works from a studio in Antwerp, making photography to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Waitlist",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "For a quiet room",
+     "material": "Photography",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Photography",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Photography",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Photography",
+     "imageUrl": null
+    },
+    {
+     "title": "Second light",
+     "material": "Photography",
+     "imageUrl": null
+    },
+    {
+     "title": "Field notes",
+     "material": "Photography",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g18",
+   "position": 27,
+   "name": "Yuki Tanaka",
+   "studio": "Tanaka Studio",
+   "medium": "Sculpture",
+   "city": "Edinburgh",
+   "priceMin": 150,
+   "priceMax": 1200,
+   "commissions": 138,
+   "likes": 2834,
+   "hue": 236,
+   "chroma": 0.07,
+   "site": "yukitanaka.studio",
+   "replyNote": "Usually replies within 3 days.",
+   "tags": [
+    "Sculpture",
+    "Commissions open",
+    "Edinburgh",
+    "Ships worldwide"
+   ],
+   "quote": "I want every piece to feel lived with, not just looked at.",
+   "bio": [
+    "Yuki works from a studio in Edinburgh, making sculpture to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Open",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Untitled no. 4",
+     "material": "Sculpture",
+     "imageUrl": null
+    },
+    {
+     "title": "Study in ochre",
+     "material": "Sculpture",
+     "imageUrl": null
+    },
+    {
+     "title": "For a quiet room",
+     "material": "Sculpture",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Sculpture",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Sculpture",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Sculpture",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g19",
+   "position": 28,
+   "name": "Elif Sato",
+   "studio": "Sato Studio",
+   "medium": "Sculpture",
+   "city": "Istanbul",
+   "priceMin": 800,
+   "priceMax": 4000,
+   "commissions": 175,
+   "likes": 3447,
+   "hue": 248,
+   "chroma": 0.07,
+   "site": "elifsato.studio",
+   "replyNote": "Usually replies within 4 days.",
+   "tags": [
+    "Sculpture",
+    "Commissions open",
+    "Istanbul",
+    "Local only"
+   ],
+   "quote": "Materials tell me what they want to be. I mostly listen.",
+   "bio": [
+    "Elif works from a studio in Istanbul, making sculpture to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Closed",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Study in ochre",
+     "material": "Sculpture",
+     "imageUrl": null
+    },
+    {
+     "title": "For a quiet room",
+     "material": "Sculpture",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Sculpture",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Sculpture",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Sculpture",
+     "imageUrl": null
+    },
+    {
+     "title": "Second light",
+     "material": "Sculpture",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g20",
+   "position": 29,
+   "name": "Bram Olsen",
+   "studio": "Olsen Studio",
+   "medium": "Sculpture",
+   "city": "Melbourne",
+   "priceMin": 150,
+   "priceMax": 600,
+   "commissions": 32,
+   "likes": 4060,
+   "hue": 260,
+   "chroma": 0.07,
+   "site": "bramolsen.studio",
+   "replyNote": "Usually replies within 1 days.",
+   "tags": [
+    "Sculpture",
+    "Commissions open",
+    "Melbourne",
+    "Gift-ready"
+   ],
+   "quote": "I make things slowly so they last a long time.",
+   "bio": [
+    "Bram works from a studio in Melbourne, making sculpture to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Open",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "For a quiet room",
+     "material": "Sculpture",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Sculpture",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Sculpture",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Sculpture",
+     "imageUrl": null
+    },
+    {
+     "title": "Second light",
+     "material": "Sculpture",
+     "imageUrl": null
+    },
+    {
+     "title": "Field notes",
+     "material": "Sculpture",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g21",
+   "position": 30,
+   "name": "Nadia Petrov",
+   "studio": "Petrov Studio",
+   "medium": "Sculpture",
+   "city": "Tbilisi",
+   "priceMin": 800,
+   "priceMax": 4800,
+   "commissions": 69,
+   "likes": 473,
+   "hue": 272,
+   "chroma": 0.07,
+   "site": "nadiapetrov.studio",
+   "replyNote": "Usually replies within 2 days.",
+   "tags": [
+    "Sculpture",
+    "Commissions open",
+    "Tbilisi",
+    "Ships worldwide"
+   ],
+   "quote": "The best commissions start with a story I haven’t heard before.",
+   "bio": [
+    "Nadia works from a studio in Tbilisi, making sculpture to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Waitlist",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Untitled no. 4",
+     "material": "Sculpture",
+     "imageUrl": null
+    },
+    {
+     "title": "Study in ochre",
+     "material": "Sculpture",
+     "imageUrl": null
+    },
+    {
+     "title": "For a quiet room",
+     "material": "Sculpture",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Sculpture",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Sculpture",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Sculpture",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g22",
+   "position": 31,
+   "name": "Hugo Okafor",
+   "studio": "Okafor Studio",
+   "medium": "Sculpture",
+   "city": "Vancouver",
+   "priceMin": 150,
+   "priceMax": 1200,
+   "commissions": 106,
+   "likes": 1086,
+   "hue": 284,
+   "chroma": 0.07,
+   "site": "hugookafor.studio",
+   "replyNote": "Usually replies within 3 days.",
+   "tags": [
+    "Sculpture",
+    "Commissions open",
+    "Vancouver",
+    "Local only"
+   ],
+   "quote": "I want every piece to feel lived with, not just looked at.",
+   "bio": [
+    "Hugo works from a studio in Vancouver, making sculpture to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Open",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Study in ochre",
+     "material": "Sculpture",
+     "imageUrl": null
+    },
+    {
+     "title": "For a quiet room",
+     "material": "Sculpture",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Sculpture",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Sculpture",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Sculpture",
+     "imageUrl": null
+    },
+    {
+     "title": "Second light",
+     "material": "Sculpture",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g23",
+   "position": 32,
+   "name": "Odile Laurent",
+   "studio": "Laurent Studio",
+   "medium": "Textile",
+   "city": "Seoul",
+   "priceMin": 800,
+   "priceMax": 4000,
+   "commissions": 143,
+   "likes": 1699,
+   "hue": 356,
+   "chroma": 0.07,
+   "site": "odilelaurent.studio",
+   "replyNote": "Usually replies within 4 days.",
+   "tags": [
+    "Textile",
+    "Commissions open",
+    "Seoul",
+    "Gift-ready"
+   ],
+   "quote": "Materials tell me what they want to be. I mostly listen.",
+   "bio": [
+    "Odile works from a studio in Seoul, making textile to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Closed",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "For a quiet room",
+     "material": "Textile",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Textile",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Textile",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Textile",
+     "imageUrl": null
+    },
+    {
+     "title": "Second light",
+     "material": "Textile",
+     "imageUrl": null
+    },
+    {
+     "title": "Field notes",
+     "material": "Textile",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g24",
+   "position": 33,
+   "name": "Tariq Quinn",
+   "studio": "Quinn Studio",
+   "medium": "Textile",
+   "city": "Porto",
+   "priceMin": 150,
+   "priceMax": 600,
+   "commissions": 180,
+   "likes": 2312,
+   "hue": 8,
+   "chroma": 0.07,
+   "site": "tariqquinn.studio",
+   "replyNote": "Usually replies within 1 days.",
+   "tags": [
+    "Textile",
+    "Commissions open",
+    "Porto",
+    "Ships worldwide"
+   ],
+   "quote": "I make things slowly so they last a long time.",
+   "bio": [
+    "Tariq works from a studio in Porto, making textile to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Open",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Untitled no. 4",
+     "material": "Textile",
+     "imageUrl": null
+    },
+    {
+     "title": "Study in ochre",
+     "material": "Textile",
+     "imageUrl": null
+    },
+    {
+     "title": "For a quiet room",
+     "material": "Textile",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Textile",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Textile",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Textile",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g25",
+   "position": 34,
+   "name": "Wren Benoit",
+   "studio": "Benoit Studio",
+   "medium": "Textile",
+   "city": "Marseille",
+   "priceMin": 800,
+   "priceMax": 4800,
+   "commissions": 37,
+   "likes": 2925,
+   "hue": 20,
+   "chroma": 0.07,
+   "site": "wrenbenoit.studio",
+   "replyNote": "Usually replies within 2 days.",
+   "tags": [
+    "Textile",
+    "Commissions open",
+    "Marseille",
+    "Local only"
+   ],
+   "quote": "The best commissions start with a story I haven’t heard before.",
+   "bio": [
+    "Wren works from a studio in Marseille, making textile to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Waitlist",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Study in ochre",
+     "material": "Textile",
+     "imageUrl": null
+    },
+    {
+     "title": "For a quiet room",
+     "material": "Textile",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Textile",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Textile",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Textile",
+     "imageUrl": null
+    },
+    {
+     "title": "Second light",
+     "material": "Textile",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g26",
+   "position": 35,
+   "name": "Pia Haddad",
+   "studio": "Haddad Studio",
+   "medium": "Textile",
+   "city": "Oaxaca",
+   "priceMin": 150,
+   "priceMax": 1200,
+   "commissions": 74,
+   "likes": 3538,
+   "hue": 32,
+   "chroma": 0.07,
+   "site": "piahaddad.studio",
+   "replyNote": "Usually replies within 3 days.",
+   "tags": [
+    "Textile",
+    "Commissions open",
+    "Oaxaca",
+    "Gift-ready"
+   ],
+   "quote": "I want every piece to feel lived with, not just looked at.",
+   "bio": [
+    "Pia works from a studio in Oaxaca, making textile to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Open",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "For a quiet room",
+     "material": "Textile",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Textile",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Textile",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Textile",
+     "imageUrl": null
+    },
+    {
+     "title": "Second light",
+     "material": "Textile",
+     "imageUrl": null
+    },
+    {
+     "title": "Field notes",
+     "material": "Textile",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g27",
+   "position": 36,
+   "name": "Emeka Novak",
+   "studio": "Novak Studio",
+   "medium": "Textile",
+   "city": "Montréal",
+   "priceMin": 800,
+   "priceMax": 4000,
+   "commissions": 111,
+   "likes": 4151,
+   "hue": 44,
+   "chroma": 0.07,
+   "site": "emekanovak.studio",
+   "replyNote": "Usually replies within 4 days.",
+   "tags": [
+    "Textile",
+    "Commissions open",
+    "Montréal",
+    "Ships worldwide"
+   ],
+   "quote": "Materials tell me what they want to be. I mostly listen.",
+   "bio": [
+    "Emeka works from a studio in Montréal, making textile to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Closed",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Untitled no. 4",
+     "material": "Textile",
+     "imageUrl": null
+    },
+    {
+     "title": "Study in ochre",
+     "material": "Textile",
+     "imageUrl": null
+    },
+    {
+     "title": "For a quiet room",
+     "material": "Textile",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Textile",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Textile",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Textile",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g28",
+   "position": 37,
+   "name": "Greta Marsh",
+   "studio": "Marsh Studio",
+   "medium": "Murals",
+   "city": "Bogotá",
+   "priceMin": 150,
+   "priceMax": 600,
+   "commissions": 148,
+   "likes": 564,
+   "hue": 126,
+   "chroma": 0.07,
+   "site": "gretamarsh.studio",
+   "replyNote": "Usually replies within 1 days.",
+   "tags": [
+    "Murals",
+    "Commissions open",
+    "Bogotá",
+    "Local only"
+   ],
+   "quote": "I make things slowly so they last a long time.",
+   "bio": [
+    "Greta works from a studio in Bogotá, making murals to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Open",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Study in ochre",
+     "material": "Murals",
+     "imageUrl": null
+    },
+    {
+     "title": "For a quiet room",
+     "material": "Murals",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Murals",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Murals",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Murals",
+     "imageUrl": null
+    },
+    {
+     "title": "Second light",
+     "material": "Murals",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g29",
+   "position": 38,
+   "name": "Soren Kerr",
+   "studio": "Kerr Studio",
+   "medium": "Murals",
+   "city": "Brooklyn",
+   "priceMin": 800,
+   "priceMax": 4800,
+   "commissions": 185,
+   "likes": 1177,
+   "hue": 138,
+   "chroma": 0.07,
+   "site": "sorenkerr.studio",
+   "replyNote": "Usually replies within 2 days.",
+   "tags": [
+    "Murals",
+    "Commissions open",
+    "Brooklyn",
+    "Gift-ready"
+   ],
+   "quote": "The best commissions start with a story I haven’t heard before.",
+   "bio": [
+    "Soren works from a studio in Brooklyn, making murals to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Waitlist",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "For a quiet room",
+     "material": "Murals",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Murals",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Murals",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Murals",
+     "imageUrl": null
+    },
+    {
+     "title": "Second light",
+     "material": "Murals",
+     "imageUrl": null
+    },
+    {
+     "title": "Field notes",
+     "material": "Murals",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g30",
+   "position": 39,
+   "name": "Amara Bell",
+   "studio": "Bell Studio",
+   "medium": "Murals",
+   "city": "Cape Town",
+   "priceMin": 150,
+   "priceMax": 1200,
+   "commissions": 42,
+   "likes": 1790,
+   "hue": 150,
+   "chroma": 0.07,
+   "site": "amarabell.studio",
+   "replyNote": "Usually replies within 3 days.",
+   "tags": [
+    "Murals",
+    "Commissions open",
+    "Cape Town",
+    "Ships worldwide"
+   ],
+   "quote": "I want every piece to feel lived with, not just looked at.",
+   "bio": [
+    "Amara works from a studio in Cape Town, making murals to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Open",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Untitled no. 4",
+     "material": "Murals",
+     "imageUrl": null
+    },
+    {
+     "title": "Study in ochre",
+     "material": "Murals",
+     "imageUrl": null
+    },
+    {
+     "title": "For a quiet room",
+     "material": "Murals",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Murals",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Murals",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Murals",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g31",
+   "position": 40,
+   "name": "Leo Weiss",
+   "studio": "Weiss Studio",
+   "medium": "Murals",
+   "city": "Kyoto",
+   "priceMin": 800,
+   "priceMax": 4000,
+   "commissions": 79,
+   "likes": 2403,
+   "hue": 162,
+   "chroma": 0.07,
+   "site": "leoweiss.studio",
+   "replyNote": "Usually replies within 4 days.",
+   "tags": [
+    "Murals",
+    "Commissions open",
+    "Kyoto",
+    "Local only"
+   ],
+   "quote": "Materials tell me what they want to be. I mostly listen.",
+   "bio": [
+    "Leo works from a studio in Kyoto, making murals to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Closed",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Study in ochre",
+     "material": "Murals",
+     "imageUrl": null
+    },
+    {
+     "title": "For a quiet room",
+     "material": "Murals",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Murals",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Murals",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Murals",
+     "imageUrl": null
+    },
+    {
+     "title": "Second light",
+     "material": "Murals",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g32",
+   "position": 41,
+   "name": "Noor Ferreira",
+   "studio": "Ferreira Studio",
+   "medium": "Murals",
+   "city": "Copenhagen",
+   "priceMin": 150,
+   "priceMax": 600,
+   "commissions": 116,
+   "likes": 3016,
+   "hue": 174,
+   "chroma": 0.07,
+   "site": "noorferreira.studio",
+   "replyNote": "Usually replies within 1 days.",
+   "tags": [
+    "Murals",
+    "Commissions open",
+    "Copenhagen",
+    "Gift-ready"
+   ],
+   "quote": "I make things slowly so they last a long time.",
+   "bio": [
+    "Noor works from a studio in Copenhagen, making murals to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Open",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "For a quiet room",
+     "material": "Murals",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Murals",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Murals",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Murals",
+     "imageUrl": null
+    },
+    {
+     "title": "Second light",
+     "material": "Murals",
+     "imageUrl": null
+    },
+    {
+     "title": "Field notes",
+     "material": "Murals",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g33",
+   "position": 42,
+   "name": "Felix Rossi",
+   "studio": "Rossi Studio",
+   "medium": "Printmaking",
+   "city": "Antwerp",
+   "priceMin": 800,
+   "priceMax": 4800,
+   "commissions": 153,
+   "likes": 3629,
+   "hue": 334,
+   "chroma": 0.07,
+   "site": "felixrossi.studio",
+   "replyNote": "Usually replies within 2 days.",
+   "tags": [
+    "Printmaking",
+    "Commissions open",
+    "Antwerp",
+    "Ships worldwide"
+   ],
+   "quote": "The best commissions start with a story I haven’t heard before.",
+   "bio": [
+    "Felix works from a studio in Antwerp, making printmaking to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Waitlist",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Untitled no. 4",
+     "material": "Printmaking",
+     "imageUrl": null
+    },
+    {
+     "title": "Study in ochre",
+     "material": "Printmaking",
+     "imageUrl": null
+    },
+    {
+     "title": "For a quiet room",
+     "material": "Printmaking",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Printmaking",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Printmaking",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Printmaking",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g34",
+   "position": 43,
+   "name": "Ivy Ahn",
+   "studio": "Ahn Studio",
+   "medium": "Printmaking",
+   "city": "Edinburgh",
+   "priceMin": 150,
+   "priceMax": 1200,
+   "commissions": 190,
+   "likes": 4242,
+   "hue": 346,
+   "chroma": 0.07,
+   "site": "ivyahn.studio",
+   "replyNote": "Usually replies within 3 days.",
+   "tags": [
+    "Printmaking",
+    "Commissions open",
+    "Edinburgh",
+    "Local only"
+   ],
+   "quote": "I want every piece to feel lived with, not just looked at.",
+   "bio": [
+    "Ivy works from a studio in Edinburgh, making printmaking to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Open",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Study in ochre",
+     "material": "Printmaking",
+     "imageUrl": null
+    },
+    {
+     "title": "For a quiet room",
+     "material": "Printmaking",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Printmaking",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Printmaking",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Printmaking",
+     "imageUrl": null
+    },
+    {
+     "title": "Second light",
+     "material": "Printmaking",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g35",
+   "position": 44,
+   "name": "Tomás Reyes",
+   "studio": "Reyes Studio",
+   "medium": "Printmaking",
+   "city": "Istanbul",
+   "priceMin": 800,
+   "priceMax": 4000,
+   "commissions": 47,
+   "likes": 655,
+   "hue": 358,
+   "chroma": 0.07,
+   "site": "tomásreyes.studio",
+   "replyNote": "Usually replies within 4 days.",
+   "tags": [
+    "Printmaking",
+    "Commissions open",
+    "Istanbul",
+    "Gift-ready"
+   ],
+   "quote": "Materials tell me what they want to be. I mostly listen.",
+   "bio": [
+    "Tomás works from a studio in Istanbul, making printmaking to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Closed",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "For a quiet room",
+     "material": "Printmaking",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Printmaking",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Printmaking",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Printmaking",
+     "imageUrl": null
+    },
+    {
+     "title": "Second light",
+     "material": "Printmaking",
+     "imageUrl": null
+    },
+    {
+     "title": "Field notes",
+     "material": "Printmaking",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g36",
+   "position": 45,
+   "name": "Zara Kowal",
+   "studio": "Kowal Studio",
+   "medium": "Printmaking",
+   "city": "Melbourne",
+   "priceMin": 150,
+   "priceMax": 600,
+   "commissions": 84,
+   "likes": 1268,
+   "hue": 10,
+   "chroma": 0.07,
+   "site": "zarakowal.studio",
+   "replyNote": "Usually replies within 1 days.",
+   "tags": [
+    "Printmaking",
+    "Commissions open",
+    "Melbourne",
+    "Ships worldwide"
+   ],
+   "quote": "I make things slowly so they last a long time.",
+   "bio": [
+    "Zara works from a studio in Melbourne, making printmaking to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Open",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Untitled no. 4",
+     "material": "Printmaking",
+     "imageUrl": null
+    },
+    {
+     "title": "Study in ochre",
+     "material": "Printmaking",
+     "imageUrl": null
+    },
+    {
+     "title": "For a quiet room",
+     "material": "Printmaking",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Printmaking",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Printmaking",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Printmaking",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g37",
+   "position": 46,
+   "name": "Oskar Duarte",
+   "studio": "Duarte Studio",
+   "medium": "Printmaking",
+   "city": "Tbilisi",
+   "priceMin": 800,
+   "priceMax": 4800,
+   "commissions": 121,
+   "likes": 1881,
+   "hue": 22,
+   "chroma": 0.07,
+   "site": "oskarduarte.studio",
+   "replyNote": "Usually replies within 2 days.",
+   "tags": [
+    "Printmaking",
+    "Commissions open",
+    "Tbilisi",
+    "Local only"
+   ],
+   "quote": "The best commissions start with a story I haven’t heard before.",
+   "bio": [
+    "Oskar works from a studio in Tbilisi, making printmaking to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Waitlist",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Study in ochre",
+     "material": "Printmaking",
+     "imageUrl": null
+    },
+    {
+     "title": "For a quiet room",
+     "material": "Printmaking",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Printmaking",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Printmaking",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Printmaking",
+     "imageUrl": null
+    },
+    {
+     "title": "Second light",
+     "material": "Printmaking",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g38",
+   "position": 47,
+   "name": "Mei Cruz",
+   "studio": "Cruz Studio",
+   "medium": "Printmaking",
+   "city": "Vancouver",
+   "priceMin": 150,
+   "priceMax": 1200,
+   "commissions": 158,
+   "likes": 2494,
+   "hue": 34,
+   "chroma": 0.07,
+   "site": "meicruz.studio",
+   "replyNote": "Usually replies within 3 days.",
+   "tags": [
+    "Printmaking",
+    "Commissions open",
+    "Vancouver",
+    "Gift-ready"
+   ],
+   "quote": "I want every piece to feel lived with, not just looked at.",
+   "bio": [
+    "Mei works from a studio in Vancouver, making printmaking to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Open",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "For a quiet room",
+     "material": "Printmaking",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Printmaking",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Printmaking",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Printmaking",
+     "imageUrl": null
+    },
+    {
+     "title": "Second light",
+     "material": "Printmaking",
+     "imageUrl": null
+    },
+    {
+     "title": "Field notes",
+     "material": "Printmaking",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g39",
+   "position": 48,
+   "name": "Ravi Lindqvist",
+   "studio": "Lindqvist Studio",
+   "medium": "Jewelry",
+   "city": "Seoul",
+   "priceMin": 800,
+   "priceMax": 4000,
+   "commissions": 15,
+   "likes": 3107,
+   "hue": 49,
+   "chroma": 0.07,
+   "site": "ravilindqvist.studio",
+   "replyNote": "Usually replies within 4 days.",
+   "tags": [
+    "Gold and pearl",
+    "Earrings",
+    "Wedding jewellery",
+    "Made to order",
+    "Ships worldwide"
+   ],
+   "quote": "Materials tell me what they want to be. I mostly listen.",
+   "bio": [
+    "Ravi works from a studio in Seoul, making jewelry to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Closed",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Baroque pearl drop",
+     "material": "Brushed gold and freshwater pearl",
+     "imageUrl": "/images/works/jewel-1.jpg"
+    },
+    {
+     "title": "Twisted knot earrings",
+     "material": "Recycled 18k gold",
+     "imageUrl": "/images/works/jewel-2.jpg"
+    },
+    {
+     "title": "Freshwater pearl strand",
+     "material": "Pearls on silk, 45cm",
+     "imageUrl": "/images/works/jewel-3.jpg"
+    },
+    {
+     "title": "Morning piece",
+     "material": "Jewelry",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Jewelry",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Jewelry",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g40",
+   "position": 49,
+   "name": "Clara Adeyemi",
+   "studio": "Adeyemi Studio",
+   "medium": "Jewelry",
+   "city": "Porto",
+   "priceMin": 150,
+   "priceMax": 600,
+   "commissions": 52,
+   "likes": 3720,
+   "hue": 61,
+   "chroma": 0.07,
+   "site": "claraadeyemi.studio",
+   "replyNote": "Usually replies within 1 days.",
+   "tags": [
+    "Jewelry",
+    "Commissions open",
+    "Porto",
+    "Local only"
+   ],
+   "quote": "I make things slowly so they last a long time.",
+   "bio": [
+    "Clara works from a studio in Porto, making jewelry to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Open",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Study in ochre",
+     "material": "Jewelry",
+     "imageUrl": null
+    },
+    {
+     "title": "For a quiet room",
+     "material": "Jewelry",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Jewelry",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Jewelry",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Jewelry",
+     "imageUrl": null
+    },
+    {
+     "title": "Second light",
+     "material": "Jewelry",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g41",
+   "position": 50,
+   "name": "Jonas Varga",
+   "studio": "Varga Studio",
+   "medium": "Jewelry",
+   "city": "Marseille",
+   "priceMin": 800,
+   "priceMax": 4800,
+   "commissions": 89,
+   "likes": 4333,
+   "hue": 73,
+   "chroma": 0.07,
+   "site": "jonasvarga.studio",
+   "replyNote": "Usually replies within 2 days.",
+   "tags": [
+    "Jewelry",
+    "Commissions open",
+    "Marseille",
+    "Gift-ready"
+   ],
+   "quote": "The best commissions start with a story I haven’t heard before.",
+   "bio": [
+    "Jonas works from a studio in Marseille, making jewelry to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Waitlist",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "For a quiet room",
+     "material": "Jewelry",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Jewelry",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Jewelry",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Jewelry",
+     "imageUrl": null
+    },
+    {
+     "title": "Second light",
+     "material": "Jewelry",
+     "imageUrl": null
+    },
+    {
+     "title": "Field notes",
+     "material": "Jewelry",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g42",
+   "position": 51,
+   "name": "Esme Aalto",
+   "studio": "Aalto Studio",
+   "medium": "Jewelry",
+   "city": "Oaxaca",
+   "priceMin": 150,
+   "priceMax": 1200,
+   "commissions": 126,
+   "likes": 746,
+   "hue": 85,
+   "chroma": 0.07,
+   "site": "esmeaalto.studio",
+   "replyNote": "Usually replies within 3 days.",
+   "tags": [
+    "Jewelry",
+    "Commissions open",
+    "Oaxaca",
+    "Ships worldwide"
+   ],
+   "quote": "I want every piece to feel lived with, not just looked at.",
+   "bio": [
+    "Esme works from a studio in Oaxaca, making jewelry to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Open",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Untitled no. 4",
+     "material": "Jewelry",
+     "imageUrl": null
+    },
+    {
+     "title": "Study in ochre",
+     "material": "Jewelry",
+     "imageUrl": null
+    },
+    {
+     "title": "For a quiet room",
+     "material": "Jewelry",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Jewelry",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Jewelry",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Jewelry",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g43",
+   "position": 52,
+   "name": "Kofi Moreau",
+   "studio": "Moreau Studio",
+   "medium": "Jewelry",
+   "city": "Montréal",
+   "priceMin": 800,
+   "priceMax": 4000,
+   "commissions": 163,
+   "likes": 1359,
+   "hue": 97,
+   "chroma": 0.07,
+   "site": "kofimoreau.studio",
+   "replyNote": "Usually replies within 4 days.",
+   "tags": [
+    "Jewelry",
+    "Commissions open",
+    "Montréal",
+    "Local only"
+   ],
+   "quote": "Materials tell me what they want to be. I mostly listen.",
+   "bio": [
+    "Kofi works from a studio in Montréal, making jewelry to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Closed",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Study in ochre",
+     "material": "Jewelry",
+     "imageUrl": null
+    },
+    {
+     "title": "For a quiet room",
+     "material": "Jewelry",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Jewelry",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Jewelry",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Jewelry",
+     "imageUrl": null
+    },
+    {
+     "title": "Second light",
+     "material": "Jewelry",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g44",
+   "position": 53,
+   "name": "Lucia Castell",
+   "studio": "Castell Studio",
+   "medium": "Jewelry",
+   "city": "Bogotá",
+   "priceMin": 150,
+   "priceMax": 600,
+   "commissions": 20,
+   "likes": 1972,
+   "hue": 109,
+   "chroma": 0.07,
+   "site": "luciacastell.studio",
+   "replyNote": "Usually replies within 1 days.",
+   "tags": [
+    "Jewelry",
+    "Commissions open",
+    "Bogotá",
+    "Gift-ready"
+   ],
+   "quote": "I make things slowly so they last a long time.",
+   "bio": [
+    "Lucia works from a studio in Bogotá, making jewelry to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Open",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "For a quiet room",
+     "material": "Jewelry",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Jewelry",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Jewelry",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Jewelry",
+     "imageUrl": null
+    },
+    {
+     "title": "Second light",
+     "material": "Jewelry",
+     "imageUrl": null
+    },
+    {
+     "title": "Field notes",
+     "material": "Jewelry",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g45",
+   "position": 54,
+   "name": "Arlo Hale",
+   "studio": "Hale Studio",
+   "medium": "Woodwork",
+   "city": "Brooklyn",
+   "priceMin": 800,
+   "priceMax": 4800,
+   "commissions": 57,
+   "likes": 2585,
+   "hue": 24,
+   "chroma": 0.07,
+   "site": "arlohale.studio",
+   "replyNote": "Usually replies within 2 days.",
+   "tags": [
+    "Woodwork",
+    "Commissions open",
+    "Brooklyn",
+    "Ships worldwide"
+   ],
+   "quote": "The best commissions start with a story I haven’t heard before.",
+   "bio": [
+    "Arlo works from a studio in Brooklyn, making woodwork to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Waitlist",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Untitled no. 4",
+     "material": "Woodwork",
+     "imageUrl": null
+    },
+    {
+     "title": "Study in ochre",
+     "material": "Woodwork",
+     "imageUrl": null
+    },
+    {
+     "title": "For a quiet room",
+     "material": "Woodwork",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Woodwork",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Woodwork",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Woodwork",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g46",
+   "position": 55,
+   "name": "Saoirse Mbeki",
+   "studio": "Mbeki Studio",
+   "medium": "Woodwork",
+   "city": "Cape Town",
+   "priceMin": 150,
+   "priceMax": 1200,
+   "commissions": 94,
+   "likes": 3198,
+   "hue": 36,
+   "chroma": 0.07,
+   "site": "saoirsembeki.studio",
+   "replyNote": "Usually replies within 3 days.",
+   "tags": [
+    "Woodwork",
+    "Commissions open",
+    "Cape Town",
+    "Local only"
+   ],
+   "quote": "I want every piece to feel lived with, not just looked at.",
+   "bio": [
+    "Saoirse works from a studio in Cape Town, making woodwork to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Open",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Study in ochre",
+     "material": "Woodwork",
+     "imageUrl": null
+    },
+    {
+     "title": "For a quiet room",
+     "material": "Woodwork",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Woodwork",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Woodwork",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Woodwork",
+     "imageUrl": null
+    },
+    {
+     "title": "Second light",
+     "material": "Woodwork",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g47",
+   "position": 56,
+   "name": "Matteo Lowe",
+   "studio": "Lowe Studio",
+   "medium": "Woodwork",
+   "city": "Kyoto",
+   "priceMin": 800,
+   "priceMax": 4000,
+   "commissions": 131,
+   "likes": 3811,
+   "hue": 48,
+   "chroma": 0.07,
+   "site": "matteolowe.studio",
+   "replyNote": "Usually replies within 4 days.",
+   "tags": [
+    "Woodwork",
+    "Commissions open",
+    "Kyoto",
+    "Gift-ready"
+   ],
+   "quote": "Materials tell me what they want to be. I mostly listen.",
+   "bio": [
+    "Matteo works from a studio in Kyoto, making woodwork to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Closed",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "For a quiet room",
+     "material": "Woodwork",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Woodwork",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Woodwork",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Woodwork",
+     "imageUrl": null
+    },
+    {
+     "title": "Second light",
+     "material": "Woodwork",
+     "imageUrl": null
+    },
+    {
+     "title": "Field notes",
+     "material": "Woodwork",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g48",
+   "position": 57,
+   "name": "Yuki Tanaka",
+   "studio": "Tanaka Studio",
+   "medium": "Woodwork",
+   "city": "Copenhagen",
+   "priceMin": 150,
+   "priceMax": 600,
+   "commissions": 168,
+   "likes": 224,
+   "hue": 60,
+   "chroma": 0.07,
+   "site": "yukitanaka.studio",
+   "replyNote": "Usually replies within 1 days.",
+   "tags": [
+    "Woodwork",
+    "Commissions open",
+    "Copenhagen",
+    "Ships worldwide"
+   ],
+   "quote": "I make things slowly so they last a long time.",
+   "bio": [
+    "Yuki works from a studio in Copenhagen, making woodwork to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Open",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Untitled no. 4",
+     "material": "Woodwork",
+     "imageUrl": null
+    },
+    {
+     "title": "Study in ochre",
+     "material": "Woodwork",
+     "imageUrl": null
+    },
+    {
+     "title": "For a quiet room",
+     "material": "Woodwork",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Woodwork",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Woodwork",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Woodwork",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g49",
+   "position": 58,
+   "name": "Elif Sato",
+   "studio": "Sato Studio",
+   "medium": "Woodwork",
+   "city": "Antwerp",
+   "priceMin": 800,
+   "priceMax": 4800,
+   "commissions": 25,
+   "likes": 837,
+   "hue": 72,
+   "chroma": 0.07,
+   "site": "elifsato.studio",
+   "replyNote": "Usually replies within 2 days.",
+   "tags": [
+    "Woodwork",
+    "Commissions open",
+    "Antwerp",
+    "Local only"
+   ],
+   "quote": "The best commissions start with a story I haven’t heard before.",
+   "bio": [
+    "Elif works from a studio in Antwerp, making woodwork to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Waitlist",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Study in ochre",
+     "material": "Woodwork",
+     "imageUrl": null
+    },
+    {
+     "title": "For a quiet room",
+     "material": "Woodwork",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Woodwork",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Woodwork",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Woodwork",
+     "imageUrl": null
+    },
+    {
+     "title": "Second light",
+     "material": "Woodwork",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g50",
+   "position": 59,
+   "name": "Bram Olsen",
+   "studio": "Olsen Studio",
+   "medium": "Woodwork",
+   "city": "Edinburgh",
+   "priceMin": 150,
+   "priceMax": 1200,
+   "commissions": 62,
+   "likes": 1450,
+   "hue": 84,
+   "chroma": 0.07,
+   "site": "bramolsen.studio",
+   "replyNote": "Usually replies within 3 days.",
+   "tags": [
+    "Woodwork",
+    "Commissions open",
+    "Edinburgh",
+    "Gift-ready"
+   ],
+   "quote": "I want every piece to feel lived with, not just looked at.",
+   "bio": [
+    "Bram works from a studio in Edinburgh, making woodwork to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Open",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "For a quiet room",
+     "material": "Woodwork",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Woodwork",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Woodwork",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Woodwork",
+     "imageUrl": null
+    },
+    {
+     "title": "Second light",
+     "material": "Woodwork",
+     "imageUrl": null
+    },
+    {
+     "title": "Field notes",
+     "material": "Woodwork",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g51",
+   "position": 60,
+   "name": "Nadia Petrov",
+   "studio": "Petrov Studio",
+   "medium": "Glass",
+   "city": "Istanbul",
+   "priceMin": 800,
+   "priceMax": 4000,
+   "commissions": 99,
+   "likes": 2063,
+   "hue": 164,
+   "chroma": 0.07,
+   "site": "nadiapetrov.studio",
+   "replyNote": "Usually replies within 4 days.",
+   "tags": [
+    "Glass",
+    "Commissions open",
+    "Istanbul",
+    "Ships worldwide"
+   ],
+   "quote": "Materials tell me what they want to be. I mostly listen.",
+   "bio": [
+    "Nadia works from a studio in Istanbul, making glass to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Closed",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Untitled no. 4",
+     "material": "Glass",
+     "imageUrl": null
+    },
+    {
+     "title": "Study in ochre",
+     "material": "Glass",
+     "imageUrl": null
+    },
+    {
+     "title": "For a quiet room",
+     "material": "Glass",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Glass",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Glass",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Glass",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g52",
+   "position": 61,
+   "name": "Hugo Okafor",
+   "studio": "Okafor Studio",
+   "medium": "Glass",
+   "city": "Melbourne",
+   "priceMin": 150,
+   "priceMax": 600,
+   "commissions": 136,
+   "likes": 2676,
+   "hue": 176,
+   "chroma": 0.07,
+   "site": "hugookafor.studio",
+   "replyNote": "Usually replies within 1 days.",
+   "tags": [
+    "Glass",
+    "Commissions open",
+    "Melbourne",
+    "Local only"
+   ],
+   "quote": "I make things slowly so they last a long time.",
+   "bio": [
+    "Hugo works from a studio in Melbourne, making glass to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Open",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Study in ochre",
+     "material": "Glass",
+     "imageUrl": null
+    },
+    {
+     "title": "For a quiet room",
+     "material": "Glass",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Glass",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Glass",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Glass",
+     "imageUrl": null
+    },
+    {
+     "title": "Second light",
+     "material": "Glass",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g53",
+   "position": 62,
+   "name": "Odile Laurent",
+   "studio": "Laurent Studio",
+   "medium": "Glass",
+   "city": "Tbilisi",
+   "priceMin": 800,
+   "priceMax": 4800,
+   "commissions": 173,
+   "likes": 3289,
+   "hue": 188,
+   "chroma": 0.07,
+   "site": "odilelaurent.studio",
+   "replyNote": "Usually replies within 2 days.",
+   "tags": [
+    "Glass",
+    "Commissions open",
+    "Tbilisi",
+    "Gift-ready"
+   ],
+   "quote": "The best commissions start with a story I haven’t heard before.",
+   "bio": [
+    "Odile works from a studio in Tbilisi, making glass to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Waitlist",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "For a quiet room",
+     "material": "Glass",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Glass",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Glass",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Glass",
+     "imageUrl": null
+    },
+    {
+     "title": "Second light",
+     "material": "Glass",
+     "imageUrl": null
+    },
+    {
+     "title": "Field notes",
+     "material": "Glass",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g54",
+   "position": 63,
+   "name": "Tariq Quinn",
+   "studio": "Quinn Studio",
+   "medium": "Glass",
+   "city": "Vancouver",
+   "priceMin": 150,
+   "priceMax": 1200,
+   "commissions": 30,
+   "likes": 3902,
+   "hue": 200,
+   "chroma": 0.07,
+   "site": "tariqquinn.studio",
+   "replyNote": "Usually replies within 3 days.",
+   "tags": [
+    "Glass",
+    "Commissions open",
+    "Vancouver",
+    "Ships worldwide"
+   ],
+   "quote": "I want every piece to feel lived with, not just looked at.",
+   "bio": [
+    "Tariq works from a studio in Vancouver, making glass to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Open",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Untitled no. 4",
+     "material": "Glass",
+     "imageUrl": null
+    },
+    {
+     "title": "Study in ochre",
+     "material": "Glass",
+     "imageUrl": null
+    },
+    {
+     "title": "For a quiet room",
+     "material": "Glass",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Glass",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Glass",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Glass",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g55",
+   "position": 64,
+   "name": "Wren Benoit",
+   "studio": "Benoit Studio",
+   "medium": "Glass",
+   "city": "Seoul",
+   "priceMin": 800,
+   "priceMax": 4000,
+   "commissions": 67,
+   "likes": 315,
+   "hue": 212,
+   "chroma": 0.07,
+   "site": "wrenbenoit.studio",
+   "replyNote": "Usually replies within 4 days.",
+   "tags": [
+    "Glass",
+    "Commissions open",
+    "Seoul",
+    "Local only"
+   ],
+   "quote": "Materials tell me what they want to be. I mostly listen.",
+   "bio": [
+    "Wren works from a studio in Seoul, making glass to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Closed",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Study in ochre",
+     "material": "Glass",
+     "imageUrl": null
+    },
+    {
+     "title": "For a quiet room",
+     "material": "Glass",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Glass",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Glass",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Glass",
+     "imageUrl": null
+    },
+    {
+     "title": "Second light",
+     "material": "Glass",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g56",
+   "position": 65,
+   "name": "Pia Haddad",
+   "studio": "Haddad Studio",
+   "medium": "Glass",
+   "city": "Porto",
+   "priceMin": 150,
+   "priceMax": 600,
+   "commissions": 104,
+   "likes": 928,
+   "hue": 224,
+   "chroma": 0.07,
+   "site": "piahaddad.studio",
+   "replyNote": "Usually replies within 1 days.",
+   "tags": [
+    "Glass",
+    "Commissions open",
+    "Porto",
+    "Gift-ready"
+   ],
+   "quote": "I make things slowly so they last a long time.",
+   "bio": [
+    "Pia works from a studio in Porto, making glass to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Open",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "For a quiet room",
+     "material": "Glass",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Glass",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Glass",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Glass",
+     "imageUrl": null
+    },
+    {
+     "title": "Second light",
+     "material": "Glass",
+     "imageUrl": null
+    },
+    {
+     "title": "Field notes",
+     "material": "Glass",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g57",
+   "position": 66,
+   "name": "Emeka Novak",
+   "studio": "Novak Studio",
+   "medium": "Calligraphy",
+   "city": "Marseille",
+   "priceMin": 800,
+   "priceMax": 4800,
+   "commissions": 141,
+   "likes": 1541,
+   "hue": 324,
+   "chroma": 0.07,
+   "site": "emekanovak.studio",
+   "replyNote": "Usually replies within 2 days.",
+   "tags": [
+    "Calligraphy",
+    "Commissions open",
+    "Marseille",
+    "Ships worldwide"
+   ],
+   "quote": "The best commissions start with a story I haven’t heard before.",
+   "bio": [
+    "Emeka works from a studio in Marseille, making calligraphy to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Waitlist",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Untitled no. 4",
+     "material": "Calligraphy",
+     "imageUrl": null
+    },
+    {
+     "title": "Study in ochre",
+     "material": "Calligraphy",
+     "imageUrl": null
+    },
+    {
+     "title": "For a quiet room",
+     "material": "Calligraphy",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Calligraphy",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Calligraphy",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Calligraphy",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g58",
+   "position": 67,
+   "name": "Greta Marsh",
+   "studio": "Marsh Studio",
+   "medium": "Calligraphy",
+   "city": "Oaxaca",
+   "priceMin": 150,
+   "priceMax": 1200,
+   "commissions": 178,
+   "likes": 2154,
+   "hue": 336,
+   "chroma": 0.07,
+   "site": "gretamarsh.studio",
+   "replyNote": "Usually replies within 3 days.",
+   "tags": [
+    "Calligraphy",
+    "Commissions open",
+    "Oaxaca",
+    "Local only"
+   ],
+   "quote": "I want every piece to feel lived with, not just looked at.",
+   "bio": [
+    "Greta works from a studio in Oaxaca, making calligraphy to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Open",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Study in ochre",
+     "material": "Calligraphy",
+     "imageUrl": null
+    },
+    {
+     "title": "For a quiet room",
+     "material": "Calligraphy",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Calligraphy",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Calligraphy",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Calligraphy",
+     "imageUrl": null
+    },
+    {
+     "title": "Second light",
+     "material": "Calligraphy",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g59",
+   "position": 68,
+   "name": "Soren Kerr",
+   "studio": "Kerr Studio",
+   "medium": "Calligraphy",
+   "city": "Montréal",
+   "priceMin": 800,
+   "priceMax": 4000,
+   "commissions": 35,
+   "likes": 2767,
+   "hue": 348,
+   "chroma": 0.07,
+   "site": "sorenkerr.studio",
+   "replyNote": "Usually replies within 4 days.",
+   "tags": [
+    "Calligraphy",
+    "Commissions open",
+    "Montréal",
+    "Gift-ready"
+   ],
+   "quote": "Materials tell me what they want to be. I mostly listen.",
+   "bio": [
+    "Soren works from a studio in Montréal, making calligraphy to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Closed",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "For a quiet room",
+     "material": "Calligraphy",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Calligraphy",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Calligraphy",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Calligraphy",
+     "imageUrl": null
+    },
+    {
+     "title": "Second light",
+     "material": "Calligraphy",
+     "imageUrl": null
+    },
+    {
+     "title": "Field notes",
+     "material": "Calligraphy",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g60",
+   "position": 69,
+   "name": "Amara Bell",
+   "studio": "Bell Studio",
+   "medium": "Calligraphy",
+   "city": "Bogotá",
+   "priceMin": 150,
+   "priceMax": 600,
+   "commissions": 72,
+   "likes": 3380,
+   "hue": 0,
+   "chroma": 0.07,
+   "site": "amarabell.studio",
+   "replyNote": "Usually replies within 1 days.",
+   "tags": [
+    "Calligraphy",
+    "Commissions open",
+    "Bogotá",
+    "Ships worldwide"
+   ],
+   "quote": "I make things slowly so they last a long time.",
+   "bio": [
+    "Amara works from a studio in Bogotá, making calligraphy to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Open",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Untitled no. 4",
+     "material": "Calligraphy",
+     "imageUrl": null
+    },
+    {
+     "title": "Study in ochre",
+     "material": "Calligraphy",
+     "imageUrl": null
+    },
+    {
+     "title": "For a quiet room",
+     "material": "Calligraphy",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Calligraphy",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Calligraphy",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Calligraphy",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g61",
+   "position": 70,
+   "name": "Leo Weiss",
+   "studio": "Weiss Studio",
+   "medium": "Calligraphy",
+   "city": "Brooklyn",
+   "priceMin": 800,
+   "priceMax": 4800,
+   "commissions": 109,
+   "likes": 3993,
+   "hue": 12,
+   "chroma": 0.07,
+   "site": "leoweiss.studio",
+   "replyNote": "Usually replies within 2 days.",
+   "tags": [
+    "Calligraphy",
+    "Commissions open",
+    "Brooklyn",
+    "Local only"
+   ],
+   "quote": "The best commissions start with a story I haven’t heard before.",
+   "bio": [
+    "Leo works from a studio in Brooklyn, making calligraphy to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Waitlist",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Study in ochre",
+     "material": "Calligraphy",
+     "imageUrl": null
+    },
+    {
+     "title": "For a quiet room",
+     "material": "Calligraphy",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Calligraphy",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Calligraphy",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Calligraphy",
+     "imageUrl": null
+    },
+    {
+     "title": "Second light",
+     "material": "Calligraphy",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g62",
+   "position": 71,
+   "name": "Noor Ferreira",
+   "studio": "Ferreira Studio",
+   "medium": "Calligraphy",
+   "city": "Cape Town",
+   "priceMin": 150,
+   "priceMax": 1200,
+   "commissions": 146,
+   "likes": 406,
+   "hue": 24,
+   "chroma": 0.07,
+   "site": "noorferreira.studio",
+   "replyNote": "Usually replies within 3 days.",
+   "tags": [
+    "Calligraphy",
+    "Commissions open",
+    "Cape Town",
+    "Gift-ready"
+   ],
+   "quote": "I want every piece to feel lived with, not just looked at.",
+   "bio": [
+    "Noor works from a studio in Cape Town, making calligraphy to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Open",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "For a quiet room",
+     "material": "Calligraphy",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Calligraphy",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Calligraphy",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Calligraphy",
+     "imageUrl": null
+    },
+    {
+     "title": "Second light",
+     "material": "Calligraphy",
+     "imageUrl": null
+    },
+    {
+     "title": "Field notes",
+     "material": "Calligraphy",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g63",
+   "position": 72,
+   "name": "Felix Rossi",
+   "studio": "Rossi Studio",
+   "medium": "Embroidery",
+   "city": "Kyoto",
+   "priceMin": 800,
+   "priceMax": 4000,
+   "commissions": 183,
+   "likes": 1019,
+   "hue": 304,
+   "chroma": 0.07,
+   "site": "felixrossi.studio",
+   "replyNote": "Usually replies within 4 days.",
+   "tags": [
+    "Embroidery",
+    "Commissions open",
+    "Kyoto",
+    "Ships worldwide"
+   ],
+   "quote": "Materials tell me what they want to be. I mostly listen.",
+   "bio": [
+    "Felix works from a studio in Kyoto, making embroidery to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Closed",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Untitled no. 4",
+     "material": "Embroidery",
+     "imageUrl": null
+    },
+    {
+     "title": "Study in ochre",
+     "material": "Embroidery",
+     "imageUrl": null
+    },
+    {
+     "title": "For a quiet room",
+     "material": "Embroidery",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Embroidery",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Embroidery",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Embroidery",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g64",
+   "position": 73,
+   "name": "Ivy Ahn",
+   "studio": "Ahn Studio",
+   "medium": "Embroidery",
+   "city": "Copenhagen",
+   "priceMin": 150,
+   "priceMax": 600,
+   "commissions": 40,
+   "likes": 1632,
+   "hue": 316,
+   "chroma": 0.07,
+   "site": "ivyahn.studio",
+   "replyNote": "Usually replies within 1 days.",
+   "tags": [
+    "Embroidery",
+    "Commissions open",
+    "Copenhagen",
+    "Local only"
+   ],
+   "quote": "I make things slowly so they last a long time.",
+   "bio": [
+    "Ivy works from a studio in Copenhagen, making embroidery to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Open",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Study in ochre",
+     "material": "Embroidery",
+     "imageUrl": null
+    },
+    {
+     "title": "For a quiet room",
+     "material": "Embroidery",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Embroidery",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Embroidery",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Embroidery",
+     "imageUrl": null
+    },
+    {
+     "title": "Second light",
+     "material": "Embroidery",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g65",
+   "position": 74,
+   "name": "Tomás Reyes",
+   "studio": "Reyes Studio",
+   "medium": "Embroidery",
+   "city": "Antwerp",
+   "priceMin": 800,
+   "priceMax": 4800,
+   "commissions": 77,
+   "likes": 2245,
+   "hue": 328,
+   "chroma": 0.07,
+   "site": "tomásreyes.studio",
+   "replyNote": "Usually replies within 2 days.",
+   "tags": [
+    "Embroidery",
+    "Commissions open",
+    "Antwerp",
+    "Gift-ready"
+   ],
+   "quote": "The best commissions start with a story I haven’t heard before.",
+   "bio": [
+    "Tomás works from a studio in Antwerp, making embroidery to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Waitlist",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "For a quiet room",
+     "material": "Embroidery",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Embroidery",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Embroidery",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Embroidery",
+     "imageUrl": null
+    },
+    {
+     "title": "Second light",
+     "material": "Embroidery",
+     "imageUrl": null
+    },
+    {
+     "title": "Field notes",
+     "material": "Embroidery",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g66",
+   "position": 75,
+   "name": "Zara Kowal",
+   "studio": "Kowal Studio",
+   "medium": "Embroidery",
+   "city": "Edinburgh",
+   "priceMin": 150,
+   "priceMax": 1200,
+   "commissions": 114,
+   "likes": 2858,
+   "hue": 340,
+   "chroma": 0.07,
+   "site": "zarakowal.studio",
+   "replyNote": "Usually replies within 3 days.",
+   "tags": [
+    "Embroidery",
+    "Commissions open",
+    "Edinburgh",
+    "Ships worldwide"
+   ],
+   "quote": "I want every piece to feel lived with, not just looked at.",
+   "bio": [
+    "Zara works from a studio in Edinburgh, making embroidery to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Open",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Untitled no. 4",
+     "material": "Embroidery",
+     "imageUrl": null
+    },
+    {
+     "title": "Study in ochre",
+     "material": "Embroidery",
+     "imageUrl": null
+    },
+    {
+     "title": "For a quiet room",
+     "material": "Embroidery",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Embroidery",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Embroidery",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Embroidery",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g67",
+   "position": 76,
+   "name": "Oskar Duarte",
+   "studio": "Duarte Studio",
+   "medium": "Embroidery",
+   "city": "Istanbul",
+   "priceMin": 800,
+   "priceMax": 4000,
+   "commissions": 151,
+   "likes": 3471,
+   "hue": 352,
+   "chroma": 0.07,
+   "site": "oskarduarte.studio",
+   "replyNote": "Usually replies within 4 days.",
+   "tags": [
+    "Embroidery",
+    "Commissions open",
+    "Istanbul",
+    "Local only"
+   ],
+   "quote": "Materials tell me what they want to be. I mostly listen.",
+   "bio": [
+    "Oskar works from a studio in Istanbul, making embroidery to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Closed",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Study in ochre",
+     "material": "Embroidery",
+     "imageUrl": null
+    },
+    {
+     "title": "For a quiet room",
+     "material": "Embroidery",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Embroidery",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Embroidery",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Embroidery",
+     "imageUrl": null
+    },
+    {
+     "title": "Second light",
+     "material": "Embroidery",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g68",
+   "position": 77,
+   "name": "Mei Cruz",
+   "studio": "Cruz Studio",
+   "medium": "Embroidery",
+   "city": "Melbourne",
+   "priceMin": 150,
+   "priceMax": 600,
+   "commissions": 188,
+   "likes": 4084,
+   "hue": 4,
+   "chroma": 0.07,
+   "site": "meicruz.studio",
+   "replyNote": "Usually replies within 1 days.",
+   "tags": [
+    "Embroidery",
+    "Commissions open",
+    "Melbourne",
+    "Gift-ready"
+   ],
+   "quote": "I make things slowly so they last a long time.",
+   "bio": [
+    "Mei works from a studio in Melbourne, making embroidery to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Open",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "For a quiet room",
+     "material": "Embroidery",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Embroidery",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Embroidery",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Embroidery",
+     "imageUrl": null
+    },
+    {
+     "title": "Second light",
+     "material": "Embroidery",
+     "imageUrl": null
+    },
+    {
+     "title": "Field notes",
+     "material": "Embroidery",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g69",
+   "position": 78,
+   "name": "Ravi Lindqvist",
+   "studio": "Lindqvist Studio",
+   "medium": "Furniture",
+   "city": "Tbilisi",
+   "priceMin": 800,
+   "priceMax": 4800,
+   "commissions": 45,
+   "likes": 497,
+   "hue": 14,
+   "chroma": 0.07,
+   "site": "ravilindqvist.studio",
+   "replyNote": "Usually replies within 2 days.",
+   "tags": [
+    "Furniture",
+    "Commissions open",
+    "Tbilisi",
+    "Ships worldwide"
+   ],
+   "quote": "The best commissions start with a story I haven’t heard before.",
+   "bio": [
+    "Ravi works from a studio in Tbilisi, making furniture to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Waitlist",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Untitled no. 4",
+     "material": "Furniture",
+     "imageUrl": null
+    },
+    {
+     "title": "Study in ochre",
+     "material": "Furniture",
+     "imageUrl": null
+    },
+    {
+     "title": "For a quiet room",
+     "material": "Furniture",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Furniture",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Furniture",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Furniture",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g70",
+   "position": 79,
+   "name": "Clara Adeyemi",
+   "studio": "Adeyemi Studio",
+   "medium": "Furniture",
+   "city": "Vancouver",
+   "priceMin": 150,
+   "priceMax": 1200,
+   "commissions": 82,
+   "likes": 1110,
+   "hue": 26,
+   "chroma": 0.07,
+   "site": "claraadeyemi.studio",
+   "replyNote": "Usually replies within 3 days.",
+   "tags": [
+    "Furniture",
+    "Commissions open",
+    "Vancouver",
+    "Local only"
+   ],
+   "quote": "I want every piece to feel lived with, not just looked at.",
+   "bio": [
+    "Clara works from a studio in Vancouver, making furniture to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Open",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Study in ochre",
+     "material": "Furniture",
+     "imageUrl": null
+    },
+    {
+     "title": "For a quiet room",
+     "material": "Furniture",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Furniture",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Furniture",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Furniture",
+     "imageUrl": null
+    },
+    {
+     "title": "Second light",
+     "material": "Furniture",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g71",
+   "position": 80,
+   "name": "Jonas Varga",
+   "studio": "Varga Studio",
+   "medium": "Furniture",
+   "city": "Seoul",
+   "priceMin": 800,
+   "priceMax": 4000,
+   "commissions": 119,
+   "likes": 1723,
+   "hue": 38,
+   "chroma": 0.07,
+   "site": "jonasvarga.studio",
+   "replyNote": "Usually replies within 4 days.",
+   "tags": [
+    "Furniture",
+    "Commissions open",
+    "Seoul",
+    "Gift-ready"
+   ],
+   "quote": "Materials tell me what they want to be. I mostly listen.",
+   "bio": [
+    "Jonas works from a studio in Seoul, making furniture to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Closed",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "For a quiet room",
+     "material": "Furniture",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Furniture",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Furniture",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Furniture",
+     "imageUrl": null
+    },
+    {
+     "title": "Second light",
+     "material": "Furniture",
+     "imageUrl": null
+    },
+    {
+     "title": "Field notes",
+     "material": "Furniture",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g72",
+   "position": 81,
+   "name": "Esme Aalto",
+   "studio": "Aalto Studio",
+   "medium": "Furniture",
+   "city": "Porto",
+   "priceMin": 150,
+   "priceMax": 600,
+   "commissions": 156,
+   "likes": 2336,
+   "hue": 50,
+   "chroma": 0.07,
+   "site": "esmeaalto.studio",
+   "replyNote": "Usually replies within 1 days.",
+   "tags": [
+    "Furniture",
+    "Commissions open",
+    "Porto",
+    "Ships worldwide"
+   ],
+   "quote": "I make things slowly so they last a long time.",
+   "bio": [
+    "Esme works from a studio in Porto, making furniture to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Open",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Untitled no. 4",
+     "material": "Furniture",
+     "imageUrl": null
+    },
+    {
+     "title": "Study in ochre",
+     "material": "Furniture",
+     "imageUrl": null
+    },
+    {
+     "title": "For a quiet room",
+     "material": "Furniture",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Furniture",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Furniture",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Furniture",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g73",
+   "position": 82,
+   "name": "Kofi Moreau",
+   "studio": "Moreau Studio",
+   "medium": "Furniture",
+   "city": "Marseille",
+   "priceMin": 800,
+   "priceMax": 4800,
+   "commissions": 13,
+   "likes": 2949,
+   "hue": 62,
+   "chroma": 0.07,
+   "site": "kofimoreau.studio",
+   "replyNote": "Usually replies within 2 days.",
+   "tags": [
+    "Furniture",
+    "Commissions open",
+    "Marseille",
+    "Local only"
+   ],
+   "quote": "The best commissions start with a story I haven’t heard before.",
+   "bio": [
+    "Kofi works from a studio in Marseille, making furniture to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Waitlist",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Study in ochre",
+     "material": "Furniture",
+     "imageUrl": null
+    },
+    {
+     "title": "For a quiet room",
+     "material": "Furniture",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Furniture",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Furniture",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Furniture",
+     "imageUrl": null
+    },
+    {
+     "title": "Second light",
+     "material": "Furniture",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g74",
+   "position": 83,
+   "name": "Lucia Castell",
+   "studio": "Castell Studio",
+   "medium": "Furniture",
+   "city": "Oaxaca",
+   "priceMin": 150,
+   "priceMax": 1200,
+   "commissions": 50,
+   "likes": 3562,
+   "hue": 74,
+   "chroma": 0.07,
+   "site": "luciacastell.studio",
+   "replyNote": "Usually replies within 3 days.",
+   "tags": [
+    "Furniture",
+    "Commissions open",
+    "Oaxaca",
+    "Gift-ready"
+   ],
+   "quote": "I want every piece to feel lived with, not just looked at.",
+   "bio": [
+    "Lucia works from a studio in Oaxaca, making furniture to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Open",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "For a quiet room",
+     "material": "Furniture",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Furniture",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Furniture",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Furniture",
+     "imageUrl": null
+    },
+    {
+     "title": "Second light",
+     "material": "Furniture",
+     "imageUrl": null
+    },
+    {
+     "title": "Field notes",
+     "material": "Furniture",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g75",
+   "position": 84,
+   "name": "Arlo Hale",
+   "studio": "Hale Studio",
+   "medium": "Collage",
+   "city": "Montréal",
+   "priceMin": 800,
+   "priceMax": 4000,
+   "commissions": 87,
+   "likes": 4175,
+   "hue": 84,
+   "chroma": 0.07,
+   "site": "arlohale.studio",
+   "replyNote": "Usually replies within 4 days.",
+   "tags": [
+    "Collage",
+    "Commissions open",
+    "Montréal",
+    "Ships worldwide"
+   ],
+   "quote": "Materials tell me what they want to be. I mostly listen.",
+   "bio": [
+    "Arlo works from a studio in Montréal, making collage to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Closed",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Untitled no. 4",
+     "material": "Collage",
+     "imageUrl": null
+    },
+    {
+     "title": "Study in ochre",
+     "material": "Collage",
+     "imageUrl": null
+    },
+    {
+     "title": "For a quiet room",
+     "material": "Collage",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Collage",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Collage",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Collage",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g76",
+   "position": 85,
+   "name": "Saoirse Mbeki",
+   "studio": "Mbeki Studio",
+   "medium": "Collage",
+   "city": "Bogotá",
+   "priceMin": 150,
+   "priceMax": 600,
+   "commissions": 124,
+   "likes": 588,
+   "hue": 96,
+   "chroma": 0.07,
+   "site": "saoirsembeki.studio",
+   "replyNote": "Usually replies within 1 days.",
+   "tags": [
+    "Collage",
+    "Commissions open",
+    "Bogotá",
+    "Local only"
+   ],
+   "quote": "I make things slowly so they last a long time.",
+   "bio": [
+    "Saoirse works from a studio in Bogotá, making collage to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Open",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Study in ochre",
+     "material": "Collage",
+     "imageUrl": null
+    },
+    {
+     "title": "For a quiet room",
+     "material": "Collage",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Collage",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Collage",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Collage",
+     "imageUrl": null
+    },
+    {
+     "title": "Second light",
+     "material": "Collage",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g77",
+   "position": 86,
+   "name": "Matteo Lowe",
+   "studio": "Lowe Studio",
+   "medium": "Collage",
+   "city": "Brooklyn",
+   "priceMin": 800,
+   "priceMax": 4800,
+   "commissions": 161,
+   "likes": 1201,
+   "hue": 108,
+   "chroma": 0.07,
+   "site": "matteolowe.studio",
+   "replyNote": "Usually replies within 2 days.",
+   "tags": [
+    "Collage",
+    "Commissions open",
+    "Brooklyn",
+    "Gift-ready"
+   ],
+   "quote": "The best commissions start with a story I haven’t heard before.",
+   "bio": [
+    "Matteo works from a studio in Brooklyn, making collage to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Waitlist",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "For a quiet room",
+     "material": "Collage",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Collage",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Collage",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Collage",
+     "imageUrl": null
+    },
+    {
+     "title": "Second light",
+     "material": "Collage",
+     "imageUrl": null
+    },
+    {
+     "title": "Field notes",
+     "material": "Collage",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g78",
+   "position": 87,
+   "name": "Yuki Tanaka",
+   "studio": "Tanaka Studio",
+   "medium": "Collage",
+   "city": "Cape Town",
+   "priceMin": 150,
+   "priceMax": 1200,
+   "commissions": 18,
+   "likes": 1814,
+   "hue": 120,
+   "chroma": 0.07,
+   "site": "yukitanaka.studio",
+   "replyNote": "Usually replies within 3 days.",
+   "tags": [
+    "Collage",
+    "Commissions open",
+    "Cape Town",
+    "Ships worldwide"
+   ],
+   "quote": "I want every piece to feel lived with, not just looked at.",
+   "bio": [
+    "Yuki works from a studio in Cape Town, making collage to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Open",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Untitled no. 4",
+     "material": "Collage",
+     "imageUrl": null
+    },
+    {
+     "title": "Study in ochre",
+     "material": "Collage",
+     "imageUrl": null
+    },
+    {
+     "title": "For a quiet room",
+     "material": "Collage",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Collage",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Collage",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Collage",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g79",
+   "position": 88,
+   "name": "Elif Sato",
+   "studio": "Sato Studio",
+   "medium": "Collage",
+   "city": "Kyoto",
+   "priceMin": 800,
+   "priceMax": 4000,
+   "commissions": 55,
+   "likes": 2427,
+   "hue": 132,
+   "chroma": 0.07,
+   "site": "elifsato.studio",
+   "replyNote": "Usually replies within 4 days.",
+   "tags": [
+    "Collage",
+    "Commissions open",
+    "Kyoto",
+    "Local only"
+   ],
+   "quote": "Materials tell me what they want to be. I mostly listen.",
+   "bio": [
+    "Elif works from a studio in Kyoto, making collage to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Closed",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Study in ochre",
+     "material": "Collage",
+     "imageUrl": null
+    },
+    {
+     "title": "For a quiet room",
+     "material": "Collage",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Collage",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Collage",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Collage",
+     "imageUrl": null
+    },
+    {
+     "title": "Second light",
+     "material": "Collage",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g80",
+   "position": 89,
+   "name": "Bram Olsen",
+   "studio": "Olsen Studio",
+   "medium": "Collage",
+   "city": "Copenhagen",
+   "priceMin": 150,
+   "priceMax": 600,
+   "commissions": 92,
+   "likes": 3040,
+   "hue": 144,
+   "chroma": 0.07,
+   "site": "bramolsen.studio",
+   "replyNote": "Usually replies within 1 days.",
+   "tags": [
+    "Collage",
+    "Commissions open",
+    "Copenhagen",
+    "Gift-ready"
+   ],
+   "quote": "I make things slowly so they last a long time.",
+   "bio": [
+    "Bram works from a studio in Copenhagen, making collage to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Open",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "For a quiet room",
+     "material": "Collage",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Collage",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Collage",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Collage",
+     "imageUrl": null
+    },
+    {
+     "title": "Second light",
+     "material": "Collage",
+     "imageUrl": null
+    },
+    {
+     "title": "Field notes",
+     "material": "Collage",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g81",
+   "position": 90,
+   "name": "Nadia Petrov",
+   "studio": "Petrov Studio",
+   "medium": "Mosaic",
+   "city": "Antwerp",
+   "priceMin": 800,
+   "priceMax": 4800,
+   "commissions": 129,
+   "likes": 3653,
+   "hue": 144,
+   "chroma": 0.07,
+   "site": "nadiapetrov.studio",
+   "replyNote": "Usually replies within 2 days.",
+   "tags": [
+    "Mosaic",
+    "Commissions open",
+    "Antwerp",
+    "Ships worldwide"
+   ],
+   "quote": "The best commissions start with a story I haven’t heard before.",
+   "bio": [
+    "Nadia works from a studio in Antwerp, making mosaic to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Waitlist",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Untitled no. 4",
+     "material": "Mosaic",
+     "imageUrl": null
+    },
+    {
+     "title": "Study in ochre",
+     "material": "Mosaic",
+     "imageUrl": null
+    },
+    {
+     "title": "For a quiet room",
+     "material": "Mosaic",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Mosaic",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Mosaic",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Mosaic",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g82",
+   "position": 91,
+   "name": "Hugo Okafor",
+   "studio": "Okafor Studio",
+   "medium": "Mosaic",
+   "city": "Edinburgh",
+   "priceMin": 150,
+   "priceMax": 1200,
+   "commissions": 166,
+   "likes": 4266,
+   "hue": 156,
+   "chroma": 0.07,
+   "site": "hugookafor.studio",
+   "replyNote": "Usually replies within 3 days.",
+   "tags": [
+    "Mosaic",
+    "Commissions open",
+    "Edinburgh",
+    "Local only"
+   ],
+   "quote": "I want every piece to feel lived with, not just looked at.",
+   "bio": [
+    "Hugo works from a studio in Edinburgh, making mosaic to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Open",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Study in ochre",
+     "material": "Mosaic",
+     "imageUrl": null
+    },
+    {
+     "title": "For a quiet room",
+     "material": "Mosaic",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Mosaic",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Mosaic",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Mosaic",
+     "imageUrl": null
+    },
+    {
+     "title": "Second light",
+     "material": "Mosaic",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g83",
+   "position": 92,
+   "name": "Odile Laurent",
+   "studio": "Laurent Studio",
+   "medium": "Mosaic",
+   "city": "Istanbul",
+   "priceMin": 800,
+   "priceMax": 4000,
+   "commissions": 23,
+   "likes": 679,
+   "hue": 168,
+   "chroma": 0.07,
+   "site": "odilelaurent.studio",
+   "replyNote": "Usually replies within 4 days.",
+   "tags": [
+    "Mosaic",
+    "Commissions open",
+    "Istanbul",
+    "Gift-ready"
+   ],
+   "quote": "Materials tell me what they want to be. I mostly listen.",
+   "bio": [
+    "Odile works from a studio in Istanbul, making mosaic to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Closed",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "For a quiet room",
+     "material": "Mosaic",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Mosaic",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Mosaic",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Mosaic",
+     "imageUrl": null
+    },
+    {
+     "title": "Second light",
+     "material": "Mosaic",
+     "imageUrl": null
+    },
+    {
+     "title": "Field notes",
+     "material": "Mosaic",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g84",
+   "position": 93,
+   "name": "Tariq Quinn",
+   "studio": "Quinn Studio",
+   "medium": "Mosaic",
+   "city": "Melbourne",
+   "priceMin": 150,
+   "priceMax": 600,
+   "commissions": 60,
+   "likes": 1292,
+   "hue": 180,
+   "chroma": 0.07,
+   "site": "tariqquinn.studio",
+   "replyNote": "Usually replies within 1 days.",
+   "tags": [
+    "Mosaic",
+    "Commissions open",
+    "Melbourne",
+    "Ships worldwide"
+   ],
+   "quote": "I make things slowly so they last a long time.",
+   "bio": [
+    "Tariq works from a studio in Melbourne, making mosaic to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Open",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Untitled no. 4",
+     "material": "Mosaic",
+     "imageUrl": null
+    },
+    {
+     "title": "Study in ochre",
+     "material": "Mosaic",
+     "imageUrl": null
+    },
+    {
+     "title": "For a quiet room",
+     "material": "Mosaic",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Mosaic",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Mosaic",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Mosaic",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g85",
+   "position": 94,
+   "name": "Wren Benoit",
+   "studio": "Benoit Studio",
+   "medium": "Mosaic",
+   "city": "Tbilisi",
+   "priceMin": 800,
+   "priceMax": 4800,
+   "commissions": 97,
+   "likes": 1905,
+   "hue": 192,
+   "chroma": 0.07,
+   "site": "wrenbenoit.studio",
+   "replyNote": "Usually replies within 2 days.",
+   "tags": [
+    "Mosaic",
+    "Commissions open",
+    "Tbilisi",
+    "Local only"
+   ],
+   "quote": "The best commissions start with a story I haven’t heard before.",
+   "bio": [
+    "Wren works from a studio in Tbilisi, making mosaic to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Waitlist",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Study in ochre",
+     "material": "Mosaic",
+     "imageUrl": null
+    },
+    {
+     "title": "For a quiet room",
+     "material": "Mosaic",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Mosaic",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Mosaic",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Mosaic",
+     "imageUrl": null
+    },
+    {
+     "title": "Second light",
+     "material": "Mosaic",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g86",
+   "position": 95,
+   "name": "Pia Haddad",
+   "studio": "Haddad Studio",
+   "medium": "Mosaic",
+   "city": "Vancouver",
+   "priceMin": 150,
+   "priceMax": 1200,
+   "commissions": 134,
+   "likes": 2518,
+   "hue": 204,
+   "chroma": 0.07,
+   "site": "piahaddad.studio",
+   "replyNote": "Usually replies within 3 days.",
+   "tags": [
+    "Mosaic",
+    "Commissions open",
+    "Vancouver",
+    "Gift-ready"
+   ],
+   "quote": "I want every piece to feel lived with, not just looked at.",
+   "bio": [
+    "Pia works from a studio in Vancouver, making mosaic to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Open",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "For a quiet room",
+     "material": "Mosaic",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Mosaic",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Mosaic",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Mosaic",
+     "imageUrl": null
+    },
+    {
+     "title": "Second light",
+     "material": "Mosaic",
+     "imageUrl": null
+    },
+    {
+     "title": "Field notes",
+     "material": "Mosaic",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  }
+ ]
+}

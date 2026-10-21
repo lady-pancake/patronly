@@ -86,16 +86,33 @@ export function decorate(a: ArtistSeed): Artist {
   };
 }
 
-export const ARTISTS: Artist[] = SEED_ARTISTS.map(decorate);
-const BY_ID = new Map(ARTISTS.map((a) => [a.id, a]));
-
-export const artistById = (id: string | null | undefined) => (id ? BY_ID.get(id) : undefined);
+/*
+ * The catalogue. It starts as the bundled sample data and is replaced by the
+ * API's artists at startup (see catalog-loader.ts), before any page renders.
+ * These are `let` exports so importers see the replacement.
+ */
+export let ARTISTS: Artist[] = [];
+let BY_ID = new Map<string, Artist>();
 
 /**
  * Artists shown in browse lists. Like the prototype, studios without any
  * real artwork stay out of listings until they upload some.
  */
-export const LISTED = ARTISTS.filter((a) => a.hasImages);
+export let LISTED: Artist[] = [];
+
+/** Where the current catalogue came from. */
+export let CATALOGUE_SOURCE: 'api' | 'sample' = 'sample';
+
+export function setCatalogue(seeds: ArtistSeed[], source: 'api' | 'sample'): void {
+  ARTISTS = seeds.map(decorate);
+  BY_ID = new Map(ARTISTS.map((a) => [a.id, a]));
+  LISTED = ARTISTS.filter((a) => a.hasImages);
+  CATALOGUE_SOURCE = source;
+}
+
+setCatalogue(SEED_ARTISTS, 'sample');
+
+export const artistById = (id: string | null | undefined) => (id ? BY_ID.get(id) : undefined);
 
 export const mediumArt = (name: string) => `/images/mediums/${name.toLowerCase()}.png`;
 
