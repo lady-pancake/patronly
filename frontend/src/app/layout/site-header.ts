@@ -7,7 +7,9 @@ import {
   Injector,
   signal,
 } from '@angular/core';
-import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { filter } from 'rxjs';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import {
   lucideCheck,
@@ -17,6 +19,7 @@ import {
   lucideLogOut,
   lucideMessageCircle,
   lucideRotateCcw,
+  lucideSearch,
 } from '@ng-icons/lucide';
 import { type Role, ViewerStore } from '../core/auth/viewer.store';
 import { ARTIST_STORAGE_KEY, ArtistStore } from '../core/data/artist-store';
@@ -35,6 +38,7 @@ import { SiteSearch } from './site-search';
       lucideLogOut,
       lucideMessageCircle,
       lucideRotateCcw,
+      lucideSearch,
     }),
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -53,12 +57,31 @@ export class SiteHeader {
   private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);
 
   protected readonly menuOpen = signal(false);
+  /** Phones swap the search field for an icon that opens it across the top bar. */
+  protected readonly searchOpen = signal(false);
   protected readonly roles: { id: Role; label: string }[] = [
     { id: 'patron', label: 'Patron' },
     { id: 'artist', label: 'Artist' },
   ];
 
   private readonly injector = inject(Injector);
+
+  constructor() {
+    this.router.events
+      .pipe(
+        filter((e) => e instanceof NavigationEnd),
+        takeUntilDestroyed(),
+      )
+      .subscribe(() => this.searchOpen.set(false));
+  }
+
+  protected openSearch() {
+    this.searchOpen.set(true);
+    afterNextRender(
+      () => this.host.nativeElement.querySelector<HTMLInputElement>('.z-30 input')?.focus(),
+      { injector: this.injector },
+    );
+  }
 
   protected toggleMenu() {
     if (this.menuOpen()) this.closeMenu();

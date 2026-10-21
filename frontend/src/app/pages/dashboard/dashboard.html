@@ -31,14 +31,14 @@
 
   <div class="flex flex-wrap gap-6">
     <section
-      class="flex flex-[1_1_280px] flex-col justify-between gap-4 rounded-4xl bg-primary px-5.5 py-5 text-primary-foreground"
+      class="flex min-w-0 flex-[1_1_260px] flex-col justify-between gap-4 rounded-4xl bg-primary px-5.5 py-5 text-primary-foreground"
     >
       <div class="flex flex-col gap-1.5">
         <span class="text-[13px] font-medium opacity-80">Next payday</span>
         <span class="font-serif text-[44px] leading-none tracking-[-.02em]">{{ payday.net }}</span>
         <span class="text-sm">{{ payday.when }}</span>
       </div>
-      <div class="flex items-center gap-3 border-t border-white/20 pt-3.5">
+      <div class="flex flex-wrap items-center gap-3 border-t border-white/20 pt-3.5">
         <span class="grid size-8 shrink-0 place-items-center rounded-full bg-white/15"
           ><ng-icon name="lucideLandmark" size="15"
         /></span>
@@ -124,11 +124,11 @@
 
   <section [class]="card + ' flex flex-col px-6 py-5'">
     <div class="flex flex-wrap items-baseline justify-between gap-4 pb-2">
-      <div class="flex items-center gap-3">
+      <div class="flex flex-wrap items-center gap-x-3 gap-y-1">
         <h2 class="font-serif text-[28px] font-normal tracking-[-.01em]">New inquiries</h2>
         @if (inquiries().length) {
           <span
-            class="flex h-6 items-center gap-1.5 rounded-md bg-highlight px-2.5 text-xs font-semibold"
+            class="flex h-6 items-center gap-1.5 rounded-md bg-highlight px-2.5 text-xs font-semibold whitespace-nowrap"
             ><span class="size-1.5 rounded-full bg-foreground"></span
             >{{ inquiries().length }} waiting for a reply</span
           >

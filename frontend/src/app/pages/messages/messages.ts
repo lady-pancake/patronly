@@ -11,7 +11,7 @@ import {
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { NgIcon, provideIcons } from '@ng-icons/core';
-import { lucideArrowUp, lucideCheck, lucidePartyPopper } from '@ng-icons/lucide';
+import { lucideArrowLeft, lucideArrowUp, lucideCheck, lucidePartyPopper } from '@ng-icons/lucide';
 import { HlmDialogService } from '@spartan-ng/helm/dialog';
 import { ViewerStore } from '../../core/auth/viewer.store';
 import { ArtistStore } from '../../core/data/artist-store';
@@ -25,7 +25,7 @@ import { STATUS_STYLE, threadStatus } from './thread-status';
 @Component({
   selector: 'app-messages',
   imports: [RouterLink, FormsModule, NgIcon],
-  providers: [provideIcons({ lucideArrowUp, lucideCheck, lucidePartyPopper })],
+  providers: [provideIcons({ lucideArrowLeft, lucideArrowUp, lucideCheck, lucidePartyPopper })],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './messages.html',
 })
@@ -62,6 +62,9 @@ export class Messages {
   protected readonly styles = STATUS_STYLE;
   protected readonly money = money;
   protected readonly draft = signal('');
+
+  /** On phones the list and the open conversation take turns filling the screen. */
+  protected readonly open = computed(() => !!this.threadId());
 
   protected readonly current = computed<Thread | undefined>(() => {
     const ts = this.threads();
@@ -109,6 +112,8 @@ export class Messages {
 
   protected openBox(box: 'incoming' | 'outgoing') {
     this.box.set(box);
+    // Side by side, open the tab's first conversation. On phones, stay on the list.
+    if (!matchMedia('(min-width: 1024px)').matches) return;
     const first = (box === 'incoming' ? this.store.inbox() : this.store.threads())[0];
     void this.router.navigate(first ? ['/messages', first.id] : ['/messages']);
   }

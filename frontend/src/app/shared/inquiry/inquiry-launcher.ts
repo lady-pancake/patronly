@@ -1,3 +1,4 @@
+import { FULL_SCREEN_ON_PHONES } from '../dialog-classes';
 import { Injectable, inject } from '@angular/core';
 import { HlmDialogService } from '@spartan-ng/helm/dialog';
 import { ViewerStore } from '../../core/auth/viewer.store';
@@ -20,7 +21,8 @@ export class InquiryLauncher {
     return this.dialog.open<void, InquiryContext>(InquiryDialog, {
       context: { artist },
       contentClass:
-        'w-full sm:w-[720px] sm:max-w-[720px] max-h-[calc(100dvh-3rem)] overflow-y-auto rounded-4xl p-6 sm:p-10 gap-0',
+        'w-full sm:w-[720px] sm:max-w-[720px] max-h-[calc(100dvh-3rem)] overflow-y-auto rounded-4xl p-6 sm:p-10 gap-0 ' +
+        FULL_SCREEN_ON_PHONES,
     });
   }
 }

@@ -1,7 +1,7 @@
 <main
   class="mx-auto grid max-w-[1400px] grid-cols-1 gap-6 p-4 sm:p-8 lg:h-[calc(100dvh-73px)] lg:min-h-[600px] lg:grid-cols-[340px_minmax(0,1fr)]"
 >
-  <aside class="flex min-h-0 flex-col gap-4">
+  <aside class="flex min-h-0 flex-col gap-4" [class.max-lg:hidden]="open()">
     <h1 class="px-2 font-serif text-[44px] leading-none font-normal">Messages</h1>
     @if (canIncoming()) {
       <div
@@ -74,10 +74,19 @@
     @let incoming = th.direction === 'incoming';
     @let status = statusOf(th);
     <section
-      class="flex min-h-[600px] flex-col overflow-hidden rounded-4xl bg-card shadow-[0_2px_8px_oklch(0_0_0/.05)] ring-1 ring-black/6 lg:min-h-0"
+      class="flex min-h-[600px] flex-col max-sm:h-[calc(100dvh-73px)] max-sm:min-h-0 overflow-hidden rounded-4xl bg-card shadow-[0_2px_8px_oklch(0_0_0/.05)] ring-1 ring-black/6 max-sm:-mx-4 max-sm:-my-4 max-sm:rounded-none lg:min-h-0"
+      [class.max-lg:hidden]="!open()"
     >
-      <header class="flex items-center justify-between gap-4 border-b px-6 py-4">
-        <div class="flex items-center gap-3">
+      <header
+        class="flex items-center justify-between gap-3 border-b px-4 py-3 sm:gap-4 sm:px-6 sm:py-4"
+      >
+        <div class="flex min-w-0 items-center gap-3">
+          <a
+            routerLink="/messages"
+            aria-label="Back to conversations"
+            class="-ml-1.5 grid size-10 shrink-0 place-items-center rounded-full hover:bg-muted lg:hidden"
+            ><ng-icon name="lucideArrowLeft" size="18"
+          /></a>
           <span class="size-10 rounded-full" [style.background]="who.bg"></span>
           <span class="flex flex-col">
             <span class="font-serif text-2xl leading-tight">{{ who.name }}</span>
@@ -101,7 +110,7 @@
         }
       </header>
 
-      <div class="flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto p-6">
+      <div class="flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto p-4 sm:p-6">
         <div
           class="w-full max-w-[520px] shrink-0 overflow-hidden rounded-4xl border bg-surface"
           [class]="incoming ? 'self-start' : 'self-end'"
@@ -171,7 +180,7 @@
               class="my-4 flex w-full max-w-[600px] shrink-0 flex-col gap-1.5 self-center animate-pop-in"
             >
               <div
-                class="relative flex flex-col gap-6 overflow-hidden rounded-4xl bg-primary p-8 text-primary-foreground shadow-[0_12px_32px_color-mix(in_oklab,#62394F_30%,transparent)]"
+                class="relative flex flex-col gap-6 overflow-hidden rounded-4xl bg-primary p-5 text-primary-foreground sm:p-8 shadow-[0_12px_32px_color-mix(in_oklab,#62394F_30%,transparent)]"
               >
                 <div
                   class="absolute -top-10 -right-10 size-45 rounded-full bg-[color-mix(in_oklab,var(--sage)_55%,#62394F)]"
@@ -185,7 +194,7 @@
                     ><ng-icon name="lucidePartyPopper" size="13" />Commission accepted</span
                   >
                   <h2
-                    class="max-w-[420px] font-serif text-[44px] leading-none font-normal tracking-[-.01em]"
+                    class="max-w-[420px] font-serif text-[34px] leading-none sm:text-[44px] font-normal tracking-[-.01em]"
                   >
                     It’s happening. <em>{{ a.first }} accepted your commission.</em>
                   </h2>
@@ -195,9 +204,11 @@
                   >
                 </div>
                 <div
-                  class="relative grid grid-cols-3 gap-px overflow-hidden rounded-2xl bg-white/18"
+                  class="relative grid grid-cols-2 gap-px overflow-hidden rounded-2xl bg-white/18 sm:grid-cols-3"
                 >
-                  <div class="flex flex-col gap-0.5 bg-primary px-3.5 py-3">
+                  <div
+                    class="col-span-2 flex flex-col gap-0.5 bg-primary px-3.5 py-3 sm:col-span-1"
+                  >
                     <span class="text-[11px] opacity-75">Commission</span
                     ><span class="text-[13px] font-semibold">{{ m.piece }}</span>
                   </div>
@@ -213,7 +224,7 @@
                 <ol class="relative flex flex-col gap-1 rounded-3xl bg-white/8 p-2">
                   @for (st of stepsOf(th, a, m); track st.n) {
                     <li
-                      class="flex items-center gap-3.5 p-3"
+                      class="flex flex-wrap items-center gap-3.5 p-3"
                       [class.opacity-60]="!st.done && !st.active"
                     >
                       <span
@@ -232,7 +243,9 @@
                           {{ st.n }}
                         }
                       </span>
-                      <span class="flex min-w-0 flex-1 flex-col gap-0.5">
+                      <span
+                        class="flex min-w-0 flex-1 basis-[calc(100%-50px)] flex-col gap-0.5 sm:basis-0"
+                      >
                         <span class="text-sm font-semibold">{{ st.title }}</span>
                         <span class="text-xs opacity-80">{{ st.sub }}</span>
                       </span>
@@ -240,7 +253,7 @@
                         <button
                           type="button"
                           (click)="openDeal(th, a, m, st.mode!)"
-                          class="h-9 shrink-0 rounded-md bg-white px-4 text-[13px] font-semibold text-primary hover:opacity-90"
+                          class="h-9 shrink-0 rounded-md bg-white px-4 text-[13px] font-semibold text-primary hover:opacity-90 max-sm:ml-11"
                         >
                           {{ st.cta }}
                         </button>
@@ -258,7 +271,7 @@
             </div>
           } @else {
             <div
-              class="flex max-w-[70%] shrink-0 flex-col gap-1"
+              class="flex max-w-[85%] shrink-0 flex-col gap-1 sm:max-w-[70%]"
               [class]="m.me ? 'items-end self-end' : 'items-start self-start'"
             >
               <div
@@ -277,7 +290,10 @@
         }
       </div>
 
-      <form class="flex items-end gap-2 border-t px-6 py-4" (submit)="send($event, th)">
+      <form
+        class="flex items-end gap-2 border-t px-4 py-3 sm:px-6 sm:py-4"
+        (submit)="send($event, th)"
+      >
         <textarea
           name="draft"
           rows="1"

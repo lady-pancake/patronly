@@ -1,3 +1,4 @@
+import { FULL_SCREEN_ON_PHONES } from '../../shared/dialog-classes';
 import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideImage, lucidePlus, lucideUpload } from '@ng-icons/lucide';
@@ -90,7 +91,8 @@ export class WorkStep {
     this.dialog.open(WorkDialog, {
       context,
       contentClass:
-        'sm:max-w-[880px] max-h-[calc(100dvh-3rem)] overflow-hidden rounded-4xl p-0 gap-0 flex flex-col',
+        'sm:max-w-[880px] max-h-[calc(100dvh-3rem)] overflow-hidden rounded-4xl p-0 gap-0 flex flex-col ' +
+        FULL_SCREEN_ON_PHONES,
     });
   }
 
