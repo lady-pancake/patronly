@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "env": "node scripts/set-env.mjs",
+    "export-catalogue": "node scripts/export-catalogue.mjs",
     "prestart": "npm run env",
     "start": "ng serve",
     "prebuild": "npm run env",

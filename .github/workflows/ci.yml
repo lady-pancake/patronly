@@ -44,8 +44,11 @@ jobs:
           cache-dependency-path: backend/requirements*.txt
       - run: pip install -r requirements-dev.txt
       - run: ruff check . && ruff format --check .
-      - run: pytest -q
       - name: Migrations apply and roll back cleanly
         env:
           DATABASE_URL: postgresql://postgres:postgres@localhost:5432/postgres
         run: alembic upgrade head && alembic downgrade base && alembic upgrade head
+      - name: Tests, including seed and GraphQL against Postgres
+        env:
+          TEST_DATABASE_URL: postgresql://postgres:postgres@localhost:5432/postgres
+        run: pytest -q
