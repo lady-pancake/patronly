@@ -117,9 +117,6 @@ const COLUMNS = OFFSETS.map((offset, i) => ({
           >
             Continue as guest
           </button>
-          <p class="text-center text-xs text-muted-foreground">
-            You can switch views any time from your avatar.
-          </p>
         </div>
       </div>
 
