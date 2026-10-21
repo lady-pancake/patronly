@@ -104,16 +104,16 @@
     "Commissions are scheduled around those firings, so timelines are honest and fixed. She will send glaze tiles to choose from before your pieces are thrown."
    ],
    "availability": "Open",
-   "coverUrl": null,
-   "portraitUrl": null,
-   "processUrl": null,
+   "coverUrl": "/images/covers/hana-cover.jpg",
+   "portraitUrl": "/images/portraits/hana.jpg",
+   "processUrl": "/images/process/hana-process.jpg",
    "processVideoUrl": null,
    "coverVideoUrl": null,
    "works": [
     {
      "title": "Ash glaze tea set",
      "material": "Stoneware, set of 5",
-     "imageUrl": null
+     "imageUrl": "/images/works/hana-tea-set.jpg"
     },
     {
      "title": "Moon jar",
@@ -138,7 +138,7 @@
     {
      "title": "Kintsugi study",
      "material": "Repaired porcelain",
-     "imageUrl": null
+     "imageUrl": "/images/works/hana-kintsugi.jpg"
     }
    ],
    "reviews": [

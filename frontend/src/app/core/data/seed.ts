@@ -73,13 +73,16 @@ export const SEED_ARTISTS: ArtistSeed[] = [
     reply: 'Usually replies within 3 days.',
     tags: ['Stoneware', 'Wood-fired', 'Tableware sets', 'Wedding gifts', 'Restaurant orders'],
     quote: 'A cup should feel like it was waiting for your hand.',
+    portrait: '/images/portraits/hana.jpg',
+    cover: '/images/covers/hana-cover.jpg',
+    process: '/images/process/hana-process.jpg',
     works: [
-      ['Ash glaze tea set', 'Stoneware, set of 5'],
+      ['Ash glaze tea set', 'Stoneware, set of 5', '/images/works/hana-tea-set.jpg'],
       ['Moon jar', 'Porcelain, 38cm'],
       ['Shino bowls', 'Stoneware, set of 6'],
       ['Vase for a doorway', 'Stoneware, 52cm'],
       ['Salt plates', 'Wood-fired, set of 4'],
-      ['Kintsugi study', 'Repaired porcelain'],
+      ['Kintsugi study', 'Repaired porcelain', '/images/works/hana-kintsugi.jpg'],
     ],
     reviews: [
       { q: 'Our restaurant’s plates are the first thing guests photograph.', by: 'Kai L., Osaka' },
