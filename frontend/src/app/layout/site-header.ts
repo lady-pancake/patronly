@@ -4,13 +4,15 @@ import { NgIcon, provideIcons } from '@ng-icons/core';
 import {
   lucideCheck,
   lucideHeart,
+  lucideInfo,
   lucideLayoutDashboard,
   lucideLogOut,
   lucideMessageCircle,
+  lucideRotateCcw,
 } from '@ng-icons/lucide';
 import { type Role, ViewerStore } from '../core/auth/viewer.store';
-import { ArtistStore } from '../core/data/artist-store';
-import { PatronStore } from '../core/data/patron-store';
+import { ARTIST_STORAGE_KEY, ArtistStore } from '../core/data/artist-store';
+import { PATRON_STORAGE_KEY, PatronStore } from '../core/data/patron-store';
 import { SiteSearch } from './site-search';
 
 @Component({
@@ -20,9 +22,11 @@ import { SiteSearch } from './site-search';
     provideIcons({
       lucideCheck,
       lucideHeart,
+      lucideInfo,
       lucideLayoutDashboard,
       lucideLogOut,
       lucideMessageCircle,
+      lucideRotateCcw,
     }),
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -115,6 +119,23 @@ import { SiteSearch } from './site-search';
               <button
                 type="button"
                 role="menuitem"
+                (click)="resetDemo()"
+                aria-describedby="demo-note"
+                class="flex h-10 items-center gap-2 rounded-2xl px-3 text-left hover:bg-muted"
+              >
+                <ng-icon name="lucideRotateCcw" size="16" />Reset demo
+              </button>
+              <p
+                id="demo-note"
+                class="flex gap-2 px-3 pt-0.5 pb-2 text-xs leading-snug text-muted-foreground"
+              >
+                <ng-icon name="lucideInfo" size="14" class="mt-px shrink-0" />
+                This is a demo. Anything you enter stays in this tab and isn’t saved.
+              </p>
+              <div class="my-1.5 h-px bg-border"></div>
+              <button
+                type="button"
+                role="menuitem"
                 (click)="signOut()"
                 class="flex h-10 items-center gap-2 rounded-2xl px-3 text-left hover:bg-muted"
               >
@@ -160,6 +181,19 @@ export class SiteHeader {
       (url.startsWith('/saved') && !this.viewer.can('SAVE_FAVOURITES')) ||
       (url.startsWith('/messages') && !this.viewer.can('MESSAGE'));
     if (blocked) void this.router.navigateByUrl('/');
+  }
+
+  /** Clears favourites, messages and studio edits, then reloads with the sample data. */
+  protected resetDemo() {
+    this.menuOpen.set(false);
+    try {
+      sessionStorage.removeItem(ARTIST_STORAGE_KEY);
+      sessionStorage.removeItem(PATRON_STORAGE_KEY);
+    } catch {
+      // Without storage there is nothing saved to clear.
+    }
+    // A full reload so every store starts again from the sample data.
+    location.assign(this.viewer.can('VIEW_DASHBOARD') ? '/studio/edit' : '/');
   }
 
   protected signOut() {

@@ -3,7 +3,8 @@ import type { Inquiry, SavedSearch, Thread } from './models';
 import { LISTED } from './catalog';
 import { RECENT_SEARCHES, SAMPLE_THREADS } from './seed';
 
-const STORAGE_KEY = 'patronly.patron.v1';
+export const PATRON_STORAGE_KEY = 'patronly.patron.v1';
+const STORAGE_KEY = PATRON_STORAGE_KEY;
 
 interface Persisted {
   favs: string[];

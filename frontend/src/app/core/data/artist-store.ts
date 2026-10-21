@@ -5,7 +5,8 @@ import { artistById } from './catalog';
 import type { Artist } from './models';
 import { BLANK_DRAFT, type StudioDraft, buildStudio } from './studio-draft';
 
-const STORAGE_KEY = 'patronly.artist.v1';
+export const ARTIST_STORAGE_KEY = 'patronly.artist.v1';
+const STORAGE_KEY = ARTIST_STORAGE_KEY;
 
 export interface PayoutAccount {
   bank: string;
