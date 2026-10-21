@@ -1,3 +1,5 @@
+import os
+import uuid
 from collections.abc import AsyncIterator
 
 from sqlalchemy import text
@@ -7,6 +9,7 @@ from sqlalchemy.ext.asyncio import (
     async_sessionmaker,
     create_async_engine,
 )
+from sqlalchemy.pool import NullPool
 
 from app.config import get_settings
 
@@ -21,14 +24,21 @@ def get_engine() -> AsyncEngine | None:
         url = get_settings().database_url
         if not url:
             return None
-        _engine = create_async_engine(
-            url,
-            pool_pre_ping=True,
-            # Supabase's pooler (PgBouncer) does not support prepared statement caching.
-            connect_args={"statement_cache_size": 0},
-        )
+        _engine = create_async_engine(url, **_engine_options())
         _sessionmaker = async_sessionmaker(_engine, expire_on_commit=False)
     return _engine
+
+
+def _engine_options() -> dict:
+    # Supabase's pooler (PgBouncer) does not support prepared statement caching.
+    connect_args: dict = {"statement_cache_size": 0}
+    if os.environ.get("VERCEL"):
+        # Serverless: each request may run in a fresh instance, so don't keep connections
+        # open between requests, and give prepared statements unique names so they don't
+        # clash on Supabase's transaction pooler.
+        connect_args["prepared_statement_name_func"] = lambda: f"__asyncpg_{uuid.uuid4()}__"
+        return {"poolclass": NullPool, "connect_args": connect_args}
+    return {"pool_pre_ping": True, "connect_args": connect_args}
 
 
 async def get_session() -> AsyncIterator[AsyncSession]:

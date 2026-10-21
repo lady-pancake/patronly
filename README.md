@@ -7,9 +7,8 @@ Patronly connects patrons with the artists they love. It starts as a website, wi
 ```
 patronly/
 ├── frontend/   Angular 21 + TypeScript + Tailwind CSS 4 + spartan/ui  → Vercel
-├── backend/    FastAPI + Strawberry GraphQL + SQLAlchemy + Alembic      → Render
+├── backend/    FastAPI + Strawberry GraphQL + SQLAlchemy + Alembic      → Vercel (serverless)
 │                └── Postgres database                                  → Supabase
-├── render.yaml            Render Blueprint for the API
 └── .github/workflows/     CI: frontend tests + build, backend lint + tests + migrations
 ```
 
@@ -77,47 +76,49 @@ alembic revision --autogenerate -m "describe the change"
 alembic upgrade head
 ```
 
-On Render, migrations run automatically each time the API starts.
+Migrations don't run on deploy. Apply them to Supabase before (or right after) pushing a change that needs them: run `alembic upgrade head` with `DATABASE_URL` pointing at Supabase, or apply the SQL from `alembic upgrade head --sql` in the Supabase SQL editor.
 
 ## Environment variables
 
 | Where | Variable | Example | Notes |
 | --- | --- | --- | --- |
-| Render (API) | `DATABASE_URL` | `postgresql://postgres.<ref>:<password>@aws-0-<region>.pooler.supabase.com:5432/postgres` | Supabase **Session pooler** string. `postgresql://` is switched to the async driver automatically. |
-| Render (API) | `CORS_ORIGINS` | `https://patronly.vercel.app` | Comma separated. Your Vercel production URL (and custom domain later). |
-| Render (API) | `CORS_ORIGIN_REGEX` | `https://patronly-.*\.vercel\.app` | Optional. Lets Vercel preview deployments call the API. |
-| Render (API) | `ENVIRONMENT` | `production` | Set by `render.yaml`. Hides GraphiQL in production. |
-| Vercel (web) | `NG_APP_GRAPHQL_URL` | `https://patronly-api.onrender.com/graphql` | Your Render service URL plus `/graphql`. |
+| Vercel (API) | `DATABASE_URL` | `postgresql://postgres.<ref>:<password>@aws-0-<region>.pooler.supabase.com:6543/postgres` | Supabase **Transaction pooler** string (port 6543), which suits serverless. `postgresql://` is switched to the async driver automatically. |
+| Vercel (API) | `CORS_ORIGINS` | `https://patronly.vercel.app` | Comma separated. The web app's production URL (and custom domain later). |
+| Vercel (API) | `CORS_ORIGIN_REGEX` | `https://patronly-.*\.vercel\.app` | Optional. Lets Vercel preview deployments call the API. |
+| Vercel (API) | `ENVIRONMENT` | `production` | Hides GraphiQL in production. |
+| Vercel (web) | `NG_APP_GRAPHQL_URL` | `https://patronly-api.vercel.app/graphql` | The API project's URL plus `/graphql`. |
 
-Examples live in `backend/.env.example` and `frontend/.env.example`. Never commit real `.env` files.
+Locally, `backend/.env` can use either the Session pooler (port 5432) or the Transaction pooler string. Examples live in `backend/.env.example` and `frontend/.env.example`. Never commit real `.env` files.
 
 ## Deploying (one-time setup)
 
-Do these in order, because each step needs a value from the one before.
+The API and the web app are two Vercel projects built from the same repo, one with Root Directory `backend` and one with `frontend`.
 
 ### 1. Supabase (database)
 
-1. Create a project at https://supabase.com/dashboard. Save the database password somewhere safe.
-2. Open **Connect** at the top of the project and copy the **Session pooler** connection string. Put your password in place of `[YOUR-PASSWORD]`.
-   Use the session pooler, not the direct connection: Render only speaks IPv4, and Supabase's direct connection is IPv6.
+1. Open **Connect** at the top of the Supabase project and copy the **Transaction pooler** connection string. Put the database password in place of `[YOUR-PASSWORD]`. (Forgot it? Project Settings → Database → Reset database password.)
+2. Make sure the schema is up to date (see Database migrations above).
 
-### 2. Render (API)
+### 2. Vercel (API)
 
-1. At https://dashboard.render.com choose **New → Blueprint** and connect the `lady-pancake/patronly` GitHub repo. Render reads `render.yaml` and proposes the `patronly-api` service.
-2. When asked, fill in `DATABASE_URL` (from step 1). Leave `CORS_ORIGINS` as `http://localhost:4200` for now.
-3. Deploy. When it is live, open `https://<your-service>.onrender.com/health`. You should see `"database":"ok"`.
+1. At https://vercel.com/new import the `lady-pancake/patronly` repo and name the project `patronly-api`.
+2. Set **Root Directory** to `backend`. Vercel installs `requirements.txt` and serves `api/index.py`; `backend/vercel.json` routes every path to it.
+3. Add the environment variables `DATABASE_URL` (from step 1), `ENVIRONMENT=production` and, for now, `CORS_ORIGINS=http://localhost:4200`.
+4. Deploy, then open `https://<api-project>.vercel.app/health`. You should see `"database":"ok"`.
 
-The free plan sleeps after 15 minutes without traffic, so the first request after a quiet spell takes up to about a minute.
+On Vercel the API closes its database connection after each request (it detects the `VERCEL` environment variable), so it doesn't run out of connections when many requests come in at once.
 
 ### 3. Vercel (web)
 
-1. At https://vercel.com/new import the `lady-pancake/patronly` repo.
+1. Import the same repo again as a second project, `patronly`.
 2. Set **Root Directory** to `frontend`. Vercel picks up `frontend/vercel.json` for the rest.
-3. Add the environment variable `NG_APP_GRAPHQL_URL` = `https://<your-service>.onrender.com/graphql`.
+3. Add `NG_APP_GRAPHQL_URL` = `https://<api-project>.vercel.app/graphql`.
 4. Deploy and note the production URL.
 
 ### 4. Connect them
 
-Back in Render, set `CORS_ORIGINS` to your Vercel URL (for example `https://patronly.vercel.app`) and, if you want previews to work, `CORS_ORIGIN_REGEX` to `https://patronly-.*\.vercel\.app`. Save, let it redeploy, then open the Vercel site. The System status card should show the API and database as `ok`.
+In the API project, set `CORS_ORIGINS` to the web app's URL (for example `https://patronly.vercel.app`) and, if you want previews to work, `CORS_ORIGIN_REGEX` to `https://patronly-.*\.vercel\.app`. Redeploy the API, then open the web app. The System status card should show the API and database as `ok`.
 
-After this, every push to `main` redeploys both, and Vercel builds a preview for each pull request.
+After this, every push to `main` redeploys both, and Vercel builds previews for each pull request.
+
+Vercel's free Hobby plan is for non-commercial use. Move both projects to Pro before Patronly takes real payments.
