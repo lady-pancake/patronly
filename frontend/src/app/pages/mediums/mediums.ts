@@ -1,0 +1,26 @@
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { MEDIUMS } from '../../core/data/seed';
+import { BackLink } from '../../shared/back-link';
+import { MediumTile } from '../../shared/medium-tile';
+
+@Component({
+  selector: 'app-mediums',
+  imports: [BackLink, MediumTile],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: `
+    <main class="mx-auto flex max-w-[1400px] flex-col gap-10 px-4 pt-8 pb-24 sm:px-8">
+      <app-back-link to="/">Home</app-back-link>
+      <h1 class="font-serif text-[clamp(44px,6vw,64px)] leading-none font-normal tracking-[-.02em]">
+        All mediums
+      </h1>
+      <div class="grid grid-cols-[repeat(auto-fill,minmax(130px,1fr))] gap-x-4 gap-y-6">
+        @for (m of mediums; track m.name) {
+          <app-medium-tile [name]="m.name" />
+        }
+      </div>
+    </main>
+  `,
+})
+export class Mediums {
+  protected readonly mediums = MEDIUMS;
+}
