@@ -33,7 +33,10 @@ import { SiteSearch } from './site-search';
   },
   template: `
     <div class="mx-auto flex h-[72px] max-w-[1400px] items-center gap-3 px-4 sm:gap-6 sm:px-8">
-      <a routerLink="/" class="shrink-0 font-serif text-[26px] tracking-tight">Patronly</a>
+      <a routerLink="/" class="flex shrink-0 items-center gap-2.5" aria-label="Patronly home">
+        <img src="favicon.svg" alt="" class="size-8" />
+        <span class="font-serif text-[26px] tracking-tight max-sm:hidden">Patronly</span>
+      </a>
       <app-site-search class="mx-auto max-w-[640px]" />
       <nav class="flex shrink-0 items-center gap-1" aria-label="Main">
         @if (viewer.can('VIEW_DASHBOARD')) {
