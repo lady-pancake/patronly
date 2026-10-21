@@ -106,22 +106,9 @@
           >
             {{ matches().length }} {{ matches().length === 1 ? 'artist' : 'artists' }}
           </h1>
-          <div class="flex flex-wrap gap-2">
-            @for (c of chips(); track c) {
-              <span appTag class="!h-[30px]">{{ c }}</span>
-            } @empty {
-              <span appTag class="!h-[30px]">Anything goes</span>
-            }
-          </div>
         </div>
         <div class="flex flex-wrap gap-2">
-          <button
-            type="button"
-            (click)="step.set(0)"
-            class="h-10 rounded-md border bg-background px-4.5 text-sm font-medium hover:bg-muted"
-          >
-            Edit criteria
-          </button>
+          <app-filter-summary [groups]="filterGroups()" (edit)="step.set(0)" />
           <button
             type="button"
             (click)="save()"

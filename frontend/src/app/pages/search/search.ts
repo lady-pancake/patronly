@@ -10,13 +10,13 @@ import { PatronStore } from '../../core/data/patron-store';
 import { MEDIUMS, WIZARD_STEPS } from '../../core/data/seed';
 import { ArtistCard } from '../../shared/artist-card';
 import { answersFromParams } from '../../shared/search-params';
-import { Tag } from '../../shared/tag';
+import { FilterSummary, type FilterGroup } from '../../shared/filter-summary';
 import { SaveSearchDialog } from './save-search-dialog';
 
 /** "New search": five quick questions, then matching artists. */
 @Component({
   selector: 'app-search',
-  imports: [NgIcon, ArtistCard, Tag],
+  imports: [NgIcon, ArtistCard, FilterSummary],
   providers: [provideIcons({ lucideArrowLeft, lucideCheck })],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './search.html',
@@ -45,6 +45,17 @@ export class Search {
   );
   protected readonly matches = computed(() => matchArtists(this.answers()));
   protected readonly chips = computed(() => searchChips(this.answers()));
+  protected readonly filterGroups = computed<FilterGroup[]>(() => {
+    const a = this.answers();
+    const one = (v: string | null | undefined) => (v ? [v] : []);
+    return [
+      { label: 'Medium', values: a.mediums },
+      { label: 'For', values: one(a.purpose) },
+      { label: 'Size', values: one(a.size) },
+      { label: 'Budget', values: one(a.budget) },
+      { label: 'Timeline', values: one(a.timeline) },
+    ];
+  });
   private readonly sig = computed(() => this.chips().join('|'));
   protected readonly isSaved = computed(() => this.store.saved().some((s) => s.sig === this.sig()));
 

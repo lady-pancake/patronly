@@ -1,0 +1,46 @@
+<button
+  type="button"
+  (click)="open.set(!open())"
+  [attr.aria-expanded]="open()"
+  [attr.aria-controls]="panelId"
+  class="flex h-10 items-center gap-2 rounded-md border bg-background pr-3 pl-3.5 text-sm font-medium hover:bg-muted"
+>
+  <ng-icon name="lucideSlidersHorizontal" size="15" />
+  @if (count()) {
+    {{ count() }} {{ count() === 1 ? 'filter' : 'filters' }}
+  } @else {
+    Anything goes
+  }
+  <ng-icon
+    name="lucideChevronDown"
+    size="15"
+    class="text-muted-foreground transition-transform"
+    [class.rotate-180]="open()"
+  />
+</button>
+@if (open()) {
+  <div
+    [id]="panelId"
+    class="absolute top-full left-0 z-30 sm:right-0 sm:left-auto mt-2 flex w-[min(320px,calc(100vw-32px))] flex-col gap-4 rounded-2xl border bg-background p-5 shadow-lg"
+  >
+    @if (chosen().length) {
+      <dl class="flex flex-col gap-3">
+        @for (g of chosen(); track g.label) {
+          <div class="grid grid-cols-[84px_minmax(0,1fr)] gap-3 text-sm">
+            <dt class="text-muted-foreground">{{ g.label }}</dt>
+            <dd class="font-medium">{{ g.values.join(', ') }}</dd>
+          </div>
+        }
+      </dl>
+    } @else {
+      <p class="text-sm text-muted-foreground">No filters yet, so every artist is shown.</p>
+    }
+    <button
+      type="button"
+      (click)="editCriteria()"
+      class="h-9 self-start rounded-md bg-secondary px-4 text-sm font-semibold hover:opacity-85"
+    >
+      Edit criteria
+    </button>
+  </div>
+}
