@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, input, signal } from '@angular/core';
 import { NgTemplateOutlet } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { NgIcon, provideIcons } from '@ng-icons/core';
@@ -29,6 +29,8 @@ interface Suggestion {
 })
 export class SiteSearch {
   private readonly router = inject(Router);
+  /** Show every medium before anything is typed (used by the phone search). */
+  readonly browseWhenEmpty = input(false);
   protected readonly query = signal('');
   protected readonly open = signal(false);
 
@@ -46,6 +48,13 @@ export class SiteSearch {
             link: ['/mediums', m.name.toLowerCase()],
           })),
   );
+
+  protected readonly allMediums: Suggestion[] = MEDIUMS.map((m) => ({
+    kind: 'medium',
+    name: m.name,
+    thumb: `url('${mediumArt(m.name)}') center/120% no-repeat`,
+    link: ['/mediums', m.name.toLowerCase()],
+  }));
 
   protected readonly artists = computed<Suggestion[]>(() =>
     !this.q()

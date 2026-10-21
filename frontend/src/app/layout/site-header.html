@@ -23,7 +23,7 @@
       class="absolute inset-x-0 top-0 z-30 flex h-[72px] items-center gap-2 bg-page px-4 sm:hidden"
       (keydown.escape)="searchOpen.set(false)"
     >
-      <app-site-search class="flex-1" />
+      <app-site-search class="flex-1" [browseWhenEmpty]="true" />
       <button
         type="button"
         (click)="searchOpen.set(false)"

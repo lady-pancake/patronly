@@ -3,11 +3,12 @@ import { RouterLink } from '@angular/router';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideArrowRight } from '@ng-icons/lucide';
 import { artistById, tone } from '../../core/data/catalog';
-import type { Artist } from '../../core/data/models';
+import type { Artist, SavedSearch } from '../../core/data/models';
 import { PatronStore } from '../../core/data/patron-store';
 import { FEED, MEDIUMS } from '../../core/data/seed';
 import { MediumTile } from '../../shared/medium-tile';
 import { SearchCard } from '../../shared/search-card';
+import { searchQueryParams } from '../../shared/search-params';
 import { FEATURED_IDS } from '../featured/featured-content';
 
 @Component({
@@ -26,6 +27,10 @@ export class Home {
     const base = tone(artist.hue, p.l, artist.c);
     return { ...p, artist, img: p.src ? `${base} url('${p.src}') center/cover no-repeat` : base };
   });
+
+  protected searchParams(s: SavedSearch) {
+    return searchQueryParams(s.wiz, s.name);
+  }
 
   protected featuredBg(id: string) {
     return `#EEE8DD url('/images/featured/${id}.jpg') center/cover no-repeat`;

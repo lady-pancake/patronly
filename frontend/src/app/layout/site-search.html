@@ -12,6 +12,20 @@
   aria-label="Search artists, mediums, cities"
   class="min-w-0 flex-1 bg-transparent text-sm outline-none placeholder:text-muted-foreground"
 />
+@if (open() && !query().trim() && browseWhenEmpty()) {
+  <div
+    class="absolute top-[calc(100%+6px)] right-0 left-0 z-40 flex max-h-[70dvh] flex-col overflow-auto rounded-xl bg-popover p-1.5 text-popover-foreground shadow-[0_12px_32px_oklch(0_0_0/.12)] ring-1 ring-black/6"
+    role="listbox"
+    aria-label="Browse by medium"
+  >
+    <span class="eyebrow px-2.5 pt-2 pb-1 !text-[11px]">Browse by medium</span>
+    <div class="grid grid-cols-2 gap-0.5">
+      @for (s of allMediums; track s.name) {
+        <ng-container *ngTemplateOutlet="row; context: { $implicit: s }" />
+      }
+    </div>
+  </div>
+}
 @if (open() && query().trim()) {
   <div
     class="absolute top-[calc(100%+6px)] right-0 left-0 z-40 flex max-h-[420px] flex-col gap-0.5 overflow-auto rounded-xl bg-popover p-1.5 text-popover-foreground shadow-[0_12px_32px_oklch(0_0_0/.12)] ring-1 ring-black/6"

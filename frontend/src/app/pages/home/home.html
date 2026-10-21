@@ -6,41 +6,61 @@
   </h1>
 
   <section
-    class="grid items-center gap-12 rounded-4xl bg-surface p-6 ring-1 ring-black/4 sm:p-12 lg:grid-cols-[minmax(260px,1fr)_minmax(0,2.4fr)]"
+    class="grid items-center gap-4 rounded-4xl bg-surface p-5 ring-1 ring-black/4 sm:gap-12 sm:p-12 lg:grid-cols-[minmax(260px,1fr)_minmax(0,2.4fr)]"
   >
-    <div class="flex flex-col items-start gap-4">
-      <div class="eyebrow">Featured artists · October 2026</div>
-      <h2 class="font-serif text-5xl leading-none font-normal tracking-[-.02em]">
-        The <em>slow</em> season
-      </h2>
-      <p class="text-[15px] leading-relaxed text-muted-foreground">
+    <div class="flex flex-col items-start gap-4 max-sm:gap-1.5">
+      <div class="eyebrow max-sm:!text-[11px]">Featured artists · October 2026</div>
+      <div class="flex w-full items-center justify-between gap-3">
+        <h2 class="font-serif text-5xl leading-none font-normal tracking-[-.02em] max-sm:text-3xl">
+          The <em>slow</em> season
+        </h2>
+        <a
+          routerLink="/featured"
+          class="flex h-9 shrink-0 items-center rounded-md border bg-background px-3.5 text-[13px] font-medium hover:bg-muted sm:hidden"
+          >See more</a
+        >
+      </div>
+      <p class="text-[15px] leading-relaxed text-muted-foreground max-sm:hidden">
         Four painters working slowly in oil, ink and watercolour, each taking a small number of
         commissions this season.
       </p>
-      <div class="text-[13px]">Curated by <span class="font-semibold">Adaeze Clarke</span></div>
+      <div class="text-[13px] max-sm:hidden">
+        Curated by <span class="font-semibold">Adaeze Clarke</span>
+      </div>
       <a
         routerLink="/featured"
-        class="mt-2 flex h-10 items-center rounded-md border bg-background px-5 text-sm font-medium hover:bg-muted"
+        class="mt-2 flex h-10 items-center rounded-md border bg-background px-5 text-sm font-medium hover:bg-muted max-sm:hidden"
         >See more</a
       >
     </div>
-    <div class="grid grid-cols-2 gap-5 sm:grid-cols-[repeat(auto-fit,minmax(160px,1fr))]">
+    <div
+      class="grid grid-cols-4 gap-2.5 sm:grid-cols-[repeat(auto-fit,minmax(160px,1fr))] sm:gap-5"
+    >
       @for (a of featured; track a.id) {
         <a
           [routerLink]="['/artists', a.id]"
-          class="flex flex-col gap-3 transition-transform duration-200 ease-soft hover:-translate-y-1"
+          class="flex min-w-0 flex-col gap-1.5 transition-transform duration-200 ease-soft hover:-translate-y-1 sm:gap-3"
         >
-          <div class="aspect-square w-full rounded-3xl" [style.background]="featuredBg(a.id)"></div>
+          <div
+            class="aspect-square w-full rounded-2xl sm:rounded-3xl"
+            [style.background]="featuredBg(a.id)"
+          ></div>
           <div>
-            <div class="font-serif text-[22px] leading-tight">{{ a.name }}</div>
-            <div class="text-[13px] text-muted-foreground">{{ a.role }} · {{ a.city }}</div>
+            <div class="truncate font-serif text-[22px] leading-tight max-sm:text-sm">
+              <span class="sm:hidden">{{ a.name.split(' ')[0] }}</span
+              ><span class="max-sm:hidden">{{ a.name }}</span>
+            </div>
+            <div class="text-[13px] text-muted-foreground max-sm:hidden">
+              {{ a.role }} · {{ a.city }}
+            </div>
           </div>
         </a>
       }
     </div>
   </section>
 
-  <section class="flex min-w-0 flex-col gap-5">
+  <!-- On phones, mediums are offered in the search dropdown instead. -->
+  <section class="flex min-w-0 flex-col gap-5 max-sm:hidden">
     <div class="flex items-baseline justify-between gap-4">
       <h2 class="font-serif text-4xl font-normal tracking-[-.01em]">Browse by <em>medium</em></h2>
       <a
@@ -57,7 +77,37 @@
   </section>
 
   <section class="grid items-start gap-12 lg:grid-cols-[minmax(0,1.6fr)_minmax(300px,1fr)]">
-    <div class="flex flex-col gap-10">
+    <section
+      aria-labelledby="recent-title"
+      class="flex flex-col rounded-4xl bg-card p-5 shadow-[0_2px_8px_oklch(0_0_0/.05)] ring-1 ring-black/6 sm:hidden"
+    >
+      <div class="flex items-center justify-between gap-3 pb-2">
+        <h2 id="recent-title" class="eyebrow !text-[11px]">Recent searches</h2>
+        <a routerLink="/saved" class="text-[13px] font-medium underline underline-offset-4"
+          >See all</a
+        >
+      </div>
+      @for (s of store.searches().slice(0, 3); track s.name) {
+        <a
+          routerLink="/search"
+          [queryParams]="searchParams(s)"
+          class="flex items-center justify-between gap-3 border-t py-3 first-of-type:border-t-0"
+        >
+          <span class="flex min-w-0 flex-col">
+            <span class="truncate font-serif text-lg leading-tight">{{ s.name }}</span>
+            <span class="text-xs text-muted-foreground"
+              >{{ s.ids.length }} {{ s.ids.length === 1 ? 'match' : 'matches' }}</span
+            >
+          </span>
+          <ng-icon name="lucideArrowRight" size="16" class="shrink-0 text-muted-foreground" />
+        </a>
+      } @empty {
+        <a routerLink="/search" class="py-2 text-sm underline underline-offset-4"
+          >Start a new search</a
+        >
+      }
+    </section>
+    <div class="flex flex-col gap-10 max-sm:hidden">
       <div class="eyebrow">Recent searches</div>
       @for (s of store.searches(); track s.name) {
         <app-search-card [search]="s" layout="home" />
