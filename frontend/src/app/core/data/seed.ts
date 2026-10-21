@@ -219,6 +219,8 @@ export const SEED_ARTISTS: ArtistSeed[] = [
       'Digital files included',
     ],
     quote: 'I draw buildings like they have personalities, because they do.',
+    portrait: '/images/portraits/june.jpg',
+    process: '/images/process/june-process.jpg',
     works: [
       ['Loch, two colours', 'Watercolour on paper, 36×54cm', '/images/works/june-1.jpg'],
       ['Isla, reading', 'Watercolour and crayon, 40×56cm', '/images/works/june-2.jpg'],
