@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { BrnDialogRef } from '@spartan-ng/brain/dialog';
+import { BrnDialogRef, BrnDialogTitle } from '@spartan-ng/brain/dialog';
 import { ArtistStore, type PayoutAccount } from '../../core/data/artist-store';
 
 const BUTTON = 'h-10 rounded-md px-4 text-[13px] font-medium';
@@ -8,12 +8,14 @@ const BUTTON = 'h-10 rounded-md px-4 text-[13px] font-medium';
 /** Edit where payouts are sent. */
 @Component({
   selector: 'app-payout-dialog',
-  imports: [FormsModule],
+  imports: [BrnDialogTitle, FormsModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <form class="flex flex-col gap-5" (ngSubmit)="save()">
       <div class="flex flex-col gap-1.5">
-        <h2 class="font-serif text-[32px] leading-none font-normal">Payout account</h2>
+        <h2 brnDialogTitle class="font-serif text-[32px] leading-none font-normal">
+          Payout account
+        </h2>
         <span class="text-[13px] text-muted-foreground"
           >Where your deposits and final payments are sent. Changes apply from the next
           payday.</span

@@ -21,6 +21,7 @@ interface Suggestion {
   providers: [provideIcons({ lucideSearch })],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
+    'data-focus-ring': '',
     class:
       'relative flex h-11 min-w-0 flex-1 items-center gap-2.5 rounded-md border border-input bg-background pr-1.5 pl-4',
   },
@@ -28,6 +29,7 @@ interface Suggestion {
     <ng-icon name="lucideSearch" size="16" class="shrink-0 text-muted-foreground" />
     <input
       type="search"
+      data-focus="parent"
       [value]="query()"
       (input)="query.set($any($event.target).value); open.set(true)"
       (focus)="open.set(true)"

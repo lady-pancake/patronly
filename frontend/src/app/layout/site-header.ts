@@ -1,4 +1,12 @@
-import { ChangeDetectionStrategy, Component, ElementRef, inject, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  afterNextRender,
+  inject,
+  Injector,
+  signal,
+} from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import {
@@ -31,11 +39,17 @@ import { SiteSearch } from './site-search';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
+    role: 'banner',
     class: 'sticky top-0 z-20 block border-b bg-page/85 backdrop-blur-md',
     '(document:click)': 'closeIfOutside($event)',
-    '(document:keydown.escape)': 'menuOpen.set(false)',
   },
   template: `
+    <a
+      href="#"
+      (click)="skipToContent($event)"
+      class="absolute top-3.5 left-4 z-50 -translate-y-24 rounded-md bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground focus:translate-y-0"
+      >Skip to content</a
+    >
     <div class="mx-auto flex h-[72px] max-w-[1400px] items-center gap-3 px-4 sm:gap-6 sm:px-8">
       <a routerLink="/" class="flex shrink-0 items-center gap-2.5" aria-label="Patronly home">
         <img src="favicon.svg" alt="" class="size-8" />
@@ -85,7 +99,8 @@ import { SiteSearch } from './site-search';
         <div class="relative ml-1.5">
           <button
             type="button"
-            (click)="menuOpen.set(!menuOpen())"
+            (click)="toggleMenu()"
+            (keydown.arrowDown)="openMenu($event)"
             aria-haspopup="menu"
             [attr.aria-expanded]="menuOpen()"
             [attr.aria-label]="'Account menu for ' + (viewer.viewer()?.name ?? 'guest')"
@@ -96,6 +111,8 @@ import { SiteSearch } from './site-search';
           @if (menuOpen()) {
             <div
               role="menu"
+              aria-label="Account"
+              (keydown)="menuKey($event)"
               class="absolute top-12 right-0 flex w-60 flex-col rounded-3xl bg-card p-2 text-sm shadow-[0_8px_30px_oklch(0_0_0/.14)] ring-1 ring-black/5"
             >
               <div class="px-3 pt-2 pb-3">
@@ -162,6 +179,57 @@ export class SiteHeader {
     { id: 'patron', label: 'Patron' },
     { id: 'artist', label: 'Artist' },
   ];
+
+  private readonly injector = inject(Injector);
+
+  protected toggleMenu() {
+    if (this.menuOpen()) this.closeMenu();
+    else this.openMenu();
+  }
+
+  /** Opens the menu and moves focus to its first item, as menus do for keyboard users. */
+  protected openMenu(event?: Event) {
+    event?.preventDefault();
+    this.menuOpen.set(true);
+    afterNextRender(() => this.items()[0]?.focus(), { injector: this.injector });
+  }
+
+  private closeMenu(returnFocus = true) {
+    this.menuOpen.set(false);
+    if (returnFocus)
+      this.host.nativeElement.querySelector<HTMLElement>('[aria-haspopup=menu]')?.focus();
+  }
+
+  private items(): HTMLElement[] {
+    return [...this.host.nativeElement.querySelectorAll<HTMLElement>('[role^=menuitem]')];
+  }
+
+  /** Arrow keys, Home and End move between items; Escape closes; Tab leaves the menu. */
+  protected menuKey(event: KeyboardEvent) {
+    const items = this.items();
+    const i = items.indexOf(document.activeElement as HTMLElement);
+    const go = (n: number) => {
+      event.preventDefault();
+      items[(n + items.length) % items.length]?.focus();
+    };
+    if (event.key === 'ArrowDown') go(i + 1);
+    else if (event.key === 'ArrowUp') go(i - 1);
+    else if (event.key === 'Home') go(0);
+    else if (event.key === 'End') go(items.length - 1);
+    else if (event.key === 'Escape') {
+      event.preventDefault();
+      this.closeMenu();
+    } else if (event.key === 'Tab') this.closeMenu(false);
+  }
+
+  /** Moves focus past the header to the page's main content. */
+  protected skipToContent(event: Event) {
+    event.preventDefault();
+    const main = document.querySelector<HTMLElement>('main');
+    if (!main) return;
+    main.tabIndex = -1;
+    main.focus();
+  }
 
   protected closeIfOutside(event: Event) {
     if (!this.host.nativeElement.contains(event.target as Node)) this.menuOpen.set(false);

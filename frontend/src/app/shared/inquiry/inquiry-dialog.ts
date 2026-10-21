@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideCheck } from '@ng-icons/lucide';
-import { BrnDialogRef, injectBrnDialogContext } from '@spartan-ng/brain/dialog';
+import { BrnDialogRef, BrnDialogTitle, injectBrnDialogContext } from '@spartan-ng/brain/dialog';
 import { HlmTextarea } from '@spartan-ng/helm/textarea';
 import { PatronStore } from '../../core/data/patron-store';
 import { FilterChips } from '../filter-chips';
@@ -11,7 +11,7 @@ import type { InquiryContext } from './inquiry-launcher';
 
 @Component({
   selector: 'app-inquiry-dialog',
-  imports: [FormsModule, NgIcon, FilterChips, HlmTextarea],
+  imports: [BrnDialogTitle, FormsModule, NgIcon, FilterChips, HlmTextarea],
   providers: [provideIcons({ lucideCheck })],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
@@ -19,7 +19,10 @@ import type { InquiryContext } from './inquiry-launcher';
       <div class="flex flex-col gap-8">
         <div class="flex flex-col gap-1.5 pr-10">
           <div class="eyebrow">New inquiry</div>
-          <h2 class="font-serif text-[38px] leading-[1.1] font-normal tracking-[-.02em]">
+          <h2
+            brnDialogTitle
+            class="font-serif text-[38px] leading-[1.1] font-normal tracking-[-.02em]"
+          >
             Send an inquiry to <em>{{ artist.name }}</em>
           </h2>
         </div>
@@ -99,7 +102,10 @@ import type { InquiryContext } from './inquiry-launcher';
     } @else {
       <div class="flex flex-col items-center gap-5 pt-10 pb-4 text-center">
         <span class="size-16 rounded-full" [style.background]="artist.bg"></span>
-        <h2 class="font-serif text-[44px] leading-[1.05] font-normal tracking-[-.02em]">
+        <h2
+          brnDialogTitle
+          class="font-serif text-[44px] leading-[1.05] font-normal tracking-[-.02em]"
+        >
           Your inquiry is <em>on its way.</em>
         </h2>
         <p class="max-w-[420px] text-[15px] leading-relaxed text-muted-foreground">

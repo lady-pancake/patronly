@@ -31,6 +31,7 @@ import { SaveSearchDialog } from './save-search-dialog';
             <div
               class="h-1 overflow-hidden rounded-full bg-secondary"
               role="progressbar"
+              aria-label="Search progress"
               [attr.aria-valuenow]="step() + 1"
               aria-valuemin="1"
               [attr.aria-valuemax]="steps.length"

@@ -52,7 +52,7 @@ const COLUMNS = OFFSETS.map((offset, i) => ({
   selector: 'app-login',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div class="relative h-dvh min-h-[720px] overflow-hidden bg-[#EAE4DD]">
+    <main class="relative h-dvh min-h-[720px] overflow-hidden bg-[#EAE4DD]">
       <div class="absolute inset-0 flex justify-center gap-6 sm:gap-11" aria-hidden="true">
         @for (col of columns; track $index) {
           <div class="max-w-[175px] min-w-0 flex-1" [style.margin-top]="col.offset">
@@ -178,7 +178,7 @@ const COLUMNS = OFFSETS.map((offset, i) => ({
           </form>
         </div>
       }
-    </div>
+    </main>
   `,
 })
 export class Login {

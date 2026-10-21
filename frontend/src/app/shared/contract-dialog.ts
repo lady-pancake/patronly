@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideFileText, lucideUpload, lucideX } from '@ng-icons/lucide';
-import { BrnDialogRef, injectBrnDialogContext } from '@spartan-ng/brain/dialog';
+import { BrnDialogRef, BrnDialogTitle, injectBrnDialogContext } from '@spartan-ng/brain/dialog';
 import { HlmDialogService } from '@spartan-ng/helm/dialog';
 
 export interface ContractContext {
@@ -28,7 +28,7 @@ const kb = (n: number) =>
  */
 @Component({
   selector: 'app-contract-dialog',
-  imports: [NgIcon],
+  imports: [BrnDialogTitle, NgIcon],
   providers: [provideIcons({ lucideFileText, lucideUpload, lucideX })],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
@@ -38,7 +38,9 @@ const kb = (n: number) =>
           class="inline-flex h-6 items-center self-start rounded-md bg-highlight px-2.5 text-xs font-semibold"
           >Coming soon</span
         >
-        <h2 class="font-serif text-[32px] leading-none font-normal">Create a contract</h2>
+        <h2 brnDialogTitle class="font-serif text-[32px] leading-none font-normal">
+          Create a contract
+        </h2>
         <p class="text-[13px] leading-relaxed text-muted-foreground">
           Contract templates for {{ ctx.patron }} are coming soon. For now, add your own contract
           and we’ll send it with the conversation.
