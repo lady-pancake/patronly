@@ -222,6 +222,7 @@ export const SEED_ARTISTS: ArtistSeed[] = [
       'Digital files included',
     ],
     quote: 'I draw buildings like they have personalities, because they do.',
+    cover: '/images/covers/june-cover.jpg',
     portrait: '/images/portraits/june.jpg',
     process: '/images/process/june-process.jpg',
     works: [
@@ -765,6 +766,28 @@ function fillCatalogue(list: ArtistSeed[]): void {
       'Made to order',
       'Ships worldwide',
     ];
+  }
+  const w = list.find((a) => a.medium === 'Woodwork');
+  if (w) {
+    Object.assign(w, {
+      cover: '/images/covers/arlo-cover.jpg',
+      portrait: '/images/portraits/arlo.jpg',
+      process: '/images/process/arlo-process.jpg',
+      quote: 'Every board has a grain to follow. I try not to argue with it.',
+      tags: ['Hand carving', 'Turned vessels', 'Serving boards', 'Live edge and resin', 'Ships worldwide'],
+      works: [
+        ['Interlace panel', 'Carved oak relief, 40×60cm', '/images/works/arlo-1.jpg'],
+        ['Scroll frame', 'Carved teak panel, 61×44cm', '/images/works/arlo-2.jpg'],
+        ['Bud vase and tray', 'Walnut with resin inlay', '/images/works/arlo-3.jpg'],
+        ['Paired serving boards', 'Rosewood, set of 2', '/images/works/arlo-4.jpg'],
+        ['Gourd vase', 'Turned maple with bark seam, 22cm', '/images/works/arlo-5.jpg'],
+        ['Bark vessel', 'Pine bark on reclaimed oak', '/images/works/arlo-6.jpg'],
+      ],
+      bio: [
+        'Arlo works from a shared woodshop in Brooklyn, hand-carving relief panels and turning vessels from offcuts and storm-felled trees.',
+        'Every commission starts with a pencil drawing on the board itself, so you see the grain and the layout before the first cut.',
+      ],
+    });
   }
 }
 fillCatalogue(SEED_ARTISTS);
