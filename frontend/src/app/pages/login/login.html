@@ -17,16 +17,16 @@
     class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_34%_40%_at_50%_50%,rgb(234_228_221/.95)_45%,rgb(234_228_221/0)_100%)] max-lg:hidden"
   ></div>
   <div
-    class="pointer-events-none relative flex min-h-dvh flex-col items-center justify-center gap-6 px-6 py-8 text-center short:gap-3 short:py-3 lg:h-full lg:min-h-0 lg:gap-7"
+    class="pointer-events-none relative flex min-h-dvh flex-col items-center justify-center gap-6 px-4 py-8 text-center max-[260px]:px-2 short:gap-3 short:py-3 lg:h-full lg:min-h-0 lg:gap-7"
     [attr.inert]="gateOpen() ? '' : null"
   >
     <h1
-      class="font-serif text-[clamp(56px,8vw,112px)] leading-[.95] font-normal tracking-[-.03em] italic max-lg:text-primary-foreground short:text-4xl"
+      class="font-serif text-[clamp(56px,8vw,112px)] max-sm:text-[clamp(36px,15vw,56px)] leading-[.95] font-normal tracking-[-.03em] italic max-lg:text-primary-foreground short:text-4xl"
     >
       Patronly
     </h1>
     <div
-      class="pointer-events-auto flex w-full max-w-[360px] flex-col gap-4 rounded-4xl bg-card p-6 text-left short:gap-3 short:p-5 shadow-[0_4px_16px_oklch(0_0_0/.08)] ring-1 ring-black/5"
+      class="pointer-events-auto flex w-full max-w-[360px] flex-col gap-4 rounded-4xl bg-card p-5 text-left max-[260px]:p-3 sm:p-6 short:gap-3 short:p-5 shadow-[0_4px_16px_oklch(0_0_0/.08)] ring-1 ring-black/5"
     >
       @if (viewer.viewer(); as v) {
         <span class="text-sm text-muted-foreground"
@@ -41,7 +41,7 @@
             role="radio"
             [attr.aria-checked]="role() === r.id"
             (click)="role.set(r.id)"
-            class="flex min-h-[52px] items-center gap-3 rounded-3xl border px-4 py-3 text-left hover:bg-muted"
+            class="flex min-h-[52px] items-center gap-3 rounded-3xl border px-3.5 py-3 text-left hover:bg-muted max-[260px]:flex-col max-[260px]:items-start sm:px-4"
             [class]="role() === r.id ? 'border-primary' : 'border-border'"
           >
             <span
@@ -52,7 +52,7 @@
                 <span class="size-2 rounded-full bg-primary"></span>
               }
             </span>
-            <span class="flex flex-col gap-0.5">
+            <span class="flex min-w-0 flex-col gap-0.5 break-words">
               <span class="text-sm font-medium">{{ r.label }}</span>
               <span class="text-xs text-muted-foreground">{{ r.desc }}</span>
             </span>
@@ -62,7 +62,7 @@
       <button
         type="button"
         (click)="enter()"
-        class="h-11 rounded-full bg-primary text-sm font-medium text-primary-foreground hover:opacity-85"
+        class="min-h-11 rounded-full bg-primary px-4 py-2 text-sm break-words font-medium text-primary-foreground hover:opacity-85"
       >
         Continue as guest
       </button>
