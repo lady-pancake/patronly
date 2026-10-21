@@ -58,6 +58,10 @@ class GuestPass:
 
 @strawberry.type
 class ViewerQuery:
+    @strawberry.field(description="What each view may do. Public: used to skip the gate locally.")
+    def role_actions(self) -> list[RoleActions]:
+        return role_actions()
+
     @strawberry.field(description="The current guest, or null without a valid guest pass.")
     async def me(self, info: strawberry.Info[Context, None]) -> Viewer | None:
         if info.context.guest_id is None:

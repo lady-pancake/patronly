@@ -1,5 +1,6 @@
-import { Injectable, computed, effect, inject, signal } from '@angular/core';
+import { InjectionToken, Injectable, computed, effect, inject, signal } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
+import { environment } from '../../../environments/environment';
 import { GraphQLService } from '../graphql.service';
 import { GuestSession } from './guest-session';
 
@@ -20,6 +21,12 @@ export interface Viewer {
 
 const VIEWER_FIELDS = 'id name roles { role entitlements }';
 export const ME_QUERY = `query Me { me { ${VIEWER_FIELDS} } }`;
+/** Whether to skip the password gate (local development only; see scripts/set-env.mjs). */
+export const SKIP_GATE = new InjectionToken<boolean>('SKIP_GATE', {
+  factory: () => environment.skipGate,
+});
+
+export const ROLE_ACTIONS_QUERY = `query RoleActions { roleActions { role entitlements } }`;
 export const START_VISIT = `mutation StartVisit($name: String!, $password: String!) {
   startVisit(name: $name, password: $password) { token viewer { ${VIEWER_FIELDS} } }
 }`;
@@ -43,6 +50,7 @@ function readRole(): Role {
 export class ViewerStore {
   private readonly session = inject(GuestSession);
   private readonly gql = inject(GraphQLService);
+  private readonly skipGate = inject(SKIP_GATE);
 
   private readonly _viewer = signal<Viewer | null>(null);
   private readonly _loaded = signal(false);
@@ -88,11 +96,28 @@ export class ViewerStore {
         }
         if (!viewer) this.session.set(null);
       }
+      if (!viewer && this.skipGate && !this.skipped) viewer = await this.localViewer();
       this._viewer.set(viewer);
       this._loaded.set(true);
       return viewer;
     })();
     return this.loading;
+  }
+
+  /** Signed out on purpose during local development: show the gate instead of skipping it. */
+  private skipped = false;
+
+  /** Local development only: a stand-in guest so the password gate is skipped. */
+  private async localViewer(): Promise<Viewer | null> {
+    try {
+      const { roleActions } = await firstValueFrom(
+        this.gql.query<{ roleActions: RoleActions[] }>(ROLE_ACTIONS_QUERY),
+      );
+      return { id: 'local', name: 'Local dev', roles: roleActions };
+    } catch (err) {
+      console.warn('Patronly: couldn’t reach the API to skip the gate.', err);
+      return null;
+    }
   }
 
   /** Resolves once the first check has finished. */
@@ -116,6 +141,7 @@ export class ViewerStore {
   }
 
   signOut(): void {
+    this.skipped = true;
     this.session.set(null);
     this._viewer.set(null);
   }
