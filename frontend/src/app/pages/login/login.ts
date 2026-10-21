@@ -60,8 +60,6 @@ export class Login {
   protected readonly viewer = inject(ViewerStore);
 
   protected readonly columns = COLUMNS;
-  /** A short row of tiles above the title on smaller screens. */
-  protected readonly strip = COLUMNS.slice(0, 5).map((c, i) => c.tiles[i % 2 ? 1 : 0]);
   protected readonly roles: { id: Role; label: string; desc: string }[] = [
     { id: 'patron', label: 'Patron', desc: 'Discover and commission artists' },
     { id: 'artist', label: 'Artist', desc: 'Share your work and take commissions' },

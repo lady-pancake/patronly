@@ -1,5 +1,7 @@
-<main class="relative min-h-dvh overflow-hidden bg-[#EAE4DD] lg:h-dvh lg:min-h-[720px]">
-  <!-- Large screens: eight drifting columns of artwork. Smaller screens keep it still and simple. -->
+<main
+  class="relative min-h-dvh overflow-hidden bg-primary lg:h-dvh lg:min-h-[720px] lg:bg-[#EAE4DD]"
+>
+  <!-- Large screens: eight drifting columns of artwork. Smaller screens: plain plum. -->
   <div class="absolute inset-0 flex justify-center gap-11 max-lg:hidden" aria-hidden="true">
     @for (col of columns; track $index) {
       <div class="max-w-[175px] min-w-0 flex-1" [style.margin-top]="col.offset">
@@ -18,13 +20,8 @@
     class="pointer-events-none relative flex min-h-dvh flex-col items-center justify-center gap-6 px-6 py-8 text-center short:gap-3 short:py-3 lg:h-full lg:min-h-0 lg:gap-7"
     [attr.inert]="gateOpen() ? '' : null"
   >
-    <div class="flex gap-2.5 lg:hidden short:hidden" aria-hidden="true">
-      @for (t of strip; track $index) {
-        <div class="size-12 rounded-xl sm:size-14" [style.background]="t"></div>
-      }
-    </div>
     <h1
-      class="font-serif text-[clamp(56px,8vw,112px)] leading-[.95] font-normal tracking-[-.03em] italic short:text-4xl"
+      class="font-serif text-[clamp(56px,8vw,112px)] leading-[.95] font-normal tracking-[-.03em] italic max-lg:text-primary-foreground short:text-4xl"
     >
       Patronly
     </h1>
