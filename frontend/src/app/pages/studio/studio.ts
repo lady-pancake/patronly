@@ -11,13 +11,14 @@ import {
 } from '@ng-icons/lucide';
 import { ArtistStore } from '../../core/data/artist-store';
 import { HeartButton } from '../../shared/heart-button';
+import { PlayInView } from '../../shared/play-in-view';
 import { InquireButton } from '../../shared/inquiry/inquire-button';
 import { Tag } from '../../shared/tag';
 import { NotFound } from '../not-found';
 
 @Component({
   selector: 'app-studio',
-  imports: [RouterLink, NgIcon, HeartButton, Tag, NotFound, InquireButton],
+  imports: [PlayInView, RouterLink, NgIcon, HeartButton, Tag, NotFound, InquireButton],
   providers: [
     provideIcons({
       lucideArrowLeft,

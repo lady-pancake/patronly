@@ -190,8 +190,10 @@
         >
           @if (a.processVideo) {
             <video
+              appPlayInView
               [src]="a.processVideo"
               controls
+              loop
               playsinline
               preload="metadata"
               class="absolute inset-0 size-full bg-[oklch(0.145_0_0)] object-cover"
