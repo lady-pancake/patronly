@@ -6,11 +6,7 @@ import type { Artist } from '../core/data/models';
   selector: 'app-work-preview',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: { class: 'grid w-full grid-cols-[2fr_1fr] grid-rows-2 gap-1 overflow-hidden rounded-3xl' },
-  template: `
-    @for (w of tiles(); track $index) {
-      <div [class.row-span-2]="$first" [style.background]="w.bg"></div>
-    }
-  `,
+  templateUrl: './work-preview.html',
 })
 export class WorkPreview {
   readonly artist = input.required<Artist>();

@@ -10,18 +10,7 @@ import { PatronStore } from '../core/data/patron-store';
   imports: [NgIcon],
   providers: [provideIcons({ lucideHeart })],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `
-    <button
-      type="button"
-      (click)="toggle($event)"
-      [attr.aria-label]="on() ? 'Remove from saved' : 'Save artist'"
-      [attr.aria-pressed]="on()"
-      [title]="on() ? 'Remove from saved' : 'Save artist'"
-      [class]="classes()"
-    >
-      <ng-icon name="lucideHeart" size="16" />
-    </button>
-  `,
+  templateUrl: './heart-button.html',
 })
 export class HeartButton {
   private readonly store = inject(PatronStore);

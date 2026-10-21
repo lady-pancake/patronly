@@ -1,0 +1,30 @@
+<main class="mx-auto flex max-w-[1400px] flex-col gap-14 px-4 pt-14 pb-24 sm:px-8">
+  <h1 class="font-serif text-[64px] leading-none font-normal tracking-[-.025em]">Saved</h1>
+  <section class="flex flex-col gap-6">
+    <div class="eyebrow">Saved searches</div>
+    @if (store.searches().length) {
+      <div class="grid gap-10 lg:grid-cols-[repeat(auto-fit,minmax(420px,1fr))]">
+        @for (s of store.searches(); track s.name) {
+          <app-search-card [search]="s" layout="saved" />
+        }
+      </div>
+    } @else {
+      <p class="font-serif text-[22px] text-muted-foreground italic">
+        No saved searches yet. Run a new search and save it to keep it here.
+      </p>
+    }
+  </section>
+  <section class="flex flex-col gap-6">
+    <div class="eyebrow">Favorites · {{ favorites().length }}</div>
+    @if (!favorites().length) {
+      <p class="font-serif text-[22px] text-muted-foreground italic">
+        Nothing saved yet. Tap the heart on any artist to keep them here.
+      </p>
+    }
+    <div class="grid grid-cols-[repeat(auto-fill,minmax(220px,1fr))] gap-5">
+      @for (a of favorites(); track a.id) {
+        <app-artist-card [artist]="a" variant="boxed" />
+      }
+    </div>
+  </section>
+</main>

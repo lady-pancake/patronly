@@ -1,0 +1,16 @@
+<span
+  class="grid size-8 place-items-center rounded-full font-serif text-base"
+  [style.background]="row().avatar"
+  >{{ row().name[0] }}</span
+>
+<div class="flex min-w-0 flex-col gap-0.5">
+  <span class="text-sm font-medium"
+    >{{ row().name }}
+    <span class="text-xs font-normal text-muted-foreground">· {{ row().when }}</span></span
+  >
+  <span class="truncate text-xs text-muted-foreground">{{ row().text }}</span>
+</div>
+<span class="hidden text-xs whitespace-nowrap text-muted-foreground sm:block">{{
+  row().meta
+}}</span>
+<ng-content />

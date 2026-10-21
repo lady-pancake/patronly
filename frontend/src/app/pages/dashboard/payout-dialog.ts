@@ -10,49 +10,7 @@ const BUTTON = 'h-10 rounded-md px-4 text-[13px] font-medium';
   selector: 'app-payout-dialog',
   imports: [BrnDialogTitle, FormsModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `
-    <form class="flex flex-col gap-5" (ngSubmit)="save()">
-      <div class="flex flex-col gap-1.5">
-        <h2 brnDialogTitle class="font-serif text-[32px] leading-none font-normal">
-          Payout account
-        </h2>
-        <span class="text-[13px] text-muted-foreground"
-          >Where your deposits and final payments are sent. Changes apply from the next
-          payday.</span
-        >
-      </div>
-      @for (f of fields; track f.key) {
-        <label class="flex flex-col gap-1.5 text-[13px] font-medium"
-          >{{ f.label
-          }}<input
-            class="field !h-11 !px-4 !text-sm font-normal"
-            [name]="f.key"
-            [ngModel]="draft()[f.key]"
-            (ngModelChange)="set(f.key, $event)"
-            [placeholder]="f.placeholder"
-        /></label>
-      }
-      <div class="flex justify-end gap-2">
-        <button
-          type="button"
-          (click)="ref.close()"
-          [class]="buttonClass + ' border bg-background hover:bg-muted'"
-        >
-          Cancel
-        </button>
-        <button
-          type="submit"
-          [disabled]="!valid()"
-          [class]="
-            buttonClass +
-            ' bg-primary font-semibold text-primary-foreground hover:opacity-85 disabled:opacity-40'
-          "
-        >
-          Save account
-        </button>
-      </div>
-    </form>
-  `,
+  templateUrl: './payout-dialog.html',
 })
 export class PayoutDialog {
   protected readonly ref = inject(BrnDialogRef);

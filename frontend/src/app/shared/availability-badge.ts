@@ -10,8 +10,7 @@ import type { Availability } from '../core/data/models';
     '[style.background]': 'style().bg',
     '[style.color]': 'style().fg',
   },
-  template: `<span class="size-1.5 rounded-full" [style.background]="style().dot"></span
-    >{{ style().label }}`,
+  templateUrl: './availability-badge.html',
 })
 export class AvailabilityBadge {
   readonly value = input.required<Availability>();

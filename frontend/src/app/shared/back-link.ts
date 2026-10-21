@@ -9,15 +9,7 @@ import { lucideArrowLeft } from '@ng-icons/lucide';
   providers: [provideIcons({ lucideArrowLeft })],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: { class: 'self-start' },
-  template: `
-    <a
-      [routerLink]="to()"
-      class="flex h-9 items-center gap-1.5 rounded-md pr-3.5 pl-2.5 text-[13px] font-medium hover:bg-muted"
-    >
-      <ng-icon name="lucideArrowLeft" size="16" />
-      <ng-content />
-    </a>
-  `,
+  templateUrl: './back-link.html',
 })
 export class BackLink {
   readonly to = input.required<string | unknown[]>();

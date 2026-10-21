@@ -7,9 +7,6 @@ import { SiteHeader } from './site-header';
   selector: 'app-shell',
   imports: [RouterOutlet, SiteHeader],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `
-    <app-site-header />
-    <router-outlet />
-  `,
+  templateUrl: './shell.html',
 })
 export class Shell {}

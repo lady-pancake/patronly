@@ -8,19 +8,7 @@ import { mediumArt } from '../core/data/catalog';
   imports: [RouterLink],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: { class: 'block' },
-  template: `
-    <a [routerLink]="['/mediums', slug()]" class="group flex flex-col gap-2">
-      <div
-        class="aspect-square overflow-hidden rounded-2xl transition-transform duration-200 ease-soft group-hover:-translate-y-[3px]"
-        [style.background]="art()"
-        role="img"
-        [attr.aria-label]="name()"
-      ></div>
-      <span class="text-center font-serif text-lg leading-tight group-hover:opacity-70">{{
-        name()
-      }}</span>
-    </a>
-  `,
+  templateUrl: './medium-tile.html',
 })
 export class MediumTile {
   readonly name = input.required<string>();

@@ -16,44 +16,7 @@ const AVAIL: Record<string, Availability> = {
   selector: 'app-medium',
   imports: [BackLink, FilterChips, ArtistCard],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `
-    <main class="mx-auto flex max-w-[1400px] flex-col gap-6 px-4 pt-6 pb-24 sm:px-8">
-      <app-back-link to="/mediums">All mediums</app-back-link>
-      <header class="grid grid-cols-[48px_minmax(0,1fr)] items-center gap-3">
-        <div class="aspect-square rounded-2xl" [style.background]="art()"></div>
-        <h1 class="font-serif text-3xl leading-none font-normal tracking-[-.01em]">
-          <em>{{ medium().name }}</em>
-        </h1>
-      </header>
-      <div class="flex flex-wrap items-end justify-between gap-6 border-b pb-6">
-        <div class="flex flex-col gap-2.5">
-          <span class="text-[13px] font-semibold">Availability</span>
-          <app-filter-chips [options]="availOptions" [(value)]="avail" />
-        </div>
-        <div class="flex flex-col gap-2.5">
-          <span class="text-[13px] font-semibold">Starting price</span>
-          <app-filter-chips [options]="priceOptions" [(value)]="price" />
-        </div>
-        <div class="flex flex-col gap-2.5">
-          <span class="text-[13px] font-semibold">Sort by</span>
-          <app-filter-chips [options]="sortOptions" [(value)]="sort" />
-        </div>
-      </div>
-      <div class="flex flex-col gap-5">
-        <span class="text-[13px] text-muted-foreground">Showing {{ artists().length }}</span>
-        @if (!artists().length) {
-          <p class="font-serif text-2xl text-muted-foreground italic">
-            No artists match these filters yet.
-          </p>
-        }
-        <div class="grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))] gap-x-6 gap-y-10">
-          @for (a of artists(); track a.id) {
-            <app-artist-card [artist]="a" variant="full" />
-          }
-        </div>
-      </div>
-    </main>
-  `,
+  templateUrl: './medium.html',
 })
 export class Medium {
   /** Route param, e.g. "painting". */
