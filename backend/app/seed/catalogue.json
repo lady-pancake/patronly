@@ -247,53 +247,53 @@
    "site": "laskaris.photo",
    "replyNote": "Usually replies within 1 day.",
    "tags": [
-    "Film",
-    "Portraits",
-    "Editorial",
+    "Family portraits",
+    "Animal portraits",
+    "Shot on film",
     "Archival prints",
     "Travels for shoots"
    ],
-   "quote": "I wait for the second after people stop posing.",
+   "quote": "I wait for the second after people, and horses, stop posing.",
    "bio": [
-    "Theo shoots almost entirely on medium-format film and prints in his own darkroom in Exarcheia.",
-    "Commissions include a session, a contact sheet you choose from, and hand-made prints in an edition you keep."
+    "Theo photographs families and the animals they love, from newborns in a poppy field to a horse in its own paddock. He shoots mostly on medium-format film and prints in his darkroom in Exarcheia.",
+    "Commissions include an unhurried outdoor session, a contact sheet you choose from, and hand-made prints you keep."
    ],
    "availability": "Open",
-   "coverUrl": null,
+   "coverUrl": "/images/covers/theo-cover.jpg",
    "portraitUrl": null,
    "processUrl": "/images/process/theo-process.jpg",
    "processVideoUrl": null,
    "coverVideoUrl": null,
    "works": [
     {
-     "title": "Kypseli, noon",
-     "material": "Silver gelatin print",
-     "imageUrl": null
+     "title": "Poppy field, golden hour",
+     "material": "Family session, archival pigment print",
+     "imageUrl": "/images/works/theo-1.jpg"
     },
     {
-     "title": "Yiayia’s kitchen",
-     "material": "Archival pigment print",
-     "imageUrl": null
+     "title": "Lena in October",
+     "material": "Portrait session, medium format film",
+     "imageUrl": "/images/works/theo-2.jpg"
     },
     {
-     "title": "Swimmers",
-     "material": "Medium format film",
-     "imageUrl": null
+     "title": "Mare above the valley",
+     "material": "Animal portrait, archival pigment print",
+     "imageUrl": "/images/works/theo-5.jpg"
     },
     {
-     "title": "Hydra series",
-     "material": "Edition of 12",
-     "imageUrl": null
+     "title": "Mira, looking away",
+     "material": "Portrait session, medium format film",
+     "imageUrl": "/images/works/theo-4.jpg"
     },
     {
-     "title": "Market hands",
-     "material": "Silver gelatin print",
-     "imageUrl": null
+     "title": "Bruna at rest",
+     "material": "Animal portrait, silver gelatin print",
+     "imageUrl": "/images/works/theo-3.jpg"
     },
     {
-     "title": "Night ferry",
-     "material": "Archival pigment print",
-     "imageUrl": null
+     "title": "On the bridge",
+     "material": "Family session, archival pigment print",
+     "imageUrl": "/images/works/theo-6.jpg"
     }
    ],
    "reviews": [
@@ -306,7 +306,7 @@
      "author": "Hannah W., Paris"
     },
     {
-     "quote": "Booked again for our anniversary.",
+     "quote": "He got our old mare to look at the camera. A miracle.",
      "author": "Dimitra & Leo"
     }
    ]
