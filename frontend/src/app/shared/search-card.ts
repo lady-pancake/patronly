@@ -7,26 +7,23 @@ import type { Artist, SavedSearch } from '../core/data/models';
 import { PatronStore } from '../core/data/patron-store';
 import { ArtistCard } from './artist-card';
 import { Tag } from './tag';
-import { WorkPreview } from './work-preview';
 import { searchQueryParams } from './search-params';
 
 /** A saved or recent search with its top matches. */
 @Component({
   selector: 'app-search-card',
-  imports: [RouterLink, NgIcon, ArtistCard, Tag, WorkPreview],
+  imports: [RouterLink, NgIcon, ArtistCard, Tag],
   providers: [provideIcons({ lucideArrowRight, lucideTrash2 })],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
-    class: 'flex flex-col gap-4 rounded-4xl bg-card p-6',
-    '[class]':
-      "layout() === 'home' ? 'shadow-[0_2px_8px_oklch(0_0_0/.05)] ring-1 ring-black/6' : 'ring-1 ring-black/5'",
+    class:
+      'flex flex-col gap-4 rounded-4xl bg-card p-6 shadow-[0_2px_8px_oklch(0_0_0/.05)] ring-1 ring-black/6',
   },
   templateUrl: './search-card.html',
 })
 export class SearchCard {
   private readonly store = inject(PatronStore);
   readonly search = input.required<SavedSearch>();
-  readonly layout = input<'home' | 'saved'>('home');
 
   protected readonly chips = computed(() => searchChips(this.search().wiz));
   protected readonly params = computed(() =>

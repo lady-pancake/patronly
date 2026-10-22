@@ -112,7 +112,7 @@
     <div class="flex flex-col gap-10 max-sm:hidden">
       <div class="eyebrow">Recent searches</div>
       @for (s of store.searches(); track s.name) {
-        <app-search-card [search]="s" layout="home" />
+        <app-search-card [search]="s" />
       } @empty {
         <p class="font-serif text-[22px] text-muted-foreground italic">
           Nothing here yet.

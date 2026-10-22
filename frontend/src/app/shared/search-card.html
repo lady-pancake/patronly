@@ -28,27 +28,12 @@
     <span appTag>{{ c }}</span>
   }
 </div>
-@if (layout() === 'home') {
-  <div class="grid gap-5 sm:grid-cols-3">
-    @for (a of artists(); track a.id) {
-      <app-artist-card [artist]="a" (unsaved)="drop(a.id)" />
-    } @empty {
-      <p class="font-serif text-lg text-muted-foreground italic sm:col-span-3">
-        No artists left in this search. Open it to see new matches.
-      </p>
-    }
-  </div>
-} @else {
-  <div class="grid grid-cols-2 gap-5">
-    @for (a of artists().slice(0, 2); track a.id) {
-      <a [routerLink]="['/artists', a.id]" class="lift flex flex-col gap-2.5">
-        <app-work-preview [artist]="a" class="aspect-[16/10]" />
-        <span class="font-serif text-[19px]">{{ a.name }}</span>
-      </a>
-    } @empty {
-      <p class="col-span-2 font-serif text-lg text-muted-foreground italic">
-        No artists left in this search. Open it to see new matches.
-      </p>
-    }
-  </div>
-}
+<div class="grid gap-5 sm:grid-cols-3">
+  @for (a of artists(); track a.id) {
+    <app-artist-card [artist]="a" (unsaved)="drop(a.id)" />
+  } @empty {
+    <p class="font-serif text-lg text-muted-foreground italic sm:col-span-3">
+      No artists left in this search. Open it to see new matches.
+    </p>
+  }
+</div>

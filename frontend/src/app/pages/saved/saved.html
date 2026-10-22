@@ -3,9 +3,9 @@
   <section class="flex flex-col gap-6">
     <div class="eyebrow">Saved searches</div>
     @if (store.searches().length) {
-      <div class="grid gap-10 lg:grid-cols-[repeat(auto-fit,minmax(420px,1fr))]">
+      <div class="grid gap-10 xl:grid-cols-2">
         @for (s of store.searches(); track s.name) {
-          <app-search-card [search]="s" layout="saved" />
+          <app-search-card [search]="s" />
         }
       </div>
     } @else {
