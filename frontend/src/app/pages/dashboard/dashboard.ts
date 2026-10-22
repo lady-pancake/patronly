@@ -86,6 +86,20 @@ export class Dashboard {
   );
   protected readonly tl = computed(() => timeline(this.offset(), this.deals()));
   protected readonly trackStages = TRACK_STAGES;
+  /** Rows a timeline group shows before "Show more". */
+  protected readonly rowLimit = 5;
+  /** Groups folded away. Completed starts folded, as it's the least used. */
+  protected readonly closed = signal<string[]>(['Completed']);
+  /** Groups showing every row. */
+  protected readonly more = signal<string[]>([]);
+
+  protected toggleGroup(label: string) {
+    this.closed.update((c) => (c.includes(label) ? c.filter((x) => x !== label) : [...c, label]));
+  }
+
+  protected toggleMore(label: string) {
+    this.more.update((m) => (m.includes(label) ? m.filter((x) => x !== label) : [...m, label]));
+  }
   // Spelled out in full so Tailwind generates each one.
   protected readonly barClass: Record<TrackStage, string> = {
     wip: 'bar-wip',

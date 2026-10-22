@@ -265,12 +265,23 @@
             }
           </div>
           @for (g of t.groups; track g.label) {
-            <div
-              class="relative w-[220px] pt-4 pb-1 text-[11px] font-semibold tracking-wide text-muted-foreground uppercase"
+            @let open = !closed().includes(g.label);
+            @let all = more().includes(g.label);
+            <button
+              type="button"
+              (click)="toggleGroup(g.label)"
+              [attr.aria-expanded]="open"
+              class="relative flex w-[220px] items-center gap-1.5 pt-4 pb-1 text-left text-[11px] font-semibold tracking-wide text-muted-foreground uppercase hover:text-foreground"
             >
-              {{ g.label }}
-            </div>
-            @for (b of g.bars; track b.name) {
+              <ng-icon
+                name="lucideChevronRight"
+                size="13"
+                class="transition-transform"
+                [class.rotate-90]="open"
+              />{{ g.label }}
+              <span class="font-medium tabular-nums">· {{ g.bars.length }}</span>
+            </button>
+            @for (b of open ? (all ? g.bars : g.bars.slice(0, rowLimit)) : []; track b.name) {
               @let reminded = store.reminded().includes(b.name);
               <div class="relative grid grid-cols-[220px_minmax(0,1fr)] items-center gap-4 py-1.5">
                 <div class="flex min-w-0 items-center gap-2">
@@ -335,6 +346,15 @@
                   </div>
                 </div>
               </div>
+            }
+            @if (open && g.bars.length > rowLimit) {
+              <button
+                type="button"
+                (click)="toggleMore(g.label)"
+                class="relative ml-5 py-1.5 text-xs font-medium underline underline-offset-4 hover:text-primary"
+              >
+                {{ all ? 'Show less' : 'Show ' + (g.bars.length - rowLimit) + ' more' }}
+              </button>
             }
           }
         </div>
