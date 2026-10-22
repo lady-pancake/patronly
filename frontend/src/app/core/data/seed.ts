@@ -713,7 +713,7 @@ function fillCatalogue(list: ArtistSeed[]): void {
     j.cover = '/images/covers/jonas-cover.jpg';
     j.works = [
       ['Baroque pearl drop', 'Brushed gold and freshwater pearl', '/images/works/jewel-1.jpg'],
-      ['Twisted knot earrings', 'Recycled 18k gold', '/images/works/jewel-2.jpg'],
+      ['Double pearl drops', 'Freshwater pearls on gold hooks', '/images/works/jonas-earrings.jpg'],
       ['Freshwater pearl strand', 'Pearls on silk, 45cm', '/images/works/jewel-3.jpg'],
       ...j.works.slice(3),
     ];
