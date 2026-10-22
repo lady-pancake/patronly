@@ -130,7 +130,15 @@
         class="flex flex-col gap-5 rounded-4xl bg-surface p-7 ring-1 ring-black/4"
       >
         <div class="flex items-center justify-between gap-3">
-          <h2 id="feed-title" class="eyebrow">From the studios</h2>
+          <div class="flex items-center gap-2.5">
+            <h2 id="feed-title" class="eyebrow">From the studios</h2>
+            @if (store.newPosts().length) {
+              <span
+                class="rounded-full bg-primary px-2 py-0.5 text-[11px] font-semibold tracking-wide text-primary-foreground uppercase"
+                >New</span
+              >
+            }
+          </div>
           <a routerLink="/feed" class="text-[13px] font-medium underline underline-offset-4"
             >See all</a
           >
@@ -144,15 +152,7 @@
                 <span class="size-8 shrink-0 rounded-full" [style.background]="p.artist.bg"></span>
                 <span class="text-sm font-semibold">{{ p.artist.name }}</span>
               </a>
-              <span class="flex items-center gap-2 text-xs text-muted-foreground">
-                @if (store.isNewPost(p.title)) {
-                  <span
-                    class="rounded-full bg-primary px-2 py-0.5 text-[11px] font-semibold tracking-wide text-primary-foreground uppercase"
-                    >New</span
-                  >
-                }
-                {{ p.date }}
-              </span>
+              <span class="text-xs text-muted-foreground">{{ p.date }}</span>
             </div>
             <div class="aspect-[16/10] rounded-2xl" [style.background]="p.img"></div>
             <h3 class="font-serif text-xl leading-tight font-normal">{{ p.title }}</h3>
