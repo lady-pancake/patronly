@@ -14,6 +14,8 @@ export interface AcceptContext {
   patron: string;
   inq: Inquiry;
   artist: Artist;
+  /** Revising a sent contract: the terms sent before and the patron's suggested changes. */
+  revise?: AcceptResult & { changes: string };
 }
 
 export interface AcceptResult {
@@ -51,24 +53,34 @@ export class AcceptDialog {
   protected readonly accept = CONTRACT_TYPES.join(',');
   protected readonly money = money;
   protected readonly longDate = longDate;
-  protected readonly step = signal(0);
+  private readonly prev = this.ctx.revise;
+  /** Revisions open on the contract step, where the patron's changes usually land. */
+  protected readonly step = signal(this.prev ? 2 : 0);
 
   // Scope
-  protected readonly piece = signal(`Commission for ${this.ctx.patron.split(' ')[0]}`);
-  protected readonly size = signal(this.ctx.inq.type ?? '');
-  protected readonly medium = signal(this.ctx.artist.medium);
-  protected readonly price = signal(priceFromBudget(this.ctx.inq.budget, this.ctx.artist.min));
-  protected readonly depositPct = signal(30);
-  protected readonly revisions = signal(2);
-  protected readonly delivery = signal<CommissionTerms['delivery']>('Shipping');
-  protected readonly notes = signal('');
+  protected readonly piece = signal(
+    this.prev?.piece ?? `Commission for ${this.ctx.patron.split(' ')[0]}`,
+  );
+  protected readonly size = signal(this.prev?.terms.size ?? this.ctx.inq.type ?? '');
+  protected readonly medium = signal(this.prev?.terms.medium ?? this.ctx.artist.medium);
+  protected readonly price = signal(
+    this.prev?.total ?? priceFromBudget(this.ctx.inq.budget, this.ctx.artist.min),
+  );
+  protected readonly depositPct = signal(this.prev?.terms.depositPct ?? 30);
+  protected readonly revisions = signal(this.prev?.terms.revisions ?? 2);
+  protected readonly delivery = signal<CommissionTerms['delivery']>(
+    this.prev?.terms.delivery ?? 'Shipping',
+  );
+  protected readonly notes = signal(this.prev?.terms.notes ?? '');
 
   // Dates
-  protected readonly startDate = signal(isoIn(14));
-  protected readonly dueDate = signal(isoIn(14 + 8 * 7));
+  protected readonly startDate = signal(this.prev?.terms.startDate ?? isoIn(14));
+  protected readonly dueDate = signal(this.prev?.terms.dueDate ?? isoIn(14 + 8 * 7));
 
   // Contract
-  protected readonly contractKind = signal<'template' | 'file'>('template');
+  protected readonly contractKind = signal<'template' | 'file'>(
+    this.prev?.terms.contract.kind ?? 'template',
+  );
   protected readonly file = signal<File | null>(null);
   protected readonly fileError = signal('');
   /** The template text, until the artist edits it. */
@@ -98,6 +110,12 @@ export class AcceptDialog {
     ),
   );
   protected readonly contract = computed(() => this.edited() ?? this.template());
+
+  constructor() {
+    // Keep the artist's own wording from last time, if they had changed the template.
+    const old = this.prev?.terms.contract;
+    if (old?.kind === 'template' && old.text !== this.template()) this.edited.set(old.text);
+  }
 
   /** How booked each month of the agreed dates already is. */
   protected readonly busy = computed(() => {

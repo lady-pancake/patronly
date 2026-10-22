@@ -190,7 +190,12 @@ export interface Thread {
   unread: boolean;
   inq: Inquiry;
   msgs: Message[];
-  contract?: { signed?: boolean; paid?: boolean };
+  contract?: {
+    signed?: boolean;
+    paid?: boolean;
+    /** Changes the patron asked for, until the artist sends an updated contract. */
+    changes?: string | null;
+  };
   /**
    * Who started the conversation. "outgoing" (the default): you inquired with an
    * artist. "incoming": a patron inquired with your studio; `me` is the artist.

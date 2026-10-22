@@ -27,7 +27,7 @@ import type { AcceptedMessage, Artist, Thread, Work } from '../../core/data/mode
 import { PatronStore } from '../../core/data/patron-store';
 import { AcceptDialog, type AcceptContext, type AcceptResult } from './accept-dialog';
 import { longDate } from './accept-terms';
-import { DealDialog, type DealContext, money } from './deal-dialog';
+import { DealDialog, type DealContext, type DealResult, money } from './deal-dialog';
 import { STATUS_STYLE, threadStatus } from './thread-status';
 import { CleanText } from '../../shared/clean-text';
 
@@ -149,26 +149,55 @@ export class Messages {
     void this.router.navigate(first ? ['/messages', first.id] : ['/messages']);
   }
 
-  /** Incoming: accept the commission, agreeing scope, dates and a contract. */
-  protected openAccept(t: Thread) {
+  /**
+   * Incoming: accept the commission, agreeing scope, dates and a contract. With `revise`,
+   * reopens the sent terms at the contract step so the artist can work in the patron's changes.
+   */
+  protected openAccept(t: Thread, revise?: AcceptedMessage) {
     const patron = t.patron?.name ?? '';
     const ref = this.dialog.open<AcceptResult | undefined, AcceptContext>(AcceptDialog, {
-      context: { patron, inq: t.inq, artist: this.artist.mine() },
+      context: {
+        patron,
+        inq: t.inq,
+        artist: this.artist.mine(),
+        revise: revise?.terms
+          ? {
+              piece: revise.piece,
+              total: revise.total,
+              terms: revise.terms,
+              changes: t.contract?.changes ?? '',
+            }
+          : undefined,
+      },
       contentClass: 'w-[calc(100vw-32px)] max-w-[640px] sm:max-w-[640px] rounded-4xl p-6 sm:p-8',
     });
     ref.closed$.subscribe((r) => {
       if (!r) return;
-      this.store.acceptCommission(t.id, {
+      const deal = {
         piece: r.piece,
         total: r.total,
         deposit: Math.round((r.total * r.terms.depositPct) / 100),
         start: longDate(r.terms.startDate),
         due: longDate(r.terms.dueDate),
         terms: r.terms,
-      });
+      };
+      if (revise) {
+        this.store.reviseCommission(t.id, deal);
+        return;
+      }
+      this.store.acceptCommission(t.id, deal);
       // Off the dashboard's "waiting for a reply" list.
       this.artist.markReplied(patron);
     });
+  }
+
+  /** Demo only: stands in for the patron asking for a change. */
+  protected simulateChanges(t: Thread) {
+    this.store.suggestChanges(
+      t.id,
+      'Could delivery be a week later, and could we add one more round of revisions?',
+      false,
+    );
   }
 
   /** Which accepted cards have their contract open. */
@@ -179,6 +208,7 @@ export class Messages {
     const signed = !!t.contract?.signed,
       paid = !!t.contract?.paid;
     const reminded = this.artist.reminded().includes(t.patron?.name ?? '');
+    const changes = t.contract?.changes;
     return [
       {
         n: '1',
@@ -191,19 +221,23 @@ export class Messages {
         active: false,
         demo: '',
         patch: null,
+        revise: false,
       },
       {
         n: '2',
-        title: `${first} signs`,
+        title: changes ? `${first} suggested changes` : `${first} signs`,
         sub: signed
           ? 'Signed.'
-          : reminded
-            ? 'Reminder sent today.'
-            : 'Waiting for their signature.',
+          : changes
+            ? `“${changes}”`
+            : reminded
+              ? 'Reminder sent today.'
+              : 'Waiting for their signature. They can suggest changes first.',
         done: signed,
         active: !signed,
-        demo: 'Mark signed',
-        patch: { signed: true },
+        demo: changes ? '' : 'Mark signed',
+        patch: changes ? null : { signed: true },
+        revise: !!changes,
       },
       {
         n: '3',
@@ -213,6 +247,7 @@ export class Messages {
         active: signed && !paid,
         demo: 'Mark paid',
         patch: { paid: true },
+        revise: false,
       },
       {
         n: '4',
@@ -222,6 +257,7 @@ export class Messages {
         active: false,
         demo: '',
         patch: null,
+        revise: false,
       },
     ];
   }
@@ -263,7 +299,9 @@ export class Messages {
       {
         n: '1',
         title: 'Sign the contract',
-        sub: 'Scope, timeline, revisions and delivery, agreed in writing.',
+        sub: t.contract?.changes
+          ? `You suggested changes. ${a.first} will send an updated contract.`
+          : 'Scope, timeline, revisions and delivery, agreed in writing. Suggest changes if anything’s off.',
         done: signed,
         active: !signed,
         cta: 'Review & sign',
@@ -272,7 +310,7 @@ export class Messages {
       {
         n: '2',
         title: 'Pay the deposit',
-        sub: `${money(m.deposit)} today (30%). The rest is due on delivery.`,
+        sub: `${money(m.deposit)} today (${m.terms?.depositPct ?? 30}%). The rest is due on delivery.`,
         done: paid,
         active: signed && !paid,
         cta: `Pay ${money(m.deposit)}`,
@@ -291,13 +329,14 @@ export class Messages {
   }
 
   protected openDeal(t: Thread, a: Artist, deal: AcceptedMessage, mode: DealContext['mode']) {
-    const ref = this.dialog.open<boolean, DealContext>(DealDialog, {
+    const ref = this.dialog.open<DealResult, DealContext>(DealDialog, {
       context: { mode, artistName: a.name, deal },
       contentClass: 'sm:max-w-[480px] rounded-4xl p-8',
     });
-    ref.closed$.subscribe((ok) => {
-      if (ok)
-        this.store.updateContract(t.id, mode === 'contract' ? { signed: true } : { paid: true });
+    ref.closed$.subscribe((r) => {
+      if (!r) return;
+      if (typeof r === 'object') this.store.suggestChanges(t.id, r.suggest, true);
+      else this.store.updateContract(t.id, mode === 'contract' ? { signed: true } : { paid: true });
     });
   }
 

@@ -255,8 +255,27 @@
                             }}
                           </button>
                         }
+                        @if (st.active && st.revise) {
+                          <button
+                            type="button"
+                            (click)="openAccept(th, m)"
+                            class="h-8 rounded-md bg-primary px-3 text-xs font-semibold text-primary-foreground hover:opacity-85 max-sm:ml-11"
+                          >
+                            Revise contract
+                          </button>
+                        }
                         @if (st.active && st.patch) {
-                          <span class="flex items-center gap-2 max-sm:ml-11">
+                          <span class="flex flex-wrap items-center gap-2 max-sm:ml-11">
+                            @if (st.n === '2') {
+                              <button
+                                type="button"
+                                (click)="simulateChanges(th)"
+                                title="Demo only: act as the patron"
+                                class="h-8 rounded-md px-1 text-xs font-medium text-muted-foreground underline underline-offset-4 hover:text-foreground"
+                              >
+                                Suggest changes (demo)
+                              </button>
+                            }
                             <button
                               type="button"
                               (click)="simulate(th, st.patch)"

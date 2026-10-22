@@ -1,11 +1,19 @@
 <div class="flex h-[min(720px,calc(100dvh-112px))] w-full flex-col gap-5">
   <div class="flex flex-col gap-1">
     <h2 brnDialogTitle class="font-serif text-[32px] leading-none font-normal">
-      Accept {{ ctx.patron.split(' ')[0] }}’s commission
+      {{
+        ctx.revise ? 'Update the contract' : 'Accept ' + ctx.patron.split(' ')[0] + '’s commission'
+      }}
     </h2>
-    <p class="text-[13px] text-muted-foreground">
-      Agree the details, and we’ll send them with the contract in one go.
-    </p>
+    @if (ctx.revise; as r) {
+      <p class="rounded-2xl bg-highlight px-4 py-3 text-[13px]">
+        <span class="font-semibold">{{ ctx.patron.split(' ')[0] }} asked:</span> “{{ r.changes }}”
+      </p>
+    } @else {
+      <p class="text-[13px] text-muted-foreground">
+        Agree the details, and we’ll send them with the contract in one go.
+      </p>
+    }
   </div>
   <app-stepper
     [labels]="steps"
@@ -310,7 +318,11 @@
         [disabled]="!!problem()"
         class="h-10 rounded-md bg-primary px-5 text-[13px] font-semibold text-primary-foreground hover:opacity-85 disabled:opacity-40"
       >
-        {{ step() === steps.length - 1 ? 'Send to ' + ctx.patron.split(' ')[0] : 'Continue' }}
+        {{
+          step() === steps.length - 1
+            ? (ctx.revise ? 'Send updated contract to ' : 'Send to ') + ctx.patron.split(' ')[0]
+            : 'Continue'
+        }}
       </button>
     </div>
   </div>

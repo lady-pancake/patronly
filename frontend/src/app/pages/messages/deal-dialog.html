@@ -14,26 +14,91 @@
         </div>
       }
     </dl>
+    @if (text) {
+      <button
+        type="button"
+        (click)="showText.set(!showText())"
+        [attr.aria-expanded]="showText()"
+        class="self-start text-[13px] font-medium underline underline-offset-4"
+      >
+        {{ showText() ? 'Hide the full contract' : 'Read the full contract' }}
+      </button>
+      @if (showText()) {
+        <div
+          class="max-h-60 overflow-y-auto rounded-2xl bg-surface p-4 font-mono text-[12px] leading-relaxed whitespace-pre-wrap"
+        >
+          {{ text }}
+        </div>
+      }
+    } @else if (file) {
+      <p class="text-[13px]">
+        Contract attached: <span class="font-medium">{{ file }}</span>
+      </p>
+    }
     <p class="text-xs leading-relaxed text-muted-foreground">
       The artist keeps copyright; you own the original. Your deposit is refundable until work
       begins.
     </p>
-    <div class="flex justify-end gap-2">
-      <button
-        type="button"
-        (click)="ref.close()"
-        class="h-10 rounded-md border bg-background px-4.5 text-sm font-medium hover:bg-muted"
-      >
-        Not yet
-      </button>
-      <button
-        type="button"
-        (click)="ref.close(true)"
-        class="h-10 rounded-md bg-primary px-5 text-sm font-semibold text-primary-foreground hover:opacity-85"
-      >
-        Sign contract
-      </button>
-    </div>
+    @if (suggesting()) {
+      <label class="flex flex-col gap-1.5">
+        <span class="text-[13px] font-medium">What would you like changed?</span>
+        <textarea
+          class="field !h-auto py-3"
+          rows="4"
+          appCleanText
+          [ngModel]="changes()"
+          (ngModelChange)="changes.set($event)"
+          placeholder="e.g. Could delivery be the first week of January instead?"
+        ></textarea>
+        <span class="text-xs text-muted-foreground"
+          >This goes to {{ ctx.artistName }} in your conversation. They’ll send an updated
+          contract.</span
+        >
+      </label>
+      <div class="flex justify-end gap-2">
+        <button
+          type="button"
+          (click)="suggesting.set(false)"
+          class="h-10 rounded-md border bg-background px-4.5 text-sm font-medium hover:bg-muted"
+        >
+          Back
+        </button>
+        <button
+          type="button"
+          (click)="sendChanges()"
+          [disabled]="!changes().trim()"
+          class="h-10 rounded-md bg-primary px-5 text-sm font-semibold text-primary-foreground hover:opacity-85 disabled:opacity-40"
+        >
+          Send suggestions
+        </button>
+      </div>
+    } @else {
+      <div class="flex flex-wrap items-center justify-between gap-2">
+        <button
+          type="button"
+          (click)="suggesting.set(true)"
+          class="h-10 rounded-md px-2 text-sm font-medium underline underline-offset-4 hover:text-primary"
+        >
+          Suggest changes
+        </button>
+        <div class="flex gap-2">
+          <button
+            type="button"
+            (click)="ref.close()"
+            class="h-10 rounded-md border bg-background px-4.5 text-sm font-medium hover:bg-muted"
+          >
+            Not yet
+          </button>
+          <button
+            type="button"
+            (click)="ref.close(true)"
+            class="h-10 rounded-md bg-primary px-5 text-sm font-semibold text-primary-foreground hover:opacity-85"
+          >
+            Sign contract
+          </button>
+        </div>
+      </div>
+    }
   </div>
 } @else {
   <div class="flex flex-col gap-5">
@@ -43,7 +108,7 @@
         {{ deposit }}
       </h2>
       <span class="text-[13px] text-muted-foreground"
-        >30% today · {{ balance }} due on delivery</span
+        >{{ depositPct }}% today · {{ balance }} due on delivery</span
       >
     </div>
     <div class="flex h-13 items-center gap-3 rounded-3xl border border-input px-4">

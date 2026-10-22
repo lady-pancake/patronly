@@ -46,6 +46,16 @@ function load(): Persisted {
   }
 }
 
+/** "Oct 22, 14:05": when a message was sent. */
+function stamp(): string {
+  const now = new Date();
+  return (
+    now.toLocaleString('en-US', { month: 'short', day: 'numeric' }) +
+    ', ' +
+    now.toTimeString().slice(0, 5)
+  );
+}
+
 /**
  * The guest's favourites, saved searches and conversations: the ones they
  * started as a patron (`threads`) and the ones patrons started with their
@@ -224,6 +234,36 @@ export class PatronStore {
       unread: false,
       contract: { signed: false, paid: false },
       msgs: [...t.msgs, { type: 'accepted', time, ...deal }],
+    }));
+  }
+
+  /** The patron asks for changes to the contract, over chat. */
+  suggestChanges(id: string, text: string, fromMe: boolean): void {
+    this.patch(id, (t) => ({
+      ...t,
+      updated: 'Today',
+      contract: { ...t.contract, changes: text },
+      msgs: [
+        ...t.msgs,
+        { me: fromMe, text: `Suggested changes to the contract: ${text}`, time: stamp() },
+      ],
+    }));
+  }
+
+  /** The artist sends an updated contract: new terms, and it needs signing again. */
+  reviseCommission(id: string, deal: Omit<AcceptedMessage, 'type' | 'time'>): void {
+    this.patch(id, (t) => ({
+      ...t,
+      updated: 'Today',
+      contract: { signed: false, paid: false, changes: null },
+      msgs: [
+        ...t.msgs.map((m) => (m.type === 'accepted' ? { ...m, ...deal } : m)),
+        {
+          me: true,
+          text: 'I’ve updated the contract with your changes. Have a look!',
+          time: stamp(),
+        },
+      ],
     }));
   }
 
