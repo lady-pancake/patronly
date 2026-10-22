@@ -17,6 +17,14 @@ describe('PatronStore', () => {
     expect(store.isFav('hana')).toBe(false);
   });
 
+  it('subscribes to and unsubscribes from a newsletter', () => {
+    expect(store.isSubscribed('theo')).toBe(false);
+    store.toggleNewsletter('theo');
+    expect(store.isSubscribed('theo')).toBe(true);
+    store.toggleNewsletter('theo');
+    expect(store.isSubscribed('theo')).toBe(false);
+  });
+
   it('starts with the artists from saved searches hearted', () => {
     expect(store.isFav('sol')).toBe(true);
     expect(store.isFav('june')).toBe(true);

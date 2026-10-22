@@ -1,0 +1,25 @@
+<main class="mx-auto flex max-w-[680px] flex-col gap-8 px-4 pt-14 pb-24 sm:px-8">
+  <div class="flex flex-wrap items-end justify-between gap-4">
+    <h1 class="font-serif text-[64px] leading-none font-normal tracking-[-.025em]">Feed</h1>
+    <div class="flex gap-1 rounded-full bg-muted p-1" role="group" aria-label="Show posts from">
+      @for (f of ['all', 'following']; track f) {
+        <button
+          type="button"
+          (click)="filter.set($any(f))"
+          [attr.aria-pressed]="filter() === f"
+          class="h-8 rounded-full px-4 text-[13px] font-medium aria-pressed:bg-background aria-pressed:shadow-sm"
+        >
+          {{ f === 'all' ? 'All posts' : 'Following' }}
+        </button>
+      }
+    </div>
+  </div>
+
+  @for (p of visible(); track p.title) {
+    <app-feed-post [post]="p" [suggested]="p.suggested" />
+  } @empty {
+    <p class="font-serif text-[22px] text-muted-foreground italic">
+      Nothing here yet. Heart an artist to see their posts in Following.
+    </p>
+  }
+</main>

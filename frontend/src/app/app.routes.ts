@@ -53,6 +53,17 @@ export const routes: Routes = [
         loadComponent: () => import('./pages/gallery/gallery').then((m) => m.Gallery),
       },
       {
+        path: 'artists/:id/feed',
+        title: 'Studio feed · Patronly',
+        loadComponent: () => import('./pages/studio-feed/studio-feed').then((m) => m.StudioFeed),
+      },
+      {
+        path: 'feed',
+        canActivate: [entitled('SAVE_FAVOURITES')],
+        title: 'Feed · Patronly',
+        loadComponent: () => import('./pages/feed/feed').then((m) => m.Feed),
+      },
+      {
         path: 'saved',
         canActivate: [entitled('SAVE_FAVOURITES')],
         title: 'Saved · Patronly',

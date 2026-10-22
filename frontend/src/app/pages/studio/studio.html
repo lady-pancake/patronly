@@ -127,6 +127,18 @@
               <span class="text-[11px] text-muted-foreground">Saves</span>
               <span class="font-semibold">{{ a.likesLabel }}</span>
             </div>
+            @if (!isMine()) {
+              <a
+                routerLink="feed"
+                class="flex flex-col border-l px-4 py-1.5 hover:bg-muted rounded-md"
+              >
+                <span class="text-[11px] text-muted-foreground">Feed</span>
+                <span class="flex items-center gap-1 font-semibold"
+                  >{{ postCount() }} {{ postCount() === 1 ? 'post' : 'posts'
+                  }}<ng-icon name="lucideArrowRight" size="14"
+                /></span>
+              </a>
+            }
             <a
               [href]="a.link.href"
               target="_blank"

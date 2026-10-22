@@ -13,6 +13,8 @@ interface Persisted {
   hiddenRecent: string[];
   /** Artists the patron took out of a search, by search name. */
   dropped: Record<string, string[]>;
+  /** Artists whose newsletter the patron subscribed to. */
+  newsletters: string[];
   threads: Thread[];
   /** Inquiries patrons sent to the demo artist's studio. */
   inbox: Thread[];
@@ -24,6 +26,7 @@ const DEFAULTS: Persisted = {
   saved: [],
   hiddenRecent: [],
   dropped: {},
+  newsletters: [],
   threads: SAMPLE_THREADS,
   inbox: INBOX_SEED,
 };
@@ -51,6 +54,7 @@ export class PatronStore {
   readonly saved = signal<SavedSearch[]>(this.initial.saved);
   readonly hiddenRecent = signal<string[]>(this.initial.hiddenRecent);
   readonly dropped = signal<Record<string, string[]>>(this.initial.dropped);
+  readonly newsletters = signal<string[]>(this.initial.newsletters);
   readonly threads = signal<Thread[]>(this.initial.threads);
   readonly inbox = signal<Thread[]>(this.initial.inbox);
 
@@ -82,6 +86,7 @@ export class PatronStore {
         saved: this.saved(),
         hiddenRecent: this.hiddenRecent(),
         dropped: this.dropped(),
+        newsletters: this.newsletters(),
         threads: this.threads(),
         inbox: this.inbox(),
       };
@@ -99,6 +104,14 @@ export class PatronStore {
 
   toggleFav(id: string): void {
     this.favs.update((f) => (f.includes(id) ? f.filter((x) => x !== id) : [...f, id]));
+  }
+
+  isSubscribed(id: string): boolean {
+    return this.newsletters().includes(id);
+  }
+
+  toggleNewsletter(id: string): void {
+    this.newsletters.update((n) => (n.includes(id) ? n.filter((x) => x !== id) : [...n, id]));
   }
 
   /** Takes an artist off one search's list, e.g. after they were unsaved from it. */

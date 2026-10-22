@@ -451,6 +451,22 @@ export const RECENT_SEARCHES: SavedSearch[] = [
 
 export const FEED: FeedPost[] = [
   {
+    id: 'theo',
+    date: 'Oct 9',
+    title: 'Two autumn ranch sessions left',
+    text: 'The aspens are turning above the valley. I have two half-day sessions free before the first snow, horses and dogs welcome.',
+    l: 0.6,
+    src: '/images/works/theo-5.jpg',
+  },
+  {
+    id: 'clem',
+    date: 'Oct 7',
+    title: 'Last of the garden roses',
+    text: 'Painting the late roses before the frost. Studies from this week will be in my November newsletter, along with two spring commission slots.',
+    l: 0.55,
+    src: '/images/works/clem-2.jpg',
+  },
+  {
     id: 'hana',
     date: 'Oct 4',
     title: 'Autumn firing opens next week',
@@ -459,12 +475,28 @@ export const FEED: FeedPost[] = [
     src: '/images/feed/hana-firing.jpg',
   },
   {
+    id: 'sol',
+    date: 'Oct 2',
+    title: 'Colour studies from the medina',
+    text: 'A new set of small studies from the rooftop, in the pinks and ochres of late afternoon. Each one can grow into a larger commission.',
+    l: 0.6,
+    src: '/images/works/sol-2.jpg',
+  },
+  {
     id: 'rafa',
     date: 'Sep 29',
     title: 'Painting a landscape – fall foliage',
     text: 'Three weeks of studies by the river while the maples turn. The finished wall will hold every shade from first gold to the last red leaf.',
     l: 0.6,
     src: '/images/feed/rafa-fall.jpg',
+  },
+  {
+    id: 'g0',
+    date: 'Sep 26',
+    title: 'Something new swimming upstream',
+    text: 'A large panel is almost finished in the studio: two fish, one current and a lot of green. Prints of the study go to newsletter subscribers first.',
+    l: 0.5,
+    src: '/images/works/anders-3.jpg',
   },
   {
     id: 'june',

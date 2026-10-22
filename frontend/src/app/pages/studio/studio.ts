@@ -10,6 +10,7 @@ import {
   lucidePlay,
 } from '@ng-icons/lucide';
 import { ArtistStore } from '../../core/data/artist-store';
+import { feedEntries } from '../../core/data/feed';
 import { HeartButton } from '../../shared/heart-button';
 import { PlayInView } from '../../shared/play-in-view';
 import { InquireButton } from '../../shared/inquiry/inquire-button';
@@ -59,6 +60,7 @@ export class Studio {
   readonly id = input.required<string>();
   protected readonly isMine = computed(() => this.id() === 'me');
   protected readonly artist = computed(() => this.store.byId(this.id()));
+  protected readonly postCount = computed(() => feedEntries(this.id()).length);
 
   protected publish() {
     this.store.publish();

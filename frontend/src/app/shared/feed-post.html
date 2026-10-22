@@ -1,0 +1,69 @@
+<article
+  class="flex flex-col overflow-hidden rounded-3xl bg-card shadow-[0_1px_3px_oklch(0_0_0/.06)] ring-1 ring-black/4"
+>
+  @if (suggested()) {
+    <div
+      class="flex items-center gap-2 bg-sage-tint px-5 py-2.5 text-xs font-semibold text-sage-foreground"
+    >
+      <ng-icon name="lucideSparkles" size="14" />
+      Suggested for you
+      <span class="font-normal">· {{ post().artist.role }} in {{ post().artist.city }}</span>
+    </div>
+  }
+  <div class="flex flex-col gap-4 p-5">
+    <div class="flex items-center justify-between gap-3">
+      <a [routerLink]="['/artists', post().artist.id]" class="flex min-w-0 items-center gap-3">
+        <span
+          class="size-10 shrink-0 rounded-full"
+          [style.background]="post().artist.portraitBg"
+        ></span>
+        <span class="flex min-w-0 flex-col">
+          <span class="truncate text-sm font-semibold">{{ post().artist.name }}</span>
+          <span class="truncate text-xs text-muted-foreground">{{ post().artist.studio }}</span>
+        </span>
+      </a>
+      <span class="shrink-0 text-xs text-muted-foreground">{{ post().date }}</span>
+    </div>
+    <div class="aspect-[16/10] rounded-2xl" [style.background]="post().img"></div>
+    <div class="flex flex-col gap-1.5">
+      <h2 class="font-serif text-2xl leading-tight font-normal">{{ post().title }}</h2>
+      <p class="text-sm leading-relaxed text-muted-foreground">{{ post().text }}</p>
+    </div>
+    @if (actions()) {
+      <div class="flex flex-wrap gap-2 border-t pt-4">
+        @let fav = store.isFav(post().artist.id);
+        <button
+          type="button"
+          (click)="store.toggleFav(post().artist.id)"
+          [attr.aria-pressed]="fav"
+          class="flex h-9 items-center gap-2 rounded-md border bg-background px-3.5 text-[13px] font-medium hover:bg-muted"
+        >
+          <ng-icon
+            name="lucideHeart"
+            size="15"
+            [class]="fav ? 'text-[oklch(0.58_0.09_25)] [&_svg]:fill-current' : ''"
+          />
+          {{ fav ? 'Favorited' : 'Favorite' }}
+        </button>
+        @let sub = store.isSubscribed(post().artist.id);
+        <button
+          type="button"
+          (click)="store.toggleNewsletter(post().artist.id)"
+          [attr.aria-pressed]="sub"
+          [class]="
+            'flex h-9 items-center gap-2 rounded-md px-3.5 text-[13px] font-medium ' +
+            (sub
+              ? 'bg-sage-tint text-sage-foreground'
+              : 'bg-primary text-primary-foreground hover:opacity-90')
+          "
+        >
+          <ng-icon [name]="sub ? 'lucideCheck' : 'lucideMail'" size="15" />
+          <span
+            >{{ sub ? 'Subscribed' : 'Subscribe'
+            }}<span class="max-sm:hidden">&nbsp;to newsletter</span></span
+          >
+        </button>
+      </div>
+    }
+  </div>
+</article>

@@ -22,7 +22,7 @@ export class Home {
   protected readonly store = inject(PatronStore);
   protected readonly mediums = MEDIUMS;
   protected readonly featured = FEATURED_IDS.map((id) => artistById(id) as Artist);
-  protected readonly feed = FEED.map((p) => {
+  protected readonly feed = FEED.slice(0, 3).map((p) => {
     const artist = artistById(p.id) as Artist;
     const base = tone(artist.hue, p.l, artist.c);
     return { ...p, artist, img: p.src ? `${base} url('${p.src}') center/cover no-repeat` : base };

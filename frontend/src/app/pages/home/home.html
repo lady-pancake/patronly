@@ -8,7 +8,7 @@
       </h1>
 
       <!-- On phones, mediums are offered in the search dropdown instead. -->
-      <section class="min-w-0 max-sm:hidden" aria-label="Mediums">
+      <section class="min-w-0 max-sm:hidden sm:-mx-6" aria-label="Mediums">
         <div
           class="no-scrollbar -mx-1 flex snap-x snap-mandatory gap-5 overflow-x-auto px-1 pt-1 pb-3"
         >
@@ -129,7 +129,12 @@
         aria-labelledby="feed-title"
         class="flex flex-col gap-5 rounded-4xl bg-surface p-7 ring-1 ring-black/4"
       >
-        <h2 id="feed-title" class="eyebrow">From the studios</h2>
+        <div class="flex items-center justify-between gap-3">
+          <h2 id="feed-title" class="eyebrow">From the studios</h2>
+          <a routerLink="/feed" class="text-[13px] font-medium underline underline-offset-4"
+            >See all</a
+          >
+        </div>
         @for (p of feed; track p.title) {
           <article
             class="flex flex-col gap-3.5 rounded-3xl bg-card p-5 shadow-[0_1px_3px_oklch(0_0_0/.06)] ring-1 ring-black/4"

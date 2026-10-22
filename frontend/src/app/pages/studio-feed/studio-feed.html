@@ -1,0 +1,60 @@
+@if (artist(); as a) {
+  <main class="mx-auto flex max-w-[680px] flex-col gap-8 px-4 pt-10 pb-24 sm:px-8">
+    <a
+      [routerLink]="['/artists', a.id]"
+      class="flex items-center gap-1.5 self-start text-[13px] font-medium text-muted-foreground hover:text-foreground"
+      ><ng-icon name="lucideArrowLeft" size="14" />Back to studio</a
+    >
+    <header class="flex flex-col gap-5">
+      <div class="flex items-center gap-4">
+        <span class="size-16 shrink-0 rounded-full" [style.background]="a.portraitBg"></span>
+        <div class="flex min-w-0 flex-col gap-1">
+          <h1 class="font-serif text-[40px] leading-none font-normal tracking-[-.02em]">
+            {{ a.first }}’s feed
+          </h1>
+          <p class="text-sm text-muted-foreground">Announcements from {{ a.studio }}</p>
+        </div>
+      </div>
+      <div class="flex flex-wrap gap-2">
+        @let fav = store.isFav(a.id);
+        <button
+          type="button"
+          (click)="store.toggleFav(a.id)"
+          [attr.aria-pressed]="fav"
+          class="flex h-9 items-center gap-2 rounded-md border bg-background px-3.5 text-[13px] font-medium hover:bg-muted"
+        >
+          <ng-icon
+            name="lucideHeart"
+            size="15"
+            [class]="fav ? 'text-[oklch(0.58_0.09_25)] [&_svg]:fill-current' : ''"
+          />
+          {{ fav ? 'Favorited' : 'Favorite' }}
+        </button>
+        @let sub = store.isSubscribed(a.id);
+        <button
+          type="button"
+          (click)="store.toggleNewsletter(a.id)"
+          [attr.aria-pressed]="sub"
+          [class]="
+            'flex h-9 items-center gap-2 rounded-md px-3.5 text-[13px] font-medium ' +
+            (sub
+              ? 'bg-sage-tint text-sage-foreground'
+              : 'bg-primary text-primary-foreground hover:opacity-90')
+          "
+        >
+          <ng-icon [name]="sub ? 'lucideCheck' : 'lucideMail'" size="15" />
+          {{ sub ? 'Subscribed to newsletter' : 'Subscribe to newsletter' }}
+        </button>
+      </div>
+    </header>
+    @for (p of posts(); track p.title) {
+      <app-feed-post [post]="p" [actions]="false" />
+    } @empty {
+      <p class="font-serif text-[22px] text-muted-foreground italic">
+        {{ a.first }} hasn’t posted yet. Subscribe to hear about new work and openings.
+      </p>
+    }
+  </main>
+} @else {
+  <app-not-found>We couldn’t find that studio.</app-not-found>
+}

@@ -18,6 +18,7 @@ import {
   lucideLayoutDashboard,
   lucideLogOut,
   lucideMessageCircle,
+  lucideNewspaper,
   lucideRotateCcw,
   lucideSearch,
 } from '@ng-icons/lucide';
@@ -37,6 +38,7 @@ import { SiteSearch } from './site-search';
       lucideLayoutDashboard,
       lucideLogOut,
       lucideMessageCircle,
+      lucideNewspaper,
       lucideRotateCcw,
       lucideSearch,
     }),
