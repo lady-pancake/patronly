@@ -17,7 +17,7 @@ interface Persisted {
 }
 
 const DEFAULTS: Persisted = {
-  favs: ['maren', 'june'],
+  favs: ['june', 'clem'],
   saved: [],
   hiddenRecent: [],
   threads: SAMPLE_THREADS,

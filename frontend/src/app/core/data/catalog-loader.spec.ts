@@ -56,7 +56,7 @@ describe('catalogue from the API', () => {
   it('replaces the catalogue', () => {
     setCatalogue([fromApi(api)!], 'api');
     expect(artistById('ada')?.availLabel).toBe('Waitlist open');
-    expect(artistById('maren')).toBeUndefined();
+    expect(artistById('june')).toBeUndefined();
     expect(LISTED.map((x) => x.id)).toEqual(['ada']);
   });
 });

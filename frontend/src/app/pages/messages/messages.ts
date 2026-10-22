@@ -97,7 +97,7 @@ export class Messages {
 
   protected artistOf(t: Thread): Artist {
     if (t.artistId === 'me') return this.artist.mine();
-    return artistById(t.artistId) ?? (artistById('maren') as Artist);
+    return artistById(t.artistId) ?? (artistById('sol') as Artist);
   }
 
   /** The other person in the conversation: the artist you wrote to, or the patron who wrote to you. */

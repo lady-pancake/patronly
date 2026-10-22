@@ -15,49 +15,6 @@ import type {
 
 export const SEED_ARTISTS: ArtistSeed[] = [
   {
-    id: 'maren',
-    name: 'Maren Oduya',
-    studio: 'Oduya Portrait Studio',
-    medium: 'Painting',
-    city: 'Lisbon',
-    min: 1200,
-    max: 6000,
-    commissions: 84,
-    likes: 2310,
-    hue: 35,
-    c: 0.09,
-    site: 'maren-oduya.com',
-    reply: 'Usually replies within 2 days.',
-    tags: [
-      'Ink on paper',
-      'Brush drawing',
-      'Oil on linen',
-      'Portraiture',
-      'Ships worldwide',
-      'Booking Jan 2027',
-    ],
-    quote: 'I paint people the way their closest friends see them, slightly braver than they feel.',
-    works: [
-      ['Inês, profile', 'Ink on paper, 30×48cm', '/images/works/maren-1.jpg'],
-      ['Pears in a bowl', 'Brush and ink, 50×56cm', '/images/works/maren-2.jpg'],
-      ['Teresa', 'Ink on laid paper, 38×48cm', '/images/works/maren-3.jpg'],
-      ['Harbour, Cascais', 'Ink wash on paper, 40×26cm', '/images/works/maren-4.jpg'],
-      ['Crowd, Rossio', 'Ink and graphite, 60×44cm', '/images/works/maren-5.jpg'],
-    ],
-    reviews: [
-      {
-        q: 'She caught my father’s half-smile exactly. We cried at the unveiling.',
-        by: 'Teresa M., Porto',
-      },
-      { q: 'Clear about price and timing from the first message.', by: 'Jonah R., London' },
-      { q: 'Worth every week of the wait.', by: 'Priya K., Lisbon' },
-    ],
-    bio: [
-      'Maren trained in Lagos and Lisbon and has painted commissioned portraits for eleven years. Sittings happen in her Alfama studio or from photographs she takes on a short visit to your home.',
-      'Each commission starts with a conversation about who the painting is for and where it will hang. You see a tonal sketch before any paint goes on the canvas, and progress photos every two weeks.',
-    ],
-  },
-  {
     id: 'hana',
     name: 'Hana Ito',
     studio: 'Kiln & Kin',
@@ -493,7 +450,7 @@ export const RECENT_SEARCHES: SavedSearch[] = [
       budget: '$500 – $2k',
       timeline: 'In 1–3 months',
     },
-    ids: ['maren', 'sol', 'june'],
+    ids: ['sol', 'june'],
   },
 ];
 
@@ -525,22 +482,21 @@ export const FEED: FeedPost[] = [
 ];
 
 export const AVAIL_MAP: Record<string, Availability> = {
-  maren: 'Waitlist',
   lena: 'Closed',
   rafa: 'Waitlist',
 };
 
 export const SAMPLE_THREADS: Thread[] = [
   {
-    id: 't-maren',
-    artistId: 'maren',
+    id: 't-sol',
+    artistId: 'sol',
     status: 'Quote received',
     updated: 'Oct 6',
     unread: true,
     inq: {
       works: [0, 3],
       type: 'Canvas, up to 90cm',
-      budget: '$2.6k–$3.3k',
+      budget: '$1.2k–$2.2k',
       timeline: 'For a specific date',
       msg: 'I’d love a portrait of my parents for their 40th anniversary in March. They’re sitting together on the porch in most of my photos.',
       date: 'Oct 2',
@@ -558,16 +514,16 @@ export const SAMPLE_THREADS: Thread[] = [
       },
       {
         me: false,
-        text: 'Ideally both. I’ve sent a quote for a 70×90cm canvas including a short sitting in Lisbon. Let me know what you think.',
+        text: 'Ideally both. I’ve sent a quote for a 70×90cm canvas, starting with a small colour study. Let me know what you think.',
         time: 'Oct 5, 09:03',
       },
       { me: true, text: 'We love it. Let’s go ahead!', time: 'Oct 5, 18:20' },
       {
         type: 'accepted',
         time: 'Oct 6, 08:30',
-        piece: 'Portrait, 70×90cm oil on linen',
-        total: 3200,
-        deposit: 960,
+        piece: 'Portrait, 70×90cm oil on canvas',
+        total: 2000,
+        deposit: 600,
         start: 'Jan 12, 2027',
         due: 'Mar 1, 2027',
       },

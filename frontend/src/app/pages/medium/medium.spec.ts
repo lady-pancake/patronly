@@ -12,13 +12,13 @@ describe('Medium page', () => {
     fixture.componentRef.setInput('name', 'painting');
     await fixture.whenStable();
     const el = fixture.nativeElement as HTMLElement;
-    expect(el.textContent).toContain('Showing 5');
+    expect(el.textContent).toContain('Showing 4');
 
     const availability = el.querySelector<HTMLSelectElement>('select[aria-label="Availability"]')!;
     availability.value = 'Waitlist open';
     availability.dispatchEvent(new Event('change'));
     await fixture.whenStable();
-    expect(el.textContent).toContain('Showing 1');
-    expect(el.textContent).toContain('Maren Oduya');
+    expect(el.textContent).toContain('Showing 0');
+    expect(el.textContent).not.toContain('June Abernethy');
   });
 });

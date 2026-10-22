@@ -24,7 +24,7 @@ describe('catalog', () => {
 
   it('matches search answers by medium and budget, most saved first', () => {
     const matches = matchArtists({ mediums: ['Painting'], budget: '$500 – $2k' });
-    expect(matches.map((a) => a.id)).toEqual(['june', 'maren', 'sol', 'g0', 'clem']);
+    expect(matches.map((a) => a.id)).toEqual(['june', 'sol', 'g0', 'clem']);
     expect(matchArtists({ mediums: ['Painting'], budget: '$15k +' })).toEqual([]);
   });
 
@@ -35,7 +35,7 @@ describe('catalog', () => {
   });
 
   it('decorates availability from the seed map', () => {
-    expect(artistById('maren')?.availLabel).toBe('Waitlist open');
+    expect(artistById('rafa')?.availLabel).toBe('Waitlist open');
     expect(artistById('sol')?.availLabel).toBe('Taking commissions');
   });
 });

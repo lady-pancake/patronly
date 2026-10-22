@@ -56,8 +56,8 @@ def test_seed_is_idempotent(client):
     data = gql(client, "{ artists(limit: 200) { slug works { title } } }")
     slugs = [a["slug"] for a in data["artists"]]
     assert len(slugs) == len(set(slugs)) >= total
-    maren = next(a for a in data["artists"] if a["slug"] == "maren")
-    assert len(maren["works"]) == 5
+    june = next(a for a in data["artists"] if a["slug"] == "june")
+    assert len(june["works"]) == 4
 
 
 def test_artist_by_slug(client):
@@ -70,14 +70,14 @@ def test_artist_by_slug(client):
             reviews { quote author }
           }
         }""",
-        slug="maren",
+        slug="june",
     )
     a = data["artist"]
-    assert a["displayName"] == "Maren Oduya"
+    assert a["displayName"] == "June Abernethy"
     assert a["medium"] == "Painting"
-    assert (a["priceMin"], a["priceMax"]) == (1200, 6000)
-    assert a["availability"] == "WAITLIST"
-    assert a["works"][0]["imageUrl"] == "/images/works/maren-1.jpg"
+    assert (a["priceMin"], a["priceMax"]) == (250, 1800)
+    assert a["availability"] == "OPEN"
+    assert a["works"][0]["imageUrl"] == "/images/works/june-1.jpg"
     assert len(a["reviews"]) == 3
     assert "\n\n" in a["bio"]
 

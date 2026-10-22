@@ -31,7 +31,7 @@ const PALETTE = [
 ];
 const ART = [
   ...ARTISTS.flatMap((a) => a.works.map((w) => w[2]).filter((s): s is string => !!s)),
-  ...['clem', 'june', 'maren', 'sol'].map((id) => `/images/featured/${id}.jpg`),
+  ...['clem', 'june', 'sol'].map((id) => `/images/featured/${id}.jpg`),
 ];
 const OFFSETS = [0, -60, -20, -90, -40, -10, -70, -30];
 const SPEEDS = [70, 90, 60, 80, 75, 95, 65, 85];
