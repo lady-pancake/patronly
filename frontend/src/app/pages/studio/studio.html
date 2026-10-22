@@ -183,33 +183,35 @@
         </blockquote>
       </section>
 
-      <section class="grid items-start gap-10 lg:grid-cols-[minmax(0,1.7fr)_minmax(320px,1fr)]">
-        <div
-          class="relative aspect-[16/10] overflow-hidden rounded-4xl"
-          [style.background]="a.processBg"
-        >
-          @if (a.processVideo) {
-            <video
-              appPlayInView
-              [src]="a.processVideo"
-              controls
-              loop
-              playsinline
-              preload="metadata"
-              class="absolute inset-0 size-full bg-[oklch(0.145_0_0)] object-cover"
-            ></video>
-          } @else if (!a.process) {
-            <div class="absolute bottom-6 left-6 flex items-center gap-3">
-              <span class="grid size-13 place-items-center rounded-full bg-white"
-                ><ng-icon name="lucidePlay" size="18" class="[&_svg]:fill-current"
-              /></span>
-              <span class="text-xs font-medium tracking-[.08em] text-white uppercase"
-                >Process video · 2:14</span
-              >
-            </div>
-          }
-        </div>
-        <div class="flex flex-col gap-6">
+      @let hasProcess = !!(a.process || a.processVideo);
+      <section
+        class="grid items-start gap-10"
+        [class]="
+          hasProcess
+            ? 'lg:grid-cols-[minmax(0,1.7fr)_minmax(320px,1fr)]'
+            : 'md:grid-cols-[minmax(300px,420px)_minmax(0,1fr)] md:items-center'
+        "
+      >
+        @if (hasProcess) {
+          <div
+            class="relative aspect-[16/10] overflow-hidden rounded-4xl"
+            [style.background]="a.processBg"
+          >
+            @if (a.processVideo) {
+              <video
+                appPlayInView
+                [src]="a.processVideo"
+                controls
+                loop
+                playsinline
+                preload="metadata"
+                class="absolute inset-0 size-full bg-[oklch(0.145_0_0)] object-cover"
+              ></video>
+            }
+          </div>
+        }
+        <!-- Without a process box, the rates card and reviews sit side by side. -->
+        <div [class]="hasProcess ? 'flex flex-col gap-6' : 'contents'">
           <div
             class="flex flex-col gap-1 rounded-4xl bg-card p-6 shadow-[0_4px_12px_oklch(0_0_0/.06)] ring-1 ring-black/5"
           >

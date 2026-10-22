@@ -59,6 +59,9 @@ export function rateTiers(a: Pick<ArtistSeed, 'min' | 'max' | 'medium'>): RateTi
 
 export function decorate(a: ArtistSeed): Artist {
   const availability = a.avail ?? AVAIL_MAP[a.id] ?? 'Open';
+  const hasImages = a.works.some((w) => !!w[2]);
+  // Once a studio has real photos, leave out entries that would only be a colour block.
+  const works = hasImages ? a.works.filter((w) => !!w[2]) : a.works;
   const lights = [0.62, 0.78, 0.48, 0.7, 0.55, 0.84];
   return {
     ...a,
@@ -74,7 +77,7 @@ export function decorate(a: ArtistSeed): Artist {
     likesLabel: a.likes.toLocaleString('en-US'),
     availability,
     availLabel: AVAILABILITY[availability].label,
-    workList: a.works.map(([title, material, src], i) => ({
+    workList: works.map(([title, material, src], i) => ({
       title,
       material,
       src,
@@ -82,7 +85,7 @@ export function decorate(a: ArtistSeed): Artist {
     })),
     tiers: rateTiers(a),
     link: { label: a.site, href: `https://${a.site}` },
-    hasImages: a.works.some((w) => !!w[2]),
+    hasImages,
   };
 }
 
