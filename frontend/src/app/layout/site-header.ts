@@ -21,6 +21,7 @@ import {
   lucideNewspaper,
   lucideRotateCcw,
   lucideSearch,
+  lucideStore,
 } from '@ng-icons/lucide';
 import { type Role, ViewerStore } from '../core/auth/viewer.store';
 import { ARTIST_STORAGE_KEY, ArtistStore } from '../core/data/artist-store';
@@ -40,6 +41,7 @@ import { SiteSearch } from './site-search';
       lucideMessageCircle,
       lucideNewspaper,
       lucideRotateCcw,
+      lucideStore,
       lucideSearch,
     }),
   ],
@@ -54,7 +56,7 @@ import { SiteSearch } from './site-search';
 export class SiteHeader {
   protected readonly store = inject(PatronStore);
   protected readonly viewer = inject(ViewerStore);
-  private readonly artist = inject(ArtistStore);
+  protected readonly artist = inject(ArtistStore);
   private readonly router = inject(Router);
   private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);
 

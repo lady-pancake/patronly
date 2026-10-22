@@ -44,6 +44,13 @@
           >Dashboard</span
         >
       </a>
+      <a
+        [routerLink]="artist.published() ? '/artists/me' : '/studio/edit'"
+        routerLinkActive="bg-secondary"
+        class="flex h-10 items-center gap-2 rounded-md px-3 text-sm font-medium hover:bg-muted sm:px-3.5"
+      >
+        <ng-icon name="lucideStore" size="16" /><span class="hidden md:inline">My studio</span>
+      </a>
     }
     @if (viewer.can('SAVE_FAVOURITES')) {
       <a
