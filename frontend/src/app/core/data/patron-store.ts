@@ -19,7 +19,8 @@ interface Persisted {
 }
 
 const DEFAULTS: Persisted = {
-  favs: ['june', 'clem'],
+  // Artists in a saved search start out saved too.
+  favs: [...new Set([...RECENT_SEARCHES.flatMap((s) => s.ids), 'clem'])],
   saved: [],
   hiddenRecent: [],
   dropped: {},
@@ -108,6 +109,7 @@ export class PatronStore {
   saveSearch(search: SavedSearch): void {
     this.dropped.update(({ [search.name]: _, ...rest }) => rest);
     this.saved.update((s) => [search, ...s.filter((x) => x.name !== search.name)]);
+    this.favs.update((f) => [...f, ...search.ids.filter((id) => !f.includes(id))]);
   }
 
   removeSearch(name: string): void {

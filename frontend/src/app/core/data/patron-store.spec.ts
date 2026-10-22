@@ -10,11 +10,21 @@ describe('PatronStore', () => {
   });
 
   it('toggles favourites', () => {
-    expect(store.isFav('sol')).toBe(false);
-    store.toggleFav('sol');
+    expect(store.isFav('hana')).toBe(false);
+    store.toggleFav('hana');
+    expect(store.isFav('hana')).toBe(true);
+    store.toggleFav('hana');
+    expect(store.isFav('hana')).toBe(false);
+  });
+
+  it('starts with the artists from saved searches hearted', () => {
     expect(store.isFav('sol')).toBe(true);
-    store.toggleFav('sol');
-    expect(store.isFav('sol')).toBe(false);
+    expect(store.isFav('june')).toBe(true);
+  });
+
+  it('hearts the artists in a search when it is saved', () => {
+    store.saveSearch({ name: 'Bowls', wiz: { mediums: ['Ceramics'] }, ids: ['hana'] });
+    expect(store.isFav('hana')).toBe(true);
   });
 
   it('lists the sample recent search', () => {
