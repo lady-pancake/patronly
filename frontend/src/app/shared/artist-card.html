@@ -42,15 +42,17 @@
       type="button"
       (click)="checkToggle.emit()"
       [attr.aria-pressed]="checked()"
-      [attr.aria-label]="checked() ? 'Remove from this search’s list' : 'Add to this search’s list'"
-      [title]="checked() ? 'Remove from this search’s list' : 'Add to this search’s list'"
+      [attr.aria-label]="checked() ? 'Saved to this search' : 'Save to this search'"
+      [title]="checked() ? 'Saved to this search' : 'Save to this search'"
       class="absolute grid size-9 place-items-center rounded-full transition-colors"
       [class]="
         (variant() === 'boxed' ? 'top-[22px] left-[22px] ' : 'top-2.5 left-2.5 ') +
-        (checked() ? 'bg-primary text-primary-foreground' : 'bg-white/90 text-foreground')
+        (checked()
+          ? 'bg-primary text-primary-foreground [&_svg]:fill-current'
+          : 'bg-white/90 text-foreground')
       "
     >
-      <ng-icon [name]="checked() ? 'lucideCheck' : 'lucidePlus'" size="16" />
+      <ng-icon name="lucideBookmark" size="16" />
     </button>
   }
   <app-heart-button

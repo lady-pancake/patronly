@@ -109,11 +109,28 @@ export class Search {
     else void this.router.navigateByUrl('/');
   }
 
+  private suggestedName() {
+    const a = this.answers();
+    return (
+      (a.mediums.length ? a.mediums.slice(0, 2).join(' or ') : 'Any medium') +
+      (a.purpose ? ' · ' + a.purpose.toLowerCase() : '')
+    );
+  }
+
+  /** Checks an artist into this search's list, saving the search first if needed. */
+  protected toggleCheck(artistId: string) {
+    if (this.list()) {
+      this.store.toggleInSearch(this.name(), artistId);
+      return;
+    }
+    const name = this.name() || this.suggestedName();
+    this.name.set(name);
+    this.store.saveSearch({ name, sig: this.sig(), wiz: { ...this.answers() }, ids: [artistId] });
+  }
+
   protected save() {
     const a = this.answers();
-    const suggested =
-      (a.mediums.length ? a.mediums.slice(0, 2).join(' or ') : 'Any medium') +
-      (a.purpose ? ' · ' + a.purpose.toLowerCase() : '');
+    const suggested = this.suggestedName();
     this.dialog
       .open<string, { name: string }>(SaveSearchDialog, {
         context: { name: this.name() || suggested },

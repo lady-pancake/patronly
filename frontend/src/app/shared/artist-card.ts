@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
 import { NgIcon, provideIcons } from '@ng-icons/core';
-import { lucideCheck, lucidePlus } from '@ng-icons/lucide';
+import { lucideBookmark } from '@ng-icons/lucide';
 import { RouterLink } from '@angular/router';
 import type { Artist } from '../core/data/models';
 import { AvailabilityBadge, PriceBadge } from './availability-badge';
@@ -16,7 +16,7 @@ import { WorkPreview } from './work-preview';
 @Component({
   selector: 'app-artist-card',
   imports: [RouterLink, NgIcon, WorkPreview, HeartButton, PriceBadge, AvailabilityBadge],
-  providers: [provideIcons({ lucideCheck, lucidePlus })],
+  providers: [provideIcons({ lucideBookmark })],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: { class: 'relative block' },
   templateUrl: './artist-card.html',
@@ -25,7 +25,7 @@ export class ArtistCard {
   readonly artist = input.required<Artist>();
   readonly variant = input<'compact' | 'full' | 'boxed'>('compact');
   /**
-   * When set, shows a check button for adding the artist to a search's list:
+   * When set, shows a save (bookmark) button for adding the artist to a search's list:
    * true when they're on it. Separate from the heart (favourites).
    */
   readonly checked = input<boolean | null>(null);

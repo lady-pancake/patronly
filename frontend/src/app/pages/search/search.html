@@ -113,8 +113,8 @@
           <app-artist-card
             [artist]="a"
             variant="full"
-            [checked]="list() ? list()!.includes(a.id) : null"
-            (checkToggle)="store.toggleInSearch(name(), a.id)"
+            [checked]="list()?.includes(a.id) ?? false"
+            (checkToggle)="toggleCheck(a.id)"
           />
         }
       </div>
