@@ -6,22 +6,19 @@
   </h1>
 
   <!-- On phones, mediums are offered in the search dropdown instead. -->
-  <section class="min-w-0 max-sm:hidden" aria-label="Mediums">
-    <div class="no-scrollbar -mx-1 flex snap-x snap-mandatory gap-5 overflow-x-auto px-1 pt-1 pb-3">
+  <section class="flex min-w-0 items-start gap-5 max-sm:hidden" aria-label="Mediums">
+    <div
+      class="no-scrollbar -mx-1 flex min-w-0 flex-1 snap-x snap-mandatory gap-5 overflow-x-auto px-1 pt-1 pb-3"
+    >
       @for (m of mediums.slice(0, 10); track m.name) {
         <app-medium-tile [name]="m.name" class="w-[120px] shrink-0 snap-start" />
       }
-      <a routerLink="/mediums" class="group flex w-[120px] shrink-0 snap-start flex-col gap-2">
-        <div
-          class="flex aspect-square items-center justify-center rounded-2xl border bg-background transition-transform duration-200 ease-soft group-hover:-translate-y-[3px]"
-        >
-          <ng-icon name="lucideArrowRight" size="22" />
-        </div>
-        <span class="text-center font-serif text-lg leading-tight group-hover:opacity-70"
-          >See all {{ mediums.length }}</span
-        >
-      </a>
     </div>
+    <a
+      routerLink="/mediums"
+      class="mt-[43px] flex h-9 shrink-0 items-center gap-1.5 rounded-md border bg-background px-4 text-[13px] font-medium hover:bg-muted"
+      >See all {{ mediums.length }}<ng-icon name="lucideArrowRight" size="14"
+    /></a>
   </section>
 
   <section
