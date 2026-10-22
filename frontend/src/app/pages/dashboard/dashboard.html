@@ -11,20 +11,20 @@
         >Finish your studio</a
       >
     </div>
+  } @else {
+    <div class="flex flex-wrap justify-end gap-2">
+      <a
+        routerLink="/artists/me"
+        class="flex h-10 items-center rounded-md border bg-background px-4 text-[13px] font-medium hover:bg-muted"
+        >View studio</a
+      >
+      <a
+        routerLink="/studio/edit"
+        class="flex h-10 items-center rounded-md bg-primary px-4 text-[13px] font-medium text-primary-foreground hover:opacity-85"
+        >Edit studio</a
+      >
+    </div>
   }
-
-  <div class="flex flex-wrap justify-end gap-2">
-    <a
-      routerLink="/artists/me"
-      class="flex h-10 items-center rounded-md border bg-background px-4 text-[13px] font-medium hover:bg-muted"
-      >View studio</a
-    >
-    <a
-      routerLink="/studio/edit"
-      class="flex h-10 items-center rounded-md bg-primary px-4 text-[13px] font-medium text-primary-foreground hover:opacity-85"
-      >Edit studio</a
-    >
-  </div>
 
   <div class="flex flex-wrap gap-6">
     <section
