@@ -70,6 +70,7 @@ export function decorate(a: ArtistSeed): Artist {
     bg: tone(a.hue, 0.68, a.c),
     heroBg: a.cover ? imageBg(a.cover, tone(a.hue, 0.42, a.c * 0.9)) : tone(a.hue, 0.42, a.c * 0.9),
     processBg: a.process ? imageBg(a.process, tone(a.hue, 0.55, a.c)) : tone(a.hue, 0.55, a.c),
+    tint: tone(a.hue, 0.86, a.c * 0.5),
     portraitBg: a.portrait
       ? `${tone(a.hue, 0.8, a.c * 0.6)} url('${a.portrait}') center 20%/cover no-repeat`
       : tone(a.hue, 0.8, a.c * 0.6),

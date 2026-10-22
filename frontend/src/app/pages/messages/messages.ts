@@ -30,10 +30,11 @@ import { longDate } from './accept-terms';
 import { DealDialog, type DealContext, type DealResult, money } from './deal-dialog';
 import { STATUS_STYLE, threadStatus } from './thread-status';
 import { CleanText } from '../../shared/clean-text';
+import { Avatar } from '../../shared/avatar';
 
 @Component({
   selector: 'app-messages',
-  imports: [CleanText, RouterLink, FormsModule, NgIcon],
+  imports: [CleanText, RouterLink, FormsModule, NgIcon, Avatar],
   providers: [
     provideIcons({
       lucideArrowLeft,
@@ -132,13 +133,20 @@ export class Messages {
   }
 
   /** The other person in the conversation: the artist you wrote to, or the patron who wrote to you. */
-  protected whoOf(t: Thread): { name: string; first: string; sub: string; bg: string } {
+  protected whoOf(t: Thread): {
+    name: string;
+    first: string;
+    sub: string;
+    bg: string;
+    photo: string | null;
+  } {
     if (t.direction === 'incoming' && t.patron) {
       const { name, hue } = t.patron;
-      return { name, first: name.split(' ')[0], sub: 'Patron', bg: tone(hue, 0.88, 0.04) };
+      const bg = tone(hue, 0.88, 0.04);
+      return { name, first: name.split(' ')[0], sub: 'Patron', bg, photo: null };
     }
     const a = this.artistOf(t);
-    return { name: a.name, first: a.first, sub: a.studio, bg: a.bg };
+    return { name: a.name, first: a.first, sub: a.studio, bg: a.tint, photo: a.portrait ?? null };
   }
 
   protected openBox(box: 'incoming' | 'outgoing') {

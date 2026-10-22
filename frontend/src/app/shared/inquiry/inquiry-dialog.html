@@ -83,7 +83,12 @@
   </div>
 } @else {
   <div class="flex flex-col items-center gap-5 pt-10 pb-4 text-center">
-    <span class="size-16 rounded-full" [style.background]="artist.bg"></span>
+    <app-avatar
+      class="size-16 text-3xl"
+      [name]="artist.name"
+      [photo]="artist.portrait"
+      [tint]="artist.tint"
+    />
     <h2 brnDialogTitle class="font-serif text-[44px] leading-[1.05] font-normal tracking-[-.02em]">
       Your inquiry is <em>on its way.</em>
     </h2>

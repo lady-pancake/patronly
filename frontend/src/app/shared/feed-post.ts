@@ -4,6 +4,7 @@ import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideCheck, lucideHeart, lucideMail, lucideSparkles } from '@ng-icons/lucide';
 import type { FeedEntry } from '../core/data/feed';
 import { PatronStore } from '../core/data/patron-store';
+import { Avatar } from './avatar';
 
 /**
  * One studio announcement. Posts are one-way: patrons can heart the artist
@@ -11,7 +12,7 @@ import { PatronStore } from '../core/data/patron-store';
  */
 @Component({
   selector: 'app-feed-post',
-  imports: [RouterLink, NgIcon],
+  imports: [RouterLink, NgIcon, Avatar],
   providers: [provideIcons({ lucideCheck, lucideHeart, lucideMail, lucideSparkles })],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: { class: 'block' },

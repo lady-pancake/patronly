@@ -36,7 +36,12 @@
           class="flex items-start gap-3 rounded-3xl p-3.5 text-left hover:bg-muted"
           [class.bg-secondary]="t.id === current()?.id"
         >
-          <span class="size-11 shrink-0 rounded-full" [style.background]="t.who.bg"></span>
+          <app-avatar
+            class="size-11 text-lg"
+            [name]="t.who.name"
+            [photo]="t.who.photo"
+            [tint]="t.who.bg"
+          />
           <span class="flex min-w-0 flex-1 flex-col gap-1">
             <span class="flex items-baseline justify-between gap-2">
               <span class="text-sm" [class]="t.unread ? 'font-bold' : 'font-medium'">{{
@@ -87,7 +92,12 @@
             class="-ml-1.5 grid size-10 shrink-0 place-items-center rounded-full hover:bg-muted lg:hidden"
             ><ng-icon name="lucideArrowLeft" size="18"
           /></a>
-          <span class="size-10 rounded-full" [style.background]="who.bg"></span>
+          <app-avatar
+            class="size-10 text-lg"
+            [name]="who.name"
+            [photo]="who.photo"
+            [tint]="who.bg"
+          />
           <span class="flex flex-col">
             <span class="font-serif text-2xl leading-tight">{{ who.name }}</span>
             <span class="text-xs text-muted-foreground">{{ who.sub }}</span>

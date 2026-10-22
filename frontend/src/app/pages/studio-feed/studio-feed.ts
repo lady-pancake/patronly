@@ -7,11 +7,12 @@ import { feedEntries } from '../../core/data/feed';
 import { PatronStore } from '../../core/data/patron-store';
 import { FeedPostCard } from '../../shared/feed-post';
 import { NotFound } from '../not-found';
+import { Avatar } from '../../shared/avatar';
 
 /** One studio's announcements. One-way: no comments, just updates from the artist. */
 @Component({
   selector: 'app-studio-feed',
-  imports: [RouterLink, NgIcon, FeedPostCard, NotFound],
+  imports: [RouterLink, NgIcon, FeedPostCard, NotFound, Avatar],
   providers: [provideIcons({ lucideArrowLeft, lucideCheck, lucideHeart, lucideMail })],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './studio-feed.html',

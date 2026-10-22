@@ -7,7 +7,7 @@
     >
     <header class="flex flex-col gap-5">
       <div class="flex items-center gap-4">
-        <span class="size-16 shrink-0 rounded-full" [style.background]="a.portraitBg"></span>
+        <app-avatar class="size-16 text-3xl" [name]="a.name" [photo]="a.portrait" [tint]="a.tint" />
         <div class="flex min-w-0 flex-col gap-1">
           <h1 class="font-serif text-[40px] leading-none font-normal tracking-[-.02em]">
             {{ a.first }}’s feed

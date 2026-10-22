@@ -275,7 +275,17 @@
               <p class="text-base leading-[1.7]">{{ p }}</p>
             }
           </div>
-          <div class="aspect-[4/5] rounded-4xl" [style.background]="a.portraitBg"></div>
+          @if (a.portrait) {
+            <div class="aspect-[4/5] rounded-4xl" [style.background]="a.portraitBg"></div>
+          } @else {
+            <div
+              class="grid aspect-[4/5] place-items-center rounded-4xl font-serif text-[120px] leading-none text-[oklch(0.3_0.02_60)]"
+              [style.background]="a.tint"
+              aria-hidden="true"
+            >
+              {{ a.first[0] }}
+            </div>
+          }
         </div>
       </ng-template>
     </div>

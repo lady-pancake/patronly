@@ -10,10 +10,11 @@ import { FilterChips } from '../filter-chips';
 import type { InquiryContext } from './inquiry-launcher';
 import { CleanText } from '../clean-text';
 import { EnterSubmit } from '../enter-submit';
+import { Avatar } from '../avatar';
 
 @Component({
   selector: 'app-inquiry-dialog',
-  imports: [CleanText, BrnDialogTitle, FormsModule, NgIcon, FilterChips, HlmTextarea],
+  imports: [CleanText, BrnDialogTitle, FormsModule, NgIcon, FilterChips, HlmTextarea, Avatar],
   providers: [provideIcons({ lucideCheck })],
   hostDirectives: [EnterSubmit],
   changeDetection: ChangeDetectionStrategy.OnPush,

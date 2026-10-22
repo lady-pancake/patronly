@@ -71,6 +71,8 @@ export interface Artist extends ArtistSeed {
   heroBg: string;
   processBg: string;
   portraitBg: string;
+  /** Light colour behind their initial when there's no portrait. */
+  tint: string;
   priceLabel: string;
   likesLabel: string;
   availability: Availability;

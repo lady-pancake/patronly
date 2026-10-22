@@ -149,7 +149,12 @@
           >
             <div class="flex items-center justify-between gap-3">
               <a [routerLink]="['/artists', p.artist.id]" class="flex items-center gap-2.5">
-                <span class="size-8 shrink-0 rounded-full" [style.background]="p.artist.bg"></span>
+                <app-avatar
+                  class="size-8 text-base"
+                  [name]="p.artist.name"
+                  [photo]="p.artist.portrait"
+                  [tint]="p.artist.tint"
+                />
                 <span class="text-sm font-semibold">{{ p.artist.name }}</span>
               </a>
               <span class="text-xs text-muted-foreground">{{ p.date }}</span>

@@ -10,10 +10,11 @@ import { MediumTile } from '../../shared/medium-tile';
 import { SearchCard } from '../../shared/search-card';
 import { searchQueryParams } from '../../shared/search-params';
 import { FEATURED_IDS } from '../featured/featured-content';
+import { Avatar } from '../../shared/avatar';
 
 @Component({
   selector: 'app-home',
-  imports: [RouterLink, NgIcon, SearchCard, MediumTile],
+  imports: [RouterLink, NgIcon, SearchCard, MediumTile, Avatar],
   providers: [provideIcons({ lucideArrowRight })],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './home.html',
