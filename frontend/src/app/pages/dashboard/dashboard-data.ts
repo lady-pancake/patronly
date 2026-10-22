@@ -152,8 +152,6 @@ interface Commission {
   total: number;
   balance: number;
   hours: number;
-  /** Contract signed, but the patron hasn't paid the deposit yet, so work hasn't started. */
-  awaitingDeposit?: boolean;
 }
 
 const COMMISSIONS: Commission[] = [
@@ -190,18 +188,6 @@ const COMMISSIONS: Commission[] = [
     balance: 1820,
     hours: 60,
   },
-  {
-    patron: 'James Hartley',
-    type: 'Small study',
-    done: 0,
-    dueVerb: 'Deliver by',
-    start: '2026-10-19',
-    due: '2027-01-15',
-    total: 1200,
-    balance: 1200,
-    hours: 20,
-    awaitingDeposit: true,
-  },
 ];
 
 export interface ActiveRow {
@@ -216,8 +202,6 @@ export interface ActiveRow {
   paid: string;
   paidPct: number;
   balance: string;
-  /** Set while the deposit is still unpaid: the amount due. */
-  depositDue: string | null;
 }
 
 export function activeCommissions(): ActiveRow[] {
@@ -225,20 +209,18 @@ export function activeCommissions(): ActiveRow[] {
     const due = at(c.due);
     const weeks = Math.max(0, Math.ceil((due.getTime() - TODAY.getTime()) / WEEK));
     const paid = c.total - c.balance;
-    const deposit = Math.round(c.total * 0.3);
     return {
       patron: c.patron,
       type: c.type,
       totalHours: `${c.hours} hrs total`,
-      started: `${c.awaitingDeposit ? 'Signed' : 'Started'} ${monthDay(at(c.start))}`,
+      started: `Started ${monthDay(at(c.start))}`,
       weeksLeft: `${weeks} ${weeks === 1 ? 'week' : 'weeks'} left`,
       urgent: weeks <= 2,
       dueLabel: `${c.dueVerb} ${monthDay(due)}`,
       total: money(c.total),
       paid: `${money(paid)} paid`,
       paidPct: (paid / c.total) * 100,
-      balance: c.awaitingDeposit ? `${money(deposit)} deposit due` : `${money(c.balance)} due`,
-      depositDue: c.awaitingDeposit ? money(deposit) : null,
+      balance: `${money(c.balance)} due`,
     };
   });
 }
@@ -247,8 +229,7 @@ export function activeCommissions(): ActiveRow[] {
 export function weekLoad(capacity = 30) {
   const thisWeek = new Date(TODAY.getTime() + 12 * 36e5);
   const weekIndex = (d: Date) => Math.floor((d.getTime() - thisWeek.getTime()) / WEEK);
-  // Work waiting on a deposit hasn't started, so it isn't booked into this week.
-  const hours = COMMISSIONS.filter((c) => !c.awaitingDeposit).reduce((sum, c) => {
+  const hours = COMMISSIONS.reduce((sum, c) => {
     const a = Math.max(0, weekIndex(at(c.start)));
     const b = Math.max(a, weekIndex(at(c.due)));
     const left = c.hours * (1 - c.done / 100);
@@ -269,23 +250,27 @@ export interface PendingRow {
   accepted: string;
   total: string;
   deposit: string;
-  sent: boolean;
+  /** Where the deal is: contract drafted, contract sent, or signed and waiting on the deposit. */
+  stage: PendingStage;
 }
 
-/** Accepted inquiries still waiting on a signed contract. */
+export type PendingStage = 'draft' | 'sent' | 'deposit';
+
+/** Accepted inquiries not yet active: waiting on a signed contract or the deposit. */
 export const PENDING: PendingRow[] = (
   [
-    ['Marta Kowalski', 'Canvas, up to 60cm', 2400, 'Oct 8', true],
-    ['Leo Carrington', 'Canvas, up to 90cm', 3600, 'Oct 11', true],
-    ['Henrik Dahl', 'Small study', 950, 'Oct 12', false],
-  ] as [string, string, number, string, boolean][]
-).map(([name, type, total, accepted, sent]) => ({
+    ['James Hartley', 'Small study', 1200, 'Oct 2', 'deposit'],
+    ['Marta Kowalski', 'Canvas, up to 60cm', 2400, 'Oct 8', 'sent'],
+    ['Leo Carrington', 'Canvas, up to 90cm', 3600, 'Oct 11', 'sent'],
+    ['Henrik Dahl', 'Small study', 950, 'Oct 12', 'draft'],
+  ] as [string, string, number, string, PendingStage][]
+).map(([name, type, total, accepted, stage]) => ({
   name,
   type,
   accepted,
   total: money(total),
-  deposit: `${money(Math.round(total * 0.3))} deposit on signing`,
-  sent,
+  deposit: `${money(Math.round(total * 0.3))} deposit ${stage === 'deposit' ? 'due' : 'on signing'}`,
+  stage,
 }));
 
 // ── Calendar ────────────────────────────────────────────────────────────
@@ -320,12 +305,12 @@ const BOOKINGS: [string, string, string, string, Stage][] = [
         Stage,
       ],
   ),
+  // Signed, but waiting on the deposit, so it's booked rather than in progress.
+  ['James Hartley', 'Small study', '2026-11', '2027-01', 'booked'],
   ['Matteo Rossi', 'Canvas, up to 90cm', '2027-01', '2027-02', 'booked'],
   ['Ingrid Holm', 'Small study', '2027-02', '2027-02', 'booked'],
   ['Laila Nasser', 'Canvas, up to 60cm', '2027-03', '2027-04', 'booked'],
 ];
-// James Hartley hasn't started yet, so he shows as booked rather than in progress.
-BOOKINGS.find((b) => b[0] === 'James Hartley')![4] = 'booked';
 
 const TYPE_HOURS: Record<string, number> = {
   'Small study': 10,

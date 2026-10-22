@@ -202,32 +202,12 @@
               ><span>· {{ c.started }}</span></span
             >
           </div>
-          @if (c.depositDue) {
-            @let reminded = store.reminded().includes(c.patron);
-            <div class="flex flex-col gap-0.5 text-[13px] whitespace-nowrap">
-              <span class="font-semibold text-[oklch(0.55_0.13_65)]">Awaiting deposit</span>
-              <span class="text-xs text-muted-foreground">{{
-                reminded ? 'Reminder sent today' : 'Work starts once paid'
-              }}</span>
-              <span class="mt-1.5"
-                ><button
-                  type="button"
-                  (click)="store.remind(c.patron)"
-                  [disabled]="reminded"
-                  class="h-[26px] rounded-md border bg-background px-2.5 text-[11px] font-semibold hover:bg-muted disabled:opacity-50"
-                >
-                  {{ reminded ? 'Reminded' : 'Send reminder' }}
-                </button></span
-              >
-            </div>
-          } @else {
-            <div class="flex flex-col gap-0.5 text-[13px] whitespace-nowrap">
-              <span class="font-semibold" [class.text-[oklch(0.52_0.17_25)]]="c.urgent">{{
-                c.weeksLeft
-              }}</span
-              ><span class="text-xs text-muted-foreground">{{ c.dueLabel }}</span>
-            </div>
-          }
+          <div class="flex flex-col gap-0.5 text-[13px] whitespace-nowrap">
+            <span class="font-semibold" [class.text-[oklch(0.52_0.17_25)]]="c.urgent">{{
+              c.weeksLeft
+            }}</span
+            ><span class="text-xs text-muted-foreground">{{ c.dueLabel }}</span>
+          </div>
           <div class="flex flex-col gap-1.5 text-xs">
             <span class="flex items-baseline justify-between gap-2"
               ><span class="text-muted-foreground">Total</span
@@ -262,35 +242,22 @@
             <span class="text-[13px] text-muted-foreground">{{ u.type }}</span>
             <span class="text-xs text-muted-foreground">Accepted {{ u.accepted }}</span>
           </div>
+          @let st = pendingStatus(u, reminded);
           <div class="flex flex-col gap-0.5 text-[13px] whitespace-nowrap">
-            <span class="font-semibold">{{
-              u.sent ? 'Awaiting signature' : 'Contract not sent'
-            }}</span>
-            <span class="text-xs text-muted-foreground">{{
-              u.sent
-                ? reminded
-                  ? 'Reminder sent today'
-                  : 'Sent ' + u.accepted
-                : reminded
-                  ? 'Sent today'
-                  : 'Draft ready'
-            }}</span>
+            <span
+              class="font-semibold"
+              [class.text-[oklch(0.55_0.13_65)]]="u.stage === 'deposit'"
+              >{{ st.title }}</span
+            >
+            <span class="text-xs text-muted-foreground">{{ st.sub }}</span>
             <span class="mt-1.5"
               ><button
                 type="button"
-                (click)="u.sent ? store.remind(u.name) : createContract(u.name)"
+                (click)="u.stage === 'draft' ? createContract(u.name) : store.remind(u.name)"
                 [disabled]="reminded"
                 class="h-[26px] rounded-md border bg-background px-2.5 text-[11px] font-semibold hover:bg-muted disabled:opacity-50"
               >
-                {{
-                  u.sent
-                    ? reminded
-                      ? 'Reminded'
-                      : 'Send reminder'
-                    : reminded
-                      ? 'Sent'
-                      : 'Create contract'
-                }}
+                {{ st.button }}
               </button></span
             >
           </div>

@@ -17,6 +17,7 @@ import {
   INQUIRIES,
   PAYDAY,
   PENDING,
+  type PendingRow,
   STAGES,
   activeCommissions,
   earnings,
@@ -73,6 +74,30 @@ export class Dashboard {
   protected readonly tab = signal<'active' | 'pending'>('active');
   protected readonly yearOffset = signal(0);
   protected readonly year = computed(() => yearView(this.yearOffset()));
+
+  /** Status line, note and button label for a pending commission. */
+  protected pendingStatus(u: PendingRow, reminded: boolean) {
+    switch (u.stage) {
+      case 'deposit':
+        return {
+          title: 'Awaiting deposit',
+          sub: reminded ? 'Reminder sent today' : 'Contract signed',
+          button: reminded ? 'Reminded' : 'Send reminder',
+        };
+      case 'sent':
+        return {
+          title: 'Awaiting signature',
+          sub: reminded ? 'Reminder sent today' : 'Sent ' + u.accepted,
+          button: reminded ? 'Reminded' : 'Send reminder',
+        };
+      default:
+        return {
+          title: 'Contract not sent',
+          sub: reminded ? 'Sent today' : 'Draft ready',
+          button: reminded ? 'Sent' : 'Create contract',
+        };
+    }
+  }
 
   protected readonly inquiries = computed(() =>
     INQUIRIES.filter((q) => !this.store.replied().includes(q.name)),
