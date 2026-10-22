@@ -31,7 +31,10 @@ const PALETTE = [
   '#151D30',
 ];
 const ART = [
-  ...ARTISTS.flatMap((a) => a.works.map((w) => w[2]).filter((s): s is string => !!s)),
+  // Paintings only, so the background reads as a wall of artwork.
+  ...ARTISTS.filter((a) => a.medium === 'Painting').flatMap((a) =>
+    a.works.map((w) => w[2]).filter((s): s is string => !!s),
+  ),
   ...['clem', 'june', 'sol'].map((id) => `/images/featured/${id}.jpg`),
 ];
 const OFFSETS = [0, -60, -20, -90, -40, -10, -70, -30];
