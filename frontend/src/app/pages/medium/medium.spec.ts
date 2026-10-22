@@ -12,7 +12,7 @@ describe('Medium page', () => {
     fixture.componentRef.setInput('name', 'painting');
     await fixture.whenStable();
     const el = fixture.nativeElement as HTMLElement;
-    expect(el.textContent).toContain('Showing 4');
+    expect(el.textContent).toContain('Showing 5');
 
     const availability = el.querySelector<HTMLSelectElement>('select[aria-label="Availability"]')!;
     availability.value = 'Waitlist open';

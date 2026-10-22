@@ -720,7 +720,10 @@ function fillCatalogue(list: ArtistSeed[]): void {
         hue: (hue + (i - 3) * 12 + 360) % 360,
         c: 0.07,
         site: (f + l).toLowerCase() + '.studio',
-        reply: 'Usually replies within ' + (1 + (k % 4)) + ' days.',
+        reply:
+          k % 4
+            ? 'Usually replies within ' + (1 + (k % 4)) + ' days.'
+            : 'Usually replies within a day.',
         tags: [m, 'Commissions open', city, ['Ships worldwide', 'Local only', 'Gift-ready'][k % 3]],
         quote: GQ[k % GQ.length],
         works: WT.slice(k % 3, (k % 3) + 6).map((t) => [t, m] as [string, string]),
@@ -753,6 +756,37 @@ function fillCatalogue(list: ArtistSeed[]): void {
       'Made to order',
       'Ships worldwide',
     ];
+  }
+  const s = list.find((a) => a.medium === 'Painting' && a.id.startsWith('g'));
+  if (s) {
+    Object.assign(s, {
+      studio: 'Atelier Bell',
+      min: 900,
+      max: 6000,
+      commissions: 41,
+      likes: 1880,
+      cover: '/images/covers/amara-cover.jpg',
+      portrait: '/images/portraits/amara.jpg',
+      quote: 'I paint the fish I meet when I close my eyes.',
+      tags: [
+        'Oil on panel',
+        'Surrealism',
+        'Dreamlike sea life',
+        'Large canvases',
+        'Ships worldwide',
+      ],
+      works: [
+        ['The grotto', 'Oil on panel, 70×50cm', '/images/works/amara-1.jpg'],
+        ['Anemone choir', 'Oil on canvas, 50×70cm', '/images/works/amara-2.jpg'],
+        ['Two going upstream', 'Oil on linen, 60×42cm', '/images/works/amara-3.jpg'],
+        ['Meeting at midnight', 'Oil on canvas, 90×58cm', '/images/works/amara-4.jpg'],
+        ['Mother and minnow', 'Oil on panel, 50×36cm', '/images/works/amara-5.jpg'],
+      ],
+      bio: [
+        'Amara paints soft, glowing fish that drift through night skies, caves and coral, in a top-floor studio overlooking the harbour in Copenhagen.',
+        'Tell her about a dream, a person or a place, and she will turn it into a scene of its own. Every commission starts with a small oil sketch.',
+      ],
+    });
   }
   const w = list.find((a) => a.medium === 'Woodwork');
   if (w) {

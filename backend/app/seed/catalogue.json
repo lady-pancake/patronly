@@ -691,64 +691,60 @@
    "slug": "g0",
    "position": 9,
    "name": "Amara Bell",
-   "studio": "Bell Studio",
+   "studio": "Atelier Bell",
    "medium": "Painting",
    "city": "Copenhagen",
-   "priceMin": 150,
-   "priceMax": 600,
-   "commissions": 12,
-   "likes": 200,
+   "priceMin": 900,
+   "priceMax": 6000,
+   "commissions": 41,
+   "likes": 1880,
    "hue": 47,
    "chroma": 0.07,
    "site": "amarabell.studio",
-   "replyNote": "Usually replies within 1 days.",
+   "replyNote": "Usually replies within a day.",
    "tags": [
-    "Painting",
-    "Commissions open",
-    "Copenhagen",
+    "Oil on panel",
+    "Surrealism",
+    "Dreamlike sea life",
+    "Large canvases",
     "Ships worldwide"
    ],
-   "quote": "I make things slowly so they last a long time.",
+   "quote": "I paint the fish I meet when I close my eyes.",
    "bio": [
-    "Amara works from a studio in Copenhagen, making painting to commission for homes, collectors and gifts.",
-    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+    "Amara paints soft, glowing fish that drift through night skies, caves and coral, in a top-floor studio overlooking the harbour in Copenhagen.",
+    "Tell her about a dream, a person or a place, and she will turn it into a scene of its own. Every commission starts with a small oil sketch."
    ],
    "availability": "Open",
-   "coverUrl": null,
-   "portraitUrl": null,
+   "coverUrl": "/images/covers/amara-cover.jpg",
+   "portraitUrl": "/images/portraits/amara.jpg",
    "processUrl": null,
    "processVideoUrl": null,
    "coverVideoUrl": null,
    "works": [
     {
-     "title": "Untitled no. 4",
-     "material": "Painting",
-     "imageUrl": null
+     "title": "The grotto",
+     "material": "Oil on panel, 70×50cm",
+     "imageUrl": "/images/works/amara-1.jpg"
     },
     {
-     "title": "Study in ochre",
-     "material": "Painting",
-     "imageUrl": null
+     "title": "Anemone choir",
+     "material": "Oil on canvas, 50×70cm",
+     "imageUrl": "/images/works/amara-2.jpg"
     },
     {
-     "title": "For a quiet room",
-     "material": "Painting",
-     "imageUrl": null
+     "title": "Two going upstream",
+     "material": "Oil on linen, 60×42cm",
+     "imageUrl": "/images/works/amara-3.jpg"
     },
     {
-     "title": "Morning piece",
-     "material": "Painting",
-     "imageUrl": null
+     "title": "Meeting at midnight",
+     "material": "Oil on canvas, 90×58cm",
+     "imageUrl": "/images/works/amara-4.jpg"
     },
     {
-     "title": "Commission for A.",
-     "material": "Painting",
-     "imageUrl": null
-    },
-    {
-     "title": "Small hours",
-     "material": "Painting",
-     "imageUrl": null
+     "title": "Mother and minnow",
+     "material": "Oil on panel, 50×36cm",
+     "imageUrl": "/images/works/amara-5.jpg"
     }
    ],
    "reviews": [
@@ -1017,7 +1013,7 @@
    "hue": 288,
    "chroma": 0.07,
    "site": "ivyahn.studio",
-   "replyNote": "Usually replies within 1 days.",
+   "replyNote": "Usually replies within a day.",
    "tags": [
     "Illustration",
     "Commissions open",
@@ -1333,7 +1329,7 @@
    "hue": 51,
    "chroma": 0.07,
    "site": "meicruz.studio",
-   "replyNote": "Usually replies within 1 days.",
+   "replyNote": "Usually replies within a day.",
    "tags": [
     "Ceramics",
     "Commissions open",
@@ -1649,7 +1645,7 @@
    "hue": 99,
    "chroma": 0.07,
    "site": "esmeaalto.studio",
-   "replyNote": "Usually replies within 1 days.",
+   "replyNote": "Usually replies within a day.",
    "tags": [
     "Ceramics",
     "Commissions open",
@@ -1965,7 +1961,7 @@
    "hue": 252,
    "chroma": 0.07,
    "site": "saoirsembeki.studio",
-   "replyNote": "Usually replies within 1 days.",
+   "replyNote": "Usually replies within a day.",
    "tags": [
     "Photography",
     "Commissions open",
@@ -2281,7 +2277,7 @@
    "hue": 260,
    "chroma": 0.07,
    "site": "bramolsen.studio",
-   "replyNote": "Usually replies within 1 days.",
+   "replyNote": "Usually replies within a day.",
    "tags": [
     "Sculpture",
     "Commissions open",
@@ -2597,7 +2593,7 @@
    "hue": 8,
    "chroma": 0.07,
    "site": "tariqquinn.studio",
-   "replyNote": "Usually replies within 1 days.",
+   "replyNote": "Usually replies within a day.",
    "tags": [
     "Textile",
     "Commissions open",
@@ -2913,7 +2909,7 @@
    "hue": 126,
    "chroma": 0.07,
    "site": "gretamarsh.studio",
-   "replyNote": "Usually replies within 1 days.",
+   "replyNote": "Usually replies within a day.",
    "tags": [
     "Murals",
     "Commissions open",
@@ -3229,7 +3225,7 @@
    "hue": 174,
    "chroma": 0.07,
    "site": "noorferreira.studio",
-   "replyNote": "Usually replies within 1 days.",
+   "replyNote": "Usually replies within a day.",
    "tags": [
     "Murals",
     "Commissions open",
@@ -3545,7 +3541,7 @@
    "hue": 10,
    "chroma": 0.07,
    "site": "zarakowal.studio",
-   "replyNote": "Usually replies within 1 days.",
+   "replyNote": "Usually replies within a day.",
    "tags": [
     "Printmaking",
     "Commissions open",
@@ -3862,7 +3858,7 @@
    "hue": 61,
    "chroma": 0.07,
    "site": "claraadeyemi.studio",
-   "replyNote": "Usually replies within 1 days.",
+   "replyNote": "Usually replies within a day.",
    "tags": [
     "Jewelry",
     "Commissions open",
@@ -4178,7 +4174,7 @@
    "hue": 109,
    "chroma": 0.07,
    "site": "luciacastell.studio",
-   "replyNote": "Usually replies within 1 days.",
+   "replyNote": "Usually replies within a day.",
    "tags": [
     "Jewelry",
     "Commissions open",
@@ -4495,7 +4491,7 @@
    "hue": 60,
    "chroma": 0.07,
    "site": "yukitanaka.studio",
-   "replyNote": "Usually replies within 1 days.",
+   "replyNote": "Usually replies within a day.",
    "tags": [
     "Woodwork",
     "Commissions open",
@@ -4811,7 +4807,7 @@
    "hue": 176,
    "chroma": 0.07,
    "site": "hugookafor.studio",
-   "replyNote": "Usually replies within 1 days.",
+   "replyNote": "Usually replies within a day.",
    "tags": [
     "Glass",
     "Commissions open",
@@ -5127,7 +5123,7 @@
    "hue": 224,
    "chroma": 0.07,
    "site": "piahaddad.studio",
-   "replyNote": "Usually replies within 1 days.",
+   "replyNote": "Usually replies within a day.",
    "tags": [
     "Glass",
     "Commissions open",
@@ -5443,7 +5439,7 @@
    "hue": 0,
    "chroma": 0.07,
    "site": "amarabell.studio",
-   "replyNote": "Usually replies within 1 days.",
+   "replyNote": "Usually replies within a day.",
    "tags": [
     "Calligraphy",
     "Commissions open",
@@ -5759,7 +5755,7 @@
    "hue": 316,
    "chroma": 0.07,
    "site": "ivyahn.studio",
-   "replyNote": "Usually replies within 1 days.",
+   "replyNote": "Usually replies within a day.",
    "tags": [
     "Embroidery",
     "Commissions open",
@@ -6075,7 +6071,7 @@
    "hue": 4,
    "chroma": 0.07,
    "site": "meicruz.studio",
-   "replyNote": "Usually replies within 1 days.",
+   "replyNote": "Usually replies within a day.",
    "tags": [
     "Embroidery",
     "Commissions open",
@@ -6391,7 +6387,7 @@
    "hue": 50,
    "chroma": 0.07,
    "site": "esmeaalto.studio",
-   "replyNote": "Usually replies within 1 days.",
+   "replyNote": "Usually replies within a day.",
    "tags": [
     "Furniture",
     "Commissions open",
@@ -6707,7 +6703,7 @@
    "hue": 96,
    "chroma": 0.07,
    "site": "saoirsembeki.studio",
-   "replyNote": "Usually replies within 1 days.",
+   "replyNote": "Usually replies within a day.",
    "tags": [
     "Collage",
     "Commissions open",
@@ -7023,7 +7019,7 @@
    "hue": 144,
    "chroma": 0.07,
    "site": "bramolsen.studio",
-   "replyNote": "Usually replies within 1 days.",
+   "replyNote": "Usually replies within a day.",
    "tags": [
     "Collage",
     "Commissions open",
@@ -7339,7 +7335,7 @@
    "hue": 180,
    "chroma": 0.07,
    "site": "tariqquinn.studio",
-   "replyNote": "Usually replies within 1 days.",
+   "replyNote": "Usually replies within a day.",
    "tags": [
     "Mosaic",
     "Commissions open",
