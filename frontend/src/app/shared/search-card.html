@@ -31,7 +31,11 @@
 @if (layout() === 'home') {
   <div class="grid gap-5 sm:grid-cols-3">
     @for (a of artists(); track a.id) {
-      <app-artist-card [artist]="a" />
+      <app-artist-card [artist]="a" (unsaved)="drop(a.id)" />
+    } @empty {
+      <p class="font-serif text-lg text-muted-foreground italic sm:col-span-3">
+        No artists left in this search. Open it to see new matches.
+      </p>
     }
   </div>
 } @else {
@@ -41,6 +45,10 @@
         <app-work-preview [artist]="a" class="aspect-[16/10]" />
         <span class="font-serif text-[19px]">{{ a.name }}</span>
       </a>
+    } @empty {
+      <p class="col-span-2 font-serif text-lg text-muted-foreground italic">
+        No artists left in this search. Open it to see new matches.
+      </p>
     }
   </div>
 }

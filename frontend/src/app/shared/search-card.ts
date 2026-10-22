@@ -38,6 +38,10 @@ export class SearchCard {
       .filter((a): a is Artist => !!a && LISTED.includes(a)),
   );
 
+  protected drop(artistId: string) {
+    this.store.dropFromSearch(this.search().name, artistId);
+  }
+
   protected remove() {
     this.store.removeSearch(this.search().name);
   }

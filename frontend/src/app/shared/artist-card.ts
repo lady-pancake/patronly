@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import type { Artist } from '../core/data/models';
 import { AvailabilityBadge, PriceBadge } from './availability-badge';
@@ -21,4 +21,6 @@ import { WorkPreview } from './work-preview';
 export class ArtistCard {
   readonly artist = input.required<Artist>();
   readonly variant = input<'compact' | 'full' | 'boxed'>('compact');
+  /** Emits when the patron unsaves this artist with the heart. */
+  readonly unsaved = output<void>();
 }

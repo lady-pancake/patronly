@@ -22,6 +22,12 @@ describe('PatronStore', () => {
     expect(names).toContain('Oil portrait of my parents');
   });
 
+  it('takes an artist off a search when they are unsaved from it', () => {
+    store.dropFromSearch('Oil portrait of my parents', 'june');
+    const search = store.searches().find((s) => s.name === 'Oil portrait of my parents');
+    expect(search?.ids).toEqual(['sol']);
+  });
+
   it('removes a sample recent search', () => {
     store.removeSearch('Oil portrait of my parents');
     expect(store.searches().map((s) => s.name)).not.toContain('Oil portrait of my parents');

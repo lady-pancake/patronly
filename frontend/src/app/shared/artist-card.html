@@ -39,6 +39,7 @@
   </a>
   <app-heart-button
     [artistId]="artist().id"
+    (unsaved)="unsaved.emit()"
     class="absolute"
     [class]="variant() === 'boxed' ? 'top-[22px] right-[22px]' : 'top-2.5 right-2.5'"
   />
