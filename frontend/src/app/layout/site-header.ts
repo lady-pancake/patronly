@@ -44,7 +44,7 @@ import { SiteSearch } from './site-search';
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     role: 'banner',
-    class: 'sticky top-0 z-20 block border-b bg-page/85 backdrop-blur-md',
+    class: 'sticky top-0 z-20 block border-b bg-page/60 backdrop-blur-xl',
     '(document:click)': 'closeIfOutside($event)',
   },
   templateUrl: './site-header.html',
