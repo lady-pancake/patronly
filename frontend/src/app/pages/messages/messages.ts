@@ -154,7 +154,7 @@ export class Messages {
     const patron = t.patron?.name ?? '';
     const ref = this.dialog.open<AcceptResult | undefined, AcceptContext>(AcceptDialog, {
       context: { patron, inq: t.inq, artist: this.artist.mine() },
-      contentClass: 'sm:max-w-[640px] rounded-4xl p-6 sm:p-8',
+      contentClass: 'w-[calc(100vw-32px)] max-w-[640px] sm:max-w-[640px] rounded-4xl p-6 sm:p-8',
     });
     ref.closed$.subscribe((r) => {
       if (!r) return;
