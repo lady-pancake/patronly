@@ -24,4 +24,6 @@ export class FeedPostCard {
   readonly suggested = input(false);
   /** Shows the favourite and newsletter buttons under the post. */
   readonly actions = input(true);
+  /** Shows a New flag next to the date. */
+  readonly isNew = input(false);
 }

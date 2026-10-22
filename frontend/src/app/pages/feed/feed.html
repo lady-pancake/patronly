@@ -16,7 +16,7 @@
   </div>
 
   @for (p of visible(); track p.title) {
-    <app-feed-post [post]="p" [suggested]="p.suggested" />
+    <app-feed-post [post]="p" [suggested]="p.suggested" [isNew]="p.isNew" />
   } @empty {
     <p class="font-serif text-[22px] text-muted-foreground italic">
       Nothing here yet. Heart an artist to see their posts in Following.

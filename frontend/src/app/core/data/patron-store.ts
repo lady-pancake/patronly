@@ -2,7 +2,10 @@ import { Injectable, computed, effect, signal } from '@angular/core';
 import { INBOX_SEED } from './inbox-seed';
 import type { Inquiry, SavedSearch, Thread, ThreadStatus } from './models';
 import { LISTED } from './catalog';
-import { RECENT_SEARCHES, SAMPLE_THREADS } from './seed';
+import { FEED, RECENT_SEARCHES, SAMPLE_THREADS } from './seed';
+
+/** The newest posts count as new until the patron opens the feed. */
+const NEW_POSTS = FEED.slice(0, 3).map((p) => p.title);
 
 export const PATRON_STORAGE_KEY = 'patronly.patron.v1';
 const STORAGE_KEY = PATRON_STORAGE_KEY;
@@ -15,6 +18,8 @@ interface Persisted {
   lists: Record<string, string[]>;
   /** Artists whose newsletter the patron subscribed to. */
   newsletters: string[];
+  /** Posts the patron has already seen in the feed, by title. */
+  seenPosts: string[];
   threads: Thread[];
   /** Inquiries patrons sent to the demo artist's studio. */
   inbox: Thread[];
@@ -27,6 +32,7 @@ const DEFAULTS: Persisted = {
   hiddenRecent: [],
   lists: {},
   newsletters: [],
+  seenPosts: [],
   threads: SAMPLE_THREADS,
   inbox: INBOX_SEED,
 };
@@ -55,6 +61,7 @@ export class PatronStore {
   readonly hiddenRecent = signal<string[]>(this.initial.hiddenRecent);
   readonly lists = signal<Record<string, string[]>>(this.initial.lists);
   readonly newsletters = signal<string[]>(this.initial.newsletters);
+  readonly seenPosts = signal<string[]>(this.initial.seenPosts);
   readonly threads = signal<Thread[]>(this.initial.threads);
   readonly inbox = signal<Thread[]>(this.initial.inbox);
 
@@ -79,6 +86,9 @@ export class PatronStore {
       }),
   );
 
+  /** Titles of new posts the patron hasn't seen in the feed yet. */
+  readonly newPosts = computed(() => NEW_POSTS.filter((t) => !this.seenPosts().includes(t)));
+
   readonly unreadCount = computed(() => this.threads().filter((t) => t.unread).length);
   readonly unreadIncoming = computed(() => this.inbox().filter((t) => t.unread).length);
 
@@ -90,6 +100,7 @@ export class PatronStore {
         hiddenRecent: this.hiddenRecent(),
         lists: this.lists(),
         newsletters: this.newsletters(),
+        seenPosts: this.seenPosts(),
         threads: this.threads(),
         inbox: this.inbox(),
       };
@@ -115,6 +126,15 @@ export class PatronStore {
 
   toggleNewsletter(id: string): void {
     this.newsletters.update((n) => (n.includes(id) ? n.filter((x) => x !== id) : [...n, id]));
+  }
+
+  isNewPost(title: string): boolean {
+    return this.newPosts().includes(title);
+  }
+
+  /** Clears the new flags, once the patron has opened the feed. */
+  markFeedSeen(): void {
+    this.seenPosts.update((s) => [...new Set([...s, ...NEW_POSTS])]);
   }
 
   /** The checked artists of a search, or null if there's no search by that name. */

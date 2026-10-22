@@ -1,5 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { PatronStore } from './patron-store';
+import { FEED } from './seed';
 
 describe('PatronStore', () => {
   let store: PatronStore;
@@ -23,6 +24,15 @@ describe('PatronStore', () => {
     expect(store.isSubscribed('theo')).toBe(true);
     store.toggleNewsletter('theo');
     expect(store.isSubscribed('theo')).toBe(false);
+  });
+
+  it('flags the newest posts until the feed is opened', () => {
+    expect(store.newPosts().length).toBe(3);
+    expect(store.isNewPost(FEED[0].title)).toBe(true);
+    expect(store.isNewPost(FEED[3].title)).toBe(false);
+    store.markFeedSeen();
+    expect(store.newPosts()).toEqual([]);
+    expect(store.isNewPost(FEED[0].title)).toBe(false);
   });
 
   it('starts with the artists from saved searches hearted', () => {

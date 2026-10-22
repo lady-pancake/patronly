@@ -144,7 +144,15 @@
                 <span class="size-8 shrink-0 rounded-full" [style.background]="p.artist.bg"></span>
                 <span class="text-sm font-semibold">{{ p.artist.name }}</span>
               </a>
-              <span class="text-xs text-muted-foreground">{{ p.date }}</span>
+              <span class="flex items-center gap-2 text-xs text-muted-foreground">
+                @if (store.isNewPost(p.title)) {
+                  <span
+                    class="rounded-full bg-primary px-2 py-0.5 text-[11px] font-semibold tracking-wide text-primary-foreground uppercase"
+                    >New</span
+                  >
+                }
+                {{ p.date }}
+              </span>
             </div>
             <div class="aspect-[16/10] rounded-2xl" [style.background]="p.img"></div>
             <h3 class="font-serif text-xl leading-tight font-normal">{{ p.title }}</h3>

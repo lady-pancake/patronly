@@ -22,7 +22,15 @@
           <span class="truncate text-xs text-muted-foreground">{{ post().artist.studio }}</span>
         </span>
       </a>
-      <span class="shrink-0 text-xs text-muted-foreground">{{ post().date }}</span>
+      <span class="flex shrink-0 items-center gap-2 text-xs text-muted-foreground">
+        @if (isNew()) {
+          <span
+            class="rounded-full bg-primary px-2 py-0.5 text-[11px] font-semibold tracking-wide text-primary-foreground uppercase"
+            >New</span
+          >
+        }
+        {{ post().date }}
+      </span>
     </div>
     <div class="aspect-[16/10] rounded-2xl" [style.background]="post().img"></div>
     <div class="flex flex-col gap-1.5">
