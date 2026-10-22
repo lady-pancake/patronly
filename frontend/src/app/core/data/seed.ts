@@ -78,9 +78,9 @@ export const SEED_ARTISTS: ArtistSeed[] = [
     process: '/images/process/hana-process.jpg',
     works: [
       ['Ash glaze tea set', 'Stoneware, set of 5', '/images/works/hana-tea-set.jpg'],
-      ['Moon jar', 'Porcelain, 38cm'],
-      ['Shino bowls', 'Stoneware, set of 6'],
-      ['Vase for a doorway', 'Stoneware, 52cm'],
+      ['Daisy mug', 'Hand-painted earthenware, 300ml', '/images/works/hana-mug.jpg'],
+      ['Speckled nesting bowls', 'Stoneware, set of 4', '/images/works/hana-bowls.jpg'],
+      ['Footed fern bowl', 'Hand-painted porcelain, 16cm', '/images/works/hana-fern-bowl.jpg'],
       ['Salt plates', 'Wood-fired, set of 4'],
       ['Kintsugi study', 'Repaired porcelain', '/images/works/hana-kintsugi.jpg'],
     ],
@@ -765,7 +765,13 @@ function fillCatalogue(list: ArtistSeed[]): void {
       portrait: '/images/portraits/arlo.jpg',
       process: '/images/process/arlo-process.jpg',
       quote: 'Every board has a grain to follow. I try not to argue with it.',
-      tags: ['Hand carving', 'Turned vessels', 'Serving boards', 'Live edge and resin', 'Ships worldwide'],
+      tags: [
+        'Hand carving',
+        'Turned vessels',
+        'Serving boards',
+        'Live edge and resin',
+        'Ships worldwide',
+      ],
       works: [
         ['Interlace panel', 'Carved oak relief, 40×60cm', '/images/works/arlo-1.jpg'],
         ['Scroll frame', 'Carved teak panel, 61×44cm', '/images/works/arlo-2.jpg'],
