@@ -12,6 +12,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { type Role, ViewerStore } from '../../core/auth/viewer.store';
 import { ARTISTS } from '../../core/data/catalog';
 import { ArtistStore } from '../../core/data/artist-store';
+import { CleanText } from '../../shared/clean-text';
 
 const PALETTE = [
   '#8E6E7E',
@@ -50,6 +51,7 @@ const COLUMNS = OFFSETS.map((offset, i) => ({
 
 @Component({
   selector: 'app-login',
+  imports: [CleanText],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './login.html',
 })

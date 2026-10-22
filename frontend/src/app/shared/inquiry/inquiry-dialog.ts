@@ -8,10 +8,11 @@ import { HlmTextarea } from '@spartan-ng/helm/textarea';
 import { PatronStore } from '../../core/data/patron-store';
 import { FilterChips } from '../filter-chips';
 import type { InquiryContext } from './inquiry-launcher';
+import { CleanText } from '../clean-text';
 
 @Component({
   selector: 'app-inquiry-dialog',
-  imports: [BrnDialogTitle, FormsModule, NgIcon, FilterChips, HlmTextarea],
+  imports: [CleanText, BrnDialogTitle, FormsModule, NgIcon, FilterChips, HlmTextarea],
   providers: [provideIcons({ lucideCheck })],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './inquiry-dialog.html',

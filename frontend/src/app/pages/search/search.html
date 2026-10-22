@@ -2,9 +2,11 @@
   @if (!done()) {
     <div class="mx-auto flex max-w-[880px] flex-col gap-10">
       <div class="flex flex-col gap-3">
-        <div class="flex items-center justify-between text-[13px] text-muted-foreground">
-          <span class="font-medium">New search</span>
-          <span>Step {{ step() + 1 }} of {{ steps.length }}</span>
+        <div class="flex items-center justify-between gap-4 text-[13px] text-muted-foreground">
+          <nav class="min-w-0" aria-label="New search steps">
+            <app-stepper [labels]="stepLabels" [current]="step()" (go)="step.set($event)" />
+          </nav>
+          <span class="shrink-0 max-sm:hidden">Step {{ step() + 1 }} of {{ steps.length }}</span>
         </div>
         <div
           class="h-1 overflow-hidden rounded-full bg-secondary"

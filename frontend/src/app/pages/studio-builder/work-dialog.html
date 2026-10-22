@@ -22,6 +22,7 @@
         ><span class="text-[13px] font-semibold">Title</span
         ><input
           class="field !h-11 !px-4 !text-sm"
+          appCleanText
           [ngModel]="p.title"
           (ngModelChange)="patch({ title: $event })"
           placeholder="e.g. Portrait of Ana, 2025"
@@ -30,6 +31,7 @@
         ><span class="text-[13px] font-semibold">Medium</span
         ><input
           class="field !h-11 !px-4 !text-sm"
+          appCleanText
           [ngModel]="p.medium"
           (ngModelChange)="patch({ medium: $event })"
           placeholder="e.g. Oil on linen, 40×50cm"
@@ -53,6 +55,7 @@
             ></span>
           }
           <input
+            appCleanText
             [(ngModel)]="tagDraft"
             (keydown)="onTagKey($event)"
             placeholder="Type a tag and press Enter"

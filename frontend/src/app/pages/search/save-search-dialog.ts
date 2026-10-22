@@ -3,10 +3,11 @@ import { FormsModule } from '@angular/forms';
 import { BrnDialogRef, BrnDialogTitle, injectBrnDialogContext } from '@spartan-ng/brain/dialog';
 import { HlmInput } from '@spartan-ng/helm/input';
 import { HlmLabel } from '@spartan-ng/helm/label';
+import { CleanText } from '../../shared/clean-text';
 
 @Component({
   selector: 'app-save-search-dialog',
-  imports: [BrnDialogTitle, FormsModule, HlmInput, HlmLabel],
+  imports: [CleanText, BrnDialogTitle, FormsModule, HlmInput, HlmLabel],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './save-search-dialog.html',
 })

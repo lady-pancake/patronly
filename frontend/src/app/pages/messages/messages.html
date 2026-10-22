@@ -297,6 +297,7 @@
         <textarea
           name="draft"
           rows="1"
+          appCleanText
           [(ngModel)]="draft"
           (keydown.enter)="send($event, th)"
           placeholder="Write a message"

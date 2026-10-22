@@ -21,10 +21,11 @@ import { PatronStore } from '../../core/data/patron-store';
 import { openContractDialog } from '../../shared/contract-dialog';
 import { DealDialog, type DealContext, money } from './deal-dialog';
 import { STATUS_STYLE, threadStatus } from './thread-status';
+import { CleanText } from '../../shared/clean-text';
 
 @Component({
   selector: 'app-messages',
-  imports: [RouterLink, FormsModule, NgIcon],
+  imports: [CleanText, RouterLink, FormsModule, NgIcon],
   providers: [provideIcons({ lucideArrowLeft, lucideArrowUp, lucideCheck, lucidePartyPopper })],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './messages.html',

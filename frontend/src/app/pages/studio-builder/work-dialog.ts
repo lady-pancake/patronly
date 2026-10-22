@@ -5,6 +5,7 @@ import { lucideCheck, lucideImagePlus, lucideX } from '@ng-icons/lucide';
 import { BrnDialogRef, BrnDialogTitle, injectBrnDialogContext } from '@spartan-ng/brain/dialog';
 import { ArtistStore } from '../../core/data/artist-store';
 import { type Piece, WORK_TAG_SUGGESTIONS, readImage } from '../../core/data/studio-draft';
+import { CleanText } from '../../shared/clean-text';
 
 export interface WorkDialogContext {
   /** The piece to edit, or null to start by choosing images. */
@@ -14,7 +15,7 @@ export interface WorkDialogContext {
 /** Adds pieces in bulk, then walks through each one to give it a title and tags. */
 @Component({
   selector: 'app-work-dialog',
-  imports: [BrnDialogTitle, FormsModule, NgIcon],
+  imports: [CleanText, BrnDialogTitle, FormsModule, NgIcon],
   providers: [provideIcons({ lucideCheck, lucideImagePlus, lucideX })],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: { class: 'flex min-h-0 flex-col' },

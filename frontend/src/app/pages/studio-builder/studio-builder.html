@@ -6,36 +6,8 @@
       <img src="favicon.svg" alt="" class="size-8" />
       <span class="font-serif text-[26px] tracking-tight max-sm:hidden">Patronly</span>
     </a>
-    <nav
-      class="no-scrollbar hidden min-w-0 gap-1.5 overflow-x-auto md:flex"
-      aria-label="Studio builder steps"
-    >
-      @for (label of labels; track label; let i = $index) {
-        @let cur = i === step() && step() < last;
-        @let done = i < step() || step() === last;
-        <button
-          type="button"
-          (click)="go(i)"
-          [attr.aria-current]="cur ? 'step' : null"
-          class="flex h-7 shrink-0 items-center gap-1 rounded-md px-2.5 text-xs font-medium whitespace-nowrap"
-          [class]="
-            (cur ? 'bg-secondary ' : '') +
-            (cur || done ? 'text-foreground' : 'text-muted-foreground')
-          "
-        >
-          <span
-            class="grid size-[22px] place-items-center rounded-full text-[11px] font-semibold"
-            [class]="
-              done
-                ? 'bg-primary text-background'
-                : cur
-                  ? 'bg-foreground text-background'
-                  : 'bg-secondary text-muted-foreground'
-            "
-            >{{ done ? '✓' : i + 1 }}</span
-          >{{ label }}
-        </button>
-      }
+    <nav class="hidden min-w-0 md:block" aria-label="Studio builder steps">
+      <app-stepper [labels]="labels" [current]="step()" (go)="go($event)" />
     </nav>
     <button
       type="button"
@@ -68,6 +40,7 @@
               ><span class="text-[13px] font-semibold">Your name</span
               ><input
                 class="field"
+                appCleanText
                 [ngModel]="d().name"
                 (ngModelChange)="set('name', $event)"
                 placeholder="e.g. Maren Oduya"
@@ -76,6 +49,7 @@
               ><span class="text-[13px] font-semibold">Studio name</span
               ><input
                 class="field"
+                appCleanText
                 [ngModel]="d().studio"
                 (ngModelChange)="set('studio', $event)"
                 placeholder="e.g. Oduya Portrait Studio"
@@ -85,6 +59,7 @@
             ><span class="text-[13px] font-semibold">Where are you based?</span
             ><input
               class="field"
+              appCleanText
               [ngModel]="d().city"
               (ngModelChange)="set('city', $event)"
               placeholder="City, country"
@@ -166,6 +141,7 @@
                 class="flex h-[38px] items-center rounded-md border border-dashed bg-background pr-1 pl-3.5"
               >
                 <input
+                  appCleanText
                   [(ngModel)]="tagDraft"
                   (keydown.enter)="addTag(); $event.preventDefault()"
                   placeholder="Add your own"
@@ -204,6 +180,7 @@
             >
             <textarea
               rows="7"
+              appCleanText
               [ngModel]="d().bio"
               (ngModelChange)="set('bio', $event)"
               placeholder="I trained in… My studio is… Every commission starts with…"
@@ -215,6 +192,7 @@
               ><span class="text-[13px] font-semibold">A line in your own words</span
               ><input
                 class="field"
+                appCleanText
                 [ngModel]="d().quote"
                 (ngModelChange)="set('quote', $event)"
                 placeholder="e.g. I paint people the way their closest friends see them."
@@ -269,6 +247,7 @@
                   class="flex flex-wrap items-center justify-between gap-4 border-b px-4.5 py-3.5 last:border-b-0"
                 >
                   <input
+                    appCleanText
                     [ngModel]="t.name"
                     (ngModelChange)="setType(k, { name: $event })"
                     placeholder="Name this type"
@@ -377,6 +356,7 @@
                   class="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 border-b px-4.5 py-3.5 last:border-b-0 sm:flex sm:justify-between sm:gap-4"
                 >
                   <input
+                    appCleanText
                     [ngModel]="t.name"
                     (ngModelChange)="setType(k, { name: $event })"
                     placeholder="Name this type"

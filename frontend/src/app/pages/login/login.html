@@ -97,6 +97,7 @@
             required
             autocomplete="name"
             maxlength="120"
+            appCleanText
             [value]="name()"
             (input)="name.set($any($event.target).value)"
             class="h-11 rounded-full border border-input bg-background px-4 text-sm outline-none focus-visible:border-primary"

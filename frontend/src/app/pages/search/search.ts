@@ -12,11 +12,20 @@ import { ArtistCard } from '../../shared/artist-card';
 import { answersFromParams } from '../../shared/search-params';
 import { FilterSummary, type FilterGroup } from '../../shared/filter-summary';
 import { SaveSearchDialog } from './save-search-dialog';
+import { Stepper } from '../../shared/stepper';
+
+const STEP_NAMES: Record<string, string> = {
+  mediums: 'Medium',
+  purpose: 'Purpose',
+  size: 'Size',
+  budget: 'Budget',
+  timeline: 'Timeline',
+};
 
 /** "New search": five quick questions, then matching artists. */
 @Component({
   selector: 'app-search',
-  imports: [NgIcon, ArtistCard, FilterSummary],
+  imports: [Stepper, NgIcon, ArtistCard, FilterSummary],
   providers: [provideIcons({ lucideArrowLeft, lucideCheck })],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './search.html',
@@ -30,6 +39,7 @@ export class Search {
   });
 
   protected readonly steps = WIZARD_STEPS;
+  protected readonly stepLabels = WIZARD_STEPS.map((s) => STEP_NAMES[s.key]);
   protected readonly answers = signal<WizardAnswers>(answersFromParams(this.params()));
   protected readonly step = signal(this.params()['results'] ? WIZARD_STEPS.length : 0);
   protected readonly name = signal<string>(this.params()['name'] ?? '');
