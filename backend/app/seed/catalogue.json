@@ -256,88 +256,8 @@
    ]
   },
   {
-   "slug": "rafa",
-   "position": 3,
-   "name": "Rafa Quintero",
-   "studio": "Taller Quintero",
-   "medium": "Murals",
-   "city": "Mexico City",
-   "priceMin": 3000,
-   "priceMax": 25000,
-   "commissions": 39,
-   "likes": 3340,
-   "hue": 150,
-   "chroma": 0.1,
-   "site": "tallerquintero.mx",
-   "replyNote": "Usually replies within 4 days.",
-   "tags": [
-    "Interior walls",
-    "Façades",
-    "Mineral paint",
-    "Hospitality",
-    "Travels internationally"
-   ],
-   "quote": "A wall is the biggest, most patient canvas a city can give you.",
-   "bio": [
-    "Rafa leads a crew of three from a workshop in Colonia Doctores and has painted walls in nine countries.",
-    "Every mural starts with a site visit and a gouache study you sign off on, so the scale and colour are agreed before a brush touches the wall."
-   ],
-   "availability": "Waitlist",
-   "coverUrl": null,
-   "portraitUrl": null,
-   "processUrl": null,
-   "processVideoUrl": null,
-   "coverVideoUrl": null,
-   "works": [
-    {
-     "title": "Mercado Roma",
-     "material": "Mineral paint, 14m",
-     "imageUrl": null
-    },
-    {
-     "title": "Hotel stairwell",
-     "material": "Acrylic, 3 floors",
-     "imageUrl": null
-    },
-    {
-     "title": "Courtyard jungle",
-     "material": "Mineral paint, 9m",
-     "imageUrl": null
-    },
-    {
-     "title": "School library",
-     "material": "Acrylic, 22m",
-     "imageUrl": null
-    },
-    {
-     "title": "Café ceiling",
-     "material": "Fresco secco",
-     "imageUrl": null
-    },
-    {
-     "title": "Study for a façade",
-     "material": "Gouache on paper",
-     "imageUrl": null
-    }
-   ],
-   "reviews": [
-    {
-     "quote": "Transformed our lobby. Guests ask about it daily.",
-     "author": "Casa Lumbre Hotel"
-    },
-    {
-     "quote": "Handled permits and scaffolding without fuss.",
-     "author": "Lucía G., Oaxaca"
-    },
-    {
-     "quote": "Bold, generous, on schedule.",
-     "author": "Ben H., Austin"
-    }
-   ]
-  },
-  {
    "slug": "june",
-   "position": 4,
+   "position": 3,
    "name": "June Abernethy",
    "studio": "Small Hours Studio",
    "medium": "Painting",
@@ -407,7 +327,7 @@
   },
   {
    "slug": "lena",
-   "position": 5,
+   "position": 4,
    "name": "Lena Vossberg",
    "studio": "Atelier Vossberg",
    "medium": "Sculpture",
@@ -487,7 +407,7 @@
   },
   {
    "slug": "sol",
-   "position": 6,
+   "position": 5,
    "name": "Sol Amari",
    "studio": "Atelier Amari",
    "medium": "Painting",
@@ -562,7 +482,7 @@
   },
   {
    "slug": "clem",
-   "position": 7,
+   "position": 6,
    "name": "Clémence Aubry",
    "studio": "Atelier Aubry",
    "medium": "Painting",
@@ -633,7 +553,7 @@
   },
   {
    "slug": "g0",
-   "position": 8,
+   "position": 7,
    "name": "Anders Bell",
    "studio": "Atelier Bell",
    "medium": "Painting",
@@ -708,7 +628,7 @@
   },
   {
    "slug": "g1",
-   "position": 9,
+   "position": 8,
    "name": "Leo Weiss",
    "studio": "Weiss Studio",
    "medium": "Painting",
@@ -787,7 +707,7 @@
   },
   {
    "slug": "g2",
-   "position": 10,
+   "position": 9,
    "name": "Noor Ferreira",
    "studio": "Ferreira Studio",
    "medium": "Painting",
@@ -866,7 +786,7 @@
   },
   {
    "slug": "g3",
-   "position": 11,
+   "position": 10,
    "name": "Felix Rossi",
    "studio": "Rossi Studio",
    "medium": "Illustration",
@@ -945,7 +865,7 @@
   },
   {
    "slug": "g4",
-   "position": 12,
+   "position": 11,
    "name": "Ivy Ahn",
    "studio": "Ahn Studio",
    "medium": "Illustration",
@@ -1024,7 +944,7 @@
   },
   {
    "slug": "g5",
-   "position": 13,
+   "position": 12,
    "name": "Tomás Reyes",
    "studio": "Reyes Studio",
    "medium": "Illustration",
@@ -1103,7 +1023,7 @@
   },
   {
    "slug": "g6",
-   "position": 14,
+   "position": 13,
    "name": "Zara Kowal",
    "studio": "Kowal Studio",
    "medium": "Illustration",
@@ -1182,7 +1102,7 @@
   },
   {
    "slug": "g7",
-   "position": 15,
+   "position": 14,
    "name": "Oskar Duarte",
    "studio": "Duarte Studio",
    "medium": "Illustration",
@@ -1261,7 +1181,7 @@
   },
   {
    "slug": "g8",
-   "position": 16,
+   "position": 15,
    "name": "Mei Cruz",
    "studio": "Cruz Studio",
    "medium": "Illustration",
@@ -1340,7 +1260,7 @@
   },
   {
    "slug": "g9",
-   "position": 17,
+   "position": 16,
    "name": "Ravi Lindqvist",
    "studio": "Lindqvist Studio",
    "medium": "Ceramics",
@@ -1419,7 +1339,7 @@
   },
   {
    "slug": "g10",
-   "position": 18,
+   "position": 17,
    "name": "Clara Adeyemi",
    "studio": "Adeyemi Studio",
    "medium": "Ceramics",
@@ -1498,7 +1418,7 @@
   },
   {
    "slug": "g11",
-   "position": 19,
+   "position": 18,
    "name": "Jonas Varga",
    "studio": "Varga Studio",
    "medium": "Ceramics",
@@ -1577,7 +1497,7 @@
   },
   {
    "slug": "g12",
-   "position": 20,
+   "position": 19,
    "name": "Esme Aalto",
    "studio": "Aalto Studio",
    "medium": "Ceramics",
@@ -1656,7 +1576,7 @@
   },
   {
    "slug": "g13",
-   "position": 21,
+   "position": 20,
    "name": "Kofi Moreau",
    "studio": "Moreau Studio",
    "medium": "Ceramics",
@@ -1735,7 +1655,7 @@
   },
   {
    "slug": "g14",
-   "position": 22,
+   "position": 21,
    "name": "Lucia Castell",
    "studio": "Castell Studio",
    "medium": "Photography",
@@ -1814,7 +1734,7 @@
   },
   {
    "slug": "g15",
-   "position": 23,
+   "position": 22,
    "name": "Arlo Hale",
    "studio": "Hale Studio",
    "medium": "Photography",
@@ -1893,7 +1813,7 @@
   },
   {
    "slug": "g16",
-   "position": 24,
+   "position": 23,
    "name": "Saoirse Mbeki",
    "studio": "Mbeki Studio",
    "medium": "Photography",
@@ -1972,7 +1892,7 @@
   },
   {
    "slug": "g17",
-   "position": 25,
+   "position": 24,
    "name": "Matteo Lowe",
    "studio": "Lowe Studio",
    "medium": "Photography",
@@ -2051,7 +1971,7 @@
   },
   {
    "slug": "g18",
-   "position": 26,
+   "position": 25,
    "name": "Yuki Tanaka",
    "studio": "Tanaka Studio",
    "medium": "Photography",
@@ -2130,7 +2050,7 @@
   },
   {
    "slug": "g19",
-   "position": 27,
+   "position": 26,
    "name": "Elif Sato",
    "studio": "Sato Studio",
    "medium": "Sculpture",
@@ -2209,7 +2129,7 @@
   },
   {
    "slug": "g20",
-   "position": 28,
+   "position": 27,
    "name": "Bram Olsen",
    "studio": "Olsen Studio",
    "medium": "Sculpture",
@@ -2288,7 +2208,7 @@
   },
   {
    "slug": "g21",
-   "position": 29,
+   "position": 28,
    "name": "Nadia Petrov",
    "studio": "Petrov Studio",
    "medium": "Sculpture",
@@ -2367,7 +2287,7 @@
   },
   {
    "slug": "g22",
-   "position": 30,
+   "position": 29,
    "name": "Hugo Okafor",
    "studio": "Okafor Studio",
    "medium": "Sculpture",
@@ -2446,7 +2366,7 @@
   },
   {
    "slug": "g23",
-   "position": 31,
+   "position": 30,
    "name": "Odile Laurent",
    "studio": "Laurent Studio",
    "medium": "Sculpture",
@@ -2525,7 +2445,7 @@
   },
   {
    "slug": "g24",
-   "position": 32,
+   "position": 31,
    "name": "Tariq Quinn",
    "studio": "Quinn Studio",
    "medium": "Textile",
@@ -2604,7 +2524,7 @@
   },
   {
    "slug": "g25",
-   "position": 33,
+   "position": 32,
    "name": "Wren Benoit",
    "studio": "Benoit Studio",
    "medium": "Textile",
@@ -2683,7 +2603,7 @@
   },
   {
    "slug": "g26",
-   "position": 34,
+   "position": 33,
    "name": "Pia Haddad",
    "studio": "Haddad Studio",
    "medium": "Textile",
@@ -2762,7 +2682,7 @@
   },
   {
    "slug": "g27",
-   "position": 35,
+   "position": 34,
    "name": "Emeka Novak",
    "studio": "Novak Studio",
    "medium": "Textile",
@@ -2841,7 +2761,7 @@
   },
   {
    "slug": "g28",
-   "position": 36,
+   "position": 35,
    "name": "Greta Marsh",
    "studio": "Marsh Studio",
    "medium": "Textile",
@@ -2920,7 +2840,7 @@
   },
   {
    "slug": "g29",
-   "position": 37,
+   "position": 36,
    "name": "Soren Kerr",
    "studio": "Kerr Studio",
    "medium": "Murals",
@@ -2929,7 +2849,7 @@
    "priceMax": 4800,
    "commissions": 185,
    "likes": 1177,
-   "hue": 126,
+   "hue": 114,
    "chroma": 0.07,
    "site": "sorenkerr.studio",
    "replyNote": "Usually replies within 2 days.",
@@ -2999,7 +2919,7 @@
   },
   {
    "slug": "g30",
-   "position": 38,
+   "position": 37,
    "name": "Amara Bell",
    "studio": "Bell Studio",
    "medium": "Murals",
@@ -3008,7 +2928,7 @@
    "priceMax": 1200,
    "commissions": 42,
    "likes": 1790,
-   "hue": 138,
+   "hue": 126,
    "chroma": 0.07,
    "site": "amarabell.studio",
    "replyNote": "Usually replies within 3 days.",
@@ -3078,7 +2998,7 @@
   },
   {
    "slug": "g31",
-   "position": 39,
+   "position": 38,
    "name": "Leo Weiss",
    "studio": "Weiss Studio",
    "medium": "Murals",
@@ -3087,7 +3007,7 @@
    "priceMax": 4000,
    "commissions": 79,
    "likes": 2403,
-   "hue": 150,
+   "hue": 138,
    "chroma": 0.07,
    "site": "leoweiss.studio",
    "replyNote": "Usually replies within 4 days.",
@@ -3157,7 +3077,7 @@
   },
   {
    "slug": "g32",
-   "position": 40,
+   "position": 39,
    "name": "Noor Ferreira",
    "studio": "Ferreira Studio",
    "medium": "Murals",
@@ -3166,7 +3086,7 @@
    "priceMax": 600,
    "commissions": 116,
    "likes": 3016,
-   "hue": 162,
+   "hue": 150,
    "chroma": 0.07,
    "site": "noorferreira.studio",
    "replyNote": "Usually replies within a day.",
@@ -3236,7 +3156,7 @@
   },
   {
    "slug": "g33",
-   "position": 41,
+   "position": 40,
    "name": "Felix Rossi",
    "studio": "Rossi Studio",
    "medium": "Murals",
@@ -3245,7 +3165,7 @@
    "priceMax": 4800,
    "commissions": 153,
    "likes": 3629,
-   "hue": 174,
+   "hue": 162,
    "chroma": 0.07,
    "site": "felixrossi.studio",
    "replyNote": "Usually replies within 2 days.",
@@ -3315,28 +3235,28 @@
   },
   {
    "slug": "g34",
-   "position": 42,
+   "position": 41,
    "name": "Ivy Ahn",
    "studio": "Ahn Studio",
-   "medium": "Printmaking",
+   "medium": "Murals",
    "city": "Edinburgh",
    "priceMin": 150,
    "priceMax": 1200,
    "commissions": 190,
    "likes": 4242,
-   "hue": 334,
+   "hue": 174,
    "chroma": 0.07,
    "site": "ivyahn.studio",
    "replyNote": "Usually replies within 3 days.",
    "tags": [
-    "Printmaking",
+    "Murals",
     "Commissions open",
     "Edinburgh",
     "Local only"
    ],
    "quote": "I want every piece to feel lived with, not just looked at.",
    "bio": [
-    "Ivy works from a studio in Edinburgh, making printmaking to commission for homes, collectors and gifts.",
+    "Ivy works from a studio in Edinburgh, making murals to commission for homes, collectors and gifts.",
     "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
    ],
    "availability": "Open",
@@ -3348,32 +3268,32 @@
    "works": [
     {
      "title": "Study in ochre",
-     "material": "Printmaking",
+     "material": "Murals",
      "imageUrl": null
     },
     {
      "title": "For a quiet room",
-     "material": "Printmaking",
+     "material": "Murals",
      "imageUrl": null
     },
     {
      "title": "Morning piece",
-     "material": "Printmaking",
+     "material": "Murals",
      "imageUrl": null
     },
     {
      "title": "Commission for A.",
-     "material": "Printmaking",
+     "material": "Murals",
      "imageUrl": null
     },
     {
      "title": "Small hours",
-     "material": "Printmaking",
+     "material": "Murals",
      "imageUrl": null
     },
     {
      "title": "Second light",
-     "material": "Printmaking",
+     "material": "Murals",
      "imageUrl": null
     }
    ],
@@ -3394,7 +3314,7 @@
   },
   {
    "slug": "g35",
-   "position": 43,
+   "position": 42,
    "name": "Tomás Reyes",
    "studio": "Reyes Studio",
    "medium": "Printmaking",
@@ -3403,7 +3323,7 @@
    "priceMax": 4000,
    "commissions": 47,
    "likes": 655,
-   "hue": 346,
+   "hue": 334,
    "chroma": 0.07,
    "site": "tomásreyes.studio",
    "replyNote": "Usually replies within 4 days.",
@@ -3473,7 +3393,7 @@
   },
   {
    "slug": "g36",
-   "position": 44,
+   "position": 43,
    "name": "Zara Kowal",
    "studio": "Kowal Studio",
    "medium": "Printmaking",
@@ -3482,7 +3402,7 @@
    "priceMax": 600,
    "commissions": 84,
    "likes": 1268,
-   "hue": 358,
+   "hue": 346,
    "chroma": 0.07,
    "site": "zarakowal.studio",
    "replyNote": "Usually replies within a day.",
@@ -3552,7 +3472,7 @@
   },
   {
    "slug": "g37",
-   "position": 45,
+   "position": 44,
    "name": "Oskar Duarte",
    "studio": "Duarte Studio",
    "medium": "Printmaking",
@@ -3561,7 +3481,7 @@
    "priceMax": 4800,
    "commissions": 121,
    "likes": 1881,
-   "hue": 10,
+   "hue": 358,
    "chroma": 0.07,
    "site": "oskarduarte.studio",
    "replyNote": "Usually replies within 2 days.",
@@ -3631,7 +3551,7 @@
   },
   {
    "slug": "g38",
-   "position": 46,
+   "position": 45,
    "name": "Mei Cruz",
    "studio": "Cruz Studio",
    "medium": "Printmaking",
@@ -3640,7 +3560,7 @@
    "priceMax": 1200,
    "commissions": 158,
    "likes": 2494,
-   "hue": 22,
+   "hue": 10,
    "chroma": 0.07,
    "site": "meicruz.studio",
    "replyNote": "Usually replies within 3 days.",
@@ -3710,7 +3630,7 @@
   },
   {
    "slug": "g39",
-   "position": 47,
+   "position": 46,
    "name": "Ravi Lindqvist",
    "studio": "Lindqvist Studio",
    "medium": "Printmaking",
@@ -3719,7 +3639,7 @@
    "priceMax": 4000,
    "commissions": 15,
    "likes": 3107,
-   "hue": 34,
+   "hue": 22,
    "chroma": 0.07,
    "site": "ravilindqvist.studio",
    "replyNote": "Usually replies within 4 days.",
@@ -3789,29 +3709,28 @@
   },
   {
    "slug": "g40",
-   "position": 48,
+   "position": 47,
    "name": "Clara Adeyemi",
    "studio": "Adeyemi Studio",
-   "medium": "Jewelry",
+   "medium": "Printmaking",
    "city": "Porto",
    "priceMin": 150,
    "priceMax": 600,
    "commissions": 52,
    "likes": 3720,
-   "hue": 49,
+   "hue": 34,
    "chroma": 0.07,
    "site": "claraadeyemi.studio",
    "replyNote": "Usually replies within a day.",
    "tags": [
-    "Gold and pearl",
-    "Earrings",
-    "Wedding jewellery",
-    "Made to order",
-    "Ships worldwide"
+    "Printmaking",
+    "Commissions open",
+    "Porto",
+    "Local only"
    ],
    "quote": "I make things slowly so they last a long time.",
    "bio": [
-    "Clara works from a studio in Porto, making jewelry to commission for homes, collectors and gifts.",
+    "Clara works from a studio in Porto, making printmaking to commission for homes, collectors and gifts.",
     "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
    ],
    "availability": "Open",
@@ -3822,33 +3741,33 @@
    "coverVideoUrl": null,
    "works": [
     {
-     "title": "Baroque pearl drop",
-     "material": "Brushed gold and freshwater pearl",
-     "imageUrl": "/images/works/jewel-1.jpg"
+     "title": "Study in ochre",
+     "material": "Printmaking",
+     "imageUrl": null
     },
     {
-     "title": "Twisted knot earrings",
-     "material": "Recycled 18k gold",
-     "imageUrl": "/images/works/jewel-2.jpg"
+     "title": "For a quiet room",
+     "material": "Printmaking",
+     "imageUrl": null
     },
     {
-     "title": "Freshwater pearl strand",
-     "material": "Pearls on silk, 45cm",
-     "imageUrl": "/images/works/jewel-3.jpg"
+     "title": "Morning piece",
+     "material": "Printmaking",
+     "imageUrl": null
     },
     {
      "title": "Commission for A.",
-     "material": "Jewelry",
+     "material": "Printmaking",
      "imageUrl": null
     },
     {
      "title": "Small hours",
-     "material": "Jewelry",
+     "material": "Printmaking",
      "imageUrl": null
     },
     {
      "title": "Second light",
-     "material": "Jewelry",
+     "material": "Printmaking",
      "imageUrl": null
     }
    ],
@@ -3869,7 +3788,7 @@
   },
   {
    "slug": "g41",
-   "position": 49,
+   "position": 48,
    "name": "Jonas Varga",
    "studio": "Varga Studio",
    "medium": "Jewelry",
@@ -3878,15 +3797,16 @@
    "priceMax": 4800,
    "commissions": 89,
    "likes": 4333,
-   "hue": 61,
+   "hue": 49,
    "chroma": 0.07,
    "site": "jonasvarga.studio",
    "replyNote": "Usually replies within 2 days.",
    "tags": [
-    "Jewelry",
-    "Commissions open",
-    "Marseille",
-    "Gift-ready"
+    "Gold and pearl",
+    "Earrings",
+    "Wedding jewellery",
+    "Made to order",
+    "Ships worldwide"
    ],
    "quote": "The best commissions start with a story I haven’t heard before.",
    "bio": [
@@ -3901,19 +3821,19 @@
    "coverVideoUrl": null,
    "works": [
     {
-     "title": "For a quiet room",
-     "material": "Jewelry",
-     "imageUrl": null
+     "title": "Baroque pearl drop",
+     "material": "Brushed gold and freshwater pearl",
+     "imageUrl": "/images/works/jewel-1.jpg"
     },
     {
-     "title": "Morning piece",
-     "material": "Jewelry",
-     "imageUrl": null
+     "title": "Twisted knot earrings",
+     "material": "Recycled 18k gold",
+     "imageUrl": "/images/works/jewel-2.jpg"
     },
     {
-     "title": "Commission for A.",
-     "material": "Jewelry",
-     "imageUrl": null
+     "title": "Freshwater pearl strand",
+     "material": "Pearls on silk, 45cm",
+     "imageUrl": "/images/works/jewel-3.jpg"
     },
     {
      "title": "Small hours",
@@ -3948,7 +3868,7 @@
   },
   {
    "slug": "g42",
-   "position": 50,
+   "position": 49,
    "name": "Esme Aalto",
    "studio": "Aalto Studio",
    "medium": "Jewelry",
@@ -3957,7 +3877,7 @@
    "priceMax": 1200,
    "commissions": 126,
    "likes": 746,
-   "hue": 73,
+   "hue": 61,
    "chroma": 0.07,
    "site": "esmeaalto.studio",
    "replyNote": "Usually replies within 3 days.",
@@ -4027,7 +3947,7 @@
   },
   {
    "slug": "g43",
-   "position": 51,
+   "position": 50,
    "name": "Kofi Moreau",
    "studio": "Moreau Studio",
    "medium": "Jewelry",
@@ -4036,7 +3956,7 @@
    "priceMax": 4000,
    "commissions": 163,
    "likes": 1359,
-   "hue": 85,
+   "hue": 73,
    "chroma": 0.07,
    "site": "kofimoreau.studio",
    "replyNote": "Usually replies within 4 days.",
@@ -4106,7 +4026,7 @@
   },
   {
    "slug": "g44",
-   "position": 52,
+   "position": 51,
    "name": "Lucia Castell",
    "studio": "Castell Studio",
    "medium": "Jewelry",
@@ -4115,7 +4035,7 @@
    "priceMax": 600,
    "commissions": 20,
    "likes": 1972,
-   "hue": 97,
+   "hue": 85,
    "chroma": 0.07,
    "site": "luciacastell.studio",
    "replyNote": "Usually replies within a day.",
@@ -4185,7 +4105,7 @@
   },
   {
    "slug": "g45",
-   "position": 53,
+   "position": 52,
    "name": "Arlo Hale",
    "studio": "Hale Studio",
    "medium": "Jewelry",
@@ -4194,7 +4114,7 @@
    "priceMax": 4800,
    "commissions": 57,
    "likes": 2585,
-   "hue": 109,
+   "hue": 97,
    "chroma": 0.07,
    "site": "arlohale.studio",
    "replyNote": "Usually replies within 2 days.",
@@ -4264,19 +4184,98 @@
   },
   {
    "slug": "g46",
-   "position": 54,
+   "position": 53,
    "name": "Saoirse Mbeki",
    "studio": "Mbeki Studio",
-   "medium": "Woodwork",
+   "medium": "Jewelry",
    "city": "Cape Town",
    "priceMin": 150,
    "priceMax": 1200,
    "commissions": 94,
    "likes": 3198,
-   "hue": 24,
+   "hue": 109,
    "chroma": 0.07,
    "site": "saoirsembeki.studio",
    "replyNote": "Usually replies within 3 days.",
+   "tags": [
+    "Jewelry",
+    "Commissions open",
+    "Cape Town",
+    "Local only"
+   ],
+   "quote": "I want every piece to feel lived with, not just looked at.",
+   "bio": [
+    "Saoirse works from a studio in Cape Town, making jewelry to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Open",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Study in ochre",
+     "material": "Jewelry",
+     "imageUrl": null
+    },
+    {
+     "title": "For a quiet room",
+     "material": "Jewelry",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Jewelry",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Jewelry",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Jewelry",
+     "imageUrl": null
+    },
+    {
+     "title": "Second light",
+     "material": "Jewelry",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g47",
+   "position": 54,
+   "name": "Matteo Lowe",
+   "studio": "Lowe Studio",
+   "medium": "Woodwork",
+   "city": "Kyoto",
+   "priceMin": 800,
+   "priceMax": 4000,
+   "commissions": 131,
+   "likes": 3811,
+   "hue": 24,
+   "chroma": 0.07,
+   "site": "matteolowe.studio",
+   "replyNote": "Usually replies within 4 days.",
    "tags": [
     "Hand carving",
     "Turned vessels",
@@ -4289,7 +4288,7 @@
     "Arlo works from a shared woodshop in Brooklyn, hand-carving relief panels and turning vessels from offcuts and storm-felled trees.",
     "Every commission starts with a pencil drawing on the board itself, so you see the grain and the layout before the first cut."
    ],
-   "availability": "Open",
+   "availability": "Closed",
    "coverUrl": "/images/covers/arlo-cover.jpg",
    "portraitUrl": "/images/portraits/arlo.jpg",
    "processUrl": "/images/process/arlo-process.jpg",
@@ -4343,87 +4342,8 @@
    ]
   },
   {
-   "slug": "g47",
-   "position": 55,
-   "name": "Matteo Lowe",
-   "studio": "Lowe Studio",
-   "medium": "Woodwork",
-   "city": "Kyoto",
-   "priceMin": 800,
-   "priceMax": 4000,
-   "commissions": 131,
-   "likes": 3811,
-   "hue": 36,
-   "chroma": 0.07,
-   "site": "matteolowe.studio",
-   "replyNote": "Usually replies within 4 days.",
-   "tags": [
-    "Woodwork",
-    "Commissions open",
-    "Kyoto",
-    "Gift-ready"
-   ],
-   "quote": "Materials tell me what they want to be. I mostly listen.",
-   "bio": [
-    "Matteo works from a studio in Kyoto, making woodwork to commission for homes, collectors and gifts.",
-    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
-   ],
-   "availability": "Closed",
-   "coverUrl": null,
-   "portraitUrl": null,
-   "processUrl": null,
-   "processVideoUrl": null,
-   "coverVideoUrl": null,
-   "works": [
-    {
-     "title": "For a quiet room",
-     "material": "Woodwork",
-     "imageUrl": null
-    },
-    {
-     "title": "Morning piece",
-     "material": "Woodwork",
-     "imageUrl": null
-    },
-    {
-     "title": "Commission for A.",
-     "material": "Woodwork",
-     "imageUrl": null
-    },
-    {
-     "title": "Small hours",
-     "material": "Woodwork",
-     "imageUrl": null
-    },
-    {
-     "title": "Second light",
-     "material": "Woodwork",
-     "imageUrl": null
-    },
-    {
-     "title": "Field notes",
-     "material": "Woodwork",
-     "imageUrl": null
-    }
-   ],
-   "reviews": [
-    {
-     "quote": "Thoughtful from first message to delivery.",
-     "author": "Patron, London"
-    },
-    {
-     "quote": "Exactly what we hoped for, and a little more.",
-     "author": "Patron, New York"
-    },
-    {
-     "quote": "Clear on price, clear on timing.",
-     "author": "Patron, Paris"
-    }
-   ]
-  },
-  {
    "slug": "g48",
-   "position": 56,
+   "position": 55,
    "name": "Yuki Tanaka",
    "studio": "Tanaka Studio",
    "medium": "Woodwork",
@@ -4432,7 +4352,7 @@
    "priceMax": 600,
    "commissions": 168,
    "likes": 224,
-   "hue": 48,
+   "hue": 36,
    "chroma": 0.07,
    "site": "yukitanaka.studio",
    "replyNote": "Usually replies within a day.",
@@ -4502,7 +4422,7 @@
   },
   {
    "slug": "g49",
-   "position": 57,
+   "position": 56,
    "name": "Elif Sato",
    "studio": "Sato Studio",
    "medium": "Woodwork",
@@ -4511,7 +4431,7 @@
    "priceMax": 4800,
    "commissions": 25,
    "likes": 837,
-   "hue": 60,
+   "hue": 48,
    "chroma": 0.07,
    "site": "elifsato.studio",
    "replyNote": "Usually replies within 2 days.",
@@ -4581,7 +4501,7 @@
   },
   {
    "slug": "g50",
-   "position": 58,
+   "position": 57,
    "name": "Bram Olsen",
    "studio": "Olsen Studio",
    "medium": "Woodwork",
@@ -4590,7 +4510,7 @@
    "priceMax": 1200,
    "commissions": 62,
    "likes": 1450,
-   "hue": 72,
+   "hue": 60,
    "chroma": 0.07,
    "site": "bramolsen.studio",
    "replyNote": "Usually replies within 3 days.",
@@ -4660,7 +4580,7 @@
   },
   {
    "slug": "g51",
-   "position": 59,
+   "position": 58,
    "name": "Nadia Petrov",
    "studio": "Petrov Studio",
    "medium": "Woodwork",
@@ -4669,7 +4589,7 @@
    "priceMax": 4000,
    "commissions": 99,
    "likes": 2063,
-   "hue": 84,
+   "hue": 72,
    "chroma": 0.07,
    "site": "nadiapetrov.studio",
    "replyNote": "Usually replies within 4 days.",
@@ -4739,28 +4659,28 @@
   },
   {
    "slug": "g52",
-   "position": 60,
+   "position": 59,
    "name": "Hugo Okafor",
    "studio": "Okafor Studio",
-   "medium": "Glass",
+   "medium": "Woodwork",
    "city": "Melbourne",
    "priceMin": 150,
    "priceMax": 600,
    "commissions": 136,
    "likes": 2676,
-   "hue": 164,
+   "hue": 84,
    "chroma": 0.07,
    "site": "hugookafor.studio",
    "replyNote": "Usually replies within a day.",
    "tags": [
-    "Glass",
+    "Woodwork",
     "Commissions open",
     "Melbourne",
     "Local only"
    ],
    "quote": "I make things slowly so they last a long time.",
    "bio": [
-    "Hugo works from a studio in Melbourne, making glass to commission for homes, collectors and gifts.",
+    "Hugo works from a studio in Melbourne, making woodwork to commission for homes, collectors and gifts.",
     "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
    ],
    "availability": "Open",
@@ -4772,32 +4692,32 @@
    "works": [
     {
      "title": "Study in ochre",
-     "material": "Glass",
+     "material": "Woodwork",
      "imageUrl": null
     },
     {
      "title": "For a quiet room",
-     "material": "Glass",
+     "material": "Woodwork",
      "imageUrl": null
     },
     {
      "title": "Morning piece",
-     "material": "Glass",
+     "material": "Woodwork",
      "imageUrl": null
     },
     {
      "title": "Commission for A.",
-     "material": "Glass",
+     "material": "Woodwork",
      "imageUrl": null
     },
     {
      "title": "Small hours",
-     "material": "Glass",
+     "material": "Woodwork",
      "imageUrl": null
     },
     {
      "title": "Second light",
-     "material": "Glass",
+     "material": "Woodwork",
      "imageUrl": null
     }
    ],
@@ -4818,7 +4738,7 @@
   },
   {
    "slug": "g53",
-   "position": 61,
+   "position": 60,
    "name": "Odile Laurent",
    "studio": "Laurent Studio",
    "medium": "Glass",
@@ -4827,7 +4747,7 @@
    "priceMax": 4800,
    "commissions": 173,
    "likes": 3289,
-   "hue": 176,
+   "hue": 164,
    "chroma": 0.07,
    "site": "odilelaurent.studio",
    "replyNote": "Usually replies within 2 days.",
@@ -4897,7 +4817,7 @@
   },
   {
    "slug": "g54",
-   "position": 62,
+   "position": 61,
    "name": "Tariq Quinn",
    "studio": "Quinn Studio",
    "medium": "Glass",
@@ -4906,7 +4826,7 @@
    "priceMax": 1200,
    "commissions": 30,
    "likes": 3902,
-   "hue": 188,
+   "hue": 176,
    "chroma": 0.07,
    "site": "tariqquinn.studio",
    "replyNote": "Usually replies within 3 days.",
@@ -4976,7 +4896,7 @@
   },
   {
    "slug": "g55",
-   "position": 63,
+   "position": 62,
    "name": "Wren Benoit",
    "studio": "Benoit Studio",
    "medium": "Glass",
@@ -4985,7 +4905,7 @@
    "priceMax": 4000,
    "commissions": 67,
    "likes": 315,
-   "hue": 200,
+   "hue": 188,
    "chroma": 0.07,
    "site": "wrenbenoit.studio",
    "replyNote": "Usually replies within 4 days.",
@@ -5055,7 +4975,7 @@
   },
   {
    "slug": "g56",
-   "position": 64,
+   "position": 63,
    "name": "Pia Haddad",
    "studio": "Haddad Studio",
    "medium": "Glass",
@@ -5064,7 +4984,7 @@
    "priceMax": 600,
    "commissions": 104,
    "likes": 928,
-   "hue": 212,
+   "hue": 200,
    "chroma": 0.07,
    "site": "piahaddad.studio",
    "replyNote": "Usually replies within a day.",
@@ -5134,7 +5054,7 @@
   },
   {
    "slug": "g57",
-   "position": 65,
+   "position": 64,
    "name": "Emeka Novak",
    "studio": "Novak Studio",
    "medium": "Glass",
@@ -5143,7 +5063,7 @@
    "priceMax": 4800,
    "commissions": 141,
    "likes": 1541,
-   "hue": 224,
+   "hue": 212,
    "chroma": 0.07,
    "site": "emekanovak.studio",
    "replyNote": "Usually replies within 2 days.",
@@ -5213,28 +5133,28 @@
   },
   {
    "slug": "g58",
-   "position": 66,
+   "position": 65,
    "name": "Greta Marsh",
    "studio": "Marsh Studio",
-   "medium": "Calligraphy",
+   "medium": "Glass",
    "city": "Oaxaca",
    "priceMin": 150,
    "priceMax": 1200,
    "commissions": 178,
    "likes": 2154,
-   "hue": 324,
+   "hue": 224,
    "chroma": 0.07,
    "site": "gretamarsh.studio",
    "replyNote": "Usually replies within 3 days.",
    "tags": [
-    "Calligraphy",
+    "Glass",
     "Commissions open",
     "Oaxaca",
     "Local only"
    ],
    "quote": "I want every piece to feel lived with, not just looked at.",
    "bio": [
-    "Greta works from a studio in Oaxaca, making calligraphy to commission for homes, collectors and gifts.",
+    "Greta works from a studio in Oaxaca, making glass to commission for homes, collectors and gifts.",
     "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
    ],
    "availability": "Open",
@@ -5246,32 +5166,32 @@
    "works": [
     {
      "title": "Study in ochre",
-     "material": "Calligraphy",
+     "material": "Glass",
      "imageUrl": null
     },
     {
      "title": "For a quiet room",
-     "material": "Calligraphy",
+     "material": "Glass",
      "imageUrl": null
     },
     {
      "title": "Morning piece",
-     "material": "Calligraphy",
+     "material": "Glass",
      "imageUrl": null
     },
     {
      "title": "Commission for A.",
-     "material": "Calligraphy",
+     "material": "Glass",
      "imageUrl": null
     },
     {
      "title": "Small hours",
-     "material": "Calligraphy",
+     "material": "Glass",
      "imageUrl": null
     },
     {
      "title": "Second light",
-     "material": "Calligraphy",
+     "material": "Glass",
      "imageUrl": null
     }
    ],
@@ -5292,7 +5212,7 @@
   },
   {
    "slug": "g59",
-   "position": 67,
+   "position": 66,
    "name": "Soren Kerr",
    "studio": "Kerr Studio",
    "medium": "Calligraphy",
@@ -5301,7 +5221,7 @@
    "priceMax": 4000,
    "commissions": 35,
    "likes": 2767,
-   "hue": 336,
+   "hue": 324,
    "chroma": 0.07,
    "site": "sorenkerr.studio",
    "replyNote": "Usually replies within 4 days.",
@@ -5371,7 +5291,7 @@
   },
   {
    "slug": "g60",
-   "position": 68,
+   "position": 67,
    "name": "Amara Bell",
    "studio": "Bell Studio",
    "medium": "Calligraphy",
@@ -5380,7 +5300,7 @@
    "priceMax": 600,
    "commissions": 72,
    "likes": 3380,
-   "hue": 348,
+   "hue": 336,
    "chroma": 0.07,
    "site": "amarabell.studio",
    "replyNote": "Usually replies within a day.",
@@ -5450,7 +5370,7 @@
   },
   {
    "slug": "g61",
-   "position": 69,
+   "position": 68,
    "name": "Leo Weiss",
    "studio": "Weiss Studio",
    "medium": "Calligraphy",
@@ -5459,7 +5379,7 @@
    "priceMax": 4800,
    "commissions": 109,
    "likes": 3993,
-   "hue": 0,
+   "hue": 348,
    "chroma": 0.07,
    "site": "leoweiss.studio",
    "replyNote": "Usually replies within 2 days.",
@@ -5529,7 +5449,7 @@
   },
   {
    "slug": "g62",
-   "position": 70,
+   "position": 69,
    "name": "Noor Ferreira",
    "studio": "Ferreira Studio",
    "medium": "Calligraphy",
@@ -5538,7 +5458,7 @@
    "priceMax": 1200,
    "commissions": 146,
    "likes": 406,
-   "hue": 12,
+   "hue": 0,
    "chroma": 0.07,
    "site": "noorferreira.studio",
    "replyNote": "Usually replies within 3 days.",
@@ -5608,7 +5528,7 @@
   },
   {
    "slug": "g63",
-   "position": 71,
+   "position": 70,
    "name": "Felix Rossi",
    "studio": "Rossi Studio",
    "medium": "Calligraphy",
@@ -5617,7 +5537,7 @@
    "priceMax": 4000,
    "commissions": 183,
    "likes": 1019,
-   "hue": 24,
+   "hue": 12,
    "chroma": 0.07,
    "site": "felixrossi.studio",
    "replyNote": "Usually replies within 4 days.",
@@ -5687,28 +5607,28 @@
   },
   {
    "slug": "g64",
-   "position": 72,
+   "position": 71,
    "name": "Ivy Ahn",
    "studio": "Ahn Studio",
-   "medium": "Embroidery",
+   "medium": "Calligraphy",
    "city": "Copenhagen",
    "priceMin": 150,
    "priceMax": 600,
    "commissions": 40,
    "likes": 1632,
-   "hue": 304,
+   "hue": 24,
    "chroma": 0.07,
    "site": "ivyahn.studio",
    "replyNote": "Usually replies within a day.",
    "tags": [
-    "Embroidery",
+    "Calligraphy",
     "Commissions open",
     "Copenhagen",
     "Local only"
    ],
    "quote": "I make things slowly so they last a long time.",
    "bio": [
-    "Ivy works from a studio in Copenhagen, making embroidery to commission for homes, collectors and gifts.",
+    "Ivy works from a studio in Copenhagen, making calligraphy to commission for homes, collectors and gifts.",
     "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
    ],
    "availability": "Open",
@@ -5720,32 +5640,32 @@
    "works": [
     {
      "title": "Study in ochre",
-     "material": "Embroidery",
+     "material": "Calligraphy",
      "imageUrl": null
     },
     {
      "title": "For a quiet room",
-     "material": "Embroidery",
+     "material": "Calligraphy",
      "imageUrl": null
     },
     {
      "title": "Morning piece",
-     "material": "Embroidery",
+     "material": "Calligraphy",
      "imageUrl": null
     },
     {
      "title": "Commission for A.",
-     "material": "Embroidery",
+     "material": "Calligraphy",
      "imageUrl": null
     },
     {
      "title": "Small hours",
-     "material": "Embroidery",
+     "material": "Calligraphy",
      "imageUrl": null
     },
     {
      "title": "Second light",
-     "material": "Embroidery",
+     "material": "Calligraphy",
      "imageUrl": null
     }
    ],
@@ -5766,7 +5686,7 @@
   },
   {
    "slug": "g65",
-   "position": 73,
+   "position": 72,
    "name": "Tomás Reyes",
    "studio": "Reyes Studio",
    "medium": "Embroidery",
@@ -5775,7 +5695,7 @@
    "priceMax": 4800,
    "commissions": 77,
    "likes": 2245,
-   "hue": 316,
+   "hue": 304,
    "chroma": 0.07,
    "site": "tomásreyes.studio",
    "replyNote": "Usually replies within 2 days.",
@@ -5845,7 +5765,7 @@
   },
   {
    "slug": "g66",
-   "position": 74,
+   "position": 73,
    "name": "Zara Kowal",
    "studio": "Kowal Studio",
    "medium": "Embroidery",
@@ -5854,7 +5774,7 @@
    "priceMax": 1200,
    "commissions": 114,
    "likes": 2858,
-   "hue": 328,
+   "hue": 316,
    "chroma": 0.07,
    "site": "zarakowal.studio",
    "replyNote": "Usually replies within 3 days.",
@@ -5924,7 +5844,7 @@
   },
   {
    "slug": "g67",
-   "position": 75,
+   "position": 74,
    "name": "Oskar Duarte",
    "studio": "Duarte Studio",
    "medium": "Embroidery",
@@ -5933,7 +5853,7 @@
    "priceMax": 4000,
    "commissions": 151,
    "likes": 3471,
-   "hue": 340,
+   "hue": 328,
    "chroma": 0.07,
    "site": "oskarduarte.studio",
    "replyNote": "Usually replies within 4 days.",
@@ -6003,7 +5923,7 @@
   },
   {
    "slug": "g68",
-   "position": 76,
+   "position": 75,
    "name": "Mei Cruz",
    "studio": "Cruz Studio",
    "medium": "Embroidery",
@@ -6012,7 +5932,7 @@
    "priceMax": 600,
    "commissions": 188,
    "likes": 4084,
-   "hue": 352,
+   "hue": 340,
    "chroma": 0.07,
    "site": "meicruz.studio",
    "replyNote": "Usually replies within a day.",
@@ -6082,7 +6002,7 @@
   },
   {
    "slug": "g69",
-   "position": 77,
+   "position": 76,
    "name": "Ravi Lindqvist",
    "studio": "Lindqvist Studio",
    "medium": "Embroidery",
@@ -6091,7 +6011,7 @@
    "priceMax": 4800,
    "commissions": 45,
    "likes": 497,
-   "hue": 4,
+   "hue": 352,
    "chroma": 0.07,
    "site": "ravilindqvist.studio",
    "replyNote": "Usually replies within 2 days.",
@@ -6161,28 +6081,28 @@
   },
   {
    "slug": "g70",
-   "position": 78,
+   "position": 77,
    "name": "Clara Adeyemi",
    "studio": "Adeyemi Studio",
-   "medium": "Furniture",
+   "medium": "Embroidery",
    "city": "Vancouver",
    "priceMin": 150,
    "priceMax": 1200,
    "commissions": 82,
    "likes": 1110,
-   "hue": 14,
+   "hue": 4,
    "chroma": 0.07,
    "site": "claraadeyemi.studio",
    "replyNote": "Usually replies within 3 days.",
    "tags": [
-    "Furniture",
+    "Embroidery",
     "Commissions open",
     "Vancouver",
     "Local only"
    ],
    "quote": "I want every piece to feel lived with, not just looked at.",
    "bio": [
-    "Clara works from a studio in Vancouver, making furniture to commission for homes, collectors and gifts.",
+    "Clara works from a studio in Vancouver, making embroidery to commission for homes, collectors and gifts.",
     "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
    ],
    "availability": "Open",
@@ -6194,32 +6114,32 @@
    "works": [
     {
      "title": "Study in ochre",
-     "material": "Furniture",
+     "material": "Embroidery",
      "imageUrl": null
     },
     {
      "title": "For a quiet room",
-     "material": "Furniture",
+     "material": "Embroidery",
      "imageUrl": null
     },
     {
      "title": "Morning piece",
-     "material": "Furniture",
+     "material": "Embroidery",
      "imageUrl": null
     },
     {
      "title": "Commission for A.",
-     "material": "Furniture",
+     "material": "Embroidery",
      "imageUrl": null
     },
     {
      "title": "Small hours",
-     "material": "Furniture",
+     "material": "Embroidery",
      "imageUrl": null
     },
     {
      "title": "Second light",
-     "material": "Furniture",
+     "material": "Embroidery",
      "imageUrl": null
     }
    ],
@@ -6240,7 +6160,7 @@
   },
   {
    "slug": "g71",
-   "position": 79,
+   "position": 78,
    "name": "Jonas Varga",
    "studio": "Varga Studio",
    "medium": "Furniture",
@@ -6249,7 +6169,7 @@
    "priceMax": 4000,
    "commissions": 119,
    "likes": 1723,
-   "hue": 26,
+   "hue": 14,
    "chroma": 0.07,
    "site": "jonasvarga.studio",
    "replyNote": "Usually replies within 4 days.",
@@ -6319,7 +6239,7 @@
   },
   {
    "slug": "g72",
-   "position": 80,
+   "position": 79,
    "name": "Esme Aalto",
    "studio": "Aalto Studio",
    "medium": "Furniture",
@@ -6328,7 +6248,7 @@
    "priceMax": 600,
    "commissions": 156,
    "likes": 2336,
-   "hue": 38,
+   "hue": 26,
    "chroma": 0.07,
    "site": "esmeaalto.studio",
    "replyNote": "Usually replies within a day.",
@@ -6398,7 +6318,7 @@
   },
   {
    "slug": "g73",
-   "position": 81,
+   "position": 80,
    "name": "Kofi Moreau",
    "studio": "Moreau Studio",
    "medium": "Furniture",
@@ -6407,7 +6327,7 @@
    "priceMax": 4800,
    "commissions": 13,
    "likes": 2949,
-   "hue": 50,
+   "hue": 38,
    "chroma": 0.07,
    "site": "kofimoreau.studio",
    "replyNote": "Usually replies within 2 days.",
@@ -6477,7 +6397,7 @@
   },
   {
    "slug": "g74",
-   "position": 82,
+   "position": 81,
    "name": "Lucia Castell",
    "studio": "Castell Studio",
    "medium": "Furniture",
@@ -6486,7 +6406,7 @@
    "priceMax": 1200,
    "commissions": 50,
    "likes": 3562,
-   "hue": 62,
+   "hue": 50,
    "chroma": 0.07,
    "site": "luciacastell.studio",
    "replyNote": "Usually replies within 3 days.",
@@ -6556,7 +6476,7 @@
   },
   {
    "slug": "g75",
-   "position": 83,
+   "position": 82,
    "name": "Arlo Hale",
    "studio": "Hale Studio",
    "medium": "Furniture",
@@ -6565,7 +6485,7 @@
    "priceMax": 4000,
    "commissions": 87,
    "likes": 4175,
-   "hue": 74,
+   "hue": 62,
    "chroma": 0.07,
    "site": "arlohale.studio",
    "replyNote": "Usually replies within 4 days.",
@@ -6635,28 +6555,28 @@
   },
   {
    "slug": "g76",
-   "position": 84,
+   "position": 83,
    "name": "Saoirse Mbeki",
    "studio": "Mbeki Studio",
-   "medium": "Collage",
+   "medium": "Furniture",
    "city": "Bogotá",
    "priceMin": 150,
    "priceMax": 600,
    "commissions": 124,
    "likes": 588,
-   "hue": 84,
+   "hue": 74,
    "chroma": 0.07,
    "site": "saoirsembeki.studio",
    "replyNote": "Usually replies within a day.",
    "tags": [
-    "Collage",
+    "Furniture",
     "Commissions open",
     "Bogotá",
     "Local only"
    ],
    "quote": "I make things slowly so they last a long time.",
    "bio": [
-    "Saoirse works from a studio in Bogotá, making collage to commission for homes, collectors and gifts.",
+    "Saoirse works from a studio in Bogotá, making furniture to commission for homes, collectors and gifts.",
     "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
    ],
    "availability": "Open",
@@ -6668,32 +6588,32 @@
    "works": [
     {
      "title": "Study in ochre",
-     "material": "Collage",
+     "material": "Furniture",
      "imageUrl": null
     },
     {
      "title": "For a quiet room",
-     "material": "Collage",
+     "material": "Furniture",
      "imageUrl": null
     },
     {
      "title": "Morning piece",
-     "material": "Collage",
+     "material": "Furniture",
      "imageUrl": null
     },
     {
      "title": "Commission for A.",
-     "material": "Collage",
+     "material": "Furniture",
      "imageUrl": null
     },
     {
      "title": "Small hours",
-     "material": "Collage",
+     "material": "Furniture",
      "imageUrl": null
     },
     {
      "title": "Second light",
-     "material": "Collage",
+     "material": "Furniture",
      "imageUrl": null
     }
    ],
@@ -6714,7 +6634,7 @@
   },
   {
    "slug": "g77",
-   "position": 85,
+   "position": 84,
    "name": "Matteo Lowe",
    "studio": "Lowe Studio",
    "medium": "Collage",
@@ -6723,7 +6643,7 @@
    "priceMax": 4800,
    "commissions": 161,
    "likes": 1201,
-   "hue": 96,
+   "hue": 84,
    "chroma": 0.07,
    "site": "matteolowe.studio",
    "replyNote": "Usually replies within 2 days.",
@@ -6793,7 +6713,7 @@
   },
   {
    "slug": "g78",
-   "position": 86,
+   "position": 85,
    "name": "Yuki Tanaka",
    "studio": "Tanaka Studio",
    "medium": "Collage",
@@ -6802,7 +6722,7 @@
    "priceMax": 1200,
    "commissions": 18,
    "likes": 1814,
-   "hue": 108,
+   "hue": 96,
    "chroma": 0.07,
    "site": "yukitanaka.studio",
    "replyNote": "Usually replies within 3 days.",
@@ -6872,7 +6792,7 @@
   },
   {
    "slug": "g79",
-   "position": 87,
+   "position": 86,
    "name": "Elif Sato",
    "studio": "Sato Studio",
    "medium": "Collage",
@@ -6881,7 +6801,7 @@
    "priceMax": 4000,
    "commissions": 55,
    "likes": 2427,
-   "hue": 120,
+   "hue": 108,
    "chroma": 0.07,
    "site": "elifsato.studio",
    "replyNote": "Usually replies within 4 days.",
@@ -6951,7 +6871,7 @@
   },
   {
    "slug": "g80",
-   "position": 88,
+   "position": 87,
    "name": "Bram Olsen",
    "studio": "Olsen Studio",
    "medium": "Collage",
@@ -6960,7 +6880,7 @@
    "priceMax": 600,
    "commissions": 92,
    "likes": 3040,
-   "hue": 132,
+   "hue": 120,
    "chroma": 0.07,
    "site": "bramolsen.studio",
    "replyNote": "Usually replies within a day.",
@@ -7030,7 +6950,7 @@
   },
   {
    "slug": "g81",
-   "position": 89,
+   "position": 88,
    "name": "Nadia Petrov",
    "studio": "Petrov Studio",
    "medium": "Collage",
@@ -7039,7 +6959,7 @@
    "priceMax": 4800,
    "commissions": 129,
    "likes": 3653,
-   "hue": 144,
+   "hue": 132,
    "chroma": 0.07,
    "site": "nadiapetrov.studio",
    "replyNote": "Usually replies within 2 days.",
@@ -7109,10 +7029,10 @@
   },
   {
    "slug": "g82",
-   "position": 90,
+   "position": 89,
    "name": "Hugo Okafor",
    "studio": "Okafor Studio",
-   "medium": "Mosaic",
+   "medium": "Collage",
    "city": "Edinburgh",
    "priceMin": 150,
    "priceMax": 1200,
@@ -7123,14 +7043,14 @@
    "site": "hugookafor.studio",
    "replyNote": "Usually replies within 3 days.",
    "tags": [
-    "Mosaic",
+    "Collage",
     "Commissions open",
     "Edinburgh",
     "Local only"
    ],
    "quote": "I want every piece to feel lived with, not just looked at.",
    "bio": [
-    "Hugo works from a studio in Edinburgh, making mosaic to commission for homes, collectors and gifts.",
+    "Hugo works from a studio in Edinburgh, making collage to commission for homes, collectors and gifts.",
     "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
    ],
    "availability": "Open",
@@ -7142,32 +7062,32 @@
    "works": [
     {
      "title": "Study in ochre",
-     "material": "Mosaic",
+     "material": "Collage",
      "imageUrl": null
     },
     {
      "title": "For a quiet room",
-     "material": "Mosaic",
+     "material": "Collage",
      "imageUrl": null
     },
     {
      "title": "Morning piece",
-     "material": "Mosaic",
+     "material": "Collage",
      "imageUrl": null
     },
     {
      "title": "Commission for A.",
-     "material": "Mosaic",
+     "material": "Collage",
      "imageUrl": null
     },
     {
      "title": "Small hours",
-     "material": "Mosaic",
+     "material": "Collage",
      "imageUrl": null
     },
     {
      "title": "Second light",
-     "material": "Mosaic",
+     "material": "Collage",
      "imageUrl": null
     }
    ],
@@ -7188,7 +7108,7 @@
   },
   {
    "slug": "g83",
-   "position": 91,
+   "position": 90,
    "name": "Odile Laurent",
    "studio": "Laurent Studio",
    "medium": "Mosaic",
@@ -7197,7 +7117,7 @@
    "priceMax": 4000,
    "commissions": 23,
    "likes": 679,
-   "hue": 156,
+   "hue": 144,
    "chroma": 0.07,
    "site": "odilelaurent.studio",
    "replyNote": "Usually replies within 4 days.",
@@ -7267,7 +7187,7 @@
   },
   {
    "slug": "g84",
-   "position": 92,
+   "position": 91,
    "name": "Tariq Quinn",
    "studio": "Quinn Studio",
    "medium": "Mosaic",
@@ -7276,7 +7196,7 @@
    "priceMax": 600,
    "commissions": 60,
    "likes": 1292,
-   "hue": 168,
+   "hue": 156,
    "chroma": 0.07,
    "site": "tariqquinn.studio",
    "replyNote": "Usually replies within a day.",
@@ -7346,7 +7266,7 @@
   },
   {
    "slug": "g85",
-   "position": 93,
+   "position": 92,
    "name": "Wren Benoit",
    "studio": "Benoit Studio",
    "medium": "Mosaic",
@@ -7355,7 +7275,7 @@
    "priceMax": 4800,
    "commissions": 97,
    "likes": 1905,
-   "hue": 180,
+   "hue": 168,
    "chroma": 0.07,
    "site": "wrenbenoit.studio",
    "replyNote": "Usually replies within 2 days.",
@@ -7425,7 +7345,7 @@
   },
   {
    "slug": "g86",
-   "position": 94,
+   "position": 93,
    "name": "Pia Haddad",
    "studio": "Haddad Studio",
    "medium": "Mosaic",
@@ -7434,7 +7354,7 @@
    "priceMax": 1200,
    "commissions": 134,
    "likes": 2518,
-   "hue": 192,
+   "hue": 180,
    "chroma": 0.07,
    "site": "piahaddad.studio",
    "replyNote": "Usually replies within 3 days.",
@@ -7504,7 +7424,7 @@
   },
   {
    "slug": "g87",
-   "position": 95,
+   "position": 94,
    "name": "Emeka Novak",
    "studio": "Novak Studio",
    "medium": "Mosaic",
@@ -7513,7 +7433,7 @@
    "priceMax": 4000,
    "commissions": 171,
    "likes": 3131,
-   "hue": 204,
+   "hue": 192,
    "chroma": 0.07,
    "site": "emekanovak.studio",
    "replyNote": "Usually replies within 4 days.",
@@ -7562,6 +7482,85 @@
     },
     {
      "title": "Small hours",
+     "material": "Mosaic",
+     "imageUrl": null
+    }
+   ],
+   "reviews": [
+    {
+     "quote": "Thoughtful from first message to delivery.",
+     "author": "Patron, London"
+    },
+    {
+     "quote": "Exactly what we hoped for, and a little more.",
+     "author": "Patron, New York"
+    },
+    {
+     "quote": "Clear on price, clear on timing.",
+     "author": "Patron, Paris"
+    }
+   ]
+  },
+  {
+   "slug": "g88",
+   "position": 95,
+   "name": "Greta Marsh",
+   "studio": "Marsh Studio",
+   "medium": "Mosaic",
+   "city": "Porto",
+   "priceMin": 150,
+   "priceMax": 600,
+   "commissions": 28,
+   "likes": 3744,
+   "hue": 204,
+   "chroma": 0.07,
+   "site": "gretamarsh.studio",
+   "replyNote": "Usually replies within a day.",
+   "tags": [
+    "Mosaic",
+    "Commissions open",
+    "Porto",
+    "Local only"
+   ],
+   "quote": "I make things slowly so they last a long time.",
+   "bio": [
+    "Greta works from a studio in Porto, making mosaic to commission for homes, collectors and gifts.",
+    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+   ],
+   "availability": "Open",
+   "coverUrl": null,
+   "portraitUrl": null,
+   "processUrl": null,
+   "processVideoUrl": null,
+   "coverVideoUrl": null,
+   "works": [
+    {
+     "title": "Study in ochre",
+     "material": "Mosaic",
+     "imageUrl": null
+    },
+    {
+     "title": "For a quiet room",
+     "material": "Mosaic",
+     "imageUrl": null
+    },
+    {
+     "title": "Morning piece",
+     "material": "Mosaic",
+     "imageUrl": null
+    },
+    {
+     "title": "Commission for A.",
+     "material": "Mosaic",
+     "imageUrl": null
+    },
+    {
+     "title": "Small hours",
+     "material": "Mosaic",
+     "imageUrl": null
+    },
+    {
+     "title": "Second light",
      "material": "Mosaic",
      "imageUrl": null
     }

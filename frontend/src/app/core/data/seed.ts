@@ -149,40 +149,6 @@ export const SEED_ARTISTS: ArtistSeed[] = [
     ],
   },
   {
-    id: 'rafa',
-    name: 'Rafa Quintero',
-    studio: 'Taller Quintero',
-    medium: 'Murals',
-    city: 'Mexico City',
-    min: 3000,
-    max: 25000,
-    commissions: 39,
-    likes: 3340,
-    hue: 150,
-    c: 0.1,
-    site: 'tallerquintero.mx',
-    reply: 'Usually replies within 4 days.',
-    tags: ['Interior walls', 'Façades', 'Mineral paint', 'Hospitality', 'Travels internationally'],
-    quote: 'A wall is the biggest, most patient canvas a city can give you.',
-    works: [
-      ['Mercado Roma', 'Mineral paint, 14m'],
-      ['Hotel stairwell', 'Acrylic, 3 floors'],
-      ['Courtyard jungle', 'Mineral paint, 9m'],
-      ['School library', 'Acrylic, 22m'],
-      ['Café ceiling', 'Fresco secco'],
-      ['Study for a façade', 'Gouache on paper'],
-    ],
-    reviews: [
-      { q: 'Transformed our lobby. Guests ask about it daily.', by: 'Casa Lumbre Hotel' },
-      { q: 'Handled permits and scaffolding without fuss.', by: 'Lucía G., Oaxaca' },
-      { q: 'Bold, generous, on schedule.', by: 'Ben H., Austin' },
-    ],
-    bio: [
-      'Rafa leads a crew of three from a workshop in Colonia Doctores and has painted walls in nine countries.',
-      'Every mural starts with a site visit and a gouache study you sign off on, so the scale and colour are agreed before a brush touches the wall.',
-    ],
-  },
-  {
     id: 'june',
     name: 'June Abernethy',
     studio: 'Small Hours Studio',
@@ -483,14 +449,6 @@ export const FEED: FeedPost[] = [
     src: '/images/works/sol-2.jpg',
   },
   {
-    id: 'rafa',
-    date: 'Sep 29',
-    title: 'Painting a landscape – fall foliage',
-    text: 'Three weeks of studies by the river while the maples turn. The finished wall will hold every shade from first gold to the last red leaf.',
-    l: 0.6,
-    src: '/images/feed/rafa-fall.jpg',
-  },
-  {
     id: 'g0',
     date: 'Sep 26',
     title: 'Something new swimming upstream',
@@ -510,7 +468,6 @@ export const FEED: FeedPost[] = [
 
 export const AVAIL_MAP: Record<string, Availability> = {
   lena: 'Closed',
-  rafa: 'Waitlist',
 };
 
 export const SAMPLE_THREADS: Thread[] = [

@@ -35,7 +35,7 @@ describe('catalog', () => {
   });
 
   it('decorates availability from the seed map', () => {
-    expect(artistById('rafa')?.availLabel).toBe('Waitlist open');
+    expect(artistById('lena')?.availLabel).toBe('Not taking commissions');
     expect(artistById('sol')?.availLabel).toBe('Taking commissions');
   });
 });
