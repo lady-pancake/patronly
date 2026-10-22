@@ -161,7 +161,7 @@
       <div class="flex flex-wrap items-center gap-4">
         <h2 class="font-serif text-[32px] font-normal tracking-[-.01em]">Commissions</h2>
         <div role="tablist" class="flex gap-0.5 rounded-lg bg-muted p-[3px]">
-          @for (t of tabs; track t.id) {
+          @for (t of tabs(); track t.id) {
             <button
               type="button"
               role="tab"
@@ -190,8 +190,92 @@
       >
     </div>
 
+    <div class="flex flex-col gap-2 pb-3">
+      <div class="flex items-center gap-1.5">
+        <button
+          type="button"
+          (click)="shiftYear(-12)"
+          aria-label="Previous 12 months"
+          [class]="roundBtn + ' !size-8'"
+        >
+          <ng-icon name="lucideChevronLeft" size="16" />
+        </button>
+        <div
+          class="no-scrollbar flex flex-1 gap-1.5 overflow-x-auto py-1"
+          role="group"
+          aria-label="Month"
+        >
+          @for (m of year().months; track m.key) {
+            @let on = month() === m.key;
+            <button
+              type="button"
+              (click)="month.set(m.key)"
+              [attr.aria-pressed]="on"
+              [attr.aria-label]="m.name + ' ' + m.tag + ', ' + m.loadLabel"
+              [title]="m.loadTitle"
+              class="flex min-w-14 flex-1 flex-col items-center gap-1 rounded-xl px-2 pt-1.5 pb-2 text-xs"
+              [class]="
+                on
+                  ? 'bg-primary text-primary-foreground'
+                  : m.past
+                    ? 'bg-surface text-muted-foreground hover:bg-muted'
+                    : 'bg-background ring-1 ring-border hover:bg-muted'
+              "
+            >
+              <span class="font-medium">{{ m.name.slice(0, 3) }}</span>
+              <span
+                class="block h-1 w-full overflow-hidden rounded-full"
+                [class]="on ? 'bg-white/30' : 'bg-black/7'"
+                ><span
+                  class="block h-full"
+                  [class]="
+                    on
+                      ? 'bg-white'
+                      : m.loadPct >= 90
+                        ? 'bg-[oklch(0.62_0.16_25)]'
+                        : m.past
+                          ? 'bg-[oklch(0.7_0_0)]'
+                          : 'bg-primary'
+                  "
+                  [style.width.%]="m.loadPct"
+                ></span
+              ></span>
+              <span class="text-[10px] leading-none" [class.font-semibold]="m.current">{{
+                m.current ? 'Now' : m.tag
+              }}</span>
+            </button>
+          }
+        </div>
+        <button
+          type="button"
+          (click)="shiftYear(12)"
+          aria-label="Next 12 months"
+          [class]="roundBtn + ' !size-8'"
+        >
+          <ng-icon name="lucideChevronRight" size="16" />
+        </button>
+      </div>
+      <div class="flex items-center justify-between gap-3 text-[13px] text-muted-foreground">
+        <span
+          ><span class="font-medium text-foreground"
+            >{{ monthLabel().name }} {{ monthYear() }}</span
+          >
+          · {{ monthLabel().loadLabel }}</span
+        >
+        @if (yearOffset() !== 0 || !monthLabel().current) {
+          <button
+            type="button"
+            (click)="shiftYear(0)"
+            class="h-7 rounded-md border bg-background px-2.5 text-xs font-medium text-foreground hover:bg-muted"
+          >
+            This month
+          </button>
+        }
+      </div>
+    </div>
+
     @if (tab() === 'active') {
-      @for (c of active; track c.patron) {
+      @for (c of list().inProgress; track c.patron) {
         <div [class]="row">
           <div class="flex min-w-0 flex-col gap-1.5">
             <span class="font-serif text-[22px] leading-[1.1]">{{ c.patron }}</span>
@@ -233,8 +317,42 @@
           </div>
         </div>
       }
+      @for (r of list().booked; track r.name) {
+        <div [class]="row">
+          <div class="flex min-w-0 flex-col gap-1.5">
+            <span class="font-serif text-[22px] leading-[1.1]">{{ r.name }}</span>
+            <span class="text-[13px] text-muted-foreground">{{ r.type }}</span>
+          </div>
+          <div class="flex flex-col gap-0.5 text-[13px] whitespace-nowrap">
+            <span class="font-semibold">{{ r.status }}</span
+            ><span class="text-xs text-muted-foreground">{{ r.note }}</span>
+          </div>
+        </div>
+      }
+      @if (!list().inProgress.length && !list().booked.length) {
+        <p class="border-t py-5 text-[13px] text-muted-foreground">
+          Nothing in progress in {{ monthLabel().name }}.
+        </p>
+      }
+    } @else if (tab() === 'completed') {
+      @for (r of list().completed; track r.name) {
+        <div [class]="row">
+          <div class="flex min-w-0 flex-col gap-1.5">
+            <span class="font-serif text-[22px] leading-[1.1]">{{ r.name }}</span>
+            <span class="text-[13px] text-muted-foreground">{{ r.type }}</span>
+          </div>
+          <div class="flex flex-col gap-0.5 text-[13px] whitespace-nowrap">
+            <span class="font-semibold">{{ r.status }}</span
+            ><span class="text-xs text-muted-foreground">{{ r.note }}</span>
+          </div>
+        </div>
+      } @empty {
+        <p class="border-t py-5 text-[13px] text-muted-foreground">
+          Nothing completed in {{ monthLabel().name }}.
+        </p>
+      }
     } @else {
-      @for (u of pending; track u.name) {
+      @for (u of list().pending; track u.name) {
         @let reminded = store.reminded().includes(u.name);
         <div [class]="row">
           <div class="flex min-w-0 flex-col gap-1.5">
@@ -279,113 +397,9 @@
             </a>
           </div>
         </div>
+      } @empty {
+        <p class="border-t py-5 text-[13px] text-muted-foreground">Nothing pending.</p>
       }
     }
-  </section>
-
-  <section [class]="card + ' flex flex-col gap-5 p-5 sm:p-7'">
-    <div class="flex flex-wrap items-start justify-between gap-x-6 gap-y-3">
-      <h2 class="font-serif text-[32px] font-normal tracking-[-.01em]">Calendar</h2>
-      <div class="flex flex-wrap items-center gap-4">
-        <div class="flex flex-wrap gap-3.5 text-xs text-muted-foreground">
-          @for (s of stages; track s.label) {
-            <span class="flex items-center gap-1.5"
-              ><span class="size-2.5 rounded-[3px]" [style.background]="s.bg"></span
-              >{{ s.label }}</span
-            >
-          }
-        </div>
-        <div class="flex items-center gap-1.5">
-          <span class="mr-1.5 text-[13px] font-medium tabular-nums">{{ year().range }}</span>
-          <button
-            type="button"
-            (click)="yearOffset.set(yearOffset() - 12)"
-            aria-label="Previous 12 months"
-            [class]="roundBtn + ' !size-[34px]'"
-          >
-            <ng-icon name="lucideChevronLeft" size="16" />
-          </button>
-          <button
-            type="button"
-            (click)="yearOffset.set(0)"
-            [disabled]="yearOffset() === 0"
-            class="h-7 rounded-md border bg-background px-2.5 text-xs font-medium hover:bg-muted disabled:opacity-40"
-          >
-            This month
-          </button>
-          <button
-            type="button"
-            (click)="yearOffset.set(yearOffset() + 12)"
-            aria-label="Next 12 months"
-            [class]="roundBtn + ' !size-[34px]'"
-          >
-            <ng-icon name="lucideChevronRight" size="16" />
-          </button>
-        </div>
-      </div>
-    </div>
-    <div
-      class="grid grid-cols-[repeat(auto-fill,minmax(140px,1fr))] sm:grid-cols-[repeat(auto-fill,minmax(168px,1fr))] gap-2.5"
-    >
-      @for (m of year().months; track m.key) {
-        <div
-          class="flex min-h-[150px] flex-col gap-2.5 rounded-2xl p-3.5"
-          [class]="
-            (m.past ? 'bg-surface ' : 'bg-background ') +
-            (m.current ? 'ring-2 ring-primary' : 'ring-1 ring-border')
-          "
-        >
-          <div class="flex items-baseline justify-between gap-2">
-            <span class="font-serif text-[22px] leading-none">{{ m.name }}</span
-            ><span
-              class="text-[11px]"
-              [class]="m.current ? 'font-semibold text-primary' : 'text-muted-foreground'"
-              >{{ m.tag }}</span
-            >
-          </div>
-          <div class="flex items-center gap-2" [title]="m.loadTitle">
-            <span class="block h-1 flex-1 overflow-hidden rounded-full bg-black/7"
-              ><span
-                class="block h-full"
-                [class]="
-                  m.loadPct >= 90
-                    ? 'bg-[oklch(0.62_0.16_25)]'
-                    : m.past
-                      ? 'bg-[oklch(0.7_0_0)]'
-                      : 'bg-primary'
-                "
-                [style.width.%]="m.loadPct"
-              ></span></span
-            ><span class="text-[11px] whitespace-nowrap text-muted-foreground tabular-nums">{{
-              m.loadLabel
-            }}</span>
-          </div>
-          <div class="flex flex-col gap-1">
-            @for (c of m.items; track c.name) {
-              <span
-                [title]="c.title"
-                class="flex min-h-6 items-center gap-1.5 rounded-lg px-2 py-[3px] text-xs leading-tight font-medium"
-                [style.background]="stageStyle[c.stage].bg"
-                [style.color]="stageStyle[c.stage].fg"
-                ><span class="min-w-0 flex-1 truncate">{{ c.name }}</span>
-                @if (c.mark) {
-                  <span
-                    class="flex h-[18px] shrink-0 items-center rounded-md px-[7px] text-[10px] font-semibold"
-                    [class]="
-                      c.mark === 'Overdue'
-                        ? 'bg-[#b25254] text-white'
-                        : 'bg-highlight text-foreground'
-                    "
-                    >{{ c.mark }}</span
-                  >
-                }
-              </span>
-            } @empty {
-              <span class="text-xs text-muted-foreground">{{ m.emptyLabel }}</span>
-            }
-          </div>
-        </div>
-      }
-    </div>
   </section>
 </main>

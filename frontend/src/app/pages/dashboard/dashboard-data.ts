@@ -252,6 +252,9 @@ export interface PendingRow {
   deposit: string;
   /** Where the deal is: contract drafted, contract sent, or signed and waiting on the deposit. */
   stage: PendingStage;
+  /** Planned months ('YYYY-MM'), once a date is agreed. Undated ones show in every month. */
+  start?: string;
+  end?: string;
 }
 
 export type PendingStage = 'draft' | 'sent' | 'deposit';
@@ -259,18 +262,20 @@ export type PendingStage = 'draft' | 'sent' | 'deposit';
 /** Accepted inquiries not yet active: waiting on a signed contract or the deposit. */
 export const PENDING: PendingRow[] = (
   [
-    ['James Hartley', 'Small study', 1200, 'Oct 2', 'deposit'],
+    ['James Hartley', 'Small study', 1200, 'Oct 2', 'deposit', '2026-11', '2027-01'],
     ['Marta Kowalski', 'Canvas, up to 60cm', 2400, 'Oct 8', 'sent'],
     ['Leo Carrington', 'Canvas, up to 90cm', 3600, 'Oct 11', 'sent'],
     ['Henrik Dahl', 'Small study', 950, 'Oct 12', 'draft'],
-  ] as [string, string, number, string, PendingStage][]
-).map(([name, type, total, accepted, stage]) => ({
+  ] as [string, string, number, string, PendingStage, string?, string?][]
+).map(([name, type, total, accepted, stage, start, end]) => ({
   name,
   type,
   accepted,
   total: money(total),
   deposit: `${money(Math.round(total * 0.3))} deposit ${stage === 'deposit' ? 'due' : 'on signing'}`,
   stage,
+  start,
+  end,
 }));
 
 // ── Calendar ────────────────────────────────────────────────────────────
@@ -383,4 +388,47 @@ export function yearView(offset: number): { range: string; months: MonthCard[] }
   const y1 = Math.floor((now + offset) / 12);
   const y2 = Math.floor((now + offset + 11) / 12);
   return { range: y1 === y2 ? String(y1) : `${y1}–${String(y2).slice(2)}`, months };
+}
+
+// ── One month of commissions ────────────────────────────────────────────
+
+export interface SimpleRow {
+  name: string;
+  type: string;
+  /** Status, e.g. "Booked" or "Completed". */
+  status: string;
+  note: string;
+}
+
+const monthName = (n: number, style: 'long' | 'short' = 'short') =>
+  new Date(Math.floor(n / 12), n % 12, 1).toLocaleString('en-US', { month: style });
+
+/** The commissions in one month (`n` = year * 12 + month), split by where they are. */
+export function monthCommissions(n: number) {
+  const now = TODAY.getFullYear() * 12 + TODAY.getMonth();
+  const overlaps = (start: string, end: string) => monthNo(start) <= n && monthNo(end) >= n;
+  const pendingNames = new Set(PENDING.map((p) => p.name));
+  const inProgress = activeCommissions().filter((_, i) =>
+    overlaps(COMMISSIONS[i].start.slice(0, 7), COMMISSIONS[i].due.slice(0, 7)),
+  );
+  const booked: SimpleRow[] = BOOKINGS.filter(
+    (b) => b[4] === 'booked' && !pendingNames.has(b[0]) && overlaps(b[2], b[3]),
+  ).map(([name, type, start, end]) => ({
+    name,
+    type,
+    status: 'Booked',
+    note: `${monthName(monthNo(start))}–${monthName(monthNo(end))}`,
+  }));
+  // Not active until the deposit is paid. Undated ones show in every month from now on;
+  // dated ones from now until their planned end.
+  const pending = n < now ? [] : PENDING.filter((p) => !p.end || monthNo(p.end) >= n);
+  const completed: SimpleRow[] = BOOKINGS.filter((b) => b[4] === 'done' && monthNo(b[3]) === n).map(
+    ([name, type]) => ({
+      name,
+      type,
+      status: 'Completed',
+      note: monthName(n, 'long'),
+    }),
+  );
+  return { inProgress, booked, pending, completed };
 }

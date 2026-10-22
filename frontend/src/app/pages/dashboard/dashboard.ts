@@ -16,10 +16,8 @@ import { openContractDialog } from '../../shared/contract-dialog';
 import {
   INQUIRIES,
   PAYDAY,
-  PENDING,
+  monthCommissions,
   type PendingRow,
-  STAGES,
-  activeCommissions,
   earnings,
   weekLoad,
   yearView,
@@ -60,20 +58,33 @@ export class Dashboard {
   protected readonly payday = PAYDAY;
   protected readonly earn = earnings();
   protected readonly chartLabel = `Earnings by month in 2026: ${this.earn.earned} earned, ${this.earn.upcoming} upcoming under contract.`;
-  protected readonly active = activeCommissions();
-  protected readonly pending = PENDING;
   protected readonly load = weekLoad();
-  protected readonly stageStyle = STAGES;
-  protected readonly stages = Object.values(STAGES);
-  protected readonly tabs = [
-    { id: 'active' as const, label: 'Active', count: this.active.length },
-    { id: 'pending' as const, label: 'Pending', count: this.pending.length },
-  ];
 
   protected readonly hoverBar = signal<number | null>(null);
-  protected readonly tab = signal<'active' | 'pending'>('active');
+  protected readonly tab = signal<'active' | 'pending' | 'completed'>('active');
   protected readonly yearOffset = signal(0);
   protected readonly year = computed(() => yearView(this.yearOffset()));
+  /** The month the commissions list shows, as year * 12 + month. Starts on this month. */
+  protected readonly month = signal(this.year().months[0].key);
+  protected readonly monthLabel = computed(
+    () => this.year().months.find((m) => m.key === this.month()) ?? this.year().months[0],
+  );
+  protected readonly monthYear = computed(() => Math.floor(this.month() / 12));
+  protected readonly list = computed(() => monthCommissions(this.month()));
+  protected readonly tabs = computed(() => {
+    const l = this.list();
+    return [
+      { id: 'active' as const, label: 'Active', count: l.inProgress.length + l.booked.length },
+      { id: 'pending' as const, label: 'Pending', count: l.pending.length },
+      { id: 'completed' as const, label: 'Completed', count: l.completed.length },
+    ];
+  });
+
+  /** Moves the month strip by a year and selects its first month. */
+  protected shiftYear(by: number) {
+    this.yearOffset.set(by === 0 ? 0 : this.yearOffset() + by);
+    this.month.set(this.year().months[0].key);
+  }
 
   /** Status line, note and button label for a pending commission. */
   protected pendingStatus(u: PendingRow, reminded: boolean) {
