@@ -144,6 +144,7 @@ export const SEED_ARTISTS: ArtistSeed[] = [
     c: 0.04,
     site: 'laskaris.photo',
     cover: '/images/covers/theo-cover.jpg',
+    portrait: '/images/portraits/theo.jpg',
     process: '/images/process/theo-process.jpg',
     reply: 'Usually replies within 1 day.',
     tags: [
