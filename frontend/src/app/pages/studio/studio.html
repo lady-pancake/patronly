@@ -81,12 +81,12 @@
         </button>
       }
       @if (a.cover || a.coverVideo) {
-        <!-- Blur and darken the bottom of light covers so the title stays readable. -->
+        <!-- Blur and darken the bottom-left of light covers, behind the title. -->
         <div
-          class="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-3/4 backdrop-blur-lg [mask-image:linear-gradient(to_top,black_45%,transparent)]"
+          class="pointer-events-none absolute inset-0 -z-10 backdrop-blur-md [mask-image:radial-gradient(ellipse_65%_75%_at_0%_100%,black_35%,transparent_100%)]"
         ></div>
         <div
-          class="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-t from-black/55 via-black/20 via-45% to-transparent to-75%"
+          class="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_65%_75%_at_0%_100%,oklch(0_0_0/.4),transparent),linear-gradient(to_top,oklch(0_0_0/.3),transparent_50%)]"
         ></div>
       }
       <div class="mx-auto flex w-full max-w-[1400px] flex-col gap-7 text-white">
