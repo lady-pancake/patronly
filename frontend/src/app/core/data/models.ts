@@ -91,7 +91,6 @@ export interface WizardStep {
   key: 'mediums' | 'purpose' | 'size' | 'budget' | 'timeline';
   multi?: boolean;
   q: string;
-  help: string;
   grid?: string;
   /** [label, sub-label] */
   options?: [string, string][];

@@ -381,13 +381,11 @@ export const WIZARD_STEPS: WizardStep[] = [
     key: 'mediums',
     multi: true,
     q: 'What are you looking for?',
-    help: '',
     grid: 'repeat(auto-fill,minmax(150px,1fr))',
   },
   {
     key: 'purpose',
-    q: 'Who is it for?',
-    help: 'This helps us match you with artists who do this kind of work often.',
+    q: 'What is it for?',
     options: [
       ['For my home', 'A piece to live with'],
       ['A gift', 'Something personal for someone else'],
@@ -398,7 +396,6 @@ export const WIZARD_STEPS: WizardStep[] = [
   {
     key: 'size',
     q: 'How big are you imagining?',
-    help: 'A rough idea is plenty.',
     options: [
       ['Small', 'Fits on a shelf or desk'],
       ['Medium', 'Hangs above a sofa or sits on a table'],
@@ -409,7 +406,6 @@ export const WIZARD_STEPS: WizardStep[] = [
   {
     key: 'budget',
     q: 'What would you like to spend?',
-    help: 'Artists list their prices up front, so there are no surprises.',
     options: [
       ['Under $500', ''],
       ['$500 – $2k', ''],
@@ -422,7 +418,6 @@ export const WIZARD_STEPS: WizardStep[] = [
   {
     key: 'timeline',
     q: 'When do you need it?',
-    help: 'Handmade work takes time. Most commissions take one to three months.',
     options: [
       ['Whenever it’s ready', 'I’m flexible'],
       ['Within a month', 'A little urgent'],
