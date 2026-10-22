@@ -8,12 +8,13 @@ let nextId = 0;
  * The "Inquire" button on a studio. On your own studio it stays visible, so you
  * can see what patrons see, but it's disabled with a tooltip explaining why.
  * It uses aria-disabled rather than disabled so keyboard users can still focus
- * it and read the tooltip.
+ * it and read the tooltip. When a studio isn't taking commissions, the button
+ * is hidden.
  */
 @Component({
   selector: 'app-inquire-button',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { class: 'group relative flex' },
+  host: { class: 'group relative flex', '[style.display]': "closed() ? 'none' : null" },
   templateUrl: './inquire-button.html',
 })
 export class InquireButton {
@@ -22,6 +23,7 @@ export class InquireButton {
   readonly buttonClass = input('');
   /** "me" is the signed-in artist's own studio. */
   protected readonly own = computed(() => this.artist().id === 'me');
+  protected readonly closed = computed(() => this.artist().availability === 'Closed');
   protected readonly tipId = `own-studio-tip-${nextId++}`;
 
   protected open() {
