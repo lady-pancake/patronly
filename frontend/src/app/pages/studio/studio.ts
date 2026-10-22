@@ -1,4 +1,4 @@
-import { Location } from '@angular/common';
+import { Location, NgTemplateOutlet } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, inject, input, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NgIcon, provideIcons } from '@ng-icons/core';
@@ -18,7 +18,16 @@ import { NotFound } from '../not-found';
 
 @Component({
   selector: 'app-studio',
-  imports: [PlayInView, RouterLink, NgIcon, HeartButton, Tag, NotFound, InquireButton],
+  imports: [
+    NgTemplateOutlet,
+    PlayInView,
+    RouterLink,
+    NgIcon,
+    HeartButton,
+    Tag,
+    NotFound,
+    InquireButton,
+  ],
   providers: [
     provideIcons({
       lucideArrowLeft,

@@ -184,14 +184,7 @@
       </section>
 
       @let hasProcess = !!(a.process || a.processVideo);
-      <section
-        class="grid items-start gap-10"
-        [class]="
-          hasProcess
-            ? 'lg:grid-cols-[minmax(0,1.7fr)_minmax(320px,1fr)]'
-            : 'md:grid-cols-[minmax(300px,420px)_minmax(0,1fr)] md:items-center'
-        "
-      >
+      <section class="grid items-start gap-10 lg:grid-cols-[minmax(0,1.7fr)_minmax(320px,1fr)]">
         @if (hasProcess) {
           <div
             class="relative aspect-[16/10] overflow-hidden rounded-4xl"
@@ -209,9 +202,11 @@
               ></video>
             }
           </div>
+        } @else {
+          <!-- No process photo or video, so About moves up beside the rates. -->
+          <ng-container [ngTemplateOutlet]="about" />
         }
-        <!-- Without a process box, the rates card and reviews sit side by side. -->
-        <div [class]="hasProcess ? 'flex flex-col gap-6' : 'contents'">
+        <div class="flex flex-col gap-6">
           <div
             class="flex flex-col gap-1 rounded-4xl bg-card p-6 shadow-[0_4px_12px_oklch(0_0_0/.06)] ring-1 ring-black/5"
           >
@@ -243,19 +238,25 @@
         </div>
       </section>
 
-      <section
-        class="mx-auto mt-6 grid w-full max-w-[960px] items-start gap-12 md:grid-cols-[minmax(0,1fr)_280px]"
-      >
-        <div class="flex flex-col gap-6">
-          <h2 class="font-serif text-[52px] leading-none font-normal tracking-[-.02em]">
-            About<br /><em>{{ a.name }}</em>
-          </h2>
-          @for (p of a.bio; track $index) {
-            <p class="text-base leading-[1.7]">{{ p }}</p>
-          }
+      @if (hasProcess) {
+        <section class="mx-auto mt-6 w-full max-w-[960px]">
+          <ng-container [ngTemplateOutlet]="about" />
+        </section>
+      }
+
+      <ng-template #about>
+        <div class="grid items-start gap-12 md:grid-cols-[minmax(0,1fr)_280px]">
+          <div class="flex flex-col gap-6">
+            <h2 class="font-serif text-[52px] leading-none font-normal tracking-[-.02em]">
+              About<br /><em>{{ a.name }}</em>
+            </h2>
+            @for (p of a.bio; track $index) {
+              <p class="text-base leading-[1.7]">{{ p }}</p>
+            }
+          </div>
+          <div class="aspect-[4/5] rounded-4xl" [style.background]="a.portraitBg"></div>
         </div>
-        <div class="aspect-[4/5] rounded-4xl" [style.background]="a.portraitBg"></div>
-      </section>
+      </ng-template>
     </div>
   </main>
 } @else {
