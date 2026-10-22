@@ -10,7 +10,7 @@
     <p class="text-[13px] text-muted-foreground">{{ type }}</p>
   </div>
 
-  <div class="-mx-1 flex min-h-0 flex-1 flex-col gap-6 overflow-y-auto px-1 pb-1 *:shrink-0">
+  <div class="-mx-1 flex min-h-0 flex-1 flex-col gap-6 overflow-y-auto px-1 py-1 *:shrink-0">
     @if (facts.length) {
       <dl class="grid grid-cols-2 gap-px overflow-hidden rounded-2xl bg-border ring-1 ring-border">
         @for (r of facts; track r[0]) {

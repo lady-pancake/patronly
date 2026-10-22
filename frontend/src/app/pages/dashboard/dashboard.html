@@ -248,90 +248,96 @@
           </div>
         </div>
 
-        @for (g of t.groups; track g.label) {
+        <div class="relative">
+          <!-- Month lines, past months and today: drawn once behind every row. -->
           <div
-            class="pt-4 pb-1 text-[11px] font-semibold tracking-wide text-muted-foreground uppercase"
+            class="pointer-events-none absolute inset-y-0 right-0 left-[236px] grid grid-cols-6"
+            aria-hidden="true"
           >
-            {{ g.label }}
+            @for (m of t.months; track m.key) {
+              <span class="border-l first:border-l-0" [class.bg-black/[.025]]="m.past"></span>
+            }
+            @if (t.today !== null) {
+              <span
+                class="absolute inset-y-0 w-px -translate-x-1/2 bg-primary"
+                [style.left.%]="t.today"
+              ></span>
+            }
           </div>
-          @for (b of g.bars; track b.name) {
-            @let reminded = store.reminded().includes(b.name);
-            <div class="grid grid-cols-[220px_minmax(0,1fr)] items-center gap-4 py-1.5">
-              <div class="flex min-w-0 items-center gap-2">
-                <button
-                  type="button"
-                  (click)="openDetails(b.name)"
-                  [attr.aria-label]="'Details for ' + b.name"
-                  class="flex min-w-0 flex-1 flex-col rounded-md text-left hover:opacity-75"
-                >
-                  <span class="truncate text-sm font-semibold underline-offset-4 hover:underline">{{
-                    b.name
-                  }}</span>
-                  <span class="truncate text-xs text-muted-foreground" [title]="b.type">{{
-                    b.status
-                  }}</span>
-                </button>
-                @if (b.message) {
-                  <a
-                    [routerLink]="['/messages', inboxId(b.name)]"
-                    title="Open conversation"
-                    [attr.aria-label]="'Message ' + b.name"
-                    [class]="roundBtn + ' !size-8'"
-                  >
-                    <ng-icon name="lucideMessageCircle" size="14" />
-                  </a>
-                }
-              </div>
-              <div class="relative h-9">
-                <!-- Month lines and today. -->
-                <div class="absolute inset-0 grid grid-cols-6">
-                  @for (m of t.months; track m.key) {
-                    <span class="border-l first:border-l-0" [class.bg-surface]="m.past"></span>
-                  }
-                </div>
-                @if (t.today !== null) {
-                  <span
-                    class="absolute inset-y-0 w-0.5 bg-primary/60"
-                    [style.left.%]="t.today"
-                  ></span>
-                }
-                <div
-                  class="absolute inset-y-1 flex cursor-pointer items-center overflow-hidden pr-1 pl-2.5 hover:brightness-95 text-[11px] font-medium whitespace-nowrap"
-                  [class]="
-                    barClass[b.stage] +
-                    (b.cutStart ? ' rounded-l-none' : ' rounded-l-lg') +
-                    (b.cutEnd ? ' rounded-r-none' : ' rounded-r-lg')
-                  "
-                  [style.left.%]="b.left"
-                  [style.width.%]="b.width"
-                  (click)="openDetails(b.name)"
-                  [title]="b.name + ' · ' + trackStages[b.stage] + ' · ' + b.note"
-                >
-                  @if (b.stage === 'wip') {
-                    <span
-                      class="absolute inset-y-0 left-0 bg-[oklch(0.82_0.07_240)]"
-                      [style.width.%]="b.donePct"
-                    ></span>
-                  }
-                  <span class="relative min-w-0 flex-1 truncate">{{ b.note }}</span>
-                  @if (b.pending; as u) {
-                    <button
-                      type="button"
-                      (click)="
-                        $event.stopPropagation();
-                        u.stage === 'draft' ? createContract(u.name) : store.remind(u.name)
-                      "
-                      [disabled]="reminded"
-                      class="relative ml-2 h-6 shrink-0 rounded-md border bg-background px-2 text-[11px] font-semibold text-foreground hover:bg-muted disabled:opacity-60"
-                    >
-                      {{ pendingStatus(u, reminded).button }}
-                    </button>
-                  }
-                </div>
-              </div>
+          @for (g of t.groups; track g.label) {
+            <div
+              class="relative w-[220px] pt-4 pb-1 text-[11px] font-semibold tracking-wide text-muted-foreground uppercase"
+            >
+              {{ g.label }}
             </div>
+            @for (b of g.bars; track b.name) {
+              @let reminded = store.reminded().includes(b.name);
+              <div class="relative grid grid-cols-[220px_minmax(0,1fr)] items-center gap-4 py-1.5">
+                <div class="flex min-w-0 items-center gap-2">
+                  <button
+                    type="button"
+                    (click)="openDetails(b.name)"
+                    [attr.aria-label]="'Details for ' + b.name"
+                    class="flex min-w-0 flex-1 flex-col rounded-md text-left hover:opacity-75"
+                  >
+                    <span
+                      class="truncate text-sm font-semibold underline-offset-4 hover:underline"
+                      >{{ b.name }}</span
+                    >
+                    <span class="truncate text-xs text-muted-foreground" [title]="b.type">{{
+                      b.status
+                    }}</span>
+                  </button>
+                  @if (b.message) {
+                    <a
+                      [routerLink]="['/messages', inboxId(b.name)]"
+                      title="Open conversation"
+                      [attr.aria-label]="'Message ' + b.name"
+                      [class]="roundBtn + ' !size-8'"
+                    >
+                      <ng-icon name="lucideMessageCircle" size="14" />
+                    </a>
+                  }
+                </div>
+                <div class="relative h-9">
+                  <div
+                    class="absolute inset-y-1 flex cursor-pointer items-center overflow-hidden pr-1 pl-2.5 hover:brightness-95 text-[11px] font-medium whitespace-nowrap"
+                    [class]="
+                      barClass[b.stage] +
+                      (b.cutStart ? ' rounded-l-none' : ' rounded-l-lg') +
+                      (b.cutEnd ? ' rounded-r-none' : ' rounded-r-lg')
+                    "
+                    [style.left.%]="b.left"
+                    [style.width.%]="b.width"
+                    (click)="openDetails(b.name)"
+                    [title]="b.name + ' · ' + trackStages[b.stage] + ' · ' + b.note"
+                  >
+                    @if (b.stage === 'wip') {
+                      <span
+                        class="absolute inset-y-0 left-0 bg-[oklch(0.82_0.07_240)]"
+                        [style.width.%]="b.donePct"
+                      ></span>
+                    }
+                    <span class="relative min-w-0 flex-1 truncate">{{ b.note }}</span>
+                    @if (b.pending; as u) {
+                      <button
+                        type="button"
+                        (click)="
+                          $event.stopPropagation();
+                          u.stage === 'draft' ? createContract(u.name) : store.remind(u.name)
+                        "
+                        [disabled]="reminded"
+                        class="relative ml-2 h-6 shrink-0 rounded-md border bg-background px-2 text-[11px] font-semibold text-foreground hover:bg-muted disabled:opacity-60"
+                      >
+                        {{ pendingStatus(u, reminded).button }}
+                      </button>
+                    }
+                  </div>
+                </div>
+              </div>
+            }
           }
-        }
+        </div>
       </div>
     </div>
 
