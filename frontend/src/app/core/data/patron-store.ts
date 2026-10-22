@@ -60,16 +60,19 @@ export class PatronStore {
 
   /**
    * Saved searches first, then the sample recent ones the patron hasn't removed.
-   * Searches whose matches are all hidden from listings are left out. Each
-   * search's `ids` is its list of checked artists.
+   * Sample searches whose artists are all hidden from listings are left out.
+   * Each search's `ids` is its list of bookmarked artists, which can be empty.
    */
   readonly searches = computed(() =>
-    [...this.saved(), ...RECENT_SEARCHES]
-      .filter(
+    [
+      ...this.saved(),
+      ...RECENT_SEARCHES.filter(
         (s) =>
-          !this.hiddenRecent().includes(s.name) &&
+          !this.saved().some((x) => x.name === s.name) &&
           s.ids.some((id) => LISTED.some((a) => a.id === id)),
-      )
+      ),
+    ]
+      .filter((s) => !this.hiddenRecent().includes(s.name))
       .map((s) => {
         const list = this.lists()[s.name];
         return list ? { ...s, ids: list } : s;
@@ -130,11 +133,11 @@ export class PatronStore {
   }
 
   saveSearch(search: SavedSearch): void {
-    this.lists.update(({ [search.name]: _, ...rest }) => rest);
     this.saved.update((s) => [search, ...s.filter((x) => x.name !== search.name)]);
   }
 
   removeSearch(name: string): void {
+    this.lists.update(({ [name]: _, ...rest }) => rest);
     if (this.saved().some((s) => s.name === name)) {
       this.saved.update((s) => s.filter((x) => x.name !== name));
     } else {

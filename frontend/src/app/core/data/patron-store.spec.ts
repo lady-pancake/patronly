@@ -30,8 +30,10 @@ describe('PatronStore', () => {
     expect(store.isFav('june')).toBe(true);
   });
 
-  it('starts a saved search with its top matches checked', () => {
-    store.saveSearch({ name: 'Bowls', wiz: { mediums: ['Ceramics'] }, ids: ['hana'] });
+  it('keeps a saved search with no artists on its list', () => {
+    store.saveSearch({ name: 'Bowls', wiz: { mediums: ['Ceramics'] }, ids: [] });
+    expect(store.searchList('Bowls')).toEqual([]);
+    store.toggleInSearch('Bowls', 'hana');
     expect(store.searchList('Bowls')).toEqual(['hana']);
     expect(store.isFav('hana')).toBe(false);
   });

@@ -143,9 +143,8 @@ export class Search {
           name,
           sig: this.sig(),
           wiz: { ...a },
-          ids: this.matches()
-            .slice(0, 3)
-            .map((m) => m.id),
+          // Only the filters: artists join the list when their bookmark is tapped.
+          ids: this.list() ?? [],
         });
       });
   }
