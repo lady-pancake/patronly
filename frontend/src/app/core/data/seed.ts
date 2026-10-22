@@ -710,6 +710,7 @@ function fillCatalogue(list: ArtistSeed[]): void {
   const j = list.find((a) => a.medium === 'Jewelry');
   if (j) {
     j.portrait = '/images/portraits/jonas.jpg';
+    j.cover = '/images/covers/jonas-cover.jpg';
     j.works = [
       ['Baroque pearl drop', 'Brushed gold and freshwater pearl', '/images/works/jewel-1.jpg'],
       ['Twisted knot earrings', 'Recycled 18k gold', '/images/works/jewel-2.jpg'],
