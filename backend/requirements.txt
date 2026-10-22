@@ -6,3 +6,4 @@ asyncpg>=0.30
 alembic>=1.14
 pydantic-settings>=2.6
 PyJWT>=2.9
+better-profanity>=0.7

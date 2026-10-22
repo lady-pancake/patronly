@@ -16,6 +16,7 @@ from app.auth.guest import check_password, issue_pass
 from app.db import session as db
 from app.db.models import Guest
 from app.graphql.context import Context, NotAllowed
+from app.text import clean_text
 
 
 @strawberry.enum
@@ -84,7 +85,7 @@ class ViewerMutation:
     async def start_visit(
         self, info: strawberry.Info[Context, None], name: str, password: str
     ) -> GuestPass:
-        name = " ".join(name.split())[:120]
+        name = clean_text(" ".join(name.split())[:120])
         if not name:
             raise ValueError("Please tell us your name.")
         if not check_password(password):
