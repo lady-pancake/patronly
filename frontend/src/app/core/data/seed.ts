@@ -760,13 +760,15 @@ function fillCatalogue(list: ArtistSeed[]): void {
   const s = list.find((a) => a.medium === 'Painting' && a.id.startsWith('g'));
   if (s) {
     Object.assign(s, {
+      name: 'Anders Bell',
       studio: 'Atelier Bell',
+      site: 'andersbell.studio',
       min: 900,
       max: 6000,
       commissions: 41,
       likes: 1880,
-      cover: '/images/covers/amara-cover.jpg',
-      portrait: '/images/portraits/amara.jpg',
+      cover: '/images/covers/anders-cover.jpg',
+      portrait: '/images/portraits/anders.jpg',
       quote: 'I paint the fish I meet when I close my eyes.',
       tags: [
         'Oil on panel',
@@ -776,15 +778,15 @@ function fillCatalogue(list: ArtistSeed[]): void {
         'Ships worldwide',
       ],
       works: [
-        ['The grotto', 'Oil on panel, 70×50cm', '/images/works/amara-1.jpg'],
-        ['Anemone choir', 'Oil on canvas, 50×70cm', '/images/works/amara-2.jpg'],
-        ['Two going upstream', 'Oil on linen, 60×42cm', '/images/works/amara-3.jpg'],
-        ['Meeting at midnight', 'Oil on canvas, 90×58cm', '/images/works/amara-4.jpg'],
-        ['Mother and minnow', 'Oil on panel, 50×36cm', '/images/works/amara-5.jpg'],
+        ['The grotto', 'Oil on panel, 70×50cm', '/images/works/anders-1.jpg'],
+        ['Anemone choir', 'Oil on canvas, 50×70cm', '/images/works/anders-2.jpg'],
+        ['Two going upstream', 'Oil on linen, 60×42cm', '/images/works/anders-3.jpg'],
+        ['Meeting at midnight', 'Oil on canvas, 90×58cm', '/images/works/anders-4.jpg'],
+        ['Mother and minnow', 'Oil on panel, 50×36cm', '/images/works/anders-5.jpg'],
       ],
       bio: [
-        'Amara paints soft, glowing fish that drift through night skies, caves and coral, in a top-floor studio overlooking the harbour in Copenhagen.',
-        'Tell her about a dream, a person or a place, and she will turn it into a scene of its own. Every commission starts with a small oil sketch.',
+        'Anders paints soft, glowing fish that drift through night skies, caves and coral, in a top-floor studio overlooking the harbour in Copenhagen.',
+        'Tell him about a dream, a person or a place, and he will turn it into a scene of its own. Every commission starts with a small oil sketch.',
       ],
     });
   }

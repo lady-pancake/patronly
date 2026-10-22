@@ -690,7 +690,7 @@
   {
    "slug": "g0",
    "position": 9,
-   "name": "Amara Bell",
+   "name": "Anders Bell",
    "studio": "Atelier Bell",
    "medium": "Painting",
    "city": "Copenhagen",
@@ -700,7 +700,7 @@
    "likes": 1880,
    "hue": 47,
    "chroma": 0.07,
-   "site": "amarabell.studio",
+   "site": "andersbell.studio",
    "replyNote": "Usually replies within a day.",
    "tags": [
     "Oil on panel",
@@ -711,12 +711,12 @@
    ],
    "quote": "I paint the fish I meet when I close my eyes.",
    "bio": [
-    "Amara paints soft, glowing fish that drift through night skies, caves and coral, in a top-floor studio overlooking the harbour in Copenhagen.",
-    "Tell her about a dream, a person or a place, and she will turn it into a scene of its own. Every commission starts with a small oil sketch."
+    "Anders paints soft, glowing fish that drift through night skies, caves and coral, in a top-floor studio overlooking the harbour in Copenhagen.",
+    "Tell him about a dream, a person or a place, and he will turn it into a scene of its own. Every commission starts with a small oil sketch."
    ],
    "availability": "Open",
-   "coverUrl": "/images/covers/amara-cover.jpg",
-   "portraitUrl": "/images/portraits/amara.jpg",
+   "coverUrl": "/images/covers/anders-cover.jpg",
+   "portraitUrl": "/images/portraits/anders.jpg",
    "processUrl": null,
    "processVideoUrl": null,
    "coverVideoUrl": null,
@@ -724,27 +724,27 @@
     {
      "title": "The grotto",
      "material": "Oil on panel, 70×50cm",
-     "imageUrl": "/images/works/amara-1.jpg"
+     "imageUrl": "/images/works/anders-1.jpg"
     },
     {
      "title": "Anemone choir",
      "material": "Oil on canvas, 50×70cm",
-     "imageUrl": "/images/works/amara-2.jpg"
+     "imageUrl": "/images/works/anders-2.jpg"
     },
     {
      "title": "Two going upstream",
      "material": "Oil on linen, 60×42cm",
-     "imageUrl": "/images/works/amara-3.jpg"
+     "imageUrl": "/images/works/anders-3.jpg"
     },
     {
      "title": "Meeting at midnight",
      "material": "Oil on canvas, 90×58cm",
-     "imageUrl": "/images/works/amara-4.jpg"
+     "imageUrl": "/images/works/anders-4.jpg"
     },
     {
      "title": "Mother and minnow",
      "material": "Oil on panel, 50×36cm",
-     "imageUrl": "/images/works/amara-5.jpg"
+     "imageUrl": "/images/works/anders-5.jpg"
     }
    ],
    "reviews": [
