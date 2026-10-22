@@ -26,7 +26,7 @@ python -m venv .venv && source .venv/bin/activate
 pip install -r requirements-dev.txt
 cp .env.example .env            # then fill in DATABASE_URL
 alembic upgrade head            # create tables
-python -m app.seed              # load the sample studios (safe to re-run)
+python -m app.seed              # load the sample studios (safe to re-run; --prune drops removed ones)
 uvicorn app.main:app --reload   # http://localhost:8000
 ```
 

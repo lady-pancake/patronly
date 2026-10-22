@@ -102,3 +102,20 @@ def test_studio_template_has_sample_prices(client):
     ]
     assert data["account"]["holder"] == "Alex Ward"
     assert gql(client, '{ studioTemplate(slug: "nope") { draft } }')["studioTemplate"] is None
+
+
+def test_prune_removes_studios_not_in_the_file(client):
+    from app.db.models import Artist
+    from app.seed import prune_catalogue
+
+    async def run():
+        try:
+            async for session in db.get_session():
+                session.add(Artist(slug="gone", display_name="Gone"))
+                await session.commit()
+                return await prune_catalogue(session, load_catalogue())
+        finally:
+            await db.dispose_engine()
+
+    assert asyncio.run(run()) == ["gone"]
+    assert gql(client, '{ artist(slug: "gone") { slug } }')["artist"] is None

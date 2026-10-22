@@ -6,9 +6,7 @@ Create Date: 2026-10-22
 """
 from collections.abc import Sequence
 
-import sqlalchemy as sa
 from alembic import op
-from sqlalchemy.dialects import postgresql
 
 revision: str = "0005"
 down_revision: str | None = "0004"
@@ -17,7 +15,8 @@ depends_on: str | Sequence[str] | None = None
 
 
 def upgrade() -> None:
-    op.add_column("artists", sa.Column("rate_tiers", postgresql.JSONB(), nullable=True))
+    # IF NOT EXISTS: the column was added by hand on the hosted database first.
+    op.execute("ALTER TABLE artists ADD COLUMN IF NOT EXISTS rate_tiers JSONB")
 
 
 def downgrade() -> None:

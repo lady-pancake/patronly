@@ -10,7 +10,7 @@ import json
 from pathlib import Path
 from typing import Any
 
-from sqlalchemy import select
+from sqlalchemy import delete, select
 from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -83,6 +83,19 @@ async def seed_catalogue(session: AsyncSession, artists: list[dict[str, Any]]) -
         ]
     await session.commit()
     return created, updated
+
+
+async def prune_catalogue(session: AsyncSession, artists: list[dict[str, Any]]) -> list[str]:
+    """Deletes studios whose slug is not in the file. Returns the removed slugs."""
+    keep = [a["slug"] for a in artists]
+    removed = await session.scalars(
+        delete(Artist)
+        .where(Artist.slug.is_not(None), Artist.slug.not_in(keep))
+        .returning(Artist.slug)
+    )
+    slugs = sorted(removed)
+    await session.commit()
+    return slugs
 
 
 def load_studio_template(path: Path = STUDIO_TEMPLATE) -> dict[str, Any]:
