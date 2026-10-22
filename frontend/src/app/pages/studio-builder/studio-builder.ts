@@ -73,12 +73,6 @@ export class StudioBuilder {
   protected readonly canContinue = computed(() =>
     this.step() === LAST ? this.valid().every(Boolean) : this.valid()[this.step()],
   );
-  protected readonly stepLabel = computed(() =>
-    this.step() < LAST
-      ? `Step ${this.step() + 1} of ${LAST} · ${STEP_LABELS[this.step()]}`
-      : 'Review',
-  );
-  protected readonly progress = computed(() => ((this.step() + 1) / (LAST + 1)) * 100);
   protected readonly nextLabel = computed(() =>
     this.step() === LAST
       ? this.store.published()

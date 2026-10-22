@@ -1,27 +1,12 @@
 <main class="mx-auto max-w-[1400px] px-4 pt-12 pb-24 sm:px-8">
   @if (!done()) {
     <div class="mx-auto flex max-w-[880px] flex-col gap-10">
-      <div class="flex flex-col gap-3">
-        <div class="flex items-center justify-between gap-4 text-[13px] text-muted-foreground">
-          <nav class="min-w-0" aria-label="New search steps">
-            <app-stepper [labels]="stepLabels" [current]="step()" (go)="step.set($event)" />
-          </nav>
-          <span class="shrink-0 max-sm:hidden">Step {{ step() + 1 }} of {{ steps.length }}</span>
-        </div>
-        <div
-          class="h-1 overflow-hidden rounded-full bg-secondary"
-          role="progressbar"
-          aria-label="Search progress"
-          [attr.aria-valuenow]="step() + 1"
-          aria-valuemin="1"
-          [attr.aria-valuemax]="steps.length"
-        >
-          <div
-            class="h-full rounded-full bg-primary transition-[width] duration-300 ease-soft"
-            [style.width.%]="((step() + 1) / steps.length) * 100"
-          ></div>
-        </div>
-      </div>
+      <app-stepper
+        [labels]="stepLabels"
+        [current]="step()"
+        label="New search steps"
+        (go)="step.set($event)"
+      />
       <div class="flex flex-col gap-3">
         <h1
           class="font-serif text-[clamp(40px,5vw,60px)] leading-[1.05] font-normal tracking-[-.02em]"
