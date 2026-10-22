@@ -24,7 +24,7 @@ describe('catalog', () => {
 
   it('matches search answers by medium and budget, most saved first', () => {
     const matches = matchArtists({ mediums: ['Painting'], budget: '$500 – $2k' });
-    expect(matches.map((a) => a.id)).toEqual(['maren', 'sol', 'clem']);
+    expect(matches.map((a) => a.id)).toEqual(['june', 'maren', 'sol', 'clem']);
     expect(matchArtists({ mediums: ['Painting'], budget: '$15k +' })).toEqual([]);
   });
 

@@ -131,11 +131,6 @@
      "imageUrl": "/images/works/hana-fern-bowl.jpg"
     },
     {
-     "title": "Salt plates",
-     "material": "Wood-fired, set of 4",
-     "imageUrl": null
-    },
-    {
      "title": "Kintsugi study",
      "material": "Repaired porcelain",
      "imageUrl": "/images/works/hana-kintsugi.jpg"
@@ -400,8 +395,8 @@
    "slug": "june",
    "position": 5,
    "name": "June Abernethy",
-   "studio": "Small Hours Press",
-   "medium": "Illustration",
+   "studio": "Small Hours Studio",
+   "medium": "Painting",
    "city": "Glasgow",
    "priceMin": 250,
    "priceMax": 1800,
@@ -409,19 +404,19 @@
    "likes": 5210,
    "hue": 300,
    "chroma": 0.07,
-   "site": "smallhours.press",
+   "site": "smallhours.studio",
    "replyNote": "Usually replies within 1 day.",
    "tags": [
-    "Ink and gouache",
-    "House portraits",
-    "Book covers",
-    "Wedding stationery",
-    "Digital files included"
+    "Watercolour",
+    "Ink and wash",
+    "Landscapes",
+    "Portraits from life",
+    "Framing available"
    ],
-   "quote": "I draw buildings like they have personalities, because they do.",
+   "quote": "Watercolour only works if you let the water have its say.",
    "bio": [
-    "June draws at a desk by the window in her Partick flat and prints small editions on a 1960s Adana press.",
-    "Commissions come with two rounds of pencil sketches and high-resolution digital files alongside the original."
+    "June paints in watercolour and ink at a desk by the window in her Partick flat, working from walks along the Clyde and sittings in the studio.",
+    "Every commission starts with a sheet of quick colour studies. You pick a favourite, and she builds the finished painting from it."
    ],
    "availability": "Open",
    "coverUrl": "/images/covers/june-cover.jpg",
@@ -442,7 +437,7 @@
     },
     {
      "title": "Kelvingrove at night",
-     "material": "Gouache on board, 30×40cm",
+     "material": "Ink and watercolour on board, 30×40cm",
      "imageUrl": "/images/works/june-3.jpg"
     },
     {
@@ -453,15 +448,15 @@
    ],
    "reviews": [
     {
-     "quote": "Our house portrait is the best gift I have ever given.",
+     "quote": "Our painting of the loch is the best gift I have ever given.",
      "author": "Fiona C., Edinburgh"
     },
     {
-     "quote": "Quick sketches, quicker replies.",
+     "quote": "Quick colour studies, quicker replies.",
      "author": "Tom & Ade, Leeds"
     },
     {
-     "quote": "She added our cat in the window without being asked.",
+     "quote": "She painted our cat into the window without being asked.",
      "author": "Isla M., Glasgow"
     }
    ]
@@ -703,7 +698,7 @@
    "priceMax": 600,
    "commissions": 12,
    "likes": 200,
-   "hue": 35,
+   "hue": 47,
    "chroma": 0.07,
    "site": "amarabell.studio",
    "replyNote": "Usually replies within 1 days.",
@@ -782,7 +777,7 @@
    "priceMax": 4800,
    "commissions": 49,
    "likes": 813,
-   "hue": 47,
+   "hue": 59,
    "chroma": 0.07,
    "site": "leoweiss.studio",
    "replyNote": "Usually replies within 2 days.",
@@ -855,25 +850,25 @@
    "position": 11,
    "name": "Noor Ferreira",
    "studio": "Ferreira Studio",
-   "medium": "Painting",
+   "medium": "Illustration",
    "city": "Edinburgh",
    "priceMin": 150,
    "priceMax": 1200,
    "commissions": 86,
    "likes": 1426,
-   "hue": 59,
+   "hue": 264,
    "chroma": 0.07,
    "site": "noorferreira.studio",
    "replyNote": "Usually replies within 3 days.",
    "tags": [
-    "Painting",
+    "Illustration",
     "Commissions open",
     "Edinburgh",
     "Gift-ready"
    ],
    "quote": "I want every piece to feel lived with, not just looked at.",
    "bio": [
-    "Noor works from a studio in Edinburgh, making painting to commission for homes, collectors and gifts.",
+    "Noor works from a studio in Edinburgh, making illustration to commission for homes, collectors and gifts.",
     "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
    ],
    "availability": "Open",
@@ -885,32 +880,32 @@
    "works": [
     {
      "title": "For a quiet room",
-     "material": "Painting",
+     "material": "Illustration",
      "imageUrl": null
     },
     {
      "title": "Morning piece",
-     "material": "Painting",
+     "material": "Illustration",
      "imageUrl": null
     },
     {
      "title": "Commission for A.",
-     "material": "Painting",
+     "material": "Illustration",
      "imageUrl": null
     },
     {
      "title": "Small hours",
-     "material": "Painting",
+     "material": "Illustration",
      "imageUrl": null
     },
     {
      "title": "Second light",
-     "material": "Painting",
+     "material": "Illustration",
      "imageUrl": null
     },
     {
      "title": "Field notes",
-     "material": "Painting",
+     "material": "Illustration",
      "imageUrl": null
     }
    ],
