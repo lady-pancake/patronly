@@ -404,6 +404,18 @@
               >
                 {{ m.text }}
               </div>
+              @if (m.images?.length) {
+                <div class="flex flex-wrap gap-1.5" [class.justify-end]="m.me">
+                  @for (src of m.images; track src) {
+                    <img
+                      [src]="src"
+                      alt="Photo shared in the conversation"
+                      loading="lazy"
+                      class="h-36 w-auto max-w-[220px] rounded-2xl bg-[#EEE8DD] object-cover ring-1 ring-border"
+                    />
+                  }
+                </div>
+              }
               <span class="px-1.5 text-[11px] text-muted-foreground">{{ m.time }}</span>
             </div>
           }

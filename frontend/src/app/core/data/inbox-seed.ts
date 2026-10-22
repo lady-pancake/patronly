@@ -26,8 +26,18 @@ interface Seed {
   msgs?: Message[];
 }
 
-const them = (text: string, time: string): Message => ({ me: false, text, time });
-const me = (text: string, time: string): Message => ({ me: true, text, time });
+const them = (text: string, time: string, images?: string[]): Message => ({
+  me: false,
+  text,
+  time,
+  ...(images && { images }),
+});
+const me = (text: string, time: string, images?: string[]): Message => ({
+  me: true,
+  text,
+  time,
+  ...(images && { images }),
+});
 
 /**
  * The demo artist's incoming conversations. The names match the dashboard's
@@ -106,7 +116,12 @@ const SEEDS: Seed[] = [
     msg: 'A portrait of our house in Gotland before we sell it.',
     date: 'Aug 2',
     msgs: [
-      me('The canvas is nearly finished. Pick-up is still set for October 23.', 'Oct 10, 09:20'),
+      them('Here are the colours of the house we talked about.', 'Aug 4, 18:30', [
+        '/images/works/ob-2.jpg',
+      ]),
+      me('The canvas is nearly finished. Pick-up is still set for October 23.', 'Oct 10, 09:20', [
+        '/images/works/ob-1.jpg',
+      ]),
       them('Wonderful, we can’t wait to see it in person.', 'Oct 10, 12:05'),
     ],
   },
@@ -120,7 +135,15 @@ const SEEDS: Seed[] = [
     timeline: 'By November',
     msg: 'A large piece for our restaurant’s main wall, inspired by Lagos markets.',
     date: 'Sep 1',
-    msgs: [me('Underpainting is done. Sending a progress photo this week.', 'Oct 6, 17:40')],
+    msgs: [
+      them('A few photos from the market for the palette.', 'Sep 3, 12:10', [
+        '/images/works/ob-4.jpg',
+        '/images/works/ob-3.jpg',
+      ]),
+      me('Underpainting is done. Here’s where it is so far.', 'Oct 6, 17:40', [
+        '/images/process/june-process.jpg',
+      ]),
+    ],
   },
   {
     name: 'Ruth Adler',
@@ -132,7 +155,13 @@ const SEEDS: Seed[] = [
     timeline: 'By December',
     msg: 'Portrait of my mother at her piano.',
     date: 'Sep 20',
-    msgs: [them('The deposit has gone through. Thank you!', 'Oct 4, 08:15')],
+    msgs: [
+      them('Two paintings she loved, for the feeling I’m after.', 'Sep 21, 20:05', [
+        '/images/works/sol-4.jpg',
+        '/images/works/june-2.jpg',
+      ]),
+      them('The deposit has gone through. Thank you!', 'Oct 4, 08:15'),
+    ],
   },
   {
     name: 'James Hartley',
@@ -162,7 +191,10 @@ const SEEDS: Seed[] = [
     timeline: 'By February',
     msg: 'A still life of the flowers from our wedding.',
     date: 'Sep 30',
-    msgs: [me('I’ve sent the contract over. Let me know if you have questions.', 'Oct 8, 10:30')],
+    msgs: [
+      them('The bouquet, for reference.', 'Oct 1, 15:40', ['/images/works/ob-3.jpg']),
+      me('I’ve sent the contract over. Let me know if you have questions.', 'Oct 8, 10:30'),
+    ],
   },
   {
     name: 'Leo Carrington',

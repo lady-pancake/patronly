@@ -127,6 +127,8 @@ export interface TextMessage {
   me: boolean;
   text: string;
   time: string;
+  /** Photos sent with the message: references from the patron, progress from the artist. */
+  images?: string[];
 }
 
 export interface AcceptedMessage {

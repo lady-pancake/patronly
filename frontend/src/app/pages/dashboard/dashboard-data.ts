@@ -599,3 +599,69 @@ export function timeline(offset: number, deals: AcceptedDeal[] = [], span = 6) {
     unscheduled: pendingRows.filter((p) => !p.start),
   };
 }
+
+// ── Commission details ──────────────────────────────────────────────────
+
+export interface CommissionFacts {
+  stage: TrackStage | 'unscheduled';
+  type: string;
+  total: number | null;
+  paid: number | null;
+  depositPct: number;
+  /** YYYY-MM-DD, or YYYY-MM for months only. */
+  start: string | null;
+  due: string | null;
+  dueVerb: string;
+  donePct: number | null;
+  /** Contract state, from the sample data. */
+  contract: 'signed' | 'sent' | 'none';
+}
+
+/** What the sample data knows about one patron's commission. */
+export function commissionFacts(name: string): CommissionFacts | null {
+  const c = COMMISSIONS.find((x) => x.patron === name);
+  if (c)
+    return {
+      stage: 'wip',
+      type: c.type,
+      total: c.total,
+      paid: c.total - c.balance,
+      depositPct: 30,
+      start: c.start,
+      due: c.due,
+      dueVerb: c.dueVerb,
+      donePct: c.done,
+      contract: 'signed',
+    };
+  const p = PENDING.find((x) => x.name === name);
+  if (p) {
+    const total = Number(p.total.replace(/[^\d]/g, ''));
+    return {
+      stage: !p.start ? 'unscheduled' : p.stage === 'deposit' ? 'deposit' : 'contract',
+      type: p.type,
+      total,
+      paid: 0,
+      depositPct: 30,
+      start: p.start ?? null,
+      due: p.end ?? null,
+      dueVerb: 'Deliver by',
+      donePct: null,
+      contract: p.stage === 'draft' ? 'none' : p.stage === 'deposit' ? 'signed' : 'sent',
+    };
+  }
+  const b = BOOKINGS.find((x) => x[0] === name);
+  if (b)
+    return {
+      stage: b[4] === 'done' ? 'done' : b[4] === 'wip' ? 'wip' : 'booked',
+      type: b[1],
+      total: null,
+      paid: null,
+      depositPct: 30,
+      start: b[2],
+      due: b[3],
+      dueVerb: b[4] === 'done' ? 'Delivered' : 'Deliver by',
+      donePct: b[4] === 'done' ? 100 : null,
+      contract: 'signed',
+    };
+  return null;
+}

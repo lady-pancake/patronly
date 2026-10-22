@@ -1,0 +1,143 @@
+<div class="flex h-[min(760px,calc(100dvh-112px))] w-full flex-col gap-5">
+  <div class="flex flex-col gap-1.5 pr-8">
+    <span
+      class="inline-flex h-6 items-center self-start rounded-md bg-secondary px-2.5 text-xs font-semibold"
+      >{{ stage }}</span
+    >
+    <h2 brnDialogTitle class="font-serif text-[32px] leading-none font-normal">
+      {{ ctx.name }}
+    </h2>
+    <p class="text-[13px] text-muted-foreground">{{ type }}</p>
+  </div>
+
+  <div class="-mx-1 flex min-h-0 flex-1 flex-col gap-6 overflow-y-auto px-1 pb-1 *:shrink-0">
+    @if (facts.length) {
+      <dl class="grid grid-cols-2 gap-px overflow-hidden rounded-2xl bg-border ring-1 ring-border">
+        @for (r of facts; track r[0]) {
+          <div class="flex flex-col gap-0.5 bg-card px-4 py-3">
+            <dt class="text-[11px] text-muted-foreground">{{ r[0] }}</dt>
+            <dd class="text-[13px] font-semibold">{{ r[1] }}</dd>
+          </div>
+        }
+      </dl>
+    }
+    @if (donePct !== null) {
+      <div class="flex items-center gap-3 text-xs">
+        <span class="block h-1.5 flex-1 overflow-hidden rounded-full bg-muted"
+          ><span class="block h-full bg-[oklch(0.62_0.09_240)]" [style.width.%]="donePct"></span
+        ></span>
+        <span class="font-medium tabular-nums">{{ donePct }}% done</span>
+      </div>
+    }
+
+    @if (brief) {
+      <section class="flex flex-col gap-2.5">
+        <h3 class="eyebrow">The brief</h3>
+        @if (brief.msg) {
+          <p class="font-serif text-xl leading-snug">“{{ brief.msg }}”</p>
+        }
+        <dl class="flex flex-wrap gap-x-5 gap-y-1 text-xs">
+          @for (r of brief.rows; track r[0]) {
+            <div class="flex gap-1.5">
+              <dt class="text-muted-foreground">{{ r[0] }}</dt>
+              <dd class="font-medium">{{ r[1] }}</dd>
+            </div>
+          }
+        </dl>
+      </section>
+    }
+
+    <section class="flex flex-col gap-2.5">
+      <h3 class="eyebrow">Photos from the conversation</h3>
+      @if (images.length) {
+        <div class="grid grid-cols-3 gap-2 sm:grid-cols-4">
+          @for (img of images; track $index) {
+            <button
+              type="button"
+              (click)="openImage.set($index)"
+              class="group flex cursor-zoom-in flex-col gap-1 text-left"
+              [attr.aria-label]="img.title + ', ' + img.material"
+            >
+              <span
+                class="aspect-square w-full rounded-xl ring-1 ring-border group-hover:opacity-90"
+                [style.background]="img.bg"
+              ></span>
+              <span class="truncate text-[11px] text-muted-foreground">{{ img.title }}</span>
+            </button>
+          }
+        </div>
+      } @else {
+        <p class="text-[13px] text-muted-foreground">No photos shared yet.</p>
+      }
+    </section>
+
+    <section class="flex flex-col gap-2.5">
+      <h3 class="eyebrow">Contract</h3>
+      <div class="flex items-center gap-3 rounded-2xl border px-4 py-3">
+        <ng-icon name="lucideFileText" size="18" class="shrink-0" />
+        <span class="flex min-w-0 flex-1 flex-col">
+          <span class="truncate text-[13px] font-medium">{{
+            contract.title || 'No contract yet'
+          }}</span>
+          <span class="text-xs text-muted-foreground">{{ contract.status }}</span>
+        </span>
+        @if (contract.text) {
+          <button
+            type="button"
+            (click)="showContract.set(!showContract())"
+            [attr.aria-expanded]="showContract()"
+            class="h-8 shrink-0 rounded-md border bg-background px-3 text-xs font-medium hover:bg-muted"
+          >
+            {{ showContract() ? 'Hide' : 'View' }}
+          </button>
+        }
+      </div>
+      @if (showContract() && contract.text) {
+        <div
+          class="max-h-72 overflow-y-auto rounded-2xl bg-surface p-4 font-mono text-[12px] leading-relaxed whitespace-pre-wrap"
+        >
+          {{ contract.text }}
+        </div>
+      }
+    </section>
+
+    @if (recent.length) {
+      <section class="flex flex-col gap-2.5">
+        <h3 class="eyebrow">Latest messages</h3>
+        <ul class="flex flex-col gap-2">
+          @for (m of recent; track $index) {
+            @if (m.type !== 'accepted') {
+              <li class="flex flex-col gap-0.5 rounded-2xl bg-surface px-4 py-3">
+                <span class="text-[11px] text-muted-foreground"
+                  >{{ m.me ? 'You' : first }} · {{ m.time }}</span
+                >
+                <span class="text-[13px]">{{ m.text }}</span>
+              </li>
+            }
+          }
+        </ul>
+      </section>
+    }
+  </div>
+
+  <div class="flex items-center justify-end gap-2 border-t pt-4">
+    <button
+      type="button"
+      (click)="ref.close()"
+      class="h-10 rounded-md border bg-background px-4 text-[13px] font-medium hover:bg-muted"
+    >
+      Close
+    </button>
+    @if (ctx.thread) {
+      <button
+        type="button"
+        (click)="openMessages()"
+        class="flex h-10 items-center gap-2 rounded-md bg-primary px-4 text-[13px] font-semibold text-primary-foreground hover:opacity-85"
+      >
+        <ng-icon name="lucideMessageCircle" size="16" />Open messages
+      </button>
+    }
+  </div>
+</div>
+
+<app-work-lightbox [works]="images" [(index)]="openImage" />

@@ -18,11 +18,13 @@ import {
   TRACK_STAGES,
   type TrackStage,
   timeline,
+  commissionFacts,
   type AcceptedDeal,
   type PendingRow,
   earnings,
   weekLoad,
 } from './dashboard-data';
+import { CommissionDetails, type DetailsContext } from './commission-details';
 import { InquiryRowView } from './inquiry-row';
 import { PayoutDialog } from './payout-dialog';
 
@@ -130,6 +132,15 @@ export class Dashboard {
 
   protected editAccount() {
     this.dialog.open(PayoutDialog, { contentClass: 'sm:max-w-[440px] rounded-4xl p-7 gap-0' });
+  }
+
+  /** Quick look at one commission: terms, brief, contract and shared photos. */
+  protected openDetails(name: string) {
+    const thread = this.patron.inbox().find((t) => t.id === inboxId(name)) ?? null;
+    this.dialog.open<void, DetailsContext>(CommissionDetails, {
+      context: { name, thread, facts: commissionFacts(name), artist: this.store.mine() },
+      contentClass: 'w-[calc(100vw-32px)] max-w-[640px] sm:max-w-[640px] rounded-4xl p-6 sm:p-8',
+    });
   }
 
   /** Opens the conversation with the accept flow, to agree scope, dates and the contract. */

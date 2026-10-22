@@ -5,6 +5,7 @@ import {
   PENDING,
   activeCommissions,
   timeline,
+  commissionFacts,
   earnings,
   weekLoad,
   yearView,
@@ -66,5 +67,22 @@ describe('dashboard links into Messages', () => {
     expect(t.unscheduled.map((p) => p.name)).toEqual(['Leo Carrington', 'Henrik Dahl']);
     expect(t.today).toBeGreaterThan(100 / 6);
     expect(t.today).toBeLessThan(200 / 6);
+  });
+
+  it('gathers what the sample data knows about a commission', () => {
+    expect(commissionFacts('Chidi Okafor')).toMatchObject({
+      stage: 'wip',
+      total: 4800,
+      paid: 1440,
+    });
+    expect(commissionFacts('James Hartley')).toMatchObject({
+      stage: 'deposit',
+      contract: 'signed',
+    });
+    expect(commissionFacts('Henrik Dahl')).toMatchObject({
+      stage: 'unscheduled',
+      contract: 'none',
+    });
+    expect(commissionFacts('Nobody')).toBeNull();
   });
 });
