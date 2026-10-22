@@ -29,6 +29,7 @@ export interface ApiArtist {
   processUrl: string | null;
   processVideoUrl: string | null;
   coverVideoUrl: string | null;
+  rateTiers?: { name: string; detail: string; priceFrom: number; priceTo: number }[] | null;
   works: { title: string; material: string; imageUrl: string | null }[];
   reviews: { quote: string; author: string }[];
 }
@@ -59,6 +60,12 @@ export const CATALOGUE_QUERY = /* GraphQL */ `
       processUrl
       processVideoUrl
       coverVideoUrl
+      rateTiers {
+        name
+        detail
+        priceFrom
+        priceTo
+      }
       works {
         title
         material
@@ -110,6 +117,12 @@ export function fromApi(a: ApiArtist): ArtistSeed | null {
     process: orUndefined(a.processUrl),
     processVideo: orUndefined(a.processVideoUrl),
     coverVideo: orUndefined(a.coverVideoUrl),
+    rates: a.rateTiers?.map((t) => ({
+      name: t.name,
+      detail: t.detail,
+      from: t.priceFrom,
+      to: t.priceTo,
+    })),
   };
 }
 

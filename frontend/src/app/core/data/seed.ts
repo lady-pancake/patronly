@@ -146,6 +146,16 @@ export const SEED_ARTISTS: ArtistSeed[] = [
     cover: '/images/covers/theo-cover.jpg',
     portrait: '/images/portraits/theo.jpg',
     process: '/images/process/theo-process.jpg',
+    rates: [
+      { name: 'Mini session', detail: '30 minutes · 15 edited photos', from: 800, to: 1200 },
+      { name: 'Family session', detail: '90 minutes · 40 edited photos', from: 1400, to: 2400 },
+      {
+        name: 'Half day on the ranch',
+        detail: '4 hours · photos and 3 prints',
+        from: 2800,
+        to: 4500,
+      },
+    ],
     reply: 'Usually replies within 1 day.',
     tags: [
       'Family portraits',

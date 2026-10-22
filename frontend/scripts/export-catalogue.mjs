@@ -42,6 +42,15 @@ const artists = SEED_ARTISTS.map((a, position) => ({
   processUrl: a.process ?? null,
   processVideoUrl: a.processVideo ?? null,
   coverVideoUrl: a.coverVideo ?? null,
+  // Only artists who set their own options carry this key.
+  ...(a.rates && {
+    rateTiers: a.rates.map((r) => ({
+      name: r.name,
+      detail: r.detail,
+      priceFrom: r.from,
+      priceTo: r.to,
+    })),
+  }),
   works: a.works.map(([title, material, imageUrl]) => ({
     title,
     material,

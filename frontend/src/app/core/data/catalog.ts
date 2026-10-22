@@ -83,7 +83,9 @@ export function decorate(a: ArtistSeed): Artist {
       src,
       bg: src ? imageBg(src) : tone(a.hue + ((i % 3) - 1) * 14, lights[i % lights.length], a.c),
     })),
-    tiers: rateTiers(a),
+    tiers: a.rates?.length
+      ? a.rates.map((r) => ({ name: r.name, lead: r.detail, range: `${fmt(r.from)}–${fmt(r.to)}` }))
+      : rateTiers(a),
     link: { label: a.site, href: `https://${a.site}` },
     hasImages,
   };

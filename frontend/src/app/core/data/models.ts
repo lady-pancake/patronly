@@ -36,6 +36,17 @@ export interface ArtistSeed {
   processVideo?: string;
   /** Short looping video shown behind the studio header. */
   coverVideo?: string;
+  /** The artist's own commission options. Without them, min..max is split into three. */
+  rates?: ArtistRate[];
+}
+
+/** A commission option as the artist entered it. */
+export interface ArtistRate {
+  name: string;
+  /** What it includes, e.g. "90 minutes · 40 edited photos". */
+  detail: string;
+  from: number;
+  to: number;
 }
 
 export interface Work {

@@ -32,7 +32,7 @@ class Artist(Base):
     )
 
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    # Short id used in URLs, e.g. /artists/maren.
+    # Short id used in URLs, e.g. /artists/june.
     slug: Mapped[str | None] = mapped_column(String(80), unique=True)
     # Order the catalogue was seeded in; browse lists sort by it before likes.
     position: Mapped[int] = mapped_column(Integer, server_default="0")
@@ -59,6 +59,9 @@ class Artist(Base):
     process_url: Mapped[str | None] = mapped_column(Text)
     process_video_url: Mapped[str | None] = mapped_column(Text)
     cover_video_url: Mapped[str | None] = mapped_column(Text)
+    # The artist's own price list: [{name, detail, priceFrom, priceTo}]. When it's
+    # empty the UI splits price_min..price_max into Small / Medium / Large.
+    rate_tiers: Mapped[list[dict] | None] = mapped_column(JSONB)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
 
     works: Mapped[list["Work"]] = relationship(

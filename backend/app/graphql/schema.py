@@ -42,6 +42,14 @@ class Review:
 
 
 @strawberry.type
+class RateTier:
+    name: str
+    detail: str = strawberry.field(description='What the option includes, e.g. "90 minutes".')
+    price_from: int
+    price_to: int
+
+
+@strawberry.type
 class Artist:
     id: uuid.UUID
     slug: str | None
@@ -67,6 +75,9 @@ class Artist:
     process_url: str | None
     process_video_url: str | None
     cover_video_url: str | None
+    rate_tiers: list[RateTier] | None = strawberry.field(
+        description="The artist's own commission options, if they set any."
+    )
     created_at: datetime
     works: list[Work]
     reviews: list[Review]
@@ -98,6 +109,19 @@ class Artist:
             process_url=m.process_url,
             process_video_url=m.process_video_url,
             cover_video_url=m.cover_video_url,
+            rate_tiers=(
+                [
+                    RateTier(
+                        name=t["name"],
+                        detail=t["detail"],
+                        price_from=t["priceFrom"],
+                        price_to=t["priceTo"],
+                    )
+                    for t in m.rate_tiers
+                ]
+                if m.rate_tiers
+                else None
+            ),
             created_at=m.created_at,
             works=[
                 Work(title=w.title, material=w.material, image_url=w.image_url) for w in m.works
@@ -136,7 +160,7 @@ class Query(ViewerQuery):
             return [Artist.from_model(r) for r in rows]
         return []
 
-    @strawberry.field(description='One studio by its URL slug, e.g. "maren".')
+    @strawberry.field(description='One studio by its URL slug, e.g. "june".')
     async def artist(self, slug: str) -> Artist | None:
         async for session in db.get_session():
             row = await session.scalar(_with_children().where(ArtistModel.slug == slug))

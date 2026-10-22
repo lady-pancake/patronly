@@ -69,6 +69,7 @@ async def seed_catalogue(session: AsyncSession, artists: list[dict[str, Any]]) -
         for key, column in FIELDS.items():
             setattr(artist, column, data[key])
         artist.bio = "\n\n".join(data["bio"])
+        artist.rate_tiers = data.get("rateTiers")
         await session.flush()
         # Replace works and reviews wholesale; the file is the source of truth.
         await session.refresh(artist, ["works", "reviews"])

@@ -264,6 +264,26 @@
    "processUrl": "/images/process/theo-process.jpg",
    "processVideoUrl": null,
    "coverVideoUrl": null,
+   "rateTiers": [
+    {
+     "name": "Mini session",
+     "detail": "30 minutes · 15 edited photos",
+     "priceFrom": 800,
+     "priceTo": 1200
+    },
+    {
+     "name": "Family session",
+     "detail": "90 minutes · 40 edited photos",
+     "priceFrom": 1400,
+     "priceTo": 2400
+    },
+    {
+     "name": "Half day on the ranch",
+     "detail": "4 hours · photos and 3 prints",
+     "priceFrom": 2800,
+     "priceTo": 4500
+    }
+   ],
    "works": [
     {
      "title": "Poppy field, golden hour",
