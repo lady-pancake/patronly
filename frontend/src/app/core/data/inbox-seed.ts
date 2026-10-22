@@ -137,14 +137,19 @@ const SEEDS: Seed[] = [
   {
     name: 'James Hartley',
     hue: 15,
-    status: 'In progress',
-    updated: 'Oct 9',
+    status: 'Deposit due',
+    updated: 'Oct 19',
     type: 'Small study',
     budget: 'Under $1.5k',
     timeline: 'By January',
     msg: 'A small oil study of our boat for my father.',
     date: 'Sep 28',
-    msgs: [me('All booked. I’ll start in the second week of October.', 'Oct 9, 11:00')],
+    msgs: [
+      me(
+        'Thanks for signing! I’ll start as soon as the $360 deposit comes through.',
+        'Oct 19, 11:00',
+      ),
+    ],
   },
   // Accepted, waiting on a contract.
   {

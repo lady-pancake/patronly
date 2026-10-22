@@ -152,6 +152,8 @@ interface Commission {
   total: number;
   balance: number;
   hours: number;
+  /** Contract signed, but the patron hasn't paid the deposit yet, so work hasn't started. */
+  awaitingDeposit?: boolean;
 }
 
 const COMMISSIONS: Commission[] = [
@@ -193,11 +195,12 @@ const COMMISSIONS: Commission[] = [
     type: 'Small study',
     done: 0,
     dueVerb: 'Deliver by',
-    start: '2026-10-09',
+    start: '2026-10-19',
     due: '2027-01-15',
     total: 1200,
-    balance: 840,
+    balance: 1200,
     hours: 20,
+    awaitingDeposit: true,
   },
 ];
 
@@ -213,6 +216,8 @@ export interface ActiveRow {
   paid: string;
   paidPct: number;
   balance: string;
+  /** Set while the deposit is still unpaid: the amount due. */
+  depositDue: string | null;
 }
 
 export function activeCommissions(): ActiveRow[] {
@@ -220,18 +225,20 @@ export function activeCommissions(): ActiveRow[] {
     const due = at(c.due);
     const weeks = Math.max(0, Math.ceil((due.getTime() - TODAY.getTime()) / WEEK));
     const paid = c.total - c.balance;
+    const deposit = Math.round(c.total * 0.3);
     return {
       patron: c.patron,
       type: c.type,
       totalHours: `${c.hours} hrs total`,
-      started: `Started ${monthDay(at(c.start))}`,
+      started: `${c.awaitingDeposit ? 'Signed' : 'Started'} ${monthDay(at(c.start))}`,
       weeksLeft: `${weeks} ${weeks === 1 ? 'week' : 'weeks'} left`,
       urgent: weeks <= 2,
       dueLabel: `${c.dueVerb} ${monthDay(due)}`,
       total: money(c.total),
       paid: `${money(paid)} paid`,
       paidPct: (paid / c.total) * 100,
-      balance: `${money(c.balance)} due`,
+      balance: c.awaitingDeposit ? `${money(deposit)} deposit due` : `${money(c.balance)} due`,
+      depositDue: c.awaitingDeposit ? money(deposit) : null,
     };
   });
 }
@@ -240,7 +247,8 @@ export function activeCommissions(): ActiveRow[] {
 export function weekLoad(capacity = 30) {
   const thisWeek = new Date(TODAY.getTime() + 12 * 36e5);
   const weekIndex = (d: Date) => Math.floor((d.getTime() - thisWeek.getTime()) / WEEK);
-  const hours = COMMISSIONS.reduce((sum, c) => {
+  // Work waiting on a deposit hasn't started, so it isn't booked into this week.
+  const hours = COMMISSIONS.filter((c) => !c.awaitingDeposit).reduce((sum, c) => {
     const a = Math.max(0, weekIndex(at(c.start)));
     const b = Math.max(a, weekIndex(at(c.due)));
     const left = c.hours * (1 - c.done / 100);

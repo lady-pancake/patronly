@@ -14,7 +14,7 @@ describe('dashboard sample data', () => {
     expect(PAYDAY.net).toBe('$2,521');
     expect(earnings().earned).toBe('$30,540');
     expect(earnings().upcoming).toBe('$10,520');
-    expect(weekLoad().label).toBe('21 of 30 studio hours');
+    expect(weekLoad().label).toBe('19 of 30 studio hours');
   });
 
   it('counts weeks left on each commission', () => {
