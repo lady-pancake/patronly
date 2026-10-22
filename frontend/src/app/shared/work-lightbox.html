@@ -1,0 +1,57 @@
+@if (current(); as w) {
+  <div
+    class="fixed inset-0 z-[70] flex flex-col items-center justify-center gap-4 bg-[oklch(0.145_0_0/.92)] px-4 py-14 sm:px-20"
+    role="dialog"
+    aria-modal="true"
+    [attr.aria-label]="w.title"
+    (click)="index.set(null)"
+  >
+    <button
+      type="button"
+      aria-label="Close"
+      class="absolute top-5 right-5 grid size-11 place-items-center rounded-full bg-white/12 text-white hover:bg-white/20"
+      (click)="index.set(null)"
+    >
+      <ng-icon name="lucideX" size="20" />
+    </button>
+    <button
+      type="button"
+      aria-label="Previous"
+      class="absolute top-1/2 left-5 grid size-12 -translate-y-1/2 place-items-center rounded-full bg-white/12 text-white hover:bg-white/20"
+      (click)="step(-1, $event)"
+    >
+      <ng-icon name="lucideChevronLeft" size="22" />
+    </button>
+    <button
+      type="button"
+      aria-label="Next"
+      class="absolute top-1/2 right-5 grid size-12 -translate-y-1/2 place-items-center rounded-full bg-white/12 text-white hover:bg-white/20"
+      (click)="step(1, $event)"
+    >
+      <ng-icon name="lucideChevronRight" size="22" />
+    </button>
+    @if (w.src) {
+      <img
+        [src]="w.src"
+        [alt]="w.title"
+        class="max-h-[calc(100dvh-180px)] max-w-full rounded-lg object-contain"
+        (click)="$event.stopPropagation()"
+      />
+    } @else {
+      <div
+        class="aspect-[4/5] h-[calc(100dvh-180px)] max-w-full rounded-lg"
+        [style.background]="w.bg"
+        (click)="$event.stopPropagation()"
+      ></div>
+    }
+    <div
+      class="flex flex-col items-center gap-0.5 text-center text-white"
+      (click)="$event.stopPropagation()"
+    >
+      <span class="font-serif text-[22px] italic">{{ w.title }}</span>
+      <span class="text-[13px] opacity-75"
+        >{{ w.material }} · {{ (index() ?? 0) + 1 }} of {{ works().length }}</span
+      >
+    </div>
+  </div>
+}

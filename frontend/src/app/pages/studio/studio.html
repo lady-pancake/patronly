@@ -182,16 +182,21 @@
             role="region"
             aria-label="Past work"
           >
-            @for (w of a.workList; track w.title) {
-              <figure class="flex w-[240px] shrink-0 flex-col gap-2.5">
-                <div class="aspect-[4/5] rounded-3xl" [style.background]="w.bg"></div>
-                <figcaption class="flex flex-col">
+            @for (w of a.workList; track w.title; let i = $index) {
+              <button
+                type="button"
+                (click)="openWork.set(i)"
+                class="flex w-[240px] shrink-0 cursor-zoom-in flex-col gap-2.5 text-left hover:opacity-92"
+              >
+                <span class="aspect-[4/5] rounded-3xl" [style.background]="w.bg"></span>
+                <span class="flex flex-col">
                   <span class="font-serif text-[17px] italic">{{ w.title }}</span>
                   <span class="text-xs text-muted-foreground">{{ w.material }}</span>
-                </figcaption>
-              </figure>
+                </span>
+              </button>
             }
           </div>
+          <app-work-lightbox [works]="a.workList" [(index)]="openWork" />
         </div>
         <blockquote class="mx-auto flex max-w-[900px] flex-col gap-2 pr-6 text-center sm:pr-12">
           <p class="font-serif text-3xl leading-snug italic">“{{ a.quote }}”</p>

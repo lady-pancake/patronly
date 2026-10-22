@@ -15,11 +15,13 @@ import { HeartButton } from '../../shared/heart-button';
 import { PlayInView } from '../../shared/play-in-view';
 import { InquireButton } from '../../shared/inquiry/inquire-button';
 import { Tag } from '../../shared/tag';
+import { WorkLightbox } from '../../shared/work-lightbox';
 import { NotFound } from '../not-found';
 
 @Component({
   selector: 'app-studio',
   imports: [
+    WorkLightbox,
     NgTemplateOutlet,
     PlayInView,
     RouterLink,
@@ -42,6 +44,8 @@ import { NotFound } from '../not-found';
   templateUrl: './studio.html',
 })
 export class Studio {
+  /** The past work open in the preview, if any. */
+  protected readonly openWork = signal<number | null>(null);
   /** The cover video plays unless the visitor asked their system for reduced motion. */
   protected readonly coverPlaying = signal(
     typeof matchMedia === 'undefined' || !matchMedia('(prefers-reduced-motion: reduce)').matches,
