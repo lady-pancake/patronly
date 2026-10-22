@@ -72,6 +72,7 @@
       <span class="text-xs text-muted-foreground">{{ artist.reply }}</span>
       <button
         type="button"
+        data-submit
         (click)="send()"
         [disabled]="!canSend()"
         class="h-12 rounded-md bg-primary px-8 text-sm font-semibold text-primary-foreground hover:opacity-85 disabled:cursor-not-allowed disabled:opacity-40"

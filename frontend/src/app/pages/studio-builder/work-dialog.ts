@@ -6,6 +6,7 @@ import { BrnDialogRef, BrnDialogTitle, injectBrnDialogContext } from '@spartan-n
 import { ArtistStore } from '../../core/data/artist-store';
 import { type Piece, WORK_TAG_SUGGESTIONS, readImage } from '../../core/data/studio-draft';
 import { CleanText } from '../../shared/clean-text';
+import { EnterSubmit } from '../../shared/enter-submit';
 
 export interface WorkDialogContext {
   /** The piece to edit, or null to start by choosing images. */
@@ -17,6 +18,7 @@ export interface WorkDialogContext {
   selector: 'app-work-dialog',
   imports: [CleanText, BrnDialogTitle, FormsModule, NgIcon],
   providers: [provideIcons({ lucideCheck, lucideImagePlus, lucideX })],
+  hostDirectives: [EnterSubmit],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: { class: 'flex min-h-0 flex-col' },
   templateUrl: './work-dialog.html',

@@ -20,13 +20,14 @@ import {
 import { WorkStep } from './work-step';
 import { CleanText } from '../../shared/clean-text';
 import { Stepper } from '../../shared/stepper';
+import { EnterSubmit } from '../../shared/enter-submit';
 
 const LAST = STEP_LABELS.length; // the review step
 
 /** The six-step studio builder, then a review before previewing. */
 @Component({
   selector: 'app-studio-builder',
-  imports: [CleanText, Stepper, FormsModule, RouterLink, NgIcon, WorkStep],
+  imports: [EnterSubmit, CleanText, Stepper, FormsModule, RouterLink, NgIcon, WorkStep],
   providers: [provideIcons({ lucideArrowLeft, lucideCheck, lucideMinus, lucidePlus, lucideX })],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: { class: 'flex min-h-dvh flex-col bg-background' },
