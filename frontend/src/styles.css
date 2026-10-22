@@ -68,6 +68,7 @@
   --color-page: var(--page);
   --color-sage: var(--sage);
   --color-sage-foreground: var(--sage-foreground);
+  --color-sage-tint: color-mix(in oklab, var(--sage) 45%, var(--page));
   --color-highlight: var(--highlight);
   --radius-xl: 6px;
   --radius-2xl: 8px;
