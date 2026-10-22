@@ -137,6 +137,24 @@ export interface AcceptedMessage {
   deposit: number;
   start: string;
   due: string;
+  /** Set when the artist accepted in Patronly: the agreed details behind the card. */
+  terms?: CommissionTerms;
+}
+
+/** What an artist agrees to when accepting a commission. */
+export interface CommissionTerms {
+  /** Size or format, e.g. "Canvas, up to 60cm". */
+  size: string;
+  medium: string;
+  revisions: number;
+  delivery: 'Pickup' | 'Shipping' | 'Digital file';
+  notes: string;
+  depositPct: number;
+  /** Agreed dates, as YYYY-MM-DD. */
+  startDate: string;
+  dueDate: string;
+  /** The contract sent: Patronly's template (its text) or the artist's own file. */
+  contract: { kind: 'template'; text: string } | { kind: 'file'; name: string };
 }
 
 export type Message = TextMessage | AcceptedMessage;

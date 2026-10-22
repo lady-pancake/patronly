@@ -99,13 +99,15 @@
             class="flex h-9 items-center rounded-md border bg-background px-4 text-[13px] font-medium hover:bg-muted"
             >View studio</a
           >
-        } @else if (status === 'Contract to send') {
+        } @else if (
+          status === 'New inquiry' || status === 'Replied' || status === 'Contract to send'
+        ) {
           <button
             type="button"
-            (click)="createContract(th)"
-            class="flex h-9 items-center rounded-md bg-primary px-4 text-[13px] font-semibold text-primary-foreground hover:opacity-85"
+            (click)="openAccept(th)"
+            class="flex h-9 shrink-0 items-center rounded-md bg-primary px-4 text-[13px] font-semibold text-primary-foreground hover:opacity-85"
           >
-            Create contract
+            {{ status === 'Contract to send' ? 'Create contract' : 'Accept commission' }}
           </button>
         }
       </header>
@@ -176,99 +178,217 @@
 
         @for (m of th.msgs; track $index) {
           @if (m.type === 'accepted') {
-            <div
-              class="my-4 flex w-full max-w-[600px] shrink-0 flex-col gap-1.5 self-center animate-pop-in"
-            >
+            @if (incoming) {
+              <div class="my-4 flex w-full max-w-[600px] shrink-0 flex-col gap-1.5 self-center">
+                <div
+                  class="flex flex-col gap-5 rounded-4xl bg-surface p-5 ring-1 ring-border sm:p-7"
+                >
+                  <div class="flex flex-col gap-2">
+                    <span
+                      class="inline-flex h-[26px] items-center gap-1.5 self-start rounded-md bg-primary px-3 text-xs font-semibold text-primary-foreground"
+                      ><ng-icon name="lucidePartyPopper" size="13" />Commission accepted</span
+                    >
+                    <h2 class="font-serif text-[30px] leading-tight font-normal">
+                      You accepted <em>{{ who.first }}’s commission.</em>
+                    </h2>
+                  </div>
+                  <div
+                    class="grid grid-cols-2 gap-px overflow-hidden rounded-2xl bg-border ring-1 ring-border sm:grid-cols-4"
+                  >
+                    @for (
+                      d of [
+                        ['Piece', m.piece],
+                        ['Price', money(m.total)],
+                        ['Starts', m.start],
+                        ['Delivery by', m.due],
+                      ];
+                      track d[0]
+                    ) {
+                      <div class="flex flex-col gap-0.5 bg-card px-3.5 py-3">
+                        <span class="text-[11px] text-muted-foreground">{{ d[0] }}</span
+                        ><span class="text-[13px] font-semibold">{{ d[1] }}</span>
+                      </div>
+                    }
+                  </div>
+                  @if (m.terms; as tm) {
+                    <p class="text-[13px] text-muted-foreground">
+                      {{ tm.size }} · {{ tm.medium }} ·
+                      {{ tm.revisions ? tm.revisions + ' revision rounds' : 'No revisions' }} ·
+                      {{ tm.delivery }}
+                    </p>
+                  }
+                  <ol class="flex flex-col gap-1 rounded-3xl bg-card p-2 ring-1 ring-border">
+                    @for (st of artistStepsOf(th, who.first, m); track st.n) {
+                      <li
+                        class="flex flex-wrap items-center gap-3.5 p-3"
+                        [class.opacity-55]="!st.done && !st.active"
+                      >
+                        <span
+                          class="grid size-[30px] shrink-0 place-items-center rounded-full border-[1.5px] text-[13px] font-semibold"
+                          [class]="
+                            st.done
+                              ? 'border-primary bg-primary text-primary-foreground'
+                              : st.active
+                                ? 'border-primary text-primary'
+                                : 'border-border text-muted-foreground'
+                          "
+                        >
+                          @if (st.done) {
+                            <ng-icon name="lucideCheck" size="14" strokeWidth="3" />
+                          } @else {
+                            {{ st.n }}
+                          }
+                        </span>
+                        <span class="flex min-w-0 flex-1 flex-col gap-0.5">
+                          <span class="text-sm font-semibold">{{ st.title }}</span>
+                          <span class="text-xs text-muted-foreground">{{ st.sub }}</span>
+                        </span>
+                        @if (st.n === '1' && m.terms?.contract?.kind === 'template') {
+                          <button
+                            type="button"
+                            (click)="contractOpen.set(contractOpen() === th.id ? null : th.id)"
+                            [attr.aria-expanded]="contractOpen() === th.id"
+                            class="flex h-8 items-center gap-1.5 rounded-md border bg-background px-3 text-xs font-medium hover:bg-muted"
+                          >
+                            <ng-icon name="lucideFileText" size="14" />{{
+                              contractOpen() === th.id ? 'Hide' : 'View'
+                            }}
+                          </button>
+                        }
+                        @if (st.active && st.patch) {
+                          <span class="flex items-center gap-2 max-sm:ml-11">
+                            <button
+                              type="button"
+                              (click)="simulate(th, st.patch)"
+                              title="Demo only: act as the patron"
+                              class="h-8 rounded-md px-2 text-xs font-medium text-muted-foreground underline underline-offset-4 hover:text-foreground"
+                            >
+                              {{ st.demo }} (demo)
+                            </button>
+                            <button
+                              type="button"
+                              (click)="remind(th)"
+                              class="h-8 rounded-md bg-primary px-3 text-xs font-semibold text-primary-foreground hover:opacity-85"
+                            >
+                              Send reminder
+                            </button>
+                          </span>
+                        }
+                      </li>
+                      @if (st.n === '1' && contractOpen() === th.id && m.terms?.contract; as c) {
+                        @if (c.kind === 'template') {
+                          <li
+                            class="mx-3 mb-2 max-h-72 overflow-y-auto rounded-2xl bg-surface p-4 font-mono text-[12px] leading-relaxed whitespace-pre-wrap"
+                          >
+                            {{ c.text }}
+                          </li>
+                        }
+                      }
+                    }
+                  </ol>
+                  @if (th.contract?.paid) {
+                    <p class="text-center font-serif text-[22px] italic">
+                      All set. It’s on your calendar from {{ m.start }}.
+                    </p>
+                  }
+                </div>
+                <span class="text-center text-[11px] text-muted-foreground">{{ m.time }}</span>
+              </div>
+            } @else {
               <div
-                class="relative flex flex-col gap-6 overflow-hidden rounded-4xl bg-primary p-5 text-primary-foreground sm:p-8 shadow-[0_12px_32px_color-mix(in_oklab,#62394F_30%,transparent)]"
+                class="my-4 flex w-full max-w-[600px] shrink-0 flex-col gap-1.5 self-center animate-pop-in"
               >
                 <div
-                  class="absolute -top-10 -right-10 size-45 rounded-full bg-[color-mix(in_oklab,var(--sage)_55%,#62394F)]"
-                ></div>
-                <div
-                  class="absolute top-[90px] right-[70px] size-14 rounded-full bg-[color-mix(in_oklab,var(--sage)_30%,#62394F)]"
-                ></div>
-                <div class="relative flex flex-col gap-2.5">
-                  <span
-                    class="inline-flex h-[26px] items-center gap-1.5 self-start rounded-md bg-white/15 px-3 text-xs font-semibold"
-                    ><ng-icon name="lucidePartyPopper" size="13" />Commission accepted</span
-                  >
-                  <h2
-                    class="max-w-[420px] font-serif text-[34px] leading-none sm:text-[44px] font-normal tracking-[-.01em]"
-                  >
-                    It’s happening. <em>{{ a.first }} accepted your commission.</em>
-                  </h2>
-                  <span
-                    class="font-hand text-[30px] leading-none text-[color-mix(in_oklab,var(--sage)_60%,white)]"
-                    >let’s make something wonderful!</span
-                  >
-                </div>
-                <div
-                  class="relative grid grid-cols-2 gap-px overflow-hidden rounded-2xl bg-white/18 sm:grid-cols-3"
+                  class="relative flex flex-col gap-6 overflow-hidden rounded-4xl bg-primary p-5 text-primary-foreground sm:p-8 shadow-[0_12px_32px_color-mix(in_oklab,#62394F_30%,transparent)]"
                 >
                   <div
-                    class="col-span-2 flex flex-col gap-0.5 bg-primary px-3.5 py-3 sm:col-span-1"
-                  >
-                    <span class="text-[11px] opacity-75">Commission</span
-                    ><span class="text-[13px] font-semibold">{{ m.piece }}</span>
-                  </div>
-                  <div class="flex flex-col gap-0.5 bg-primary px-3.5 py-3">
-                    <span class="text-[11px] opacity-75">Agreed price</span
-                    ><span class="font-serif text-2xl leading-none">{{ money(m.total) }}</span>
-                  </div>
-                  <div class="flex flex-col gap-0.5 bg-primary px-3.5 py-3">
-                    <span class="text-[11px] opacity-75">Delivery by</span
-                    ><span class="text-[13px] font-semibold">{{ m.due }}</span>
-                  </div>
-                </div>
-                <ol class="relative flex flex-col gap-1 rounded-3xl bg-white/8 p-2">
-                  @for (st of stepsOf(th, a, m); track st.n) {
-                    <li
-                      class="flex flex-wrap items-center gap-3.5 p-3"
-                      [class.opacity-60]="!st.done && !st.active"
+                    class="absolute -top-10 -right-10 size-45 rounded-full bg-[color-mix(in_oklab,var(--sage)_55%,#62394F)]"
+                  ></div>
+                  <div
+                    class="absolute top-[90px] right-[70px] size-14 rounded-full bg-[color-mix(in_oklab,var(--sage)_30%,#62394F)]"
+                  ></div>
+                  <div class="relative flex flex-col gap-2.5">
+                    <span
+                      class="inline-flex h-[26px] items-center gap-1.5 self-start rounded-md bg-white/15 px-3 text-xs font-semibold"
+                      ><ng-icon name="lucidePartyPopper" size="13" />Commission accepted</span
                     >
-                      <span
-                        class="grid size-[30px] shrink-0 place-items-center rounded-full border-[1.5px] text-[13px] font-semibold"
-                        [class]="
-                          st.done
-                            ? 'border-white bg-white text-primary'
-                            : st.active
-                              ? 'border-white'
-                              : 'border-white/40'
-                        "
+                    <h2
+                      class="max-w-[420px] font-serif text-[34px] leading-none sm:text-[44px] font-normal tracking-[-.01em]"
+                    >
+                      It’s happening. <em>{{ a.first }} accepted your commission.</em>
+                    </h2>
+                    <span
+                      class="font-hand text-[30px] leading-none text-[color-mix(in_oklab,var(--sage)_60%,white)]"
+                      >let’s make something wonderful!</span
+                    >
+                  </div>
+                  <div
+                    class="relative grid grid-cols-2 gap-px overflow-hidden rounded-2xl bg-white/18 sm:grid-cols-3"
+                  >
+                    <div
+                      class="col-span-2 flex flex-col gap-0.5 bg-primary px-3.5 py-3 sm:col-span-1"
+                    >
+                      <span class="text-[11px] opacity-75">Commission</span
+                      ><span class="text-[13px] font-semibold">{{ m.piece }}</span>
+                    </div>
+                    <div class="flex flex-col gap-0.5 bg-primary px-3.5 py-3">
+                      <span class="text-[11px] opacity-75">Agreed price</span
+                      ><span class="font-serif text-2xl leading-none">{{ money(m.total) }}</span>
+                    </div>
+                    <div class="flex flex-col gap-0.5 bg-primary px-3.5 py-3">
+                      <span class="text-[11px] opacity-75">Delivery by</span
+                      ><span class="text-[13px] font-semibold">{{ m.due }}</span>
+                    </div>
+                  </div>
+                  <ol class="relative flex flex-col gap-1 rounded-3xl bg-white/8 p-2">
+                    @for (st of stepsOf(th, a, m); track st.n) {
+                      <li
+                        class="flex flex-wrap items-center gap-3.5 p-3"
+                        [class.opacity-60]="!st.done && !st.active"
                       >
-                        @if (st.done) {
-                          <ng-icon name="lucideCheck" size="14" strokeWidth="3" />
-                        } @else if (st.active) {
-                          {{ st.n }}
-                        }
-                      </span>
-                      <span
-                        class="flex min-w-0 flex-1 basis-[calc(100%-50px)] flex-col gap-0.5 sm:basis-0"
-                      >
-                        <span class="text-sm font-semibold">{{ st.title }}</span>
-                        <span class="text-xs opacity-80">{{ st.sub }}</span>
-                      </span>
-                      @if (st.active && st.cta) {
-                        <button
-                          type="button"
-                          (click)="openDeal(th, a, m, st.mode!)"
-                          class="h-9 shrink-0 rounded-md bg-white px-4 text-[13px] font-semibold text-primary hover:opacity-90 max-sm:ml-11"
+                        <span
+                          class="grid size-[30px] shrink-0 place-items-center rounded-full border-[1.5px] text-[13px] font-semibold"
+                          [class]="
+                            st.done
+                              ? 'border-white bg-white text-primary'
+                              : st.active
+                                ? 'border-white'
+                                : 'border-white/40'
+                          "
                         >
-                          {{ st.cta }}
-                        </button>
-                      }
-                    </li>
+                          @if (st.done) {
+                            <ng-icon name="lucideCheck" size="14" strokeWidth="3" />
+                          } @else if (st.active) {
+                            {{ st.n }}
+                          }
+                        </span>
+                        <span
+                          class="flex min-w-0 flex-1 basis-[calc(100%-50px)] flex-col gap-0.5 sm:basis-0"
+                        >
+                          <span class="text-sm font-semibold">{{ st.title }}</span>
+                          <span class="text-xs opacity-80">{{ st.sub }}</span>
+                        </span>
+                        @if (st.active && st.cta) {
+                          <button
+                            type="button"
+                            (click)="openDeal(th, a, m, st.mode!)"
+                            class="h-9 shrink-0 rounded-md bg-white px-4 text-[13px] font-semibold text-primary hover:opacity-90 max-sm:ml-11"
+                          >
+                            {{ st.cta }}
+                          </button>
+                        }
+                      </li>
+                    }
+                  </ol>
+                  @if (th.contract?.paid) {
+                    <p class="relative text-center font-serif text-[22px] italic">
+                      All set. The studio calendar is booked for you.
+                    </p>
                   }
-                </ol>
-                @if (th.contract?.paid) {
-                  <p class="relative text-center font-serif text-[22px] italic">
-                    All set. The studio calendar is booked for you.
-                  </p>
-                }
+                </div>
+                <span class="text-center text-[11px] text-muted-foreground">{{ m.time }}</span>
               </div>
-              <span class="text-center text-[11px] text-muted-foreground">{{ m.time }}</span>
-            </div>
+            }
           } @else {
             <div
               class="flex max-w-[85%] shrink-0 flex-col gap-1 sm:max-w-[70%]"

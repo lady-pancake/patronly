@@ -445,8 +445,21 @@ const monthPos = (d: Date) =>
   d.getMonth() +
   (d.getDate() - 1) / new Date(d.getFullYear(), d.getMonth() + 1, 0).getDate();
 
-/** `span` months of commissions as bars, starting `offset` months from last month. */
-export function timeline(offset: number, span = 6) {
+/** A commission the artist accepted in Messages, with its agreed dates (YYYY-MM-DD). */
+export interface AcceptedDeal {
+  name: string;
+  type: string;
+  deposit: number;
+  startDate: string;
+  dueDate: string;
+  stage: 'sent' | 'deposit' | 'paid';
+}
+
+/**
+ * `span` months of commissions as bars, starting `offset` months from last month.
+ * Deals accepted in Messages replace any sample entry for the same patron.
+ */
+export function timeline(offset: number, deals: AcceptedDeal[] = [], span = 6) {
   const now = TODAY.getFullYear() * 12 + TODAY.getMonth();
   const first = now - 1 + offset;
   const last = first + span;
@@ -478,7 +491,9 @@ export function timeline(offset: number, span = 6) {
     };
   };
   const keep = (b: TrackBar | null): b is TrackBar => b !== null;
-  const pendingNames = new Set(PENDING.map((p) => p.name));
+  const dealNames = new Set(deals.map((d) => d.name));
+  const pendingNames = new Set([...PENDING.map((p) => p.name), ...dealNames]);
+  const pendingRows = PENDING.filter((p) => !dealNames.has(p.name));
 
   const active = activeCommissions();
   const inProgress = COMMISSIONS.map((c, i) =>
@@ -495,23 +510,47 @@ export function timeline(offset: number, span = 6) {
   ).filter(keep);
 
   const upNext = [
-    ...PENDING.filter((p) => p.start && p.end).map((p) =>
-      bar(monthNo(p.start!), monthNo(p.end!) + 1, {
-        name: p.name,
-        type: p.type,
-        stage: p.stage === 'deposit' ? 'deposit' : 'contract',
+    ...deals.map((d) =>
+      bar(monthPos(at(d.startDate)), monthPos(at(d.dueDate)), {
+        name: d.name,
+        type: d.type,
+        stage: d.stage === 'paid' ? 'booked' : d.stage === 'deposit' ? 'deposit' : 'contract',
         status:
-          p.stage === 'deposit'
-            ? 'Signed, deposit due'
-            : p.stage === 'sent'
-              ? 'Awaiting signature'
-              : 'Contract not sent',
-        note: p.stage === 'deposit' ? p.deposit : 'Planned dates',
+          d.stage === 'paid'
+            ? `Starts ${monthDay(at(d.startDate))}`
+            : d.stage === 'deposit'
+              ? 'Signed, deposit due'
+              : 'Awaiting signature',
+        note:
+          d.stage === 'paid'
+            ? 'Deposit paid'
+            : d.stage === 'deposit'
+              ? `${money(d.deposit)} deposit due`
+              : 'Contract sent',
         donePct: 0,
-        pending: p,
+        pending: null,
         message: true,
       }),
     ),
+    ...pendingRows
+      .filter((p) => p.start && p.end)
+      .map((p) =>
+        bar(monthNo(p.start!), monthNo(p.end!) + 1, {
+          name: p.name,
+          type: p.type,
+          stage: p.stage === 'deposit' ? 'deposit' : 'contract',
+          status:
+            p.stage === 'deposit'
+              ? 'Signed, deposit due'
+              : p.stage === 'sent'
+                ? 'Awaiting signature'
+                : 'Contract not sent',
+          note: p.stage === 'deposit' ? p.deposit : 'Planned dates',
+          donePct: 0,
+          pending: p,
+          message: true,
+        }),
+      ),
     ...BOOKINGS.filter((b) => b[4] === 'booked' && !pendingNames.has(b[0])).map(
       ([name, type, start, end]) =>
         bar(monthNo(start), monthNo(end) + 1, {
@@ -557,6 +596,6 @@ export function timeline(offset: number, span = 6) {
       { label: 'Completed', bars: completed },
     ].filter((g) => g.bars.length),
     /** Agreed deals with no dates yet. They stay here until they're scheduled. */
-    unscheduled: PENDING.filter((p) => !p.start),
+    unscheduled: pendingRows.filter((p) => !p.start),
   };
 }

@@ -1,0 +1,317 @@
+<div class="flex max-h-[calc(100dvh-64px)] flex-col gap-5">
+  <div class="flex flex-col gap-1">
+    <h2 brnDialogTitle class="font-serif text-[32px] leading-none font-normal">
+      Accept {{ ctx.patron.split(' ')[0] }}’s commission
+    </h2>
+    <p class="text-[13px] text-muted-foreground">
+      Agree the details, and we’ll send them with the contract in one go.
+    </p>
+  </div>
+  <app-stepper
+    [labels]="steps"
+    [current]="step()"
+    label="Accept commission steps"
+    (go)="goTo($event)"
+  />
+
+  <div class="-mx-1 flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto px-1 pb-1">
+    @switch (step()) {
+      @case (0) {
+        <label class="flex flex-col gap-1.5">
+          <span class="text-[13px] font-medium">Piece</span>
+          <input
+            class="field"
+            appCleanText
+            [ngModel]="piece()"
+            (ngModelChange)="piece.set($event)"
+            placeholder="e.g. Portrait of Lupe"
+          />
+        </label>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <label class="flex flex-col gap-1.5">
+            <span class="text-[13px] font-medium">Size or format</span>
+            <input
+              class="field"
+              appCleanText
+              [ngModel]="size()"
+              (ngModelChange)="size.set($event)"
+              placeholder="e.g. Canvas, up to 60cm"
+            />
+          </label>
+          <label class="flex flex-col gap-1.5">
+            <span class="text-[13px] font-medium">Medium</span>
+            <input
+              class="field"
+              appCleanText
+              [ngModel]="medium()"
+              (ngModelChange)="medium.set($event)"
+            />
+          </label>
+        </div>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <label class="flex flex-col gap-1.5">
+            <span class="text-[13px] font-medium">Price</span>
+            <span class="relative">
+              <span class="absolute top-1/2 left-4 -translate-y-1/2 text-muted-foreground">$</span>
+              <input
+                class="field !pl-8"
+                type="number"
+                min="0"
+                step="50"
+                inputmode="numeric"
+                [ngModel]="price()"
+                (ngModelChange)="price.set(+$event)"
+              />
+            </span>
+            <span class="text-xs text-muted-foreground"
+              >{{ ctx.patron.split(' ')[0] }}’s budget: {{ ctx.inq.budget || 'not given' }}</span
+            >
+          </label>
+          <label class="flex flex-col gap-1.5">
+            <span class="text-[13px] font-medium">Deposit on signing</span>
+            <select
+              class="field"
+              [ngModel]="depositPct()"
+              (ngModelChange)="depositPct.set(+$event)"
+            >
+              @for (p of [20, 30, 50]; track p) {
+                <option [value]="p">{{ p }}%</option>
+              }
+            </select>
+            <span class="text-xs text-muted-foreground"
+              >{{ money(deposit()) }} now, {{ money(price() - deposit()) }} on delivery</span
+            >
+          </label>
+        </div>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <label class="flex flex-col gap-1.5">
+            <span class="text-[13px] font-medium">Revisions included</span>
+            <select class="field" [ngModel]="revisions()" (ngModelChange)="revisions.set(+$event)">
+              @for (r of [0, 1, 2, 3]; track r) {
+                <option [value]="r">
+                  {{ r === 0 ? 'None' : r + (r === 1 ? ' round' : ' rounds') }}
+                </option>
+              }
+            </select>
+          </label>
+          <label class="flex flex-col gap-1.5">
+            <span class="text-[13px] font-medium">Delivery</span>
+            <select class="field" [ngModel]="delivery()" (ngModelChange)="delivery.set($event)">
+              @for (d of deliveries; track d) {
+                <option [value]="d">{{ d }}</option>
+              }
+            </select>
+          </label>
+        </div>
+        <label class="flex flex-col gap-1.5">
+          <span class="text-[13px] font-medium"
+            >Anything else agreed
+            <span class="font-normal text-muted-foreground">(optional)</span></span
+          >
+          <textarea
+            class="field !h-auto py-3"
+            rows="3"
+            appCleanText
+            [ngModel]="notes()"
+            (ngModelChange)="notes.set($event)"
+            placeholder="e.g. Warm palette, Lupe on the green blanket."
+          ></textarea>
+        </label>
+      }
+      @case (1) {
+        <div class="grid gap-4 sm:grid-cols-2">
+          <label class="flex flex-col gap-1.5">
+            <span class="text-[13px] font-medium">Work starts</span>
+            <input
+              class="field"
+              type="date"
+              [ngModel]="startDate()"
+              (ngModelChange)="startDate.set($event)"
+            />
+          </label>
+          <label class="flex flex-col gap-1.5">
+            <span class="text-[13px] font-medium">Delivered by</span>
+            <input
+              class="field"
+              type="date"
+              [min]="startDate()"
+              [ngModel]="dueDate()"
+              (ngModelChange)="dueDate.set($event)"
+            />
+          </label>
+        </div>
+        <p class="text-xs text-muted-foreground">
+          Work only starts once {{ ctx.patron.split(' ')[0] }} has signed and paid the deposit.
+          Until then it shows on your timeline as not started.
+        </p>
+        @if (busy().length) {
+          <div class="flex flex-col gap-2 rounded-2xl bg-surface p-4">
+            <span class="text-[13px] font-medium">Your studio in those months</span>
+            @for (m of busy(); track m.name) {
+              <div class="grid grid-cols-[90px_minmax(0,1fr)_80px] items-center gap-3 text-xs">
+                <span>{{ m.name }}</span>
+                <span class="block h-1.5 overflow-hidden rounded-full bg-black/7"
+                  ><span
+                    class="block h-full"
+                    [class]="m.pct >= 90 ? 'bg-[oklch(0.62_0.16_25)]' : 'bg-primary'"
+                    [style.width.%]="m.pct"
+                  ></span
+                ></span>
+                <span class="text-right text-muted-foreground tabular-nums">{{ m.label }}</span>
+              </div>
+            }
+            @if (crowded(); as c) {
+              <span class="text-xs font-medium text-[oklch(0.52_0.17_25)]"
+                >{{ c }} is nearly full. Consider other dates.</span
+              >
+            }
+          </div>
+        }
+      }
+      @case (2) {
+        <div
+          class="flex gap-1 self-start rounded-full bg-muted p-1"
+          role="group"
+          aria-label="Contract"
+        >
+          <button
+            type="button"
+            (click)="contractKind.set('template')"
+            [attr.aria-pressed]="contractKind() === 'template'"
+            class="h-8 rounded-full px-4 text-[13px] font-medium aria-pressed:bg-background aria-pressed:shadow-sm"
+          >
+            Patronly template
+          </button>
+          <button
+            type="button"
+            (click)="contractKind.set('file')"
+            [attr.aria-pressed]="contractKind() === 'file'"
+            class="h-8 rounded-full px-4 text-[13px] font-medium aria-pressed:bg-background aria-pressed:shadow-sm"
+          >
+            Upload my own
+          </button>
+        </div>
+        @if (contractKind() === 'template') {
+          <div class="flex items-center justify-between gap-3">
+            <span class="text-xs text-muted-foreground"
+              >Filled in from the scope and dates. You can edit the wording.</span
+            >
+            @if (contract() !== template()) {
+              <button
+                type="button"
+                (click)="resetContract()"
+                class="text-xs font-medium underline underline-offset-4"
+              >
+                Reset
+              </button>
+            }
+          </div>
+          <textarea
+            class="field !h-auto min-h-[300px] py-3 font-mono !text-[12px] leading-relaxed"
+            aria-label="Contract text"
+            appCleanText
+            [ngModel]="contract()"
+            (ngModelChange)="editContract($event)"
+          ></textarea>
+        } @else {
+          @if (file(); as f) {
+            <div class="flex items-center gap-3 rounded-2xl border bg-surface px-4 py-3">
+              <span class="grid size-10 shrink-0 place-items-center rounded-xl bg-background"
+                ><ng-icon name="lucideFileText" size="18"
+              /></span>
+              <span class="min-w-0 flex-1 truncate text-sm font-medium">{{ f.name }}</span>
+              <button
+                type="button"
+                (click)="file.set(null)"
+                aria-label="Remove file"
+                class="grid size-8 place-items-center rounded-full hover:bg-muted"
+              >
+                <ng-icon name="lucideX" size="16" />
+              </button>
+            </div>
+          } @else {
+            <label
+              class="flex cursor-pointer flex-col items-center gap-2 rounded-3xl border-2 border-dashed px-6 py-9 text-center hover:bg-muted/50"
+            >
+              <ng-icon name="lucideUpload" size="22" />
+              <span class="text-sm font-medium">Choose your contract</span>
+              <span class="text-xs text-muted-foreground">PDF, Word, TXT, RTF or ODT</span>
+              <input
+                type="file"
+                class="sr-only"
+                [accept]="accept"
+                (change)="pick($event)"
+                aria-label="Choose a contract file"
+              />
+            </label>
+          }
+          @if (fileError()) {
+            <p class="text-[13px] text-destructive" role="alert">{{ fileError() }}</p>
+          }
+          <p class="text-xs text-muted-foreground">
+            This is a demo: the file stays on your device and isn’t uploaded.
+          </p>
+        }
+      }
+      @default {
+        <dl class="grid grid-cols-2 overflow-hidden rounded-2xl bg-surface ring-1 ring-border">
+          @for (
+            r of [
+              ['Piece', piece()],
+              ['Size', size() + ' · ' + medium()],
+              ['Price', money(price())],
+              ['Deposit', money(deposit()) + ' (' + depositPct() + '%) on signing'],
+              ['Work starts', longDate(startDate())],
+              ['Delivered by', longDate(dueDate())],
+              [
+                'Revisions',
+                revisions() ? revisions() + (revisions() === 1 ? ' round' : ' rounds') : 'None',
+              ],
+              ['Delivery', delivery()],
+            ];
+            track r[0]
+          ) {
+            <div class="flex flex-col gap-0.5 border-b px-4 py-3 odd:border-r">
+              <dt class="text-[11px] text-muted-foreground">{{ r[0] }}</dt>
+              <dd class="text-[13px] font-semibold">{{ r[1] }}</dd>
+            </div>
+          }
+        </dl>
+        <div class="flex items-center gap-3 rounded-2xl border px-4 py-3">
+          <ng-icon name="lucideFileText" size="18" />
+          <span class="text-[13px]">{{
+            contractKind() === 'file' ? file()?.name : 'Patronly commission agreement'
+          }}</span>
+        </div>
+        <p class="text-xs text-muted-foreground">
+          {{ ctx.patron.split(' ')[0] }} gets the contract to sign, then pays the
+          {{ money(deposit()) }} deposit. You’ll see each step in the conversation and on your
+          dashboard.
+        </p>
+      }
+    }
+  </div>
+
+  <div class="flex items-center justify-between gap-3 border-t pt-4">
+    <button
+      type="button"
+      (click)="back()"
+      class="h-10 rounded-md px-3 text-[13px] font-medium hover:bg-muted"
+    >
+      {{ step() ? 'Back' : 'Cancel' }}
+    </button>
+    <div class="flex items-center gap-3">
+      @if (problem()) {
+        <span class="text-xs text-muted-foreground max-sm:hidden">{{ problem() }}</span>
+      }
+      <button
+        type="button"
+        (click)="next()"
+        [disabled]="!!problem()"
+        class="h-10 rounded-md bg-primary px-5 text-[13px] font-semibold text-primary-foreground hover:opacity-85 disabled:opacity-40"
+      >
+        {{ step() === steps.length - 1 ? 'Send to ' + ctx.patron.split(' ')[0] : 'Continue' }}
+      </button>
+    </div>
+  </div>
+</div>

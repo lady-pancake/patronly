@@ -1,6 +1,6 @@
 import { Injectable, computed, effect, signal } from '@angular/core';
 import { INBOX_SEED } from './inbox-seed';
-import type { Inquiry, SavedSearch, Thread, ThreadStatus } from './models';
+import type { AcceptedMessage, Inquiry, SavedSearch, Thread, ThreadStatus } from './models';
 import { LISTED } from './catalog';
 import { FEED, RECENT_SEARCHES, SAMPLE_THREADS } from './seed';
 
@@ -207,6 +207,23 @@ export class PatronStore {
       ...t,
       updated: 'Today',
       msgs: [...t.msgs, { me: true, text, time }],
+    }));
+  }
+
+  /** The artist accepted an incoming inquiry and sent the terms and contract. */
+  acceptCommission(id: string, deal: Omit<AcceptedMessage, 'type' | 'time'>): void {
+    const now = new Date();
+    const time =
+      now.toLocaleString('en-US', { month: 'short', day: 'numeric' }) +
+      ', ' +
+      now.toTimeString().slice(0, 5);
+    this.patch(id, (t) => ({
+      ...t,
+      status: 'Awaiting signature',
+      updated: 'Today',
+      unread: false,
+      contract: { signed: false, paid: false },
+      msgs: [...t.msgs, { type: 'accepted', time, ...deal }],
     }));
   }
 

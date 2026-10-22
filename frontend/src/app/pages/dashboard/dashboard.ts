@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import {
   lucideChevronLeft,
@@ -12,13 +12,13 @@ import { HlmDialogService } from '@spartan-ng/helm/dialog';
 import { ArtistStore } from '../../core/data/artist-store';
 import { inboxId } from '../../core/data/inbox-seed';
 import { PatronStore } from '../../core/data/patron-store';
-import { openContractDialog } from '../../shared/contract-dialog';
 import {
   INQUIRIES,
   PAYDAY,
   TRACK_STAGES,
   type TrackStage,
   timeline,
+  type AcceptedDeal,
   type PendingRow,
   earnings,
   weekLoad,
@@ -49,6 +49,7 @@ export class Dashboard {
   protected readonly store = inject(ArtistStore);
   private readonly patron = inject(PatronStore);
   private readonly dialog = inject(HlmDialogService);
+  private readonly router = inject(Router);
 
   protected readonly card = CARD;
   protected readonly row =
@@ -64,7 +65,24 @@ export class Dashboard {
   protected readonly hoverBar = signal<number | null>(null);
   /** Months the timeline is moved from its default (last month onwards). */
   protected readonly offset = signal(0);
-  protected readonly tl = computed(() => timeline(this.offset()));
+  /** Commissions accepted in Messages, placed on their agreed dates. */
+  private readonly deals = computed<AcceptedDeal[]>(() =>
+    this.patron.inbox().flatMap((t) => {
+      const m = t.msgs.find((x) => x.type === 'accepted');
+      if (!m || m.type !== 'accepted' || !m.terms || !t.patron) return [];
+      return [
+        {
+          name: t.patron.name,
+          type: m.terms.size,
+          deposit: m.deposit,
+          startDate: m.terms.startDate,
+          dueDate: m.terms.dueDate,
+          stage: t.contract?.paid ? 'paid' : t.contract?.signed ? 'deposit' : 'sent',
+        },
+      ];
+    }),
+  );
+  protected readonly tl = computed(() => timeline(this.offset(), this.deals()));
   protected readonly trackStages = TRACK_STAGES;
   // Spelled out in full so Tailwind generates each one.
   protected readonly barClass: Record<TrackStage, string> = {
@@ -114,14 +132,8 @@ export class Dashboard {
     this.dialog.open(PayoutDialog, { contentClass: 'sm:max-w-[440px] rounded-4xl p-7 gap-0' });
   }
 
-  /** Templates are coming soon: the artist attaches their own contract for now. */
+  /** Opens the conversation with the accept flow, to agree scope, dates and the contract. */
   protected createContract(name: string) {
-    openContractDialog(this.dialog, name).closed$.subscribe((file) => {
-      if (!file) return;
-      this.store.remind(name);
-      const id = inboxId(name);
-      this.patron.sendMessage(id, `Contract attached: ${file}`);
-      this.patron.setStatus(id, 'Awaiting signature');
-    });
+    void this.router.navigate(['/messages', inboxId(name)], { queryParams: { accept: 1 } });
   }
 }

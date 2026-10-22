@@ -7,18 +7,26 @@ import {
   input,
   linkedSignal,
   signal,
+  untracked,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { NgIcon, provideIcons } from '@ng-icons/core';
-import { lucideArrowLeft, lucideArrowUp, lucideCheck, lucidePartyPopper } from '@ng-icons/lucide';
+import {
+  lucideArrowLeft,
+  lucideArrowUp,
+  lucideCheck,
+  lucideFileText,
+  lucidePartyPopper,
+} from '@ng-icons/lucide';
 import { HlmDialogService } from '@spartan-ng/helm/dialog';
 import { ViewerStore } from '../../core/auth/viewer.store';
 import { ArtistStore } from '../../core/data/artist-store';
 import { artistById, tone } from '../../core/data/catalog';
 import type { AcceptedMessage, Artist, Thread, Work } from '../../core/data/models';
 import { PatronStore } from '../../core/data/patron-store';
-import { openContractDialog } from '../../shared/contract-dialog';
+import { AcceptDialog, type AcceptContext, type AcceptResult } from './accept-dialog';
+import { longDate } from './accept-terms';
 import { DealDialog, type DealContext, money } from './deal-dialog';
 import { STATUS_STYLE, threadStatus } from './thread-status';
 import { CleanText } from '../../shared/clean-text';
@@ -26,7 +34,15 @@ import { CleanText } from '../../shared/clean-text';
 @Component({
   selector: 'app-messages',
   imports: [CleanText, RouterLink, FormsModule, NgIcon],
-  providers: [provideIcons({ lucideArrowLeft, lucideArrowUp, lucideCheck, lucidePartyPopper })],
+  providers: [
+    provideIcons({
+      lucideArrowLeft,
+      lucideArrowUp,
+      lucideCheck,
+      lucideFileText,
+      lucidePartyPopper,
+    }),
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './messages.html',
 })
@@ -59,6 +75,8 @@ export class Messages {
 
   /** Route param; the first conversation opens when it's missing. */
   readonly threadId = input<string>();
+  /** `?accept=1` opens the accept flow for the conversation, e.g. from the dashboard. */
+  readonly accept = input<string>();
 
   protected readonly styles = STATUS_STYLE;
   protected readonly money = money;
@@ -82,7 +100,9 @@ export class Messages {
         ? (t.direction === 'incoming' ? 'New inquiry: ' : 'Inquiry sent: ') +
           (t.inq.msg || t.inq.type || 'Commission inquiry')
         : last.type === 'accepted'
-          ? `${artist.first} accepted your commission`
+          ? t.direction === 'incoming'
+            ? `You accepted ${who.first}’s commission`
+            : `${artist.first} accepted your commission`
           : (last.me ? 'You: ' : '') + last.text;
       return { ...t, artist, who, status, style: STATUS_STYLE[status], preview };
     }),
@@ -93,6 +113,16 @@ export class Messages {
     effect(() => {
       const t = this.current();
       if (t?.unread) this.store.markRead(t.id);
+    });
+    // Arriving with ?accept=1 opens the accept flow once, then clears the flag.
+    effect(() => {
+      const t = this.current();
+      if (!this.accept() || !t || t.direction !== 'incoming') return;
+      if (t.msgs.some((m) => m.type === 'accepted')) return;
+      untracked(() => {
+        void this.router.navigate([], { queryParams: { accept: null }, replaceUrl: true });
+        this.openAccept(t);
+      });
     });
   }
 
@@ -119,15 +149,95 @@ export class Messages {
     void this.router.navigate(first ? ['/messages', first.id] : ['/messages']);
   }
 
-  /** Incoming, accepted: attach a contract (templates are coming soon). */
-  protected createContract(t: Thread) {
-    const name = t.patron?.name ?? '';
-    openContractDialog(this.dialog, name).closed$.subscribe((file) => {
-      if (!file) return;
-      this.store.sendMessage(t.id, `Contract attached: ${file}`);
-      this.store.setStatus(t.id, 'Awaiting signature');
-      this.artist.remind(name);
+  /** Incoming: accept the commission, agreeing scope, dates and a contract. */
+  protected openAccept(t: Thread) {
+    const patron = t.patron?.name ?? '';
+    const ref = this.dialog.open<AcceptResult | undefined, AcceptContext>(AcceptDialog, {
+      context: { patron, inq: t.inq, artist: this.artist.mine() },
+      contentClass: 'sm:max-w-[640px] rounded-4xl p-6 sm:p-8',
     });
+    ref.closed$.subscribe((r) => {
+      if (!r) return;
+      this.store.acceptCommission(t.id, {
+        piece: r.piece,
+        total: r.total,
+        deposit: Math.round((r.total * r.terms.depositPct) / 100),
+        start: longDate(r.terms.startDate),
+        due: longDate(r.terms.dueDate),
+        terms: r.terms,
+      });
+      // Off the dashboard's "waiting for a reply" list.
+      this.artist.markReplied(patron);
+    });
+  }
+
+  /** Which accepted cards have their contract open. */
+  protected readonly contractOpen = signal<string | null>(null);
+
+  /** The artist's side of an accepted commission: what's done and what's next. */
+  protected artistStepsOf(t: Thread, first: string, m: AcceptedMessage) {
+    const signed = !!t.contract?.signed,
+      paid = !!t.contract?.paid;
+    const reminded = this.artist.reminded().includes(t.patron?.name ?? '');
+    return [
+      {
+        n: '1',
+        title: 'Contract sent',
+        sub:
+          m.terms?.contract.kind === 'file'
+            ? m.terms.contract.name
+            : 'Patronly commission agreement, with your scope and dates.',
+        done: true,
+        active: false,
+        demo: '',
+        patch: null,
+      },
+      {
+        n: '2',
+        title: `${first} signs`,
+        sub: signed
+          ? 'Signed.'
+          : reminded
+            ? 'Reminder sent today.'
+            : 'Waiting for their signature.',
+        done: signed,
+        active: !signed,
+        demo: 'Mark signed',
+        patch: { signed: true },
+      },
+      {
+        n: '3',
+        title: `${first} pays the deposit`,
+        sub: `${money(m.deposit)}, refundable until work begins.`,
+        done: paid,
+        active: signed && !paid,
+        demo: 'Mark paid',
+        patch: { paid: true },
+      },
+      {
+        n: '4',
+        title: 'You start work',
+        sub: `${m.start}. Delivery by ${m.due}.`,
+        done: paid,
+        active: false,
+        demo: '',
+        patch: null,
+      },
+    ];
+  }
+
+  protected remind(t: Thread) {
+    const name = t.patron?.name ?? '';
+    this.artist.remind(name);
+    this.store.sendMessage(
+      t.id,
+      'Just a gentle reminder about the contract and deposit. Thank you!',
+    );
+  }
+
+  /** Demo only: stands in for the patron signing or paying. */
+  protected simulate(t: Thread, patch: { signed?: boolean; paid?: boolean }) {
+    this.store.updateContract(t.id, patch);
   }
 
   protected statusOf(t: Thread) {
