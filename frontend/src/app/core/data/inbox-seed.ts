@@ -1,4 +1,5 @@
-import type { Message, Thread, ThreadStatus } from './models';
+import { contractText } from '../../pages/messages/accept-terms';
+import type { CommissionTerms, Message, Thread, ThreadStatus } from './models';
 
 /** Id of the incoming conversation with a patron, e.g. "in-sofia-brandt". */
 export function inboxId(patron: string): string {
@@ -24,6 +25,7 @@ interface Seed {
   msg: string;
   date: string;
   msgs?: Message[];
+  contract?: Thread['contract'];
 }
 
 const them = (text: string, time: string, images?: string[]): Message => ({
@@ -44,6 +46,19 @@ const me = (text: string, time: string, images?: string[]): Message => ({
  * new inquiries, active commissions and pending contracts, so every row there
  * links to a conversation here.
  */
+/** Leo's contract, sent through Patronly, which he has asked to change. */
+const LEO_TERMS: Omit<CommissionTerms, 'contract'> = {
+  size: 'Canvas, 70×90cm',
+  medium: 'Oil on linen',
+  revisions: 1,
+  delivery: 'Shipping',
+  notes: 'From photos of the coastline below the cottage, in late afternoon light.',
+  depositPct: 30,
+  startDate: '2027-01-11',
+  dueDate: '2027-03-01',
+};
+const LEO_PIECE = 'Cornish coastline, 70×90cm oil';
+
 const SEEDS: Seed[] = [
   // New inquiries, waiting for a reply.
   {
@@ -199,14 +214,50 @@ const SEEDS: Seed[] = [
   {
     name: 'Leo Carrington',
     hue: 180,
-    status: 'Awaiting signature',
-    updated: 'Oct 11',
+    status: 'Changes requested',
+    updated: 'Oct 13',
     type: 'Canvas, up to 90cm',
     budget: '$3k–$4k',
     timeline: 'By March',
     msg: 'A painting of the coastline near our cottage in Cornwall.',
     date: 'Oct 2',
-    msgs: [me('Contract sent. Once it’s signed I’ll book you in for January.', 'Oct 11, 16:10')],
+    unread: true,
+    msgs: [
+      {
+        type: 'accepted',
+        time: 'Oct 11, 16:05',
+        piece: LEO_PIECE,
+        total: 3600,
+        deposit: 1080,
+        start: 'Jan 11, 2027',
+        due: 'Mar 1, 2027',
+        terms: {
+          ...LEO_TERMS,
+          contract: {
+            kind: 'template',
+            text: contractText(
+              {
+                artist: 'Alex Ward',
+                studio: 'Ward Pattern Studio',
+                patron: 'Leo Carrington',
+                piece: LEO_PIECE,
+                total: 3600,
+              },
+              LEO_TERMS,
+            ),
+          },
+        },
+      },
+      me('Contract sent. Once it’s signed I’ll book you in for January.', 'Oct 11, 16:10'),
+      them(
+        'Suggested changes to the contract: Could it arrive by March 15 instead? It’s for my wife’s birthday on the 20th. And could we have two rounds of revisions, in case the sea colour isn’t quite right?',
+        'Oct 13, 08:50',
+      ),
+    ],
+    contract: {
+      changes:
+        'Could it arrive by March 15 instead? It’s for my wife’s birthday on the 20th. And could we have two rounds of revisions, in case the sea colour isn’t quite right?',
+    },
   },
   {
     name: 'Henrik Dahl',
@@ -240,4 +291,5 @@ export const INBOX_SEED: Thread[] = SEEDS.map((s) => ({
     date: s.date,
   },
   msgs: s.msgs ?? [],
+  ...(s.contract && { contract: s.contract }),
 }));

@@ -79,7 +79,13 @@ export class Dashboard {
           deposit: m.deposit,
           startDate: m.terms.startDate,
           dueDate: m.terms.dueDate,
-          stage: t.contract?.paid ? 'paid' : t.contract?.signed ? 'deposit' : 'sent',
+          stage: t.contract?.changes
+            ? 'changes'
+            : t.contract?.paid
+              ? 'paid'
+              : t.contract?.signed
+                ? 'deposit'
+                : 'sent',
         },
       ];
     }),
@@ -118,6 +124,12 @@ export class Dashboard {
           title: 'Awaiting deposit',
           sub: reminded ? 'Reminder sent today' : 'Contract signed',
           button: reminded ? 'Reminded' : 'Send reminder',
+        };
+      case 'changes':
+        return {
+          title: 'Changes requested',
+          sub: 'Asked for edits to the contract',
+          button: 'Revise contract',
         };
       case 'sent':
         return {
@@ -160,5 +172,13 @@ export class Dashboard {
   /** Opens the conversation with the accept flow, to agree scope, dates and the contract. */
   protected createContract(name: string) {
     void this.router.navigate(['/messages', inboxId(name)], { queryParams: { accept: 1 } });
+  }
+
+  /** The row's button: write the contract, revise it, or nudge the patron. */
+  protected pendingAction(u: PendingRow) {
+    if (u.stage === 'draft') this.createContract(u.name);
+    else if (u.stage === 'changes')
+      void this.router.navigate(['/messages', inboxId(u.name)], { queryParams: { revise: 1 } });
+    else this.store.remind(u.name);
   }
 }

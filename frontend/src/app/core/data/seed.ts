@@ -3,9 +3,11 @@
  * This stands in for the API until the GraphQL schema grows to cover studios,
  * works, reviews and messages.
  */
+import { contractText } from '../../pages/messages/accept-terms';
 import type {
   ArtistSeed,
   Availability,
+  CommissionTerms,
   FeedPost,
   MediumInfo,
   SavedSearch,
@@ -470,6 +472,19 @@ export const AVAIL_MAP: Record<string, Availability> = {
   lena: 'Closed',
 };
 
+/** The contract Sol sent through Patronly, waiting for the patron to sign. */
+const SOL_TERMS: Omit<CommissionTerms, 'contract'> = {
+  size: 'Canvas, 70×90cm',
+  medium: 'Oil on canvas',
+  revisions: 2,
+  delivery: 'Shipping',
+  notes: 'Your parents together on the porch, from your photos and one sitting in person.',
+  depositPct: 30,
+  startDate: '2027-01-12',
+  dueDate: '2027-03-01',
+};
+const SOL_PIECE = 'Portrait, 70×90cm oil on canvas';
+
 export const SAMPLE_THREADS: Thread[] = [
   {
     id: 't-sol',
@@ -505,11 +520,27 @@ export const SAMPLE_THREADS: Thread[] = [
       {
         type: 'accepted',
         time: 'Oct 6, 08:30',
-        piece: 'Portrait, 70×90cm oil on canvas',
+        piece: SOL_PIECE,
         total: 2000,
         deposit: 600,
         start: 'Jan 12, 2027',
         due: 'Mar 1, 2027',
+        terms: {
+          ...SOL_TERMS,
+          contract: {
+            kind: 'template',
+            text: contractText(
+              {
+                artist: 'Sol Amari',
+                studio: 'Atelier Amari',
+                patron: 'you',
+                piece: SOL_PIECE,
+                total: 2000,
+              },
+              SOL_TERMS,
+            ),
+          },
+        },
       },
     ],
   },

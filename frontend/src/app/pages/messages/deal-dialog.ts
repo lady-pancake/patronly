@@ -37,7 +37,6 @@ export class DealDialog {
   protected readonly text =
     this.terms?.contract.kind === 'template' ? this.terms.contract.text : null;
   protected readonly file = this.terms?.contract.kind === 'file' ? this.terms.contract.name : null;
-  protected readonly showText = signal(false);
   protected readonly rows: [string, string][] = [
     ['Commission', this.ctx.deal.piece],
     ...(this.terms

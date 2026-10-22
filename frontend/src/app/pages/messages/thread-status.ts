@@ -10,6 +10,7 @@ export const STATUS_STYLE: Record<ThreadStatus, { bg: string; fg: string }> = {
   Replied: { bg: 'color-mix(in oklab,#62394F 12%,white)', fg: '#62394F' },
   'Contract to send': { bg: 'oklch(0.95 0.07 85)', fg: 'oklch(0.42 0.1 60)' },
   'Awaiting signature': { bg: 'color-mix(in oklab,#62394F 12%,white)', fg: '#62394F' },
+  'Changes requested': { bg: 'oklch(0.95 0.07 85)', fg: 'oklch(0.42 0.1 60)' },
 };
 
 /** Once an artist accepts, the status follows the contract and deposit steps. */
@@ -17,11 +18,13 @@ export function threadStatus(t: Thread): ThreadStatus {
   if (t.direction === 'incoming') {
     // Accepted here: follows the patron signing and paying.
     if (t.msgs.some((m) => m.type === 'accepted'))
-      return t.contract?.paid
-        ? 'In progress'
-        : t.contract?.signed
-          ? 'Deposit due'
-          : 'Awaiting signature';
+      return t.contract?.changes
+        ? 'Changes requested'
+        : t.contract?.paid
+          ? 'In progress'
+          : t.contract?.signed
+            ? 'Deposit due'
+            : 'Awaiting signature';
     // A new inquiry counts as replied once the artist has written back.
     return t.status === 'New inquiry' && t.msgs.some((m) => m.type !== 'accepted' && m.me)
       ? 'Replied'

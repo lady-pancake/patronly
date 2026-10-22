@@ -257,14 +257,15 @@ export interface PendingRow {
   end?: string;
 }
 
-export type PendingStage = 'draft' | 'sent' | 'deposit';
+/** draft: contract not sent. sent: awaiting signature. changes: the patron asked for edits. */
+export type PendingStage = 'draft' | 'sent' | 'changes' | 'deposit';
 
 /** Accepted inquiries not yet active: waiting on a signed contract or the deposit. */
 export const PENDING: PendingRow[] = (
   [
     ['James Hartley', 'Small study', 1200, 'Oct 2', 'deposit', '2026-11', '2027-01'],
     ['Marta Kowalski', 'Canvas, up to 60cm', 2400, 'Oct 8', 'sent', '2026-12', '2027-01'],
-    ['Leo Carrington', 'Canvas, up to 90cm', 3600, 'Oct 11', 'sent'],
+    ['Leo Carrington', 'Canvas, up to 90cm', 3600, 'Oct 11', 'changes', '2027-01', '2027-03'],
     ['Henrik Dahl', 'Small study', 950, 'Oct 12', 'draft'],
   ] as [string, string, number, string, PendingStage, string?, string?][]
 ).map(([name, type, total, accepted, stage, start, end]) => ({
@@ -452,7 +453,8 @@ export interface AcceptedDeal {
   deposit: number;
   startDate: string;
   dueDate: string;
-  stage: 'sent' | 'deposit' | 'paid';
+  /** changes: the patron asked for edits before signing. */
+  stage: 'sent' | 'changes' | 'deposit' | 'paid';
 }
 
 /**
@@ -520,15 +522,30 @@ export function timeline(offset: number, deals: AcceptedDeal[] = [], span = 6) {
             ? `Starts ${monthDay(at(d.startDate))}`
             : d.stage === 'deposit'
               ? 'Signed, deposit due'
-              : 'Awaiting signature',
+              : d.stage === 'changes'
+                ? 'Changes requested'
+                : 'Awaiting signature',
         note:
           d.stage === 'paid'
             ? 'Deposit paid'
             : d.stage === 'deposit'
               ? `${money(d.deposit)} deposit due`
-              : 'Contract sent',
+              : d.stage === 'changes'
+                ? 'Patron asked for edits'
+                : 'Contract sent',
         donePct: 0,
-        pending: null,
+        // Edits asked for: the bar offers "Revise contract".
+        pending:
+          d.stage === 'changes'
+            ? {
+                name: d.name,
+                type: d.type,
+                accepted: '',
+                total: '',
+                deposit: '',
+                stage: 'changes' as const,
+              }
+            : null,
         message: true,
       }),
     ),
@@ -544,8 +561,15 @@ export function timeline(offset: number, deals: AcceptedDeal[] = [], span = 6) {
               ? 'Signed, deposit due'
               : p.stage === 'sent'
                 ? 'Awaiting signature'
-                : 'Contract not sent',
-          note: p.stage === 'deposit' ? p.deposit : 'Planned dates',
+                : p.stage === 'changes'
+                  ? 'Changes requested'
+                  : 'Contract not sent',
+          note:
+            p.stage === 'deposit'
+              ? p.deposit
+              : p.stage === 'changes'
+                ? 'Patron asked for edits'
+                : 'Planned dates',
           donePct: 0,
           pending: p,
           message: true,

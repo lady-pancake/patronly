@@ -182,7 +182,8 @@ export type ThreadStatus =
   | 'New inquiry'
   | 'Replied'
   | 'Contract to send'
-  | 'Awaiting signature';
+  | 'Awaiting signature'
+  | 'Changes requested';
 
 export interface Thread {
   id: string;

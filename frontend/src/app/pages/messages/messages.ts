@@ -78,6 +78,8 @@ export class Messages {
   readonly threadId = input<string>();
   /** `?accept=1` opens the accept flow for the conversation, e.g. from the dashboard. */
   readonly accept = input<string>();
+  /** `?revise=1` opens the sent contract for changes the patron asked for. */
+  readonly revise = input<string>();
 
   protected readonly styles = STATUS_STYLE;
   protected readonly money = money;
@@ -123,6 +125,16 @@ export class Messages {
       untracked(() => {
         void this.router.navigate([], { queryParams: { accept: null }, replaceUrl: true });
         this.openAccept(t);
+      });
+    });
+    effect(() => {
+      const t = this.current();
+      if (!this.revise() || !t?.contract?.changes) return;
+      const sent = t.msgs.find((m): m is AcceptedMessage => m.type === 'accepted');
+      if (!sent) return;
+      untracked(() => {
+        void this.router.navigate([], { queryParams: { revise: null }, replaceUrl: true });
+        this.openAccept(t, sent);
       });
     });
   }
@@ -339,7 +351,8 @@ export class Messages {
   protected openDeal(t: Thread, a: Artist, deal: AcceptedMessage, mode: DealContext['mode']) {
     const ref = this.dialog.open<DealResult, DealContext>(DealDialog, {
       context: { mode, artistName: a.name, deal },
-      contentClass: 'sm:max-w-[480px] rounded-4xl p-8',
+      contentClass:
+        'w-[calc(100vw-32px)] sm:max-w-[560px] max-h-[calc(100dvh-48px)] overflow-y-auto rounded-4xl p-6 sm:p-8',
     });
     ref.closed$.subscribe((r) => {
       if (!r) return;

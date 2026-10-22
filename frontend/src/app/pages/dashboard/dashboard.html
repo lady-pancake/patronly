@@ -333,10 +333,7 @@
                     @if (b.pending; as u) {
                       <button
                         type="button"
-                        (click)="
-                          $event.stopPropagation();
-                          u.stage === 'draft' ? createContract(u.name) : store.remind(u.name)
-                        "
+                        (click)="$event.stopPropagation(); pendingAction(u)"
                         [disabled]="reminded"
                         class="relative ml-2 h-6 shrink-0 rounded-md border bg-background px-2 text-[11px] font-semibold text-foreground hover:bg-muted disabled:opacity-60"
                       >
@@ -393,7 +390,7 @@
               </button>
               <button
                 type="button"
-                (click)="u.stage === 'draft' ? createContract(u.name) : store.remind(u.name)"
+                (click)="pendingAction(u)"
                 [disabled]="reminded"
                 class="h-[26px] shrink-0 rounded-md border bg-background px-2 text-[11px] font-semibold hover:bg-muted disabled:opacity-50"
               >

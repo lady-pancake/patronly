@@ -64,7 +64,8 @@ describe('dashboard links into Messages', () => {
     expect(stage('James Hartley')).toBe('deposit');
     expect(stage('Marta Kowalski')).toBe('contract');
     expect(stage('Matteo Rossi')).toBe('booked');
-    expect(t.unscheduled.map((p) => p.name)).toEqual(['Leo Carrington', 'Henrik Dahl']);
+    expect(stage('Leo Carrington')).toBe('contract');
+    expect(t.unscheduled.map((p) => p.name)).toEqual(['Henrik Dahl']);
     expect(t.today).toBeGreaterThan(100 / 6);
     expect(t.today).toBeLessThan(200 / 6);
   });
