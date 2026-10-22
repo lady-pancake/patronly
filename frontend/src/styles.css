@@ -135,6 +135,36 @@
   }
 }
 
+/* Commission timeline bars. Solid bars have started or are paid for; dashed ones are agreed but not active yet. */
+@utility bar-wip {
+  background: oklch(0.9 0.045 240);
+  color: oklch(0.35 0.09 250);
+}
+@utility bar-booked {
+  background: oklch(0.91 0.045 75);
+  color: oklch(0.4 0.06 60);
+}
+@utility bar-deposit {
+  border: 1.5px dashed oklch(0.66 0.12 65);
+  background: repeating-linear-gradient(
+    -45deg,
+    oklch(0.97 0.03 75),
+    oklch(0.97 0.03 75) 6px,
+    oklch(0.93 0.05 75) 6px,
+    oklch(0.93 0.05 75) 12px
+  );
+  color: oklch(0.42 0.08 60);
+}
+@utility bar-contract {
+  border: 1.5px dashed oklch(0.72 0 0);
+  background: var(--background);
+  color: var(--muted-foreground);
+}
+@utility bar-done {
+  background: oklch(0.93 0 0);
+  color: oklch(0.45 0 0);
+}
+
 @utility lift {
   transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
   &:hover {

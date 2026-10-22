@@ -156,26 +156,9 @@
     }
   </section>
 
-  <section [class]="card + ' flex flex-col gap-1 p-5 sm:p-7'">
-    <div class="flex flex-wrap items-center justify-between gap-4 pb-3">
-      <div class="flex flex-wrap items-center gap-4">
-        <h2 class="font-serif text-[32px] font-normal tracking-[-.01em]">Commissions</h2>
-        <div role="tablist" class="flex gap-0.5 rounded-lg bg-muted p-[3px]">
-          @for (t of tabs(); track t.id) {
-            <button
-              type="button"
-              role="tab"
-              [attr.aria-selected]="tab() === t.id"
-              (click)="tab.set(t.id)"
-              class="flex h-7 items-center gap-1 rounded-md px-2.5 text-xs font-medium"
-              [class]="tab() === t.id ? 'bg-background shadow-[0_1px_3px_oklch(0_0_0/.1)]' : ''"
-            >
-              {{ t.label
-              }}<span class="text-[11px] text-muted-foreground tabular-nums">{{ t.count }}</span>
-            </button>
-          }
-        </div>
-      </div>
+  <section [class]="card + ' flex flex-col gap-5 p-5 sm:p-7'">
+    <div class="flex flex-wrap items-center justify-between gap-4">
+      <h2 class="font-serif text-[32px] font-normal tracking-[-.01em]">Commissions</h2>
       <span class="flex items-center gap-2.5 text-[13px] text-muted-foreground"
         >This week
         <span class="block h-1.5 w-20 overflow-hidden rounded-full bg-muted"
@@ -190,216 +173,202 @@
       >
     </div>
 
-    <div class="flex flex-col gap-2 pb-3">
+    <div class="flex flex-wrap items-center justify-between gap-3">
+      <ul class="flex flex-wrap gap-x-4 gap-y-1.5 text-xs text-muted-foreground">
+        @for (l of legend; track l[0]) {
+          <li class="flex items-center gap-1.5">
+            <span class="h-2.5 w-4 rounded-[3px]" [class]="barClass[l[0]]"></span>{{ l[1] }}
+          </li>
+        }
+      </ul>
       <div class="flex items-center gap-1.5">
         <button
           type="button"
-          (click)="shiftYear(-12)"
-          aria-label="Previous 12 months"
+          (click)="offset.set(offset() - 3)"
+          aria-label="Earlier months"
           [class]="roundBtn + ' !size-8'"
         >
           <ng-icon name="lucideChevronLeft" size="16" />
         </button>
-        <div
-          class="no-scrollbar flex flex-1 gap-1.5 overflow-x-auto py-1"
-          role="group"
-          aria-label="Month"
-        >
-          @for (m of year().months; track m.key) {
-            @let on = month() === m.key;
-            <button
-              type="button"
-              (click)="month.set(m.key)"
-              [attr.aria-pressed]="on"
-              [attr.aria-label]="m.name + ' ' + m.tag + ', ' + m.loadLabel"
-              [title]="m.loadTitle"
-              class="flex min-w-14 flex-1 flex-col items-center gap-1 rounded-xl px-2 pt-1.5 pb-2 text-xs"
-              [class]="
-                on
-                  ? 'bg-primary text-primary-foreground'
-                  : m.past
-                    ? 'bg-surface text-muted-foreground hover:bg-muted'
-                    : 'bg-background ring-1 ring-border hover:bg-muted'
-              "
-            >
-              <span class="font-medium">{{ m.name.slice(0, 3) }}</span>
-              <span
-                class="block h-1 w-full overflow-hidden rounded-full"
-                [class]="on ? 'bg-white/30' : 'bg-black/7'"
-                ><span
-                  class="block h-full"
-                  [class]="
-                    on
-                      ? 'bg-white'
-                      : m.loadPct >= 90
-                        ? 'bg-[oklch(0.62_0.16_25)]'
-                        : m.past
-                          ? 'bg-[oklch(0.7_0_0)]'
-                          : 'bg-primary'
-                  "
-                  [style.width.%]="m.loadPct"
-                ></span
-              ></span>
-              <span class="text-[10px] leading-none" [class.font-semibold]="m.current">{{
-                m.current ? 'Now' : m.tag
-              }}</span>
-            </button>
-          }
-        </div>
         <button
           type="button"
-          (click)="shiftYear(12)"
-          aria-label="Next 12 months"
+          (click)="offset.set(0)"
+          [disabled]="offset() === 0"
+          class="h-7 rounded-md border bg-background px-2.5 text-xs font-medium hover:bg-muted disabled:opacity-40"
+        >
+          Today
+        </button>
+        <button
+          type="button"
+          (click)="offset.set(offset() + 3)"
+          aria-label="Later months"
           [class]="roundBtn + ' !size-8'"
         >
           <ng-icon name="lucideChevronRight" size="16" />
         </button>
       </div>
-      <div class="flex items-center justify-between gap-3 text-[13px] text-muted-foreground">
-        <span
-          ><span class="font-medium text-foreground"
-            >{{ monthLabel().name }} {{ monthYear() }}</span
+    </div>
+
+    @let t = tl();
+    <div class="no-scrollbar -mx-5 overflow-x-auto px-5 sm:-mx-7 sm:px-7">
+      <div class="min-w-[760px]">
+        <!-- Month header, with how booked each month is. -->
+        <div class="grid grid-cols-[220px_minmax(0,1fr)] gap-4 border-b pb-2">
+          <span></span>
+          <div class="grid grid-cols-6">
+            @for (m of t.months; track m.key) {
+              <div class="flex flex-col gap-1 border-l px-2 first:border-l-0" [title]="m.loadLabel">
+                <span
+                  class="text-xs"
+                  [class]="m.current ? 'font-semibold text-primary' : 'font-medium'"
+                  >{{ m.label }}
+                  @if (m.year) {
+                    <span class="font-normal text-muted-foreground">{{ m.year }}</span>
+                  }
+                </span>
+                <span class="flex items-center gap-1.5">
+                  <span class="block h-1 flex-1 overflow-hidden rounded-full bg-black/7"
+                    ><span
+                      class="block h-full"
+                      [class]="
+                        m.loadPct >= 90
+                          ? 'bg-[oklch(0.62_0.16_25)]'
+                          : m.past
+                            ? 'bg-[oklch(0.7_0_0)]'
+                            : 'bg-primary'
+                      "
+                      [style.width.%]="m.loadPct"
+                    ></span></span
+                  ><span class="text-[10px] text-muted-foreground tabular-nums">{{
+                    m.loadLabel.replace(' booked', '')
+                  }}</span>
+                </span>
+              </div>
+            }
+          </div>
+        </div>
+
+        @for (g of t.groups; track g.label) {
+          <div
+            class="pt-4 pb-1 text-[11px] font-semibold tracking-wide text-muted-foreground uppercase"
           >
-          · {{ monthLabel().loadLabel }}</span
-        >
-        @if (yearOffset() !== 0 || !monthLabel().current) {
-          <button
-            type="button"
-            (click)="shiftYear(0)"
-            class="h-7 rounded-md border bg-background px-2.5 text-xs font-medium text-foreground hover:bg-muted"
-          >
-            This month
-          </button>
+            {{ g.label }}
+          </div>
+          @for (b of g.bars; track b.name) {
+            @let reminded = store.reminded().includes(b.name);
+            <div class="grid grid-cols-[220px_minmax(0,1fr)] items-center gap-4 py-1.5">
+              <div class="flex min-w-0 items-center gap-2">
+                <div class="flex min-w-0 flex-1 flex-col">
+                  <span class="truncate text-sm font-semibold">{{ b.name }}</span>
+                  <span class="truncate text-xs text-muted-foreground" [title]="b.type">{{
+                    b.status
+                  }}</span>
+                </div>
+                @if (b.message) {
+                  <a
+                    [routerLink]="['/messages', inboxId(b.name)]"
+                    title="Open conversation"
+                    [attr.aria-label]="'Message ' + b.name"
+                    [class]="roundBtn + ' !size-8'"
+                  >
+                    <ng-icon name="lucideMessageCircle" size="14" />
+                  </a>
+                }
+              </div>
+              <div class="relative h-9">
+                <!-- Month lines and today. -->
+                <div class="absolute inset-0 grid grid-cols-6">
+                  @for (m of t.months; track m.key) {
+                    <span class="border-l first:border-l-0" [class.bg-surface]="m.past"></span>
+                  }
+                </div>
+                @if (t.today !== null) {
+                  <span
+                    class="absolute inset-y-0 w-0.5 bg-primary/60"
+                    [style.left.%]="t.today"
+                  ></span>
+                }
+                <div
+                  class="absolute inset-y-1 flex items-center overflow-hidden pr-1 pl-2.5 text-[11px] font-medium whitespace-nowrap"
+                  [class]="
+                    barClass[b.stage] +
+                    (b.cutStart ? ' rounded-l-none' : ' rounded-l-lg') +
+                    (b.cutEnd ? ' rounded-r-none' : ' rounded-r-lg')
+                  "
+                  [style.left.%]="b.left"
+                  [style.width.%]="b.width"
+                  [title]="b.name + ' · ' + trackStages[b.stage] + ' · ' + b.note"
+                >
+                  @if (b.stage === 'wip') {
+                    <span
+                      class="absolute inset-y-0 left-0 bg-[oklch(0.82_0.07_240)]"
+                      [style.width.%]="b.donePct"
+                    ></span>
+                  }
+                  <span class="relative min-w-0 flex-1 truncate">{{ b.note }}</span>
+                  @if (b.pending; as u) {
+                    <button
+                      type="button"
+                      (click)="u.stage === 'draft' ? createContract(u.name) : store.remind(u.name)"
+                      [disabled]="reminded"
+                      class="relative ml-2 h-6 shrink-0 rounded-md border bg-background px-2 text-[11px] font-semibold text-foreground hover:bg-muted disabled:opacity-60"
+                    >
+                      {{ pendingStatus(u, reminded).button }}
+                    </button>
+                  }
+                </div>
+              </div>
+            </div>
+          }
         }
       </div>
     </div>
 
-    @if (tab() === 'active') {
-      @for (c of list().inProgress; track c.patron) {
-        <div [class]="row">
-          <div class="flex min-w-0 flex-col gap-1.5">
-            <span class="font-serif text-[22px] leading-[1.1]">{{ c.patron }}</span>
-            <span class="text-[13px] text-muted-foreground">{{ c.type }}</span>
-            <span
-              class="flex flex-wrap items-center gap-x-1.5 gap-y-0.5 text-xs text-muted-foreground"
-              ><ng-icon name="lucideClock" size="12" /><span>{{ c.totalHours }}</span
-              ><span>· {{ c.started }}</span></span
-            >
-          </div>
-          <div class="flex flex-col gap-0.5 text-[13px] whitespace-nowrap">
-            <span class="font-semibold" [class.text-[oklch(0.52_0.17_25)]]="c.urgent">{{
-              c.weeksLeft
-            }}</span
-            ><span class="text-xs text-muted-foreground">{{ c.dueLabel }}</span>
-          </div>
-          <div class="flex flex-col gap-1.5 text-xs">
-            <span class="flex items-baseline justify-between gap-2"
-              ><span class="text-muted-foreground">Total</span
-              ><span class="text-sm font-semibold tabular-nums">{{ c.total }}</span></span
-            >
-            <span class="flex h-1 overflow-hidden rounded-full bg-muted"
-              ><span class="bg-[oklch(0.55_0.1_155)]" [style.width.%]="c.paidPct"></span
-            ></span>
-            <span class="flex justify-between gap-1.5 whitespace-nowrap tabular-nums"
-              ><span class="text-[oklch(0.45_0.08_155)]">{{ c.paid }}</span
-              ><span class="text-muted-foreground">{{ c.balance }}</span></span
-            >
-          </div>
-          <div class="flex justify-end max-sm:row-start-1 max-sm:col-start-2">
-            <a
-              [routerLink]="['/messages', inboxId(c.patron)]"
-              title="Open conversation"
-              [attr.aria-label]="'Message ' + c.patron"
-              [class]="roundBtn"
-            >
-              <ng-icon name="lucideMessageCircle" size="16" />
-            </a>
-          </div>
+    @if (t.unscheduled.length) {
+      <div class="flex flex-col gap-3 rounded-3xl bg-surface p-4">
+        <div class="flex flex-col gap-0.5">
+          <span class="text-sm font-semibold">Not scheduled yet</span>
+          <span class="text-xs text-muted-foreground"
+            >Accepted, but no dates or contract yet. They join the timeline once dated.</span
+          >
         </div>
-      }
-      @for (r of list().booked; track r.name) {
-        <div [class]="row">
-          <div class="flex min-w-0 flex-col gap-1.5">
-            <span class="font-serif text-[22px] leading-[1.1]">{{ r.name }}</span>
-            <span class="text-[13px] text-muted-foreground">{{ r.type }}</span>
-          </div>
-          <div class="flex flex-col gap-0.5 text-[13px] whitespace-nowrap">
-            <span class="font-semibold">{{ r.status }}</span
-            ><span class="text-xs text-muted-foreground">{{ r.note }}</span>
-          </div>
-        </div>
-      }
-      @if (!list().inProgress.length && !list().booked.length) {
-        <p class="border-t py-5 text-[13px] text-muted-foreground">
-          Nothing in progress in {{ monthLabel().name }}.
-        </p>
-      }
-    } @else if (tab() === 'completed') {
-      @for (r of list().completed; track r.name) {
-        <div [class]="row">
-          <div class="flex min-w-0 flex-col gap-1.5">
-            <span class="font-serif text-[22px] leading-[1.1]">{{ r.name }}</span>
-            <span class="text-[13px] text-muted-foreground">{{ r.type }}</span>
-          </div>
-          <div class="flex flex-col gap-0.5 text-[13px] whitespace-nowrap">
-            <span class="font-semibold">{{ r.status }}</span
-            ><span class="text-xs text-muted-foreground">{{ r.note }}</span>
-          </div>
-        </div>
-      } @empty {
-        <p class="border-t py-5 text-[13px] text-muted-foreground">
-          Nothing completed in {{ monthLabel().name }}.
-        </p>
-      }
-    } @else {
-      @for (u of list().pending; track u.name) {
-        @let reminded = store.reminded().includes(u.name);
-        <div [class]="row">
-          <div class="flex min-w-0 flex-col gap-1.5">
-            <span class="font-serif text-[22px] leading-[1.1]">{{ u.name }}</span>
-            <span class="text-[13px] text-muted-foreground">{{ u.type }}</span>
-            <span class="text-xs text-muted-foreground">Accepted {{ u.accepted }}</span>
-          </div>
-          @let st = pendingStatus(u, reminded);
-          <div class="flex flex-col gap-0.5 text-[13px] whitespace-nowrap">
-            <span
-              class="font-semibold"
-              [class.text-[oklch(0.55_0.13_65)]]="u.stage === 'deposit'"
-              >{{ st.title }}</span
+        <div class="grid gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
+          @for (u of t.unscheduled; track u.name) {
+            @let reminded = store.reminded().includes(u.name);
+            @let st = pendingStatus(u, reminded);
+            <div
+              class="flex items-center gap-3 rounded-2xl border border-dashed border-[oklch(0.75_0_0)] bg-background p-3.5"
             >
-            <span class="text-xs text-muted-foreground">{{ st.sub }}</span>
-            <span class="mt-1.5"
-              ><button
+              <div class="flex min-w-0 flex-1 flex-col gap-0.5">
+                <span class="truncate text-sm font-semibold">{{ u.name }}</span>
+                <span class="truncate text-xs text-muted-foreground"
+                  >{{ u.type }} · {{ u.total }}</span
+                >
+                <span class="text-xs font-medium"
+                  >{{ st.title }}
+                  <span class="font-normal text-muted-foreground">· {{ st.sub }}</span></span
+                >
+              </div>
+              <button
                 type="button"
                 (click)="u.stage === 'draft' ? createContract(u.name) : store.remind(u.name)"
                 [disabled]="reminded"
-                class="h-[26px] rounded-md border bg-background px-2.5 text-[11px] font-semibold hover:bg-muted disabled:opacity-50"
+                class="h-[26px] shrink-0 rounded-md border bg-background px-2 text-[11px] font-semibold hover:bg-muted disabled:opacity-50"
               >
                 {{ st.button }}
-              </button></span
-            >
-          </div>
-          <div class="flex flex-col gap-1.5 text-xs">
-            <span class="flex items-baseline justify-between gap-2"
-              ><span class="text-muted-foreground">Total</span
-              ><span class="text-sm font-semibold tabular-nums">{{ u.total }}</span></span
-            >
-            <span class="whitespace-nowrap text-muted-foreground">{{ u.deposit }}</span>
-          </div>
-          <div class="flex justify-end max-sm:row-start-1 max-sm:col-start-2">
-            <a
-              [routerLink]="['/messages', inboxId(u.name)]"
-              title="Open conversation"
-              [attr.aria-label]="'Message ' + u.name"
-              [class]="roundBtn"
-            >
-              <ng-icon name="lucideMessageCircle" size="16" />
-            </a>
-          </div>
+              </button>
+              <a
+                [routerLink]="['/messages', inboxId(u.name)]"
+                title="Open conversation"
+                [attr.aria-label]="'Message ' + u.name"
+                [class]="roundBtn + ' !size-8'"
+              >
+                <ng-icon name="lucideMessageCircle" size="14" />
+              </a>
+            </div>
+          }
         </div>
-      } @empty {
-        <p class="border-t py-5 text-[13px] text-muted-foreground">Nothing pending.</p>
-      }
+      </div>
     }
   </section>
 </main>

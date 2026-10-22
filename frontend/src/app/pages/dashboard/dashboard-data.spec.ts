@@ -4,7 +4,7 @@ import {
   PAYDAY,
   PENDING,
   activeCommissions,
-  monthCommissions,
+  timeline,
   earnings,
   weekLoad,
   yearView,
@@ -54,17 +54,17 @@ describe('dashboard links into Messages', () => {
     expect(inboxId('Tomás Reyes')).toBe('in-tomas-reyes');
   });
 
-  it('filters commissions by month, keeping undated pending ones in every month ahead', () => {
-    const oct = monthCommissions(2026 * 12 + 9);
-    expect(oct.inProgress.map((c) => c.patron)).toContain('Elin Lindqvist');
-    expect(oct.pending.map((p) => p.name)).toContain('James Hartley');
-    expect(oct.completed.map((c) => c.name)).toContain('Claire Moreau');
-
-    const feb = monthCommissions(2027 * 12 + 1);
-    expect(feb.pending.map((p) => p.name)).not.toContain('James Hartley');
-    expect(feb.pending.map((p) => p.name)).toContain('Henrik Dahl');
-    expect(feb.booked.map((b) => b.name)).toContain('Ingrid Holm');
-
-    expect(monthCommissions(2026 * 12 + 5).pending).toEqual([]);
+  it('lays commissions out across months, keeping undated deals off the timeline', () => {
+    const t = timeline(0);
+    expect(t.months.map((m) => m.label)).toEqual(['Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb']);
+    const bars = t.groups.flatMap((g) => g.bars);
+    const stage = (n: string) => bars.find((b) => b.name === n)?.stage;
+    expect(stage('Elin Lindqvist')).toBe('wip');
+    expect(stage('James Hartley')).toBe('deposit');
+    expect(stage('Marta Kowalski')).toBe('contract');
+    expect(stage('Matteo Rossi')).toBe('booked');
+    expect(t.unscheduled.map((p) => p.name)).toEqual(['Leo Carrington', 'Henrik Dahl']);
+    expect(t.today).toBeGreaterThan(100 / 6);
+    expect(t.today).toBeLessThan(200 / 6);
   });
 });

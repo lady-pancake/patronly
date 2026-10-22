@@ -16,11 +16,12 @@ import { openContractDialog } from '../../shared/contract-dialog';
 import {
   INQUIRIES,
   PAYDAY,
-  monthCommissions,
+  TRACK_STAGES,
+  type TrackStage,
+  timeline,
   type PendingRow,
   earnings,
   weekLoad,
-  yearView,
 } from './dashboard-data';
 import { InquiryRowView } from './inquiry-row';
 import { PayoutDialog } from './payout-dialog';
@@ -61,30 +62,19 @@ export class Dashboard {
   protected readonly load = weekLoad();
 
   protected readonly hoverBar = signal<number | null>(null);
-  protected readonly tab = signal<'active' | 'pending' | 'completed'>('active');
-  protected readonly yearOffset = signal(0);
-  protected readonly year = computed(() => yearView(this.yearOffset()));
-  /** The month the commissions list shows, as year * 12 + month. Starts on this month. */
-  protected readonly month = signal(this.year().months[0].key);
-  protected readonly monthLabel = computed(
-    () => this.year().months.find((m) => m.key === this.month()) ?? this.year().months[0],
-  );
-  protected readonly monthYear = computed(() => Math.floor(this.month() / 12));
-  protected readonly list = computed(() => monthCommissions(this.month()));
-  protected readonly tabs = computed(() => {
-    const l = this.list();
-    return [
-      { id: 'active' as const, label: 'Active', count: l.inProgress.length + l.booked.length },
-      { id: 'pending' as const, label: 'Pending', count: l.pending.length },
-      { id: 'completed' as const, label: 'Completed', count: l.completed.length },
-    ];
-  });
-
-  /** Moves the month strip by a year and selects its first month. */
-  protected shiftYear(by: number) {
-    this.yearOffset.set(by === 0 ? 0 : this.yearOffset() + by);
-    this.month.set(this.year().months[0].key);
-  }
+  /** Months the timeline is moved from its default (last month onwards). */
+  protected readonly offset = signal(0);
+  protected readonly tl = computed(() => timeline(this.offset()));
+  protected readonly trackStages = TRACK_STAGES;
+  // Spelled out in full so Tailwind generates each one.
+  protected readonly barClass: Record<TrackStage, string> = {
+    wip: 'bar-wip',
+    booked: 'bar-booked',
+    deposit: 'bar-deposit',
+    contract: 'bar-contract',
+    done: 'bar-done',
+  };
+  protected readonly legend = Object.entries(TRACK_STAGES) as [TrackStage, string][];
 
   /** Status line, note and button label for a pending commission. */
   protected pendingStatus(u: PendingRow, reminded: boolean) {

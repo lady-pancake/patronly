@@ -263,7 +263,7 @@ export type PendingStage = 'draft' | 'sent' | 'deposit';
 export const PENDING: PendingRow[] = (
   [
     ['James Hartley', 'Small study', 1200, 'Oct 2', 'deposit', '2026-11', '2027-01'],
-    ['Marta Kowalski', 'Canvas, up to 60cm', 2400, 'Oct 8', 'sent'],
+    ['Marta Kowalski', 'Canvas, up to 60cm', 2400, 'Oct 8', 'sent', '2026-12', '2027-01'],
     ['Leo Carrington', 'Canvas, up to 90cm', 3600, 'Oct 11', 'sent'],
     ['Henrik Dahl', 'Small study', 950, 'Oct 12', 'draft'],
   ] as [string, string, number, string, PendingStage, string?, string?][]
@@ -390,45 +390,173 @@ export function yearView(offset: number): { range: string; months: MonthCard[] }
   return { range: y1 === y2 ? String(y1) : `${y1}–${String(y2).slice(2)}`, months };
 }
 
-// ── One month of commissions ────────────────────────────────────────────
+// ── Timeline ────────────────────────────────────────────────────────────
 
-export interface SimpleRow {
+/**
+ * Where a commission is. Only "wip" has started; "booked" has its deposit and a start
+ * date; "deposit" and "contract" are agreed but not yet active.
+ */
+export type TrackStage = 'wip' | 'booked' | 'deposit' | 'contract' | 'done';
+
+export const TRACK_STAGES: Record<TrackStage, string> = {
+  wip: 'In progress',
+  booked: 'Booked',
+  deposit: 'Awaiting deposit',
+  contract: 'Awaiting contract',
+  done: 'Completed',
+};
+
+export interface TrackBar {
   name: string;
   type: string;
-  /** Status, e.g. "Booked" or "Completed". */
+  stage: TrackStage;
+  /** Short status under the name, e.g. "2 weeks left". */
   status: string;
+  /** Text inside the bar. */
   note: string;
+  /** Position and width in percent of the visible months. */
+  left: number;
+  width: number;
+  /** The bar carries on past the visible months on that side. */
+  cutStart: boolean;
+  cutEnd: boolean;
+  /** Share of the work done, for bars in progress. */
+  donePct: number;
+  /** The pending deal behind the bar, for its action button. */
+  pending: PendingRow | null;
+  /** There's a conversation to open. */
+  message: boolean;
 }
 
-const monthName = (n: number, style: 'long' | 'short' = 'short') =>
-  new Date(Math.floor(n / 12), n % 12, 1).toLocaleString('en-US', { month: style });
+export interface TimelineMonth {
+  key: number;
+  label: string;
+  /** Shown on January and the first column, so the years are clear. */
+  year: string | null;
+  current: boolean;
+  past: boolean;
+  loadLabel: string;
+  loadPct: number;
+}
 
-/** The commissions in one month (`n` = year * 12 + month), split by where they are. */
-export function monthCommissions(n: number) {
+/** Months as numbers with a fraction, so a date can sit part way through its month. */
+const monthPos = (d: Date) =>
+  d.getFullYear() * 12 +
+  d.getMonth() +
+  (d.getDate() - 1) / new Date(d.getFullYear(), d.getMonth() + 1, 0).getDate();
+
+/** `span` months of commissions as bars, starting `offset` months from last month. */
+export function timeline(offset: number, span = 6) {
   const now = TODAY.getFullYear() * 12 + TODAY.getMonth();
-  const overlaps = (start: string, end: string) => monthNo(start) <= n && monthNo(end) >= n;
-  const pendingNames = new Set(PENDING.map((p) => p.name));
-  const inProgress = activeCommissions().filter((_, i) =>
-    overlaps(COMMISSIONS[i].start.slice(0, 7), COMMISSIONS[i].due.slice(0, 7)),
-  );
-  const booked: SimpleRow[] = BOOKINGS.filter(
-    (b) => b[4] === 'booked' && !pendingNames.has(b[0]) && overlaps(b[2], b[3]),
-  ).map(([name, type, start, end]) => ({
-    name,
-    type,
-    status: 'Booked',
-    note: `${monthName(monthNo(start))}–${monthName(monthNo(end))}`,
+  const first = now - 1 + offset;
+  const last = first + span;
+  const loads = yearView(first - now).months.slice(0, span);
+  const months: TimelineMonth[] = loads.map((m, i) => ({
+    key: m.key,
+    label: m.name.slice(0, 3),
+    year: i === 0 || m.key % 12 === 0 ? String(Math.floor(m.key / 12)) : null,
+    current: m.current,
+    past: m.past,
+    loadLabel: m.loadLabel,
+    loadPct: m.loadPct,
   }));
-  // Not active until the deposit is paid. Undated ones show in every month from now on;
-  // dated ones from now until their planned end.
-  const pending = n < now ? [] : PENDING.filter((p) => !p.end || monthNo(p.end) >= n);
-  const completed: SimpleRow[] = BOOKINGS.filter((b) => b[4] === 'done' && monthNo(b[3]) === n).map(
-    ([name, type]) => ({
-      name,
-      type,
-      status: 'Completed',
-      note: monthName(n, 'long'),
+
+  const bar = (
+    from: number,
+    to: number,
+    rest: Omit<TrackBar, 'left' | 'width' | 'cutStart' | 'cutEnd'>,
+  ): TrackBar | null => {
+    if (to <= first || from >= last) return null;
+    const a = Math.max(from, first);
+    const b = Math.min(to, last);
+    return {
+      ...rest,
+      left: ((a - first) / span) * 100,
+      width: ((b - a) / span) * 100,
+      cutStart: from < first,
+      cutEnd: to > last,
+    };
+  };
+  const keep = (b: TrackBar | null): b is TrackBar => b !== null;
+  const pendingNames = new Set(PENDING.map((p) => p.name));
+
+  const active = activeCommissions();
+  const inProgress = COMMISSIONS.map((c, i) =>
+    bar(monthPos(at(c.start)), monthPos(at(c.due)), {
+      name: c.patron,
+      type: c.type,
+      stage: 'wip',
+      status: active[i].weeksLeft,
+      note: `${c.done}% done · ${active[i].dueLabel}`,
+      donePct: c.done,
+      pending: null,
+      message: true,
     }),
-  );
-  return { inProgress, booked, pending, completed };
+  ).filter(keep);
+
+  const upNext = [
+    ...PENDING.filter((p) => p.start && p.end).map((p) =>
+      bar(monthNo(p.start!), monthNo(p.end!) + 1, {
+        name: p.name,
+        type: p.type,
+        stage: p.stage === 'deposit' ? 'deposit' : 'contract',
+        status:
+          p.stage === 'deposit'
+            ? 'Signed, deposit due'
+            : p.stage === 'sent'
+              ? 'Awaiting signature'
+              : 'Contract not sent',
+        note: p.stage === 'deposit' ? p.deposit : 'Planned dates',
+        donePct: 0,
+        pending: p,
+        message: true,
+      }),
+    ),
+    ...BOOKINGS.filter((b) => b[4] === 'booked' && !pendingNames.has(b[0])).map(
+      ([name, type, start, end]) =>
+        bar(monthNo(start), monthNo(end) + 1, {
+          name,
+          type,
+          stage: 'booked',
+          status: `Starts ${new Date(Math.floor(monthNo(start) / 12), monthNo(start) % 12, 1).toLocaleString('en-US', { month: 'short' })}`,
+          note: 'Deposit paid',
+          donePct: 0,
+          pending: null,
+          message: false,
+        }),
+    ),
+  ]
+    .filter(keep)
+    .sort((x, y) => x.left - y.left);
+
+  const completed = BOOKINGS.filter((b) => b[4] === 'done')
+    .map(([name, type, start, end]) =>
+      bar(monthNo(start), monthNo(end) + 1, {
+        name,
+        type,
+        stage: 'done',
+        status: 'Completed',
+        note: 'Delivered',
+        donePct: 100,
+        pending: null,
+        message: false,
+      }),
+    )
+    .filter(keep);
+
+  return {
+    months,
+    /** Where today falls, in percent of the visible months, or null when out of view. */
+    today: (() => {
+      const t = monthPos(TODAY);
+      return t >= first && t < last ? ((t - first) / span) * 100 : null;
+    })(),
+    groups: [
+      { label: 'In progress', bars: inProgress },
+      { label: 'Up next', bars: upNext },
+      { label: 'Completed', bars: completed },
+    ].filter((g) => g.bars.length),
+    /** Agreed deals with no dates yet. They stay here until they're scheduled. */
+    unscheduled: PENDING.filter((p) => !p.start),
+  };
 }
