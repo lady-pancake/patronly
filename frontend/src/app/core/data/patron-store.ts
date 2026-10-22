@@ -11,8 +11,8 @@ interface Persisted {
   favs: string[];
   saved: SavedSearch[];
   hiddenRecent: string[];
-  /** Artists the patron took out of a search, by search name. */
-  dropped: Record<string, string[]>;
+  /** Each search's checked artists, by search name, once the patron changes them. */
+  lists: Record<string, string[]>;
   /** Artists whose newsletter the patron subscribed to. */
   newsletters: string[];
   threads: Thread[];
@@ -25,7 +25,7 @@ const DEFAULTS: Persisted = {
   favs: [...new Set([...RECENT_SEARCHES.flatMap((s) => s.ids), 'clem'])],
   saved: [],
   hiddenRecent: [],
-  dropped: {},
+  lists: {},
   newsletters: [],
   threads: SAMPLE_THREADS,
   inbox: INBOX_SEED,
@@ -53,15 +53,15 @@ export class PatronStore {
   readonly favs = signal<string[]>(this.initial.favs);
   readonly saved = signal<SavedSearch[]>(this.initial.saved);
   readonly hiddenRecent = signal<string[]>(this.initial.hiddenRecent);
-  readonly dropped = signal<Record<string, string[]>>(this.initial.dropped);
+  readonly lists = signal<Record<string, string[]>>(this.initial.lists);
   readonly newsletters = signal<string[]>(this.initial.newsletters);
   readonly threads = signal<Thread[]>(this.initial.threads);
   readonly inbox = signal<Thread[]>(this.initial.inbox);
 
   /**
    * Saved searches first, then the sample recent ones the patron hasn't removed.
-   * Searches whose matches are all hidden from listings are left out, and
-   * artists the patron unsaved from a search are taken off its list.
+   * Searches whose matches are all hidden from listings are left out. Each
+   * search's `ids` is its list of checked artists.
    */
   readonly searches = computed(() =>
     [...this.saved(), ...RECENT_SEARCHES]
@@ -71,8 +71,8 @@ export class PatronStore {
           s.ids.some((id) => LISTED.some((a) => a.id === id)),
       )
       .map((s) => {
-        const dropped = this.dropped()[s.name];
-        return dropped?.length ? { ...s, ids: s.ids.filter((id) => !dropped.includes(id)) } : s;
+        const list = this.lists()[s.name];
+        return list ? { ...s, ids: list } : s;
       }),
   );
 
@@ -85,7 +85,7 @@ export class PatronStore {
         favs: this.favs(),
         saved: this.saved(),
         hiddenRecent: this.hiddenRecent(),
-        dropped: this.dropped(),
+        lists: this.lists(),
         newsletters: this.newsletters(),
         threads: this.threads(),
         inbox: this.inbox(),
@@ -114,15 +114,24 @@ export class PatronStore {
     this.newsletters.update((n) => (n.includes(id) ? n.filter((x) => x !== id) : [...n, id]));
   }
 
-  /** Takes an artist off one search's list, e.g. after they were unsaved from it. */
-  dropFromSearch(name: string, artistId: string): void {
-    this.dropped.update((d) => ({ ...d, [name]: [...(d[name] ?? []), artistId] }));
+  /** The checked artists of a search, or null if there's no search by that name. */
+  searchList(name: string): string[] | null {
+    return this.searches().find((s) => s.name === name)?.ids ?? null;
+  }
+
+  /** Checks or unchecks an artist in one search's list. Separate from favourites. */
+  toggleInSearch(name: string, artistId: string): void {
+    const list = this.searchList(name);
+    if (!list) return;
+    const next = list.includes(artistId)
+      ? list.filter((id) => id !== artistId)
+      : [...list, artistId];
+    this.lists.update((l) => ({ ...l, [name]: next }));
   }
 
   saveSearch(search: SavedSearch): void {
-    this.dropped.update(({ [search.name]: _, ...rest }) => rest);
+    this.lists.update(({ [search.name]: _, ...rest }) => rest);
     this.saved.update((s) => [search, ...s.filter((x) => x.name !== search.name)]);
-    this.favs.update((f) => [...f, ...search.ids.filter((id) => !f.includes(id))]);
   }
 
   removeSearch(name: string): void {

@@ -30,9 +30,10 @@ describe('PatronStore', () => {
     expect(store.isFav('june')).toBe(true);
   });
 
-  it('hearts the artists in a search when it is saved', () => {
+  it('starts a saved search with its top matches checked', () => {
     store.saveSearch({ name: 'Bowls', wiz: { mediums: ['Ceramics'] }, ids: ['hana'] });
-    expect(store.isFav('hana')).toBe(true);
+    expect(store.searchList('Bowls')).toEqual(['hana']);
+    expect(store.isFav('hana')).toBe(false);
   });
 
   it('lists the sample recent search', () => {
@@ -40,10 +41,13 @@ describe('PatronStore', () => {
     expect(names).toContain('Oil portrait of my parents');
   });
 
-  it('takes an artist off a search when they are unsaved from it', () => {
-    store.dropFromSearch('Oil portrait of my parents', 'june');
-    const search = store.searches().find((s) => s.name === 'Oil portrait of my parents');
-    expect(search?.ids).toEqual(['sol']);
+  it('checks and unchecks artists in a search without touching favourites', () => {
+    const name = 'Oil portrait of my parents';
+    store.toggleInSearch(name, 'june');
+    expect(store.searchList(name)).toEqual(['sol']);
+    expect(store.isFav('june')).toBe(true);
+    store.toggleInSearch(name, 'clem');
+    expect(store.searchList(name)).toEqual(['sol', 'clem']);
   });
 
   it('removes a sample recent search', () => {

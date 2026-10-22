@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, inject, input, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, input } from '@angular/core';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideHeart } from '@ng-icons/lucide';
 import { ViewerStore } from '../core/auth/viewer.store';
@@ -23,8 +23,6 @@ export class HeartButton {
   private readonly viewer = inject(ViewerStore);
   readonly artistId = input.required<string>();
   readonly size = input<'md' | 'lg'>('md');
-  /** Emits when the patron takes the artist out of their saved list. */
-  readonly unsaved = output<void>();
   /** "me" is the signed-in artist's own studio. */
   protected readonly own = computed(() => this.artistId() === 'me');
   protected readonly on = computed(
@@ -42,8 +40,6 @@ export class HeartButton {
     e.stopPropagation();
     e.preventDefault();
     if (this.own() || !this.viewer.can('SAVE_FAVOURITES')) return;
-    const wasOn = this.on();
     this.store.toggleFav(this.artistId());
-    if (wasOn) this.unsaved.emit();
   }
 }

@@ -32,7 +32,7 @@ const STEP_NAMES: Record<string, string> = {
 })
 export class Search {
   private readonly router = inject(Router);
-  private readonly store = inject(PatronStore);
+  protected readonly store = inject(PatronStore);
   private readonly dialog = inject(HlmDialogService);
   private readonly params = toSignal(inject(ActivatedRoute).queryParams, {
     initialValue: {} as Record<string, string>,
@@ -67,6 +67,10 @@ export class Search {
     ];
   });
   private readonly sig = computed(() => this.chips().join('|'));
+  /** The checked artists, when this is a saved search. */
+  protected readonly list = computed(() =>
+    this.name() ? this.store.searchList(this.name()) : null,
+  );
   protected readonly isSaved = computed(() => this.store.saved().some((s) => s.sig === this.sig()));
 
   protected isOn(label: string) {

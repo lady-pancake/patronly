@@ -110,7 +110,12 @@
       }
       <div class="grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))] gap-x-6 gap-y-10">
         @for (a of matches(); track a.id) {
-          <app-artist-card [artist]="a" variant="full" />
+          <app-artist-card
+            [artist]="a"
+            variant="full"
+            [checked]="list() ? list()!.includes(a.id) : null"
+            (checkToggle)="store.toggleInSearch(name(), a.id)"
+          />
         }
       </div>
     </div>
