@@ -5,6 +5,25 @@
     Meet the artist. <em>Commission</em> the work.
   </h1>
 
+  <!-- On phones, mediums are offered in the search dropdown instead. -->
+  <section class="min-w-0 max-sm:hidden" aria-label="Mediums">
+    <div class="no-scrollbar -mx-1 flex snap-x snap-mandatory gap-5 overflow-x-auto px-1 pt-1 pb-3">
+      @for (m of mediums.slice(0, 10); track m.name) {
+        <app-medium-tile [name]="m.name" class="w-[120px] shrink-0 snap-start" />
+      }
+      <a routerLink="/mediums" class="group flex w-[120px] shrink-0 snap-start flex-col gap-2">
+        <div
+          class="flex aspect-square items-center justify-center rounded-2xl border bg-background transition-transform duration-200 ease-soft group-hover:-translate-y-[3px]"
+        >
+          <ng-icon name="lucideArrowRight" size="22" />
+        </div>
+        <span class="text-center font-serif text-lg leading-tight group-hover:opacity-70"
+          >See all {{ mediums.length }}</span
+        >
+      </a>
+    </div>
+  </section>
+
   <section
     class="grid items-center gap-4 rounded-4xl bg-surface p-5 ring-1 ring-black/4 sm:gap-12 sm:p-12 lg:grid-cols-[minmax(260px,1fr)_minmax(0,2.4fr)]"
   >
@@ -21,7 +40,7 @@
         >
       </div>
       <p class="text-[15px] leading-relaxed text-muted-foreground max-sm:hidden">
-        Four painters working slowly in oil, ink and watercolour, each taking a small number of
+        Three painters working slowly in oil, ink and watercolour, each taking a small number of
         commissions this season.
       </p>
       <div class="text-[13px] max-sm:hidden">
@@ -55,23 +74,6 @@
             </div>
           </div>
         </a>
-      }
-    </div>
-  </section>
-
-  <!-- On phones, mediums are offered in the search dropdown instead. -->
-  <section class="flex min-w-0 flex-col gap-5 max-sm:hidden">
-    <div class="flex items-baseline justify-between gap-4">
-      <h2 class="font-serif text-4xl font-normal tracking-[-.01em]">Browse by <em>medium</em></h2>
-      <a
-        routerLink="/mediums"
-        class="flex h-9 shrink-0 items-center gap-1.5 rounded-md border bg-background px-4 text-[13px] font-medium hover:bg-muted"
-        >See all {{ mediums.length }}<ng-icon name="lucideArrowRight" size="14"
-      /></a>
-    </div>
-    <div class="no-scrollbar -mx-1 flex snap-x snap-mandatory gap-5 overflow-x-auto px-1 pt-1 pb-3">
-      @for (m of mediums.slice(0, 10); track m.name) {
-        <app-medium-tile [name]="m.name" class="w-[120px] shrink-0 snap-start" />
       }
     </div>
   </section>
