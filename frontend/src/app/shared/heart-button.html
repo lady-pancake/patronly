@@ -1,10 +1,23 @@
-<button
-  type="button"
-  (click)="toggle($event)"
-  [attr.aria-label]="on() ? 'Remove from saved' : 'Save artist'"
-  [attr.aria-pressed]="on()"
-  [title]="on() ? 'Remove from saved' : 'Save artist'"
-  [class]="classes()"
->
-  <ng-icon name="lucideHeart" size="16" />
-</button>
+<span class="group relative block">
+  <button
+    type="button"
+    (click)="toggle($event)"
+    [attr.aria-label]="on() ? 'Remove from saved' : 'Save artist'"
+    [attr.aria-pressed]="on()"
+    [attr.aria-disabled]="own() || null"
+    [attr.aria-describedby]="own() ? tipId : null"
+    [title]="own() ? '' : on() ? 'Remove from saved' : 'Save artist'"
+    [class]="classes() + ' aria-disabled:cursor-not-allowed aria-disabled:opacity-50'"
+  >
+    <ng-icon name="lucideHeart" size="16" />
+  </button>
+  @if (own()) {
+    <span
+      [id]="tipId"
+      role="tooltip"
+      class="pointer-events-none absolute bottom-[calc(100%+8px)] left-1/2 z-20 w-max max-w-[220px] -translate-x-1/2 rounded-xl bg-[oklch(0.145_0_0)] px-3 py-2 text-center text-xs leading-snug font-medium text-white opacity-0 shadow-lg transition-opacity group-focus-within:opacity-100 group-hover:opacity-100"
+    >
+      You can’t save your own studio.
+    </span>
+  }
+</span>

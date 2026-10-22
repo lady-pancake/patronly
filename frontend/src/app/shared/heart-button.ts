@@ -4,7 +4,13 @@ import { lucideHeart } from '@ng-icons/lucide';
 import { ViewerStore } from '../core/auth/viewer.store';
 import { PatronStore } from '../core/data/patron-store';
 
-/** Round heart that saves an artist to the patron's favourites. */
+let nextId = 0;
+
+/**
+ * Round heart that saves an artist to the patron's favourites. On your own
+ * studio it stays visible but disabled, like the Inquire button, with a tooltip
+ * explaining why.
+ */
 @Component({
   selector: 'app-heart-button',
   imports: [NgIcon],
@@ -17,7 +23,12 @@ export class HeartButton {
   private readonly viewer = inject(ViewerStore);
   readonly artistId = input.required<string>();
   readonly size = input<'md' | 'lg'>('md');
-  protected readonly on = computed(() => this.store.favs().includes(this.artistId()));
+  /** "me" is the signed-in artist's own studio. */
+  protected readonly own = computed(() => this.artistId() === 'me');
+  protected readonly on = computed(
+    () => !this.own() && this.store.favs().includes(this.artistId()),
+  );
+  protected readonly tipId = `own-heart-tip-${nextId++}`;
   protected readonly classes = computed(
     () =>
       'grid place-items-center rounded-full transition-colors ' +
@@ -28,6 +39,6 @@ export class HeartButton {
   protected toggle(e: Event) {
     e.stopPropagation();
     e.preventDefault();
-    if (this.viewer.can('SAVE_FAVOURITES')) this.store.toggleFav(this.artistId());
+    if (!this.own() && this.viewer.can('SAVE_FAVOURITES')) this.store.toggleFav(this.artistId());
   }
 }
