@@ -79,6 +79,7 @@ export class Login {
   protected readonly error = signal<string | null>(null);
   protected readonly gateOpen = computed(() => this.viewer.loaded() && !this.viewer.signedIn());
   private readonly nameInput = viewChild<ElementRef<HTMLInputElement>>('nameInput');
+  private readonly passwordInput = viewChild<ElementRef<HTMLInputElement>>('passwordInput');
 
   constructor() {
     void this.viewer.whenLoaded();
@@ -97,6 +98,14 @@ export class Login {
       this.error.set(gateError(err));
     } finally {
       this.busy.set(false);
+    }
+    // Wrong password: select it all so typing replaces it.
+    if (this.error()) {
+      setTimeout(() => {
+        const input = this.passwordInput()?.nativeElement;
+        input?.focus();
+        input?.select();
+      });
     }
   }
 
