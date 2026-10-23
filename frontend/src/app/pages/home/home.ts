@@ -2,10 +2,11 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideArrowRight } from '@ng-icons/lucide';
-import { artistById, tone } from '../../core/data/catalog';
+import { artistById } from '../../core/data/catalog';
+import { feedEntries } from '../../core/data/feed';
 import type { Artist, SavedSearch } from '../../core/data/models';
 import { PatronStore } from '../../core/data/patron-store';
-import { FEED, MEDIUMS } from '../../core/data/seed';
+import { MEDIUMS } from '../../core/data/seed';
 import { MediumTile } from '../../shared/medium-tile';
 import { SearchCard } from '../../shared/search-card';
 import { searchQueryParams } from '../../shared/search-params';
@@ -22,12 +23,11 @@ import { Avatar } from '../../shared/avatar';
 export class Home {
   protected readonly store = inject(PatronStore);
   protected readonly mediums = MEDIUMS;
-  protected readonly featured = FEATURED_IDS.map((id) => artistById(id) as Artist);
-  protected readonly feed = FEED.slice(0, 3).map((p) => {
-    const artist = artistById(p.id) as Artist;
-    const base = tone(artist.hue, p.l, artist.c);
-    return { ...p, artist, img: p.src ? `${base} url('${p.src}') center/cover no-repeat` : base };
-  });
+  // Skip any artist the live catalogue doesn't have, rather than failing the page.
+  protected readonly featured = FEATURED_IDS.map((id) => artistById(id)).filter(
+    (a): a is Artist => !!a,
+  );
+  protected readonly feed = feedEntries().slice(0, 3);
 
   protected searchParams(s: SavedSearch) {
     return searchQueryParams(s.wiz, s.name);

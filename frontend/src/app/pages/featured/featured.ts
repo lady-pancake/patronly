@@ -16,5 +16,7 @@ export class Featured {
   protected readonly inquiry = inject(InquiryLauncher);
   protected readonly intro = FEATURE_INTRO;
   protected readonly notes = FEATURE_NOTES;
-  protected readonly artists = FEATURED_IDS.map((id) => artistById(id) as Artist);
+  protected readonly artists = FEATURED_IDS.map((id) => artistById(id)).filter(
+    (a): a is Artist => !!a,
+  );
 }
