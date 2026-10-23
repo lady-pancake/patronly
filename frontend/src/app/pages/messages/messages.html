@@ -253,16 +253,13 @@
                           <span class="text-sm font-semibold">{{ st.title }}</span>
                           <span class="text-xs text-muted-foreground">{{ st.sub }}</span>
                         </span>
-                        @if (st.n === '1' && m.terms?.contract?.kind === 'template') {
+                        @if (st.n === '1' && m.terms) {
                           <button
                             type="button"
-                            (click)="contractOpen.set(contractOpen() === th.id ? null : th.id)"
-                            [attr.aria-expanded]="contractOpen() === th.id"
+                            (click)="openContract(th, m)"
                             class="flex h-8 items-center gap-1.5 rounded-md border bg-background px-3 text-xs font-medium hover:bg-muted"
                           >
-                            <ng-icon name="lucideFileText" size="14" />{{
-                              contractOpen() === th.id ? 'Hide' : 'View'
-                            }}
+                            <ng-icon name="lucideFileText" size="14" />View contract
                           </button>
                         }
                         @if (st.active && st.revise) {
@@ -304,15 +301,6 @@
                           </span>
                         }
                       </li>
-                      @if (st.n === '1' && contractOpen() === th.id && m.terms?.contract; as c) {
-                        @if (c.kind === 'template') {
-                          <li
-                            class="mx-3 mb-2 max-h-72 overflow-y-auto rounded-2xl bg-surface p-4 font-mono text-[12px] leading-relaxed whitespace-pre-wrap"
-                          >
-                            {{ c.text }}
-                          </li>
-                        }
-                      }
                     }
                   </ol>
                   @if (th.contract?.paid) {

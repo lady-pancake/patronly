@@ -3,6 +3,8 @@ import { FormsModule } from '@angular/forms';
 import { BrnDialogRef, BrnDialogTitle, injectBrnDialogContext } from '@spartan-ng/brain/dialog';
 import type { AcceptedMessage } from '../../core/data/models';
 import { CleanText } from '../../shared/clean-text';
+import { HlmDialogService } from '@spartan-ng/helm/dialog';
+import { openContractDoc } from '../../shared/contract-document';
 
 export interface DealContext {
   mode: 'contract' | 'deposit';
@@ -56,6 +58,18 @@ export class DealDialog {
         : '2 rounds at sketch stage',
     ],
   ];
+
+  private readonly dialog = inject(HlmDialogService);
+
+  protected openDoc() {
+    openContractDoc(this.dialog, {
+      text: this.text,
+      file: this.file,
+      artist: this.ctx.artistName,
+      patron: 'You',
+      signed: { artist: true },
+    });
+  }
 
   protected sendChanges() {
     const text = this.changes().trim();

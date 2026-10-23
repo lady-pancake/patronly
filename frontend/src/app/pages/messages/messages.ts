@@ -31,6 +31,7 @@ import { DealDialog, type DealContext, type DealResult, money } from './deal-dia
 import { STATUS_STYLE, threadStatus } from './thread-status';
 import { CleanText } from '../../shared/clean-text';
 import { Avatar } from '../../shared/avatar';
+import { openContractDoc } from '../../shared/contract-document';
 
 @Component({
   selector: 'app-messages',
@@ -220,8 +221,18 @@ export class Messages {
     );
   }
 
-  /** Which accepted cards have their contract open. */
-  protected readonly contractOpen = signal<string | null>(null);
+  /** The contract the artist sent, as a full page document. */
+  protected openContract(t: Thread, m: AcceptedMessage) {
+    const c = m.terms?.contract;
+    if (!c) return;
+    openContractDoc(this.dialog, {
+      text: c.kind === 'template' ? c.text : null,
+      file: c.kind === 'file' ? c.name : null,
+      artist: this.artist.mine().name,
+      patron: t.patron?.name ?? '',
+      signed: { artist: true, patron: !!t.contract?.signed },
+    });
+  }
 
   /** The artist's side of an accepted commission: what's done and what's next. */
   protected artistStepsOf(t: Thread, first: string, m: AcceptedMessage) {

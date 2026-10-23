@@ -11,6 +11,8 @@ import type {
   Work,
 } from '../../core/data/models';
 import { WorkLightbox } from '../../shared/work-lightbox';
+import { HlmDialogService } from '@spartan-ng/helm/dialog';
+import { openContractDoc } from '../../shared/contract-document';
 import { contractText, longDate, money } from '../messages/accept-terms';
 import { TRACK_STAGES, type CommissionFacts } from './dashboard-data';
 
@@ -44,7 +46,7 @@ export class CommissionDetails {
   protected readonly ref = inject<BrnDialogRef<void>>(BrnDialogRef);
   private readonly router = inject(Router);
   protected readonly ctx = injectBrnDialogContext<DetailsContext>();
-  protected readonly showContract = signal(false);
+  private readonly dialog = inject(HlmDialogService);
   protected readonly openImage = signal<number | null>(null);
 
   private readonly deal = this.ctx.thread?.msgs.find(
@@ -135,7 +137,23 @@ export class CommissionDetails {
     return rows;
   }
 
-  private buildContract(): { status: string; title: string; text: string | null } {
+  protected openContract() {
+    const c = this.contract;
+    openContractDoc(this.dialog, {
+      text: c.text,
+      file: c.file,
+      artist: this.ctx.artist.name,
+      patron: this.ctx.name,
+      signed: { artist: true, patron: c.status === 'Signed' },
+    });
+  }
+
+  private buildContract(): {
+    status: string;
+    title: string;
+    text: string | null;
+    file?: string | null;
+  } {
     const t = this.terms;
     if (t) {
       const signed = this.ctx.thread?.contract?.signed;
@@ -143,6 +161,7 @@ export class CommissionDetails {
         status: signed ? 'Signed' : 'Sent, awaiting signature',
         title: t.contract.kind === 'file' ? t.contract.name : 'Patronly commission agreement',
         text: t.contract.kind === 'template' ? t.contract.text : null,
+        file: t.contract.kind === 'file' ? t.contract.name : null,
       };
     }
     const f = this.f;

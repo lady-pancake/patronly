@@ -81,24 +81,16 @@
           }}</span>
           <span class="text-xs text-muted-foreground">{{ contract.status }}</span>
         </span>
-        @if (contract.text) {
+        @if (contract.text || contract.file) {
           <button
             type="button"
-            (click)="showContract.set(!showContract())"
-            [attr.aria-expanded]="showContract()"
+            (click)="openContract()"
             class="h-8 shrink-0 rounded-md border bg-background px-3 text-xs font-medium hover:bg-muted"
           >
-            {{ showContract() ? 'Hide' : 'View' }}
+            View
           </button>
         }
       </div>
-      @if (showContract() && contract.text) {
-        <div
-          class="max-h-72 overflow-y-auto rounded-2xl bg-surface p-4 font-mono text-[12px] leading-relaxed whitespace-pre-wrap"
-        >
-          {{ contract.text }}
-        </div>
-      }
     </section>
 
     @if (recent.length) {
