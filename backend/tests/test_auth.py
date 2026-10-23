@@ -14,7 +14,7 @@ from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
 from sqlalchemy.pool import NullPool
 
 from app.auth.guest import issue_pass
-from app.config import get_settings
+from app.config import Settings, get_settings
 from app.db.models import Guest
 
 TEST_DB = os.environ.get("TEST_DATABASE_URL")
@@ -46,7 +46,9 @@ def gql(client, query, tok=None, **variables):
 def guests_named(name):
     # A separate engine: the app's engine belongs to the test client's event loop.
     async def run():
-        engine = create_async_engine(TEST_DB, poolclass=NullPool)
+        # Same driver the app uses: CI passes a plain postgresql:// URL.
+        url = Settings.use_asyncpg_driver(TEST_DB)
+        engine = create_async_engine(url, poolclass=NullPool)
         try:
             async with AsyncSession(engine) as session:
                 return list(await session.scalars(select(Guest).where(Guest.name == name)))
