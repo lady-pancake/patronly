@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, computed, inject, input, signal } f
 import { NgTemplateOutlet } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { NgIcon, provideIcons } from '@ng-icons/core';
-import { lucideSearch } from '@ng-icons/lucide';
+import { lucideSearch, lucideSlidersHorizontal } from '@ng-icons/lucide';
 import { LISTED, mediumArt } from '../core/data/catalog';
 import { MEDIUMS } from '../core/data/seed';
 
@@ -18,7 +18,7 @@ interface Suggestion {
 @Component({
   selector: 'app-site-search',
   imports: [NgIcon, RouterLink, NgTemplateOutlet],
-  providers: [provideIcons({ lucideSearch })],
+  providers: [provideIcons({ lucideSearch, lucideSlidersHorizontal })],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     'data-focus-ring': '',

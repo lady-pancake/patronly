@@ -24,6 +24,7 @@
         <ng-container *ngTemplateOutlet="row; context: { $implicit: s }" />
       }
     </div>
+    <ng-container *ngTemplateOutlet="advanced" />
   </div>
 }
 @if (open() && query().trim()) {
@@ -48,8 +49,20 @@
         >No artists or mediums match “{{ query().trim() }}”</span
       >
     }
+    <ng-container *ngTemplateOutlet="advanced" />
   </div>
 }
+<ng-template #advanced>
+  <a
+    routerLink="/search"
+    (mousedown)="$event.preventDefault()"
+    (click)="reset()"
+    class="mt-1 flex h-11 items-center gap-2.5 border-t px-2.5 pt-1 text-sm font-medium sm:hidden"
+  >
+    <ng-icon name="lucideSlidersHorizontal" size="16" class="text-muted-foreground" />Advanced
+    search
+  </a>
+</ng-template>
 <ng-template #row let-s>
   <a
     [routerLink]="s.link"

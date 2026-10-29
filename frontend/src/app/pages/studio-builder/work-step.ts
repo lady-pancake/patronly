@@ -27,6 +27,8 @@ export class WorkStep {
   protected readonly overId = signal<string | null>(null);
   protected readonly overSlot = signal<number | null>(null);
   protected readonly error = signal('');
+  /** The card spot being filled by tapping, for phones where dragging doesn't work. */
+  protected readonly choosing = signal<number | null>(null);
 
   protected readonly slots = computed(() => {
     const d = this.d();
@@ -142,6 +144,31 @@ export class WorkStep {
       this.store.update({ featured: featured.slice(0, 3) });
     }
     this.endDrag();
+  }
+
+  /** Opens the piece picker for a card spot; tapping the open spot again closes it. */
+  protected choose(k: number) {
+    this.choosing.update((c) => (c === k ? null : k));
+  }
+
+  /** Puts a piece in a spot. If it was already on the card, it swaps places with what was there. */
+  protected place(k: number, id: string) {
+    const featured = [...this.d().featured];
+    const from = featured.indexOf(id);
+    if (k < featured.length) {
+      if (from >= 0) featured[from] = featured[k];
+      featured[k] = id;
+    } else {
+      if (from >= 0) featured.splice(from, 1);
+      featured.push(id);
+    }
+    this.store.update({ featured: featured.slice(0, 3) });
+    this.choosing.set(null);
+  }
+
+  protected takeOff(k: number) {
+    this.store.update({ featured: this.d().featured.filter((_, i) => i !== k) });
+    this.choosing.set(null);
   }
 
   protected async upload(key: MediaKey, e: Event) {

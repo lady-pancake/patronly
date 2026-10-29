@@ -69,7 +69,9 @@
     </div>
   </div>
 
-  <div class="flex min-w-[280px] flex-[0_1_340px] flex-col gap-3 md:sticky md:top-24">
+  <div
+    class="flex min-w-[260px] flex-[1_1_100%] flex-col gap-3 sm:flex-[0_1_340px] md:sticky md:top-24"
+  >
     <span class="text-sm font-semibold">On your preview card when searched</span>
     <div
       class="rounded-4xl bg-[color-mix(in_oklab,var(--primary)_9%,white)] p-5"
@@ -99,16 +101,30 @@
                 <button
                   type="button"
                   draggable="true"
-                  (click)="edit(slot.index)"
+                  (click)="choose(k)"
                   (dragstart)="dragId.set(slot.piece.id)"
                   (dragend)="endDrag()"
-                  title="Drag to rearrange or back to All work"
-                  [attr.aria-label]="'Featured piece ' + (k + 1)"
+                  title="Click to change · drag to rearrange or back to All work"
+                  [attr.aria-label]="'Change featured piece ' + (k + 1)"
                   class="absolute inset-0 cursor-grab"
                   [class.opacity-40]="dragId() === slot.piece.id"
                 ></button>
               } @else {
-                <span class="text-[11px] font-medium text-muted-foreground">Drop here</span>
+                <button
+                  type="button"
+                  (click)="choose(k)"
+                  [attr.aria-label]="'Choose featured piece ' + (k + 1)"
+                  class="absolute inset-0 flex flex-col items-center justify-center gap-1 text-[11px] font-medium text-muted-foreground"
+                >
+                  <ng-icon name="lucidePlus" size="16" />
+                  <span class="pointer-coarse:hidden">Drop or click</span>
+                  <span class="pointer-fine:hidden">Tap to add</span>
+                </button>
+              }
+              @if (choosing() === k) {
+                <span
+                  class="pointer-events-none absolute inset-0 inset-ring-[3px] inset-ring-primary"
+                ></span>
               }
             </div>
           }
@@ -123,8 +139,76 @@
         </div>
       </div>
     </div>
-    <span class="text-xs text-muted-foreground"
-      >The large spot shows first. Drag a piece from the card back to All work to take it off.</span
+    @if (choosing() !== null) {
+      @let k = choosing()!;
+      @let current = slots()[k];
+      <div
+        class="flex flex-col gap-3 rounded-3xl bg-background p-3.5 ring-1 ring-border"
+        role="group"
+        [attr.aria-label]="'Choose a piece for spot ' + (k + 1)"
+      >
+        <span class="text-[13px] font-semibold"
+          >Choose a piece for the {{ k === 0 ? 'large spot' : 'small spot ' + k }}</span
+        >
+        @if (d().pieces.length) {
+          <div class="grid grid-cols-4 gap-2">
+            @for (p of d().pieces; track p.id) {
+              @let at = d().featured.indexOf(p.id);
+              <button
+                type="button"
+                (click)="place(k, p.id)"
+                [attr.aria-label]="p.title.trim() || 'Untitled'"
+                [attr.aria-pressed]="at === k"
+                class="relative aspect-[4/5] overflow-hidden rounded-xl bg-surface bg-cover bg-center ring-1 ring-border"
+                [class.ring-2]="at === k"
+                [class.ring-primary]="at === k"
+                [style.background-image]="'url(' + p.src + ')'"
+              >
+                @if (at >= 0) {
+                  <span
+                    class="absolute top-1 left-1 grid size-[18px] place-items-center rounded-full bg-primary text-[10px] font-semibold text-primary-foreground"
+                    >{{ at + 1 }}</span
+                  >
+                }
+              </button>
+            }
+          </div>
+        } @else {
+          <p class="text-[13px] text-muted-foreground">Add work above first.</p>
+        }
+        <div class="flex flex-wrap items-center gap-2">
+          @if (current) {
+            <button
+              type="button"
+              (click)="edit(current.index)"
+              class="h-9 rounded-md border bg-background px-3.5 text-[13px] font-medium hover:bg-muted"
+            >
+              Edit details
+            </button>
+            <button
+              type="button"
+              (click)="takeOff(k)"
+              class="h-9 rounded-md border bg-background px-3.5 text-[13px] font-medium hover:bg-muted"
+            >
+              Take off card
+            </button>
+          }
+          <button
+            type="button"
+            (click)="choosing.set(null)"
+            class="ml-auto h-9 rounded-md px-3.5 text-[13px] font-semibold hover:bg-muted"
+          >
+            Done
+          </button>
+        </div>
+      </div>
+    }
+    <span class="text-xs text-muted-foreground pointer-coarse:hidden"
+      >The large spot shows first. Click a spot to choose a piece, or drag pieces on and off the
+      card.</span
+    >
+    <span class="text-xs text-muted-foreground pointer-fine:hidden"
+      >The large spot shows first. Tap a spot to choose which piece goes there.</span
     >
   </div>
 </div>
