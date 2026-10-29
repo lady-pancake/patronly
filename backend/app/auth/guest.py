@@ -14,7 +14,7 @@ import jwt
 
 from app.config import get_settings
 
-# scrypt hash of the password Juliette gives out. GUEST_PASSWORD overrides it.
+# scrypt hash of the guest password. GUEST_PASSWORD overrides it.
 PASSWORD_HASH = (
     "scrypt$8cffcc5ae9f9cbf985ccf5e1c009e5b5$"
     "deaa7f100386cf61effbf8b47b90d9aa96690854e9a2d288e5948192ceed4e06"
