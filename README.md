@@ -91,6 +91,35 @@ alembic upgrade head
 
 Migrations don't run on deploy. Apply them to Supabase before (or right after) pushing a change that needs them: run `alembic upgrade head` with `DATABASE_URL` pointing at Supabase, or apply the SQL from `alembic upgrade head --sql` in the Supabase SQL editor.
 
+## Accessibility
+
+An axe scan of 18 pages and dialogs, plus a keyboard-only pass, went from 8 issue types to 0.
+
+- Secondary text is dark enough for 4.5:1 contrast.
+- Every control shows a visible plum focus ring.
+- A skip-to-content link appears on the first Tab press (keyboard focus only, so it stays out of the way on touch screens). Pages use proper landmarks (`banner`, `main`, `nav`).
+- The account menu works with the arrow keys and Escape.
+- Dialogs are named by their headings.
+- The studio cover video has a pause button and stays still when the system's reduced-motion setting is on.
+- Disabled buttons stay focusable, so their tooltips can still be read.
+- Touch targets are at least 24px.
+
+## Mobile
+
+The layout works down to a 320px-wide screen with no sideways scrolling.
+
+- Messages show the list first, then the conversation full screen.
+- The top bar has a search icon. Its dropdown browses by medium and links to Advanced search.
+- The inquiry form and the add-work form open full screen.
+- Text fields use 16px text on touch screens, so iOS doesn't zoom in when you tap one.
+- In the studio builder, you tap a spot on the preview card to choose a piece. Dragging works only on desktop.
+
+## Code quality
+
+- Strict TypeScript and strict template checks, Prettier, and ruff lint and format.
+- Each component keeps its template in its own `.html` file and follows the Angular 20+ file naming (no `.component` suffix).
+- Frontend unit tests and the backend test suite run in CI on every push.
+
 ## Environment variables
 
 | Where | Variable | Example | Notes |
