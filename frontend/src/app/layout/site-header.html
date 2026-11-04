@@ -40,7 +40,7 @@
         routerLinkActive="bg-secondary"
         class="flex h-10 items-center gap-2 rounded-md px-2 text-sm font-medium hover:bg-muted sm:px-3.5"
       >
-        <ng-icon name="lucideLayoutDashboard" size="16" /><span class="hidden md:inline"
+        <ng-icon name="lucideLayoutDashboard" size="16" /><span class="max-md:sr-only"
           >Dashboard</span
         >
       </a>
@@ -49,7 +49,7 @@
         routerLinkActive="bg-secondary"
         class="flex h-10 items-center gap-2 rounded-md px-2 text-sm font-medium hover:bg-muted sm:px-3.5"
       >
-        <ng-icon name="lucideStore" size="16" /><span class="hidden md:inline">My studio</span>
+        <ng-icon name="lucideStore" size="16" /><span class="max-md:sr-only">My studio</span>
       </a>
     }
     @if (viewer.can('SAVE_FAVOURITES')) {
@@ -58,7 +58,7 @@
         routerLinkActive="bg-secondary"
         class="relative flex h-10 items-center gap-2 rounded-md px-2 text-sm font-medium hover:bg-muted sm:px-3.5"
       >
-        <ng-icon name="lucideNewspaper" size="16" /><span class="hidden md:inline">Feed</span>
+        <ng-icon name="lucideNewspaper" size="16" /><span class="max-md:sr-only">Feed</span>
         @if (store.newPosts().length; as n) {
           <span
             class="absolute top-1 left-5.5 grid h-4 min-w-4 place-items-center rounded-full bg-primary px-1 text-[10px] leading-none font-semibold text-primary-foreground ring-2 ring-page"
@@ -71,7 +71,7 @@
         routerLinkActive="bg-secondary"
         class="flex h-10 items-center gap-2 rounded-md px-2 text-sm font-medium hover:bg-muted sm:px-3.5"
       >
-        <ng-icon name="lucideHeart" size="16" /><span class="hidden md:inline">Saved</span>
+        <ng-icon name="lucideHeart" size="16" /><span class="max-md:sr-only">Saved</span>
       </a>
     }
     @if (viewer.can('MESSAGE')) {
@@ -80,9 +80,7 @@
         routerLinkActive="bg-secondary"
         class="relative flex h-10 items-center gap-2 rounded-md px-2 text-sm font-medium hover:bg-muted sm:px-3.5"
       >
-        <ng-icon name="lucideMessageCircle" size="16" /><span class="hidden md:inline"
-          >Messages</span
-        >
+        <ng-icon name="lucideMessageCircle" size="16" /><span class="max-md:sr-only">Messages</span>
         @if (store.unreadCount() || (viewer.can('RECEIVE_INQUIRIES') && store.unreadIncoming())) {
           <span
             class="absolute top-2 left-6 size-2 rounded-full bg-primary md:hidden"
