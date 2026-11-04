@@ -57,7 +57,7 @@
   }
   <main class="pb-24">
     <section
-      class="relative isolate flex min-h-[420px] flex-col justify-end overflow-hidden p-4 sm:p-8"
+      class="relative isolate flex min-h-[280px] flex-col justify-end overflow-hidden p-4 sm:min-h-[320px] sm:p-8"
       [style.background]="a.heroBg"
     >
       @if (a.coverVideo) {
@@ -89,11 +89,11 @@
           class="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_65%_75%_at_0%_100%,oklch(0_0_0/.4),transparent),linear-gradient(to_top,oklch(0_0_0/.3),transparent_50%)]"
         ></div>
       }
-      <div class="mx-auto flex w-full max-w-[1400px] flex-col gap-7 text-white">
+      <div class="mx-auto flex w-full max-w-[1400px] flex-col gap-5 text-white">
         <div class="flex flex-col gap-2 [text-shadow:0_1px_12px_oklch(0_0_0/.35)]">
           <div class="eyebrow !text-white">{{ a.role }} · {{ a.city }}</div>
           <h1
-            class="font-serif text-[clamp(56px,7vw,104px)] leading-[1.1] font-normal tracking-[-.03em]"
+            class="font-serif text-[clamp(48px,6vw,88px)] leading-[1.1] font-normal tracking-[-.03em]"
           >
             {{ a.name }}
           </h1>
@@ -155,19 +155,23 @@
       </div>
     </section>
 
-    <div class="mx-auto flex max-w-[1400px] flex-col gap-10 px-4 pt-7 sm:px-8">
-      <div class="flex flex-wrap gap-2">
+    <div class="mx-auto flex max-w-[1400px] flex-col gap-10 px-4 pt-5 sm:px-8">
+      <div
+        class="no-scrollbar flex gap-2 max-sm:-mx-4 max-sm:overflow-x-auto max-sm:px-4 sm:flex-wrap"
+      >
         @for (t of a.tags; track t) {
-          <span appTag class="!h-[30px] !px-3.5">{{ t }}</span>
+          <span appTag class="!h-[30px] shrink-0 !px-3.5">{{ t }}</span>
         }
       </div>
 
       <section
-        class="flex flex-col gap-10 overflow-hidden rounded-4xl bg-surface py-8 pl-6 sm:py-12 sm:pl-12"
+        class="flex flex-col gap-10 overflow-hidden rounded-4xl bg-surface py-6 pl-6 sm:py-10 sm:pl-12"
       >
-        <div class="grid items-center gap-8 lg:grid-cols-[200px_minmax(0,1fr)]">
-          <div class="flex flex-col items-start gap-4">
-            <h2 class="font-serif text-5xl leading-none font-normal tracking-[-.02em]">
+        <div class="grid items-center gap-5 sm:gap-8 lg:grid-cols-[200px_minmax(0,1fr)]">
+          <div
+            class="flex items-center justify-between gap-4 pr-6 sm:pr-12 lg:flex-col lg:items-start lg:pr-0"
+          >
+            <h2 class="font-serif text-4xl leading-none font-normal tracking-[-.02em] sm:text-5xl">
               Past <em>work</em>
             </h2>
             <a
