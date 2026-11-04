@@ -47,9 +47,27 @@ npm start                       # http://localhost:4200
 
 At startup the app loads studios from the API's `artists` query. If the API can't be reached, or has no studios yet, it falls back to the bundled sample data and logs a warning in the browser console, so the UI still works on its own.
 
-- Tests: `npm test`
+- Unit tests: `npm test`
+- End-to-end tests: `npm run e2e` (see below)
 - Production build: `npm run build`
 - Add spartan/ui components: `npx ng g @spartan-ng/cli:ui <name>` (for example `dialog`, `input`). They land in `frontend/libs/ui` and import from `@spartan-ng/helm/<name>`.
+
+### End-to-end tests
+
+Playwright drives a real browser through the app, the API and Postgres, on a desktop and a phone screen size:
+
+- **Sign-in:** a wrong password is rejected and selected for retyping; a guest gets through the gate and switches between the patron and artist views.
+- **Inquiry:** a patron opens a studio loaded from the database, sends an inquiry and finds it in Messages.
+- **Studio builder:** an artist edits the sample studio, walks every step, previews the studio and makes it public.
+
+To run them locally, start the API with a test password, then run the tests (they start their own frontend on port 4300 with the password gate on):
+
+```bash
+cd backend && GUEST_PASSWORD=e2e-guest-password uvicorn app.main:app   # in one terminal
+cd frontend && npx playwright install chromium && npm run e2e           # in another
+```
+
+CI runs them on every push against a fresh Postgres seeded with the sample studios.
 
 The frontend reads `NG_APP_GRAPHQL_URL` at build time. `scripts/set-env.mjs` writes it into `src/environments/environment.ts` (generated, not committed) before every `start`, `build` and `test`.
 
@@ -118,7 +136,9 @@ The layout works down to a 320px-wide screen with no sideways scrolling.
 
 - Strict TypeScript and strict template checks, Prettier, and ruff lint and format.
 - Each component keeps its template in its own `.html` file and follows the Angular 20+ file naming (no `.component` suffix).
-- Frontend unit tests and the backend test suite run in CI on every push.
+- Unit tests cover the core logic and the API: 51 frontend tests (Vitest) and 23 backend tests (pytest, against Postgres).
+- End-to-end tests (Playwright) cover the key journeys on desktop and phone: sign-in, sending an inquiry, and building and publishing a studio.
+- All of it runs in CI on every push.
 
 ## Environment variables
 

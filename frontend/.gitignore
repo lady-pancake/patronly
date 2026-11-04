@@ -47,3 +47,8 @@ Thumbs.db
 /src/environments/environment.ts
 .nx/
 .env
+
+# Playwright
+/test-results
+/playwright-report
+/blob-report

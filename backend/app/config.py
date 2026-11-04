@@ -9,7 +9,7 @@ class Settings(BaseSettings):
 
     environment: str = "development"
     database_url: str | None = None
-    cors_origins: str = "http://localhost:4200"
+    cors_origins: str = "http://localhost:4200,http://localhost:4300"
     cors_origin_regex: str | None = None
     # GUEST_PASSWORD replaces the built-in guest password (kept hashed in app/auth/guest.py).
     guest_password: str | None = None
