@@ -13,6 +13,7 @@ import { filter } from 'rxjs';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import {
   lucideCheck,
+  lucideGithub,
   lucideHeart,
   lucideInfo,
   lucideLayoutDashboard,
@@ -34,6 +35,7 @@ import { SiteSearch } from './site-search';
   providers: [
     provideIcons({
       lucideCheck,
+      lucideGithub,
       lucideHeart,
       lucideInfo,
       lucideLayoutDashboard,
