@@ -73,6 +73,8 @@ describe('studio draft', () => {
   it('builds the studio page record', () => {
     const a = buildStudio(priced);
     expect(a.id).toBe('me');
+    expect(a.role).toBe('Painter & textile artist');
+    expect(a.mediums).toEqual(['Painting', 'Textile']);
     expect(a.priceLabel).toBe('$400 – $6k');
     expect(a.link.label).toBe('alexward.studio');
     expect(a.workList[0].title).toBe('Garden in grey');

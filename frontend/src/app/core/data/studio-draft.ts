@@ -180,6 +180,7 @@ export function buildStudio(d: StudioDraft): Artist {
     name: d.name.trim() || 'Your name',
     studio: d.studio.trim() || 'Your studio',
     medium: medium.name,
+    otherMediums: d.mediums.filter((m) => m !== medium.name && MEDIUMS.some((x) => x.name === m)),
     city: d.city.trim() || 'Your city',
     min: lo,
     max: hi,
