@@ -3,3 +3,6 @@
 .env.*
 !.env.example
 .vercel
+
+# Root tools (npm run dev)
+node_modules/

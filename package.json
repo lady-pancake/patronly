@@ -1,0 +1,20 @@
+{
+  "name": "patronly",
+  "private": true,
+  "description": "Runs the Patronly frontend and backend together.",
+  "scripts": {
+    "setup": "npm install && npm --prefix frontend install && npm run setup:api",
+    "setup:api": "cd backend && (test -d .venv || python3 -m venv .venv) && .venv/bin/pip install -r requirements-dev.txt",
+    "dev": "concurrently --kill-others-on-fail -n api,web -c magenta,cyan \"npm:dev:api\" \"npm:dev:web\"",
+    "dev:api": "cd backend && .venv/bin/uvicorn app.main:app --reload",
+    "dev:web": "npm --prefix frontend start",
+    "test": "npm run test:web && npm run test:api",
+    "test:web": "npm --prefix frontend test",
+    "test:api": "cd backend && .venv/bin/pytest -q",
+    "lint": "cd backend && .venv/bin/ruff check . && .venv/bin/ruff format --check . && cd ../frontend && npx prettier --check src e2e",
+    "e2e": "npm --prefix frontend run e2e"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}

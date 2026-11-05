@@ -18,6 +18,17 @@ The frontend talks to the backend only through GraphQL at `/graphql`. A mobile a
 
 You need Node.js 22.12+ (or 24), Python 3.12+, and a Postgres database (a Supabase project, or a local Postgres).
 
+### Quick start
+
+From the repo root, one command runs both apps:
+
+```bash
+npm run setup   # once: installs the frontend, and the backend into backend/.venv
+npm run dev     # API on http://localhost:8000 and website on http://localhost:4200
+```
+
+`npm run dev` shows both logs in one terminal (`[api]` and `[web]`), and Ctrl+C stops both. Other root scripts: `npm test` (frontend and backend unit tests), `npm run lint` and `npm run e2e`. The sections below run each app on its own.
+
 ### Backend
 
 ```bash
