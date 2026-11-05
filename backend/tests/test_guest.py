@@ -9,24 +9,10 @@ from app.config import get_settings
 @pytest.fixture(autouse=True)
 def settings(monkeypatch):
     monkeypatch.setenv("DATABASE_URL", "postgresql://u:p@localhost/db")
-    monkeypatch.delenv("GUEST_PASSWORD", raising=False)
     monkeypatch.delenv("GUEST_TOKEN_SECRET", raising=False)
     get_settings.cache_clear()
     yield
     get_settings.cache_clear()
-
-
-def test_built_in_password():
-    assert guest.check_password("hireJulietteGarvey!")
-    assert not guest.check_password("hirejuliettegarvey!")
-    assert not guest.check_password("")
-
-
-def test_password_override(monkeypatch):
-    monkeypatch.setenv("GUEST_PASSWORD", "other")
-    get_settings.cache_clear()
-    assert guest.check_password("other")
-    assert not guest.check_password("hireJulietteGarvey!")
 
 
 def test_pass_round_trip_and_forgery():

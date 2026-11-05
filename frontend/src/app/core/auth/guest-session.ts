@@ -11,8 +11,8 @@ function read(): string | null {
 }
 
 /**
- * The guest pass the API hands out after the password gate.
- * Kept in session storage, so each new tab session starts at the gate (and is logged as a visit).
+ * The guest pass the API hands out once a visitor picks Patron or Artist.
+ * Kept in session storage, so each new tab session starts on the sign-in page (and is logged as a visit).
  */
 @Injectable({ providedIn: 'root' })
 export class GuestSession {

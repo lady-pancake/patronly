@@ -18,7 +18,6 @@
   ></div>
   <div
     class="pointer-events-none relative flex min-h-dvh flex-col items-center justify-center gap-6 px-4 py-8 text-center max-[260px]:px-2 short:gap-3 short:py-3 lg:h-full lg:min-h-0 lg:gap-7"
-    [attr.inert]="gateOpen() ? '' : null"
   >
     <h1
       class="font-serif text-[clamp(56px,8vw,112px)] max-sm:text-[clamp(36px,15vw,56px)] leading-[.95] font-normal tracking-[-.03em] italic max-lg:text-primary-foreground short:text-4xl"
@@ -29,11 +28,6 @@
       appEnterSubmit
       class="pointer-events-auto flex w-full max-w-[360px] flex-col gap-4 rounded-4xl bg-card p-5 text-left max-[260px]:p-3 sm:p-6 short:gap-3 short:p-5 shadow-[0_4px_16px_oklch(0_0_0/.08)] ring-1 ring-black/5"
     >
-      @if (viewer.viewer(); as v) {
-        <span class="text-sm text-muted-foreground"
-          >Welcome, <span class="font-medium text-foreground">{{ v.name }}</span></span
-        >
-      }
       <div role="radiogroup" aria-label="Sign in as" class="flex flex-col gap-2">
         <span class="text-sm font-semibold">Sign in as</span>
         @for (r of roles; track r.id) {
@@ -60,74 +54,18 @@
           </button>
         }
       </div>
+      @if (error()) {
+        <p class="text-sm text-destructive" role="alert">{{ error() }}</p>
+      }
       <button
         type="button"
         data-submit
         (click)="enter()"
-        class="min-h-11 rounded-full bg-primary px-4 py-2 text-sm break-words font-medium text-primary-foreground hover:opacity-85"
+        [disabled]="busy()"
+        class="min-h-11 rounded-full bg-primary px-4 py-2 text-sm break-words font-medium text-primary-foreground hover:opacity-85 disabled:opacity-60"
       >
-        Continue as guest
+        {{ busy() ? 'Opening…' : 'Continue as guest' }}
       </button>
     </div>
   </div>
-
-  @if (gateOpen()) {
-    <div
-      class="fixed inset-0 z-30 grid place-items-center bg-[rgb(234_228_221/.35)] p-6 backdrop-blur-md"
-    >
-      <form
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="gate-title"
-        (submit)="$event.preventDefault(); unlock()"
-        class="flex w-full max-w-[380px] flex-col gap-4 rounded-4xl bg-card p-7 text-left shadow-[0_12px_40px_oklch(0_0_0/.16)] ring-1 ring-black/5"
-      >
-        <div class="flex flex-col gap-1.5">
-          <h2 id="gate-title" class="font-serif text-[28px] leading-tight italic">
-            Welcome to Patronly
-          </h2>
-          <p class="text-sm text-muted-foreground">
-            A design prototype. Enter your name and the password you were given to look around.
-          </p>
-        </div>
-        <label class="flex flex-col gap-1.5">
-          <span class="text-sm font-semibold">Your name</span>
-          <input
-            #nameInput
-            name="name"
-            required
-            autocomplete="name"
-            maxlength="120"
-            appCleanText
-            [value]="name()"
-            (input)="name.set($any($event.target).value)"
-            class="h-11 rounded-full border border-input bg-background px-4 text-sm outline-none focus-visible:border-primary"
-          />
-        </label>
-        <label class="flex flex-col gap-1.5">
-          <span class="text-sm font-semibold">Password</span>
-          <input
-            #passwordInput
-            type="password"
-            name="password"
-            required
-            autocomplete="current-password"
-            [value]="password()"
-            (input)="password.set($any($event.target).value)"
-            class="h-11 rounded-full border border-input bg-background px-4 text-sm outline-none focus-visible:border-primary"
-          />
-        </label>
-        @if (error()) {
-          <p class="text-sm text-destructive" role="alert">{{ error() }}</p>
-        }
-        <button
-          type="submit"
-          [disabled]="busy()"
-          class="h-11 rounded-full bg-primary text-sm font-medium text-primary-foreground hover:opacity-85 disabled:opacity-60"
-        >
-          {{ busy() ? 'Checking…' : 'Enter' }}
-        </button>
-      </form>
-    </div>
-  }
 </main>

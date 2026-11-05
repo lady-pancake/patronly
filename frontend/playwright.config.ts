@@ -3,7 +3,7 @@ import { defineConfig, devices } from '@playwright/test';
 /**
  * End-to-end tests: a real browser against the Angular app, the FastAPI backend
  * and Postgres. Start the API yourself (see the README), or let CI do it.
- * The password gate stays on, so sign-in goes through the real API.
+ * Sign-in starts a real guest visit through the API.
  */
 export default defineConfig({
   testDir: './e2e',
@@ -24,7 +24,6 @@ export default defineConfig({
   ],
   webServer: {
     command: 'npm run env && ng serve --port 4300',
-    env: { NG_APP_SKIP_GATE: 'false' },
     url: 'http://localhost:4300',
     timeout: 180_000,
     reuseExistingServer: !process.env['CI'],

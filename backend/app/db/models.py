@@ -112,7 +112,7 @@ class Review(Base):
 
 
 class Guest(Base):
-    """One visit through the portfolio password gate: who came and when.
+    """One visit to the portfolio: when the guest came.
 
     Nothing else a guest does is stored; favourites and messages stay in their browser tab.
     """

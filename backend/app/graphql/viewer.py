@@ -1,21 +1,20 @@
-"""Guest access: the password gate, the current guest, and what each view may do.
+"""Guest access: starting a visit, the current guest, and what each view may do.
 
 Only the visit itself is stored. The guest's chosen view, favourites and
 messages live in their browser tab; the backend's job is to say which actions
 each view allows, so the frontend checks actions rather than roles.
 """
 
-import asyncio
 from enum import Enum
 
 import strawberry
 from sqlalchemy import func, update
 
 from app.auth import entitlements as ent
-from app.auth.guest import check_password, issue_pass
+from app.auth.guest import issue_pass
 from app.db import session as db
 from app.db.models import Guest
-from app.graphql.context import Context, NotAllowed
+from app.graphql.context import Context
 from app.text import clean_text
 
 
@@ -59,7 +58,7 @@ class GuestPass:
 
 @strawberry.type
 class ViewerQuery:
-    @strawberry.field(description="What each view may do. Public: used to skip the gate locally.")
+    @strawberry.field(description="What each view may do. Public.")
     def role_actions(self) -> list[RoleActions]:
         return role_actions()
 
@@ -81,16 +80,11 @@ class ViewerQuery:
 
 @strawberry.type
 class ViewerMutation:
-    @strawberry.mutation(description="Pass the portfolio password gate. Logs the visit.")
+    @strawberry.mutation(description="Starts a guest visit and logs it. No password needed.")
     async def start_visit(
-        self, info: strawberry.Info[Context, None], name: str, password: str
+        self, info: strawberry.Info[Context, None], name: str = "Guest"
     ) -> GuestPass:
-        name = clean_text(" ".join(name.split())[:120])
-        if not name:
-            raise ValueError("Please tell us your name.")
-        if not check_password(password):
-            await asyncio.sleep(0.5)  # Slows down guessing.
-            raise NotAllowed("That password isn't right.")
+        name = clean_text(" ".join(name.split())[:120]) or "Guest"
         user_agent = (info.context.request.headers.get("user-agent") or "")[:500] or None
         async for session in db.get_session():
             guest = Guest(name=name, user_agent=user_agent)

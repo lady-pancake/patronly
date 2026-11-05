@@ -1,12 +1,11 @@
-"""Guest access for the portfolio: one shared password, then a signed guest pass.
+"""Guest access for the portfolio: a signed guest pass, no password.
 
-There are no real accounts. Each time someone gets past the password gate we
-save a guest row (their name and when they came) and hand back a pass that
-identifies that row on later requests.
+There are no real accounts. Each time someone opens the app we save a guest
+row (when they came) and hand back a pass that identifies that row on later
+requests.
 """
 
 import hashlib
-import hmac
 import time
 import uuid
 
@@ -14,24 +13,8 @@ import jwt
 
 from app.config import get_settings
 
-# scrypt hash of the guest password. GUEST_PASSWORD overrides it.
-PASSWORD_HASH = (
-    "scrypt$8cffcc5ae9f9cbf985ccf5e1c009e5b5$"
-    "deaa7f100386cf61effbf8b47b90d9aa96690854e9a2d288e5948192ceed4e06"
-)
 PASS_DAYS = 30
 AUDIENCE = "patronly-guest"
-
-
-def check_password(password: str) -> bool:
-    override = get_settings().guest_password
-    if override:
-        return hmac.compare_digest(password.encode(), override.encode())
-    _, salt, expected = PASSWORD_HASH.split("$")
-    actual = hashlib.scrypt(
-        password.encode(), salt=bytes.fromhex(salt), n=2**14, r=8, p=1, dklen=32
-    )
-    return hmac.compare_digest(actual.hex(), expected)
 
 
 def _secret() -> str:

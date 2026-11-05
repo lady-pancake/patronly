@@ -10,7 +10,7 @@ from app.auth.guest import read_pass
 
 class NotSignedIn(Exception):
     def __init__(self) -> None:
-        super().__init__("Enter the password to do this.")
+        super().__init__("Pick Patron or Artist to do this.")
 
 
 class NotAllowed(Exception):

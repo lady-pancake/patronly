@@ -1,18 +1,8 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  ElementRef,
-  computed,
-  effect,
-  inject,
-  signal,
-  viewChild,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { type Role, ViewerStore } from '../../core/auth/viewer.store';
 import { ARTISTS } from '../../core/data/catalog';
 import { ArtistStore } from '../../core/data/artist-store';
-import { CleanText } from '../../shared/clean-text';
 import { EnterSubmit } from '../../shared/enter-submit';
 
 const PALETTE = [
@@ -55,7 +45,7 @@ const COLUMNS = OFFSETS.map((offset, i) => ({
 
 @Component({
   selector: 'app-login',
-  imports: [CleanText, EnterSubmit],
+  imports: [EnterSubmit],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './login.html',
 })
@@ -72,45 +62,28 @@ export class Login {
   ];
   protected readonly role = signal<Role>(this.viewer.role());
 
-  // Password gate.
-  protected readonly name = signal('');
-  protected readonly password = signal('');
   protected readonly busy = signal(false);
   protected readonly error = signal<string | null>(null);
-  protected readonly gateOpen = computed(() => this.viewer.loaded() && !this.viewer.signedIn());
-  private readonly nameInput = viewChild<ElementRef<HTMLInputElement>>('nameInput');
-  private readonly passwordInput = viewChild<ElementRef<HTMLInputElement>>('passwordInput');
 
   constructor() {
     void this.viewer.whenLoaded();
-    effect(() => this.nameInput()?.nativeElement.focus());
   }
 
-  protected async unlock() {
-    const name = this.name().trim();
-    if (!name || !this.password() || this.busy()) return;
+  /** Starts a guest visit if there isn't one yet, then opens the app in the chosen view. */
+  protected async enter() {
+    if (this.busy()) return;
     this.error.set(null);
-    this.busy.set(true);
-    try {
-      await this.viewer.startVisit(name, this.password());
-      this.password.set('');
-    } catch (err) {
-      this.error.set(gateError(err));
-    } finally {
-      this.busy.set(false);
+    if (!this.viewer.signedIn()) {
+      this.busy.set(true);
+      try {
+        await this.viewer.startVisit();
+      } catch {
+        this.error.set('We couldn’t reach Patronly just now. Please try again.');
+        return;
+      } finally {
+        this.busy.set(false);
+      }
     }
-    // Wrong password: select it all so typing replaces it.
-    if (this.error()) {
-      setTimeout(() => {
-        const input = this.passwordInput()?.nativeElement;
-        input?.focus();
-        input?.select();
-      });
-    }
-  }
-
-  protected enter() {
-    if (!this.viewer.signedIn()) return;
     this.viewer.role.set(this.role());
     void this.router.navigateByUrl(this.destination());
   }
@@ -125,10 +98,4 @@ export class Login {
     }
     return '/';
   }
-}
-
-function gateError(err: unknown): string {
-  const msg = err instanceof Error ? err.message : '';
-  if (/password/i.test(msg) || /name/i.test(msg)) return msg;
-  return 'We couldn’t reach Patronly just now. Please try again.';
 }

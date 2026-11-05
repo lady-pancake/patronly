@@ -1,22 +1,13 @@
 import { expect, test } from '@playwright/test';
-import { PASSWORD, signIn } from './helpers';
+import { signIn } from './helpers';
 
 test.describe('Sign-in', () => {
-  test('a wrong password is rejected and selected for retyping', async ({ page }) => {
+  test('opens without a password: just pick a view', async ({ page }) => {
     await page.goto('/login');
-    const gate = page.getByRole('dialog', { name: 'Welcome to Patronly' });
-    await gate.getByLabel('Your name').fill('E2E Tester');
-    const password = gate.getByLabel('Password');
-    await password.fill('not-the-password');
-    await password.press('Enter');
-
-    await expect(gate.getByRole('alert')).toBeVisible();
-    await expect(password).toBeFocused();
-    const selected = await password.evaluate(
-      (el: HTMLInputElement) => el.selectionEnd! - el.selectionStart!,
-    );
-    expect(selected).toBe('not-the-password'.length);
-    expect(PASSWORD).not.toBe('not-the-password');
+    await expect(page.getByLabel('Password')).toHaveCount(0);
+    await page.getByRole('radio', { name: /Patron/ }).click();
+    await page.getByRole('button', { name: 'Continue as guest' }).click();
+    await expect(page).toHaveURL('/');
   });
 
   test('a guest signs in as a patron, then switches to the artist view', async ({ page }) => {

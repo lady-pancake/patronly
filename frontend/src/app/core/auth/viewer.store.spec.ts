@@ -4,7 +4,7 @@ import { of, throwError } from 'rxjs';
 import { GraphQLService } from '../graphql.service';
 import { entitled } from './guards';
 import { GuestSession } from './guest-session';
-import { SKIP_GATE, type Viewer, ViewerStore } from './viewer.store';
+import { type Viewer, ViewerStore } from './viewer.store';
 
 const GUEST: Viewer = {
   id: 'g1',
@@ -24,22 +24,18 @@ const GUEST: Viewer = {
   ],
 };
 
-function setup(me: Viewer | null, token: string | null = me ? 'pass' : null, skipGate = false) {
+function setup(me: Viewer | null, token: string | null = me ? 'pass' : null) {
   sessionStorage.clear();
   if (token) sessionStorage.setItem('patronly.guestPass', token);
   const query = vi.fn((q: string, vars?: Record<string, unknown>) => {
     if (q.includes('query Me')) return of({ me });
-    if (q.includes('roleActions')) return of({ roleActions: GUEST.roles });
-    if (q.includes('startVisit') && vars?.['password'] === 'right') {
-      return of({ startVisit: { token: 'new-pass', viewer: GUEST } });
+    if (q.includes('startVisit')) {
+      return of({ startVisit: { token: 'new-pass', viewer: { ...GUEST, name: vars?.['name'] } } });
     }
-    return throwError(() => new Error("That password isn't right."));
+    return throwError(() => new Error('Unexpected query'));
   });
   TestBed.configureTestingModule({
-    providers: [
-      { provide: GraphQLService, useValue: { query } },
-      { provide: SKIP_GATE, useValue: skipGate },
-    ],
+    providers: [{ provide: GraphQLService, useValue: { query } }],
   });
   return { store: TestBed.inject(ViewerStore), query };
 }
@@ -62,28 +58,19 @@ describe('ViewerStore', () => {
     expect(query).not.toHaveBeenCalled();
   });
 
-  it('skips the gate in local development, until you sign out', async () => {
-    const { store } = setup(null, null, true);
-    const v = await store.whenLoaded();
-    expect(v?.name).toBe('Local dev');
-    store.role.set('artist');
-    expect(store.can('VIEW_DASHBOARD')).toBe(true);
-    store.signOut();
-    expect(await store.refresh()).toBeNull();
-  });
-
   it('drops a pass the API no longer accepts', async () => {
     const { store } = setup(null, 'old-pass');
     expect(await store.whenLoaded()).toBeNull();
     expect(TestBed.inject(GuestSession).token()).toBeNull();
   });
 
-  it('stores the pass after the password gate', async () => {
-    const { store } = setup(null);
-    await expect(store.startVisit('ana', 'wrong')).rejects.toThrow("That password isn't right.");
+  it('starts a visit as Guest without a password and stores the pass', async () => {
+    const { store, query } = setup(null);
     expect(store.signedIn()).toBe(false);
-    await store.startVisit('ana', 'right');
+    await store.startVisit();
+    expect(query).toHaveBeenCalledWith(expect.stringContaining('startVisit'), { name: 'Guest' });
     expect(store.signedIn()).toBe(true);
+    expect(store.viewer()?.name).toBe('Guest');
     expect(sessionStorage.getItem('patronly.guestPass')).toBe('new-pass');
   });
 });
@@ -94,7 +81,7 @@ describe('entitled guard', () => {
       entitled(e)({} as never, { url: '/dashboard' } as never),
     ) as Promise<boolean | UrlTree>;
 
-  it('sends visitors without a pass to the gate, then back', async () => {
+  it('sends visitors without a pass to the sign-in page, then back', async () => {
     setup(null);
     const result = (await run('VIEW_DASHBOARD')) as UrlTree;
     expect(TestBed.inject(Router).serializeUrl(result)).toBe('/login?next=%2Fdashboard');

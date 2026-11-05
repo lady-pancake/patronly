@@ -67,15 +67,15 @@ At startup the app loads studios from the API's `artists` query. If the API can'
 
 Playwright drives a real browser through the app, the API and Postgres, on a desktop and a phone screen size:
 
-- **Sign-in:** a wrong password is rejected and selected for retyping; a guest gets through the gate and switches between the patron and artist views.
+- **Sign-in:** a visitor opens the app without a password by picking a view, then switches between the patron and artist views.
 - **Inquiry:** a patron opens a studio loaded from the database, sends an inquiry and finds it in Messages.
 - **Studio builder:** an artist edits the sample studio, walks every step, previews the studio and makes it public.
 
-To run them locally, start the API with a test password, then run the tests (they start their own frontend on port 4300 with the password gate on):
+To run them locally, start the API, then run the tests (they start their own frontend on port 4300):
 
 ```bash
-cd backend && GUEST_PASSWORD=e2e-guest-password uvicorn app.main:app   # in one terminal
-cd frontend && npx playwright install chromium && npm run e2e           # in another
+cd backend && .venv/bin/uvicorn app.main:app                  # in one terminal
+cd frontend && npx playwright install chromium && npm run e2e  # in another
 ```
 
 CI runs them on every push against a fresh Postgres seeded with the sample studios.
@@ -102,12 +102,10 @@ The studio builder starts from a sample studio (Alex Ward, with sample prices an
 
 Patronly is a portfolio prototype, so there are no real accounts.
 
-- The sign-in page opens with a password gate. Visitors enter their name and the shared password. Each pass through the gate is saved as a row in the `guests` table (name, browser, first and last seen), so you can see who has looked around: `select name, created_at, last_seen_at from guests order by created_at desc;` in the Supabase SQL editor.
+- There is no password. The sign-in page asks visitors to pick **Patron** or **Artist** and continue as a guest. Each visit is saved as a row in the `guests` table (browser, first and last seen), so you can see how many people have looked around: `select created_at, last_seen_at from guests order by created_at desc;` in the Supabase SQL editor.
 - The API then hands back a guest pass (a signed token, kept in the browser tab's session storage).
 - The avatar menu switches between the **patron** and **artist** views. The API sends the list of actions each view allows (`me { roles { role entitlements } }`, defined in `backend/app/auth/entitlements.py`). The frontend only checks for an action (`viewer.can('VIEW_DASHBOARD')` and the `entitled(...)` route guard), never the role.
 - Nothing a guest does is saved on the server. Favourites, messages and studio edits live in session storage and reset when the tab closes. The sample studios come from the database.
-- The password is stored hashed in `backend/app/auth/guest.py`. Set `GUEST_PASSWORD` on the API to use a different one.
-- Running locally (`npm start`) skips the gate and signs you in as "Local dev", without logging a visit. Set `NG_APP_SKIP_GATE=false` in `frontend/.env` to test the gate. Vercel builds always show it.
 
 ### Database migrations
 
@@ -159,7 +157,6 @@ The layout works down to a 320px-wide screen with no sideways scrolling.
 | Vercel (API) | `CORS_ORIGINS` | `https://patronly.vercel.app` | Comma separated. The web app's production URL (and custom domain later). |
 | Vercel (API) | `CORS_ORIGIN_REGEX` | `https://patronly-.*\.vercel\.app` | Optional. Lets Vercel preview deployments call the API. |
 | Vercel (API) | `ENVIRONMENT` | `production` | Hides GraphiQL in production. |
-| Vercel (API) | `GUEST_PASSWORD` | | Optional. Replaces the built-in guest password. |
 | Vercel (API) | `GUEST_TOKEN_SECRET` | | Optional. Signs guest passes; by default derived from `DATABASE_URL`. |
 | Vercel (web) | `NG_APP_GRAPHQL_URL` | `https://patronly-api.vercel.app/graphql` | The API project's URL plus `/graphql`. |
 

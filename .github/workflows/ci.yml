@@ -66,9 +66,6 @@ jobs:
           --health-cmd "pg_isready -U postgres" --health-interval 5s --health-timeout 5s --health-retries 10
     env:
       DATABASE_URL: postgresql://postgres:postgres@localhost:5432/postgres
-      # A test-only password for the guest gate, not the real one.
-      GUEST_PASSWORD: e2e-guest-password
-      E2E_GUEST_PASSWORD: e2e-guest-password
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
