@@ -629,65 +629,51 @@
   {
    "slug": "g1",
    "position": 8,
-   "name": "Leo Weiss",
-   "studio": "Weiss Studio",
+   "name": "Marcus Ellison",
+   "studio": "Ellison Studio",
    "medium": "Painting",
-   "city": "Antwerp",
-   "priceMin": 800,
+   "city": "Chicago",
+   "priceMin": 600,
    "priceMax": 4800,
-   "commissions": 49,
-   "likes": 813,
+   "commissions": 58,
+   "likes": 2340,
    "hue": 47,
    "chroma": 0.07,
-   "site": "leoweiss.studio",
-   "replyNote": "Usually replies within 2 days.",
+   "site": "marcusellison.studio",
+   "replyNote": "Usually replies within a day.",
    "tags": [
-    "Painting",
-    "Commissions open",
-    "Antwerp",
-    "Local only"
+    "Abstract expressionism",
+    "Acrylic and oil",
+    "Large canvases",
+    "Portrait abstractions",
+    "Ships in the US"
    ],
-   "quote": "The best commissions start with a story I haven’t heard before.",
+   "quote": "I start with colour and let the painting tell me who it is.",
    "bio": [
-    "Leo works from a studio in Antwerp, making painting to commission for homes, collectors and gifts.",
-    "Every commission starts with a short call about where the piece will live, followed by a sketch or sample before work begins."
+    "Marcus paints big, layered abstracts in a light-filled loft studio on Chicago’s South Side, building each canvas up with palette knives, brushes and his hands.",
+    "Commissions start with a conversation about a person, a place or a memory. He sends a small colour study before scaling up to the full canvas."
    ],
-   "availability": "Waitlist",
-   "coverUrl": null,
-   "portraitUrl": null,
-   "processUrl": null,
+   "availability": "Open",
+   "coverUrl": "/images/covers/marcus-cover.jpg",
+   "portraitUrl": "/images/portraits/marcus.jpg",
+   "processUrl": "/images/process/marcus-process.jpg",
    "processVideoUrl": null,
    "coverVideoUrl": null,
    "works": [
     {
-     "title": "Study in ochre",
-     "material": "Painting",
-     "imageUrl": null
+     "title": "Grandmother, in colour",
+     "material": "Acrylic and oil on canvas, 90×120cm",
+     "imageUrl": "/images/works/marcus-1.jpg"
     },
     {
-     "title": "For a quiet room",
-     "material": "Painting",
-     "imageUrl": null
+     "title": "Quilt study",
+     "material": "Acrylic on canvas, 100×70cm",
+     "imageUrl": "/images/works/marcus-2.jpg"
     },
     {
-     "title": "Morning piece",
-     "material": "Painting",
-     "imageUrl": null
-    },
-    {
-     "title": "Commission for A.",
-     "material": "Painting",
-     "imageUrl": null
-    },
-    {
-     "title": "Small hours",
-     "material": "Painting",
-     "imageUrl": null
-    },
-    {
-     "title": "Second light",
-     "material": "Painting",
-     "imageUrl": null
+     "title": "Lake Shore heat",
+     "material": "Oil on canvas, 60×40cm",
+     "imageUrl": "/images/works/marcus-3.jpg"
     }
    ],
    "reviews": [

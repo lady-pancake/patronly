@@ -789,6 +789,45 @@ function fillCatalogue(list: ArtistSeed[]): void {
       ],
     });
   }
+  const us = list.find((a) => a.id === 'g1');
+  if (us) {
+    Object.assign(us, {
+      name: 'Marcus Ellison',
+      studio: 'Ellison Studio',
+      city: 'Chicago',
+      site: 'marcusellison.studio',
+      min: 600,
+      max: 4800,
+      commissions: 58,
+      likes: 2340,
+      avail: 'Open',
+      reply: 'Usually replies within a day.',
+      cover: '/images/covers/marcus-cover.jpg',
+      portrait: '/images/portraits/marcus.jpg',
+      process: '/images/process/marcus-process.jpg',
+      quote: 'I start with colour and let the painting tell me who it is.',
+      tags: [
+        'Abstract expressionism',
+        'Acrylic and oil',
+        'Large canvases',
+        'Portrait abstractions',
+        'Ships in the US',
+      ],
+      works: [
+        [
+          'Grandmother, in colour',
+          'Acrylic and oil on canvas, 90×120cm',
+          '/images/works/marcus-1.jpg',
+        ],
+        ['Quilt study', 'Acrylic on canvas, 100×70cm', '/images/works/marcus-2.jpg'],
+        ['Lake Shore heat', 'Oil on canvas, 60×40cm', '/images/works/marcus-3.jpg'],
+      ],
+      bio: [
+        'Marcus paints big, layered abstracts in a light-filled loft studio on Chicago’s South Side, building each canvas up with palette knives, brushes and his hands.',
+        'Commissions start with a conversation about a person, a place or a memory. He sends a small colour study before scaling up to the full canvas.',
+      ],
+    });
+  }
   const w = list.find((a) => a.medium === 'Woodwork');
   if (w) {
     Object.assign(w, {
