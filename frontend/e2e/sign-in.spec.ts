@@ -19,7 +19,7 @@ test.describe('Sign-in', () => {
     expect(PASSWORD).not.toBe('not-the-password');
   });
 
-  test('a guest signs in as a patron and switches to the artist view', async ({ page }) => {
+  test('a guest signs in as a patron, then switches to the artist view', async ({ page }) => {
     await signIn(page, 'Patron');
     const nav = page.getByRole('navigation', { name: 'Main' });
     await expect(nav.getByRole('link', { name: /Saved/ })).toBeVisible();
@@ -27,6 +27,9 @@ test.describe('Sign-in', () => {
 
     await page.getByRole('button', { name: /Account menu/ }).click();
     await page.getByRole('menuitemradio', { name: 'Artist' }).click();
-    await expect(nav.getByRole('link', { name: /Dashboard/ })).toBeVisible();
+
+    // A new artist has no studio yet, so they land in the studio builder.
+    await expect(page).toHaveURL(/\/studio\/edit/);
+    await expect(page.getByRole('heading', { name: 'Let’s build your studio.' })).toBeVisible();
   });
 });
