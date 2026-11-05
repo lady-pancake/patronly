@@ -13,7 +13,10 @@ export interface ArtistSeed {
   id: string;
   name: string;
   studio: string;
+  /** Main medium: it sets the artist's role and default rates. */
   medium: string;
+  /** Other mediums they also work in; they're listed under these too. */
+  otherMediums?: string[];
   city: string;
   min: number;
   max: number;
@@ -64,6 +67,8 @@ export interface RateTier {
 }
 
 export interface Artist extends ArtistSeed {
+  /** The main medium first, then any others. */
+  mediums: string[];
   role: string;
   first: string;
   /** Solid colour for avatars. */

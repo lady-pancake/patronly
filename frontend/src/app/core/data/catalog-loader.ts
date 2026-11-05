@@ -11,6 +11,7 @@ export interface ApiArtist {
   displayName: string;
   studio: string;
   medium: string;
+  otherMediums: string[];
   city: string;
   priceMin: number;
   priceMax: number;
@@ -42,6 +43,7 @@ export const CATALOGUE_QUERY = /* GraphQL */ `
       displayName
       studio
       medium
+      otherMediums
       city
       priceMin
       priceMax
@@ -95,6 +97,7 @@ export function fromApi(a: ApiArtist): ArtistSeed | null {
     name: a.displayName,
     studio: a.studio,
     medium: a.medium,
+    ...(a.otherMediums?.length && { otherMediums: a.otherMediums }),
     city: a.city,
     min: a.priceMin,
     max: a.priceMax,

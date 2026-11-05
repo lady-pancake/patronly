@@ -24,6 +24,7 @@ const artists = SEED_ARTISTS.map((a, position) => ({
   name: a.name,
   studio: a.studio,
   medium: a.medium,
+  otherMediums: a.otherMediums ?? [],
   city: a.city,
   priceMin: a.min,
   priceMax: a.max,

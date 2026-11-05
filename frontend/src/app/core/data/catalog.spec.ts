@@ -1,4 +1,13 @@
-import { ARTISTS, LISTED, artistById, fmt, matchArtists, rateTiers, searchChips } from './catalog';
+import {
+  ARTISTS,
+  LISTED,
+  artistById,
+  fmt,
+  matchArtists,
+  rateTiers,
+  roleLabel,
+  searchChips,
+} from './catalog';
 
 describe('catalog', () => {
   it('formats prices the way the prototype does', () => {
@@ -32,6 +41,12 @@ describe('catalog', () => {
     expect(
       searchChips({ mediums: ['Textile'], purpose: 'A gift', size: null, budget: '$2k – $5k' }),
     ).toEqual(['Textile', 'A gift', '$2k – $5k']);
+  });
+
+  it('names every medium an artist works in', () => {
+    expect(roleLabel(['Painting'])).toBe('Painter');
+    expect(artistById('g1')?.role).toBe('Painter, illustrator & collage artist');
+    expect(artistById('g1')?.mediums).toEqual(['Painting', 'Illustration', 'Collage']);
   });
 
   it('decorates availability from the seed map', () => {

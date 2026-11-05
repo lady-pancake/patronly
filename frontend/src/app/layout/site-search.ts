@@ -60,7 +60,7 @@ export class SiteSearch {
     !this.q()
       ? []
       : LISTED.filter((a) =>
-          [a.name, a.studio, a.city, a.medium, ...a.tags]
+          [a.name, a.studio, a.city, ...a.mediums, ...a.tags]
             .join(' ')
             .toLowerCase()
             .includes(this.q()),

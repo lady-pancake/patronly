@@ -57,6 +57,15 @@ export function rateTiers(a: Pick<ArtistSeed, 'min' | 'max' | 'medium'>): RateTi
   }));
 }
 
+/** "Painter", or "Painter, illustrator & collage artist" for several mediums. */
+export function roleLabel(mediums: string[]): string {
+  const roles = mediums.map((m, i) => {
+    const r = ROLE[m] ?? m;
+    return i ? r.toLowerCase() : r;
+  });
+  return roles.length > 1 ? `${roles.slice(0, -1).join(', ')} & ${roles.at(-1)}` : roles[0];
+}
+
 export function decorate(a: ArtistSeed): Artist {
   const availability = a.avail ?? AVAIL_MAP[a.id] ?? 'Open';
   const hasImages = a.works.some((w) => !!w[2]);
@@ -65,7 +74,8 @@ export function decorate(a: ArtistSeed): Artist {
   const lights = [0.62, 0.78, 0.48, 0.7, 0.55, 0.84];
   return {
     ...a,
-    role: ROLE[a.medium] ?? a.medium,
+    mediums: [a.medium, ...(a.otherMediums ?? [])],
+    role: roleLabel([a.medium, ...(a.otherMediums ?? [])]),
     first: a.name.split(' ')[0],
     bg: tone(a.hue, 0.68, a.c),
     heroBg: a.cover ? imageBg(a.cover, tone(a.hue, 0.42, a.c * 0.9)) : tone(a.hue, 0.42, a.c * 0.9),
@@ -128,7 +138,7 @@ export function matchArtists(w: WizardAnswers, pool: Artist[] = LISTED): Artist[
   return pool
     .filter(
       (a) =>
-        (!w.mediums.length || w.mediums.includes(a.medium)) &&
+        (!w.mediums.length || w.mediums.some((m) => a.mediums.includes(m))) &&
         (!b || (a.min <= b[1] && a.max >= b[0])) &&
         (w.avail === 'No, I’d like to start soon'
           ? a.availability === 'Open'

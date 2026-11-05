@@ -8,6 +8,7 @@ const api: ApiArtist = {
   displayName: 'Ada Lind',
   studio: 'Lind Studio',
   medium: 'Ceramics',
+  otherMediums: ['Sculpture'],
   city: 'Oslo',
   priceMin: 300,
   priceMax: 2400,
@@ -46,6 +47,7 @@ describe('catalogue from the API', () => {
       ['Jug', 'Porcelain'],
     ]);
     expect(a.reviews).toEqual([{ q: 'Lovely.', by: 'Sam' }]);
+    expect(a.otherMediums).toEqual(['Sculpture']);
     expect(a.cover).toBeUndefined();
   });
 
@@ -56,6 +58,7 @@ describe('catalogue from the API', () => {
   it('replaces the catalogue', () => {
     setCatalogue([fromApi(api)!], 'api');
     expect(artistById('ada')?.availLabel).toBe('Waitlist open');
+    expect(artistById('ada')?.role).toBe('Ceramicist & sculptor');
     expect(artistById('june')).toBeUndefined();
     expect(LISTED.map((x) => x.id)).toEqual(['ada']);
   });

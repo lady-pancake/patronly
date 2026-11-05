@@ -39,6 +39,8 @@ class Artist(Base):
     display_name: Mapped[str] = mapped_column(String(120))
     studio: Mapped[str] = mapped_column(String(160), server_default="")
     medium: Mapped[str] = mapped_column(String(60), server_default="", index=True)
+    # Further mediums the artist also works in, e.g. ["Illustration", "Collage"].
+    other_mediums: Mapped[list[str]] = mapped_column(ARRAY(Text), server_default="{}")
     city: Mapped[str] = mapped_column(String(120), server_default="")
     price_min: Mapped[int] = mapped_column(Integer, server_default="0")
     price_max: Mapped[int] = mapped_column(Integer, server_default="0")

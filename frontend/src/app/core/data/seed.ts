@@ -793,6 +793,7 @@ function fillCatalogue(list: ArtistSeed[]): void {
   if (us) {
     Object.assign(us, {
       name: 'Marcus Ellison',
+      otherMediums: ['Illustration', 'Collage'],
       studio: 'Ellison Studio',
       city: 'Chicago',
       site: 'marcusellison.studio',
@@ -805,32 +806,35 @@ function fillCatalogue(list: ArtistSeed[]): void {
       cover: '/images/covers/marcus-cover.jpg',
       portrait: '/images/portraits/marcus.jpg',
       process: '/images/process/marcus-process.jpg',
-      quote: 'I start with colour and let the painting tell me who it is.',
+      quote: 'Paint, pen or scissors: I pick whichever one the idea asks for.',
       tags: [
-        'Abstract expressionism',
-        'Acrylic and oil',
-        'Large canvases',
-        'Portrait abstractions',
+        'Painting, illustration & collage',
+        'Bold colour',
+        'Murals and large canvases',
+        'Editorial collage',
         'Ships in the US',
       ],
       works: [
-        [
-          'Grandmother, in colour',
-          'Acrylic and oil on canvas, 90×120cm',
-          '/images/works/marcus-1.jpg',
-        ],
-        ['Quilt study', 'Acrylic on canvas, 100×70cm', '/images/works/marcus-2.jpg'],
-        ['Lake Shore heat', 'Oil on canvas, 60×40cm', '/images/works/marcus-3.jpg'],
+        ['Breakfast run', 'Paper collage and ink, 40×50cm', '/images/works/marcus-1.jpg'],
+        ['The whole block', 'Acrylic mural on board, 120×160cm', '/images/works/marcus-2.jpg'],
+        ['Night shift', 'Mixed-media collage, 30×45cm', '/images/works/marcus-3.jpg'],
+        ['Hundred hellos', 'Ink fingerprints on paper, 60×40cm', '/images/works/marcus-4.jpg'],
+        ['Four rooms', 'Acrylic on canvas, 50×60cm', '/images/works/marcus-5.jpg'],
+        ['Lake Shore heat', 'Oil on canvas, 90×65cm', '/images/works/marcus-6.jpg'],
       ],
       bio: [
-        'Marcus paints big, layered abstracts in a light-filled loft studio on Chicago’s South Side, building each canvas up with palette knives, brushes and his hands.',
-        'Commissions start with a conversation about a person, a place or a memory. He sends a small colour study before scaling up to the full canvas.',
+        'Marcus paints, draws and cuts paper in a light-filled loft studio on Chicago’s South Side. One week it’s a big abstract canvas, the next a crowd of hand-drawn faces or a collage built from old magazines.',
+        'Commissions start with a conversation about a person, a place or a memory. He sends a small sketch or colour study first, then makes the full piece in whichever medium suits it best.',
       ],
     });
   }
   const w = list.find((a) => a.medium === 'Woodwork');
   if (w) {
     Object.assign(w, {
+      name: 'Sid Moreno',
+      studio: 'Moreno Woodshop',
+      city: 'Los Angeles',
+      site: 'sidmoreno.studio',
       cover: '/images/covers/arlo-cover.jpg',
       portrait: '/images/portraits/arlo.jpg',
       process: '/images/process/arlo-process.jpg',
@@ -851,7 +855,7 @@ function fillCatalogue(list: ArtistSeed[]): void {
         ['Bark vessel', 'Pine bark on reclaimed oak', '/images/works/arlo-6.jpg'],
       ],
       bio: [
-        'Arlo works from a shared woodshop in Brooklyn, hand-carving relief panels and turning vessels from offcuts and storm-felled trees.',
+        'Sid works from a shared woodshop in Los Angeles, hand-carving relief panels and turning vessels from offcuts and storm-felled trees.',
         'Every commission starts with a pencil drawing on the board itself, so you see the grain and the layout before the first cut.',
       ],
     });

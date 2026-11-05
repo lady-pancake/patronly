@@ -119,3 +119,10 @@ def test_prune_removes_studios_not_in_the_file(client):
 
     assert asyncio.run(run()) == ["gone"]
     assert gql(client, '{ artist(slug: "gone") { slug } }')["artist"] is None
+
+
+def test_filter_matches_other_mediums(client):
+    data = gql(client, '{ artists(limit: 200, medium: "Collage") { slug medium otherMediums } }')
+    marcus = next(a for a in data["artists"] if a["slug"] == "g1")
+    assert marcus["medium"] == "Painting"
+    assert marcus["otherMediums"] == ["Illustration", "Collage"]

@@ -43,7 +43,7 @@ export class Medium {
       sb = this.sort();
     const list = LISTED.filter(
       (a) =>
-        a.medium === this.medium().name &&
+        a.mediums.includes(this.medium().name) &&
         (pf === 'Any' ||
           (pf === 'Under $1k' && a.min < 1000) ||
           (pf === '$1k–$5k' && a.min >= 1000 && a.min < 5000) ||

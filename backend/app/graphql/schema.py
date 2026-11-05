@@ -3,7 +3,7 @@ from datetime import datetime
 from enum import Enum
 
 import strawberry
-from sqlalchemy import select
+from sqlalchemy import or_, select
 from sqlalchemy.orm import selectinload
 from strawberry.scalars import JSON
 
@@ -57,6 +57,9 @@ class Artist:
     display_name: str
     studio: str
     medium: str
+    other_mediums: list[str] = strawberry.field(
+        description="Further mediums the artist also works in."
+    )
     city: str
     price_min: int
     price_max: int
@@ -91,6 +94,7 @@ class Artist:
             display_name=m.display_name,
             studio=m.studio,
             medium=m.medium,
+            other_mediums=list(m.other_mediums or []),
             city=m.city,
             price_min=m.price_min,
             price_max=m.price_max,
@@ -154,7 +158,9 @@ class Query(ViewerQuery):
     async def artists(self, limit: int = 20, medium: str | None = None) -> list[Artist]:
         query = _with_children().order_by(ArtistModel.position, ArtistModel.created_at.desc())
         if medium:
-            query = query.where(ArtistModel.medium == medium)
+            query = query.where(
+                or_(ArtistModel.medium == medium, ArtistModel.other_mediums.any(medium))
+            )
         async for session in db.get_session():
             rows = await session.scalars(query.limit(max(1, min(limit, 200))))
             return [Artist.from_model(r) for r in rows]
