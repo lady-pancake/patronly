@@ -54,7 +54,8 @@ jobs:
         run: pytest -q
 
   e2e:
-    runs-on: ubuntu-latest
+    # Pinned: the Playwright version we use ships browsers for Ubuntu 24.04, not 26.04.
+    runs-on: ubuntu-24.04
     services:
       postgres:
         image: postgres:16
